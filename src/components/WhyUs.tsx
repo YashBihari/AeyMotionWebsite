@@ -54,10 +54,25 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 + (i * 0.1) }}
-              className="p-8 rounded-[24px] border border-black/10 bg-transparent flex flex-col justify-center aspect-square md:aspect-auto hover:bg-black hover:text-white hover:border-black transition-colors duration-300 group"
+              className="p-8 rounded-[24px] bg-white flex flex-col justify-center aspect-square md:aspect-auto hover:shadow-[0_20px_50px_rgba(138,46,255,0.08)] transition-all duration-500 ease-out relative group overflow-hidden isolate"
             >
-              <div className="text-2xl font-bold tracking-tight mb-4 group-hover:text-white">{stat.title}</div>
-              <p className="text-sm opacity-70 group-hover:text-white leading-relaxed">{stat.label}</p>
+              {/* Default Border that fades out on hover */}
+              <span className="absolute inset-0 rounded-[24px] border border-black/10 group-hover:border-transparent transition-colors duration-300 pointer-events-none" />
+              
+              {/* Gradient border mask overlay */}
+              <span className="absolute inset-0 rounded-[24px] p-[1.5px] bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10">
+                <span className="block w-full h-full bg-white rounded-[22.5px]" />
+              </span>
+
+              {/* Apple-like soft backglow */}
+              <span className="absolute inset-2 bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] opacity-0 group-hover:opacity-15 blur-2xl rounded-[24px] transition-all duration-500 pointer-events-none -z-20" />
+
+              <div className="text-2xl font-bold tracking-tight mb-4 text-[#141414] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#8A2EFF] group-hover:to-[#F4B179] transition-all duration-300">
+                {stat.title}
+              </div>
+              <p className="text-sm opacity-70 text-[#444] leading-relaxed">
+                {stat.label}
+              </p>
             </motion.div>
           ))}
         </div>

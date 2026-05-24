@@ -5,10 +5,10 @@ import { ArrowRight, Box, TrendingUp, Sparkles } from 'lucide-react';
 const services = [
   {
     icon: <Box className="w-6 h-6" />,
-    accentColor: "#F4B179",
-    gradient: "linear-gradient(135deg, #F4B179 0%, #E0B3CF 100%)",
-    glowShadow: "rgba(244, 177, 121, 0.25)",
-    bgLight: "rgba(244, 177, 121, 0.06)",
+    accentColor: "#8A2EFF",
+    gradient: "linear-gradient(135deg, #8A2EFF 0%, #F4B179 100%)",
+    glowShadow: "rgba(138, 46, 255, 0.25)",
+    bgLight: "rgba(138, 46, 255, 0.06)",
     title: "Product Demo Motion System",
     description: (
       <div className="space-y-4">
@@ -39,10 +39,10 @@ const services = [
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
-    accentColor: "#E0B3CF",
-    gradient: "linear-gradient(135deg, #E0B3CF 0%, #8A2EFF 100%)",
-    glowShadow: "rgba(224, 179, 207, 0.35)",
-    bgLight: "rgba(224, 179, 207, 0.12)",
+    accentColor: "#8A2EFF",
+    gradient: "linear-gradient(135deg, #8A2EFF 0%, #F4B179 100%)",
+    glowShadow: "rgba(138, 46, 255, 0.25)",
+    bgLight: "rgba(138, 46, 255, 0.06)",
     title: "Launch Motion Ecosystem",
     description: (
       <div className="space-y-4">
