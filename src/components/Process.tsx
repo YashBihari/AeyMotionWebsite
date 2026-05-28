@@ -35,10 +35,16 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="relative overflow-hidden isolate py-24 md:py-32 px-6 md:px-12 max-w-[1400px] mx-auto rounded-[32px] md:rounded-[48px] bg-black text-white selection:bg-white selection:text-black mb-12">
-      {/* Cinematic Gradient Glows inside the dark Process banner */}
-      <div className="absolute top-[10%] right-[10%] w-[350px] h-[350px] bg-[#E0B3CF]/15 blur-[100px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute bottom-[10%] left-[10%] w-[400px] h-[400px] bg-[#8A2EFF]/15 blur-[120px] rounded-full pointer-events-none -z-10" />
+    <section id="process" className="relative overflow-hidden isolate py-24 md:py-32 px-6 md:px-12 max-w-[1400px] mx-auto rounded-none bg-white/80 backdrop-blur-md text-[#141414] selection:bg-[#8A2EFF]/10 selection:text-[#141414] mb-12 shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
+      {/* High-density gradient edge frames (Top, right, bottom, left) */}
+      <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] pointer-events-none z-20" />
+      <div className="absolute inset-y-0 right-0 w-[3px] bg-gradient-to-b from-[#F4B179] via-[#E0B3CF] to-[#8A2EFF] pointer-events-none z-20" />
+      <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-l from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] pointer-events-none z-20" />
+      <div className="absolute inset-y-0 left-0 w-[3px] bg-gradient-to-t from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] pointer-events-none z-20" />
+
+      {/* Cinematic soft glows underneath the translucent whitish layer */}
+      <div className="absolute top-[10%] right-[15%] w-[450px] h-[450px] bg-[#E0B3CF]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-[10%] left-[15%] w-[450px] h-[450px] bg-[#8A2EFF]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16 md:mb-24 flex flex-col items-center text-center">
@@ -47,9 +53,9 @@ export default function Process() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[40px] md:text-[56px] leading-[0.95] font-bold tracking-tight mb-6"
+            className="text-[40px] md:text-[56px] leading-[0.95] font-bold tracking-tight mb-6 text-[#141414]"
           >
-            A precise, cinematic <br /> <span className="opacity-50">motion timeline.</span>
+            A precise, cinematic <br /> <span className="opacity-45">motion timeline.</span>
           </motion.h2>
         </div>
 
@@ -63,16 +69,16 @@ export default function Process() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
               className="relative group cursor-default"
             >
-              <div className="text-xl font-bold tracking-tighter text-white/20 mb-6 group-hover:text-white transition-colors duration-500">
+              <div className="text-xl font-bold tracking-tighter text-[#141414]/30 mb-6 group-hover:text-[#8A2EFF] transition-colors duration-500 font-mono">
                 {step.number}
               </div>
-              <h3 className="text-2xl font-bold tracking-tight mb-4">{step.title}</h3>
-              <p className="text-[15px] opacity-70 leading-relaxed max-w-[300px]">
+              <h3 className="text-2xl font-bold tracking-tight mb-4 text-[#141414]">{step.title}</h3>
+              <p className="text-[15px] text-neutral-500 group-hover:text-neutral-700 transition-colors duration-300 leading-relaxed max-w-[300px]">
                 {step.description}
               </p>
               
               {/* Subtle underline hover effect */}
-              <div className="absolute left-0 bottom-[-20px] w-0 h-[1px] bg-white transition-all duration-700 ease-out group-hover:w-full" />
+              <div className="absolute left-0 bottom-[-20px] w-0 h-[1.5px] bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] transition-all duration-700 ease-out group-hover:w-full" />
             </motion.div>
           ))}
         </div>

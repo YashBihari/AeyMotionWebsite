@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
 import PortfolioGrid from './PortfolioGrid'; // We will extract the grid
-import Reel from './Reel';
 
 export default function Hero() {
   return (
@@ -60,8 +59,6 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
-
-      <Reel />
 
       <PortfolioGrid />
     </section>
