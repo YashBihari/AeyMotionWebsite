@@ -36,12 +36,6 @@ const steps = [
 export default function Process() {
   return (
     <section id="process" className="relative overflow-hidden isolate py-24 md:py-32 px-6 md:px-12 max-w-[1400px] mx-auto rounded-none bg-white/80 backdrop-blur-md text-[#141414] selection:bg-[#8A2EFF]/10 selection:text-[#141414] mb-12 shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
-      {/* High-density gradient edge frames (Top, right, bottom, left) */}
-      <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] pointer-events-none z-20" />
-      <div className="absolute inset-y-0 right-0 w-[3px] bg-gradient-to-b from-[#F4B179] via-[#E0B3CF] to-[#8A2EFF] pointer-events-none z-20" />
-      <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-l from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] pointer-events-none z-20" />
-      <div className="absolute inset-y-0 left-0 w-[3px] bg-gradient-to-t from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] pointer-events-none z-20" />
-
       {/* Cinematic soft glows underneath the translucent whitish layer */}
       <div className="absolute top-[10%] right-[15%] w-[450px] h-[450px] bg-[#E0B3CF]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
       <div className="absolute bottom-[10%] left-[15%] w-[450px] h-[450px] bg-[#8A2EFF]/10 blur-[120px] rounded-full pointer-events-none -z-10" />

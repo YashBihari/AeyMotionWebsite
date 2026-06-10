@@ -13,7 +13,9 @@ export default function Contact() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-[40px] md:text-[56px] leading-[0.95] font-bold tracking-tight text-brand-950 mb-6"
           >
-            Start your project.
+            <span className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_25px_rgba(138,46,255,0.45)] transition-all duration-300 cursor-default">
+              Start your project.
+            </span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -22,7 +24,7 @@ export default function Contact() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className="text-lg text-[#555] max-w-md mb-12 font-medium"
           >
-            Fill out the form to give us context on your product. Or, book a discovery call directly below.
+            Fill out the form to give us context on your product, or reach out to us directly.
           </motion.p>
           
           <motion.div
@@ -30,27 +32,12 @@ export default function Contact() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-4 mb-12"
+            className="space-y-4 shadow-none"
           >
              <p className="text-xs uppercase font-semibold text-[#AAA] tracking-[0.1em]">Alternatively, email us directly:</p>
-             <a href="mailto:contact@aeymotion.com" className="text-lg md:text-xl text-black hover:text-[#555] transition-colors border-b border-black/20 hover:border-black pb-1 inline-flex font-bold">
-                contact@aeymotion.com
+             <a href="mailto:hello@aeymotion.com" className="text-lg md:text-xl text-black hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_15px_rgba(138,46,255,0.45)] transition-all duration-300 border-b border-black/20 hover:border-transparent pb-1 inline-flex font-bold">
+                hello@aeymotion.com
              </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-full max-w-md p-8 md:p-10 rounded-[32px] bg-[#f9f9f9] border border-black/5"
-          >
-            <h3 className="text-sm uppercase tracking-[0.05em] font-bold mb-4">Book a Discovery Call</h3>
-            <p className="text-xs text-[#555] mb-6">Schedule 15 minutes to discuss your product and motion needs.</p>
-            {/* Calendly Integration Placeholder */}
-            <div className="w-full flex items-center justify-center p-6 border border-dashed border-black/20 rounded-xl bg-white text-xs font-semibold text-[#888] h-[120px]">
-              Calendly Integration Placeholder
-            </div>
           </motion.div>
         </div>
 
@@ -65,7 +52,7 @@ export default function Contact() {
           <div className="absolute bottom-0 right-0 w-[200px] h-[200px] bg-[#8A2EFF]/20 blur-[85px] rounded-full pointer-events-none -z-10" />
 
           <h2 className="text-2xl font-bold mb-8">Send an Inquiry</h2>
-          <form className="space-y-8" action="https://formsubmit.co/contact@aeymotion.com" method="POST">
+          <form className="space-y-8" action="https://formsubmit.co/hello@aeymotion.com" method="POST">
             <div className="space-y-2">
               <label className="block text-[11px] uppercase opacity-50 tracking-[0.1em] font-bold">Name</label>
               <input 

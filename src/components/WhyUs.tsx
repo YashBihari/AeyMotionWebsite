@@ -15,7 +15,7 @@ export default function WhyUs() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-[40px] md:text-[56px] leading-[0.95] font-bold tracking-tight text-brand-950 mb-6 max-w-[500px]"
           >
-            We don't just make things move. We make them <span className="text-[#AAA] italic">sell.</span>
+            We don't just make things move. We make them <span className="text-[#AAA] italic hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_20px_rgba(138,46,255,0.45)] transition-all duration-300 cursor-default">sell.</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
