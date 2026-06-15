@@ -6,7 +6,7 @@ export default function Navbar() {
   const [activeHash, setActiveHash] = useState(() => window.location.hash.toLowerCase() || '#portfolio');
 
   useEffect(() => {
-    const sections = ['portfolio', 'pricing', 'about', 'contact'];
+    const sections = ['portfolio', 'process', 'pricing', 'about', 'contact'];
     
     const handleScroll = () => {
       let currentSection = 'portfolio';

@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 
 const logos = [
-  "VACATIONBNA", "VEGACODES", "TECHZEIN", "DRIVERONHIRE"
+  "VACATIONBNA", "VEGACODES", "SEORCE AI", "TECHZEIN", "DRIVERONHIRE"
 ];
 
 export default function Clients() {

@@ -7,20 +7,16 @@ export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative pt-32 pb-20 px-4 sm:px-6 md:px-12 max-w-[1400px] mx-auto overflow-hidden">
-      {/* Absolute Outer Ambient Sunset Glow behind the framed container */}
-      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[70%] h-[50%] rounded-full bg-gradient-to-tr from-[#F4B179]/15 via-[#E0B3CF]/20 to-[#8A2EFF]/15 blur-[120px] pointer-events-none -z-10" />
+    <section className="relative pt-32 pb-20 px-4 sm:px-6 md:px-12 w-full overflow-hidden">
+      {/* Absolute Ambient Sunset Glow layers covering the full section background */}
+      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[85%] h-[65%] rounded-full bg-gradient-to-tr from-[#F4B179]/8 via-[#E0B3CF]/12 to-[#8A2EFF]/8 blur-[140px] pointer-events-none -z-20" />
+      <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] rounded-full bg-[#F4B179]/12 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-[10%] right-[5%] w-[600px] h-[600px] rounded-full bg-[#8A2EFF]/8 blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute top-[35%] right-[25%] w-[450px] h-[450px] rounded-full bg-[#E0B3CF]/15 blur-[100px] pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#F4B179]/2 via-[#E0B3CF]/4 to-[#8A2EFF]/2 pointer-events-none -z-30" />
 
-      {/* Main Luxury Canvas Container (Framed Design exactly like srinika) */}
-      <div className="relative w-full rounded-[32px] md:rounded-[48px] bg-white border border-neutral-200/40 shadow-[0_45px_100px_-30px_rgba(138,46,255,0.08)] overflow-hidden px-6 py-20 md:px-16 md:py-32 flex flex-col items-center justify-between min-h-[820px] z-10">
-        
-        {/* Dynamic Fluid Gradient Layer (replacing original gradient with our custom sunset colors) */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#F4B179]/5 via-[#E0B3CF]/10 to-[#8A2EFF]/5 pointer-events-none -z-20" />
-        
-        {/* Soft Organic Mesh Gradient Blobs inside the container */}
-        <div className="absolute top-[25%] left-[20%] w-[450px] h-[450px] rounded-full bg-[#F4B179]/20 blur-[110px] pointer-events-none -z-10" />
-        <div className="absolute bottom-[20%] right-[15%] w-[500px] h-[500px] rounded-full bg-[#8A2EFF]/15 blur-[130px] pointer-events-none -z-10" />
-        <div className="absolute top-[40%] right-[30%] w-[380px] h-[380px] rounded-full bg-[#E0B3CF]/25 blur-[100px] pointer-events-none -z-10" />
+      {/* Main Luxury Container now acting as a seamless, full-width section page wrapper */}
+      <div className="relative w-full max-w-7xl mx-auto px-6 py-8 md:px-16 md:py-12 flex flex-col items-center justify-center z-10">
 
         {/* Headings Redesign: Position matches srinika but content is kept same */}
         <div className="w-full max-w-6xl mx-auto flex flex-col items-center select-none text-center">
@@ -54,7 +50,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="font-sans text-[42px] sm:text-[68px] md:text-[88px] lg:text-[108px] font-bold uppercase tracking-tighter text-neutral-950 flex items-center justify-center leading-[0.95]"
+              className="font-sans text-[42px] sm:text-[68px] md:text-[88px] lg:text-[108px] font-black uppercase tracking-tighter text-neutral-950 flex items-center justify-center leading-[0.95]"
             >
               <motion.span 
                 whileHover={{ y: -12 }}
@@ -82,7 +78,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="w-full flex flex-wrap items-center justify-center gap-y-3 gap-x-4 sm:gap-x-6 md:gap-x-8 font-sans text-[36px] sm:text-[54px] md:text-[76px] lg:text-[96px] font-bold uppercase tracking-tighter text-neutral-950 leading-[0.9]"
+            className="w-full flex flex-wrap items-center justify-center gap-y-3 gap-x-4 sm:gap-x-6 md:gap-x-8 font-sans text-[36px] sm:text-[54px] md:text-[76px] lg:text-[96px] font-black uppercase tracking-tighter text-neutral-950 leading-[0.9]"
           >
             <motion.span 
               whileHover={{ y: -12 }}
@@ -137,45 +133,10 @@ export default function Hero() {
 
         </div>
 
-        {/* Client Logos Strip at the bottom of the container representing partners */}
-        <div className="w-full max-w-5xl mt-16 md:mt-24 border-t border-neutral-100 pt-10 flex flex-col items-center">
-          <p className="text-[10px] uppercase font-semibold text-neutral-400 tracking-[0.15em] mb-8 font-sans">
-            Our Selected Product Engagements
-          </p>
-          
-          <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-12 items-center justify-items-center opacity-40 hover:opacity-75 transition-opacity duration-500">
-            
-            {/* Custom Brand Logo 1: DIA */}
-            <div className="flex items-center gap-2 font-sans tracking-[0.25em] font-extrabold text-neutral-900 text-lg md:text-xl selection:bg-transparent">
-              DIA
-            </div>
-
-            {/* Custom Brand Logo 2: PurpleCube AI */}
-            <div className="flex items-center gap-2 font-mono font-bold text-neutral-900 text-sm md:text-base selection:bg-transparent">
-              <span className="w-4 h-4 bg-neutral-900 rotate-45 transform inline-block mr-1" />
-              PURPLECUBE
-            </div>
-
-            {/* Custom Brand Logo 3: yabi */}
-            <div className="flex items-center gap-1 font-serif italic font-bold text-neutral-900 text-lg md:text-xl tracking-tight selection:bg-transparent">
-              yabi.
-            </div>
-
-            {/* Custom Brand Logo 4: SUN */}
-            <div className="flex items-center gap-1.5 font-sans tracking-[0.1em] font-light text-neutral-900 text-base md:text-lg selection:bg-transparent">
-              <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-[#F4B179] to-[#8A2EFF]" />
-              SUN SYSTEMS
-            </div>
-
-          </div>
-        </div>
-
       </div>
 
       {/* Portfolio Grid Rendering underneath */}
-      <div className="mt-24 md:mt-32">
-        <PortfolioGrid />
-      </div>
+      <PortfolioGrid />
 
       {/* Cinematic Fullscreen Interactive Video Modal Overlay */}
       <AnimatePresence>

@@ -46,52 +46,63 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="bg-black text-white p-10 md:p-16 rounded-[32px] flex flex-col justify-center relative overflow-hidden isolate"
+          className="relative p-10 md:p-16 rounded-[40px] bg-white text-neutral-900 overflow-hidden shadow-xl isolate"
         >
-          {/* Subtle Ambient Bottom Purple Glow inside the form block */}
-          <div className="absolute bottom-0 right-0 w-[200px] h-[200px] bg-[#8A2EFF]/20 blur-[85px] rounded-full pointer-events-none -z-10" />
+          {/* Background glow shadow matching interactive cost planner */}
+          <div className="absolute top-[20%] left-[-15%] w-[600px] h-[600px] rounded-full bg-[#E0B3CF]/8 blur-[150px] pointer-events-none -z-10" />
 
-          <h2 className="text-2xl font-bold mb-8">Send an Inquiry</h2>
+          {/* Default Border that matches interactive cost planner */}
+          <span className="absolute inset-0 rounded-[40px] border border-black/5 pointer-events-none" />
+
+          {/* Gradient border mask overlay matching sunset theme & interactive cost planner */}
+          <span className="absolute inset-0 rounded-[40px] p-[1.5px] bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] opacity-15 pointer-events-none -z-10">
+            <span className="block w-full h-full bg-white rounded-[38.5px]" />
+          </span>
+
+          {/* Apple-like soft backglow */}
+          <span className="absolute inset-4 bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] opacity-[0.03] blur-[100px] rounded-[40px] pointer-events-none -z-20" />
+
+          <h2 className="text-2xl font-black tracking-tight mb-8 text-neutral-950">Send an Inquiry</h2>
           <form className="space-y-8" action="https://formsubmit.co/hello@aeymotion.com" method="POST">
             <div className="space-y-2">
-              <label className="block text-[11px] uppercase opacity-50 tracking-[0.1em] font-bold">Name</label>
+              <label className="block text-[11px] uppercase text-neutral-950/60 tracking-[0.1em] font-bold">Name</label>
               <input 
                 type="text" 
                 name="name"
                 placeholder="Founder's Name / Product Team"
-                className="w-full bg-transparent border-b border-white/20 text-white py-3 text-[15px] focus:outline-none focus:border-white transition-colors placeholder:text-white/30"
+                className="w-full bg-transparent border-b border-neutral-950/15 text-neutral-950 py-3 text-[15px] focus:outline-none focus:border-neutral-950 transition-colors placeholder:text-neutral-950/40"
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <label className="block text-[11px] uppercase opacity-50 tracking-[0.1em] font-bold">Work Email</label>
+              <label className="block text-[11px] uppercase text-neutral-950/60 tracking-[0.1em] font-bold">Work Email</label>
               <input 
                 type="email" 
                 name="email"
                 placeholder="name@company.com"
-                className="w-full bg-transparent border-b border-white/20 text-white py-3 text-[15px] focus:outline-none focus:border-white transition-colors placeholder:text-white/30"
+                className="w-full bg-transparent border-b border-neutral-950/15 text-neutral-950 py-3 text-[15px] focus:outline-none focus:border-neutral-950 transition-colors placeholder:text-neutral-950/40"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <label className="block text-[11px] uppercase opacity-50 tracking-[0.1em] font-bold">Project URL (Optional)</label>
+              <label className="block text-[11px] uppercase text-neutral-950/60 tracking-[0.1em] font-bold">Project URL (Optional)</label>
               <input 
                 type="url" 
                 name="url"
                 placeholder="https://yourproduct.com"
-                className="w-full bg-transparent border-b border-white/20 text-white py-3 text-[15px] focus:outline-none focus:border-white transition-colors placeholder:text-white/30"
+                className="w-full bg-transparent border-b border-neutral-950/15 text-neutral-950 py-3 text-[15px] focus:outline-none focus:border-neutral-950 transition-colors placeholder:text-neutral-950/40"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="block text-[11px] uppercase opacity-50 tracking-[0.1em] font-bold">Project Brief</label>
+              <label className="block text-[11px] uppercase text-neutral-950/60 tracking-[0.1em] font-bold">Project Brief</label>
               <textarea 
                 name="message"
                 placeholder="Tell us about the product and your goals..."
                 rows={3}
-                className="w-full bg-transparent border-b border-white/20 text-white py-3 text-[15px] focus:outline-none focus:border-white transition-colors resize-none placeholder:text-white/30"
+                className="w-full bg-transparent border-b border-neutral-950/15 text-neutral-950 py-3 text-[15px] focus:outline-none focus:border-neutral-950 transition-colors resize-none placeholder:text-neutral-950/40"
                 required
               ></textarea>
             </div>
@@ -102,12 +113,12 @@ export default function Contact() {
 
             <button 
               type="submit"
-              className="mt-8 bg-white text-black px-10 py-5 text-sm font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:scale-105 inline-flex justify-center items-center gap-2 relative overflow-hidden group border border-transparent shadow shadow-white/5"
+              className="mt-8 bg-neutral-950 text-white px-10 py-5 text-sm font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:scale-105 inline-flex justify-center items-center gap-2 relative overflow-hidden group shadow-lg shadow-black/10"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#F4B179] via-[#E0B3CF] to-[#8A2EFF] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <span className="relative z-10 group-hover:text-black transition-colors duration-500 inline-flex items-center gap-2">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F4B179] via-[#E0B3CF] to-[#8A2EFF] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+              <span className="relative z-10 inline-flex items-center gap-2">
                 Send Details
-                <ArrowRight className="w-4 h-4 text-current" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </span>
             </button>
           </form>

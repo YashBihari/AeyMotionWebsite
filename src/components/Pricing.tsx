@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { Sparkles, Zap, Shield } from 'lucide-react';
 import PricingCalculator from './PricingCalculator';
 
 export default function Pricing() {
@@ -42,41 +41,6 @@ export default function Pricing() {
 
         {/* Interactive per-second video calculator */}
         <PricingCalculator />
-
-        {/* Dynamic ROI grid to ensure extreme SaaS polish */}
-        <div className="rounded-[32px] bg-[#f9f9f9] border border-black/5 p-8 md:p-12 mt-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="space-y-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
-                <Sparkles className="w-5 h-5 text-[#8A2EFF]" />
-              </div>
-              <h4 className="text-lg font-bold tracking-tight text-neutral-950">Elevate Launch Value</h4>
-              <p className="text-sm text-neutral-500 leading-relaxed">
-                First impressions dictate command values. Replacing typical screen captures with high-fidelity, Apple-quality motion positions your startup instantly as the clear market authority.
-              </p>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
-                <Zap className="w-5 h-5 text-[#8A2EFF]" />
-              </div>
-              <h4 className="text-lg font-bold tracking-tight text-neutral-950">Streamline Sales Flows</h4>
-              <p className="text-sm text-neutral-500 leading-relaxed">
-                An incredible 45-second motion system does the heavy lifting of a 20-minute product tour. Prospects arrive converted, speeding up sales velocity up to 3x.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
-                <Shield className="w-5 h-5 text-[#8A2EFF]" />
-              </div>
-              <h4 className="text-lg font-bold tracking-tight text-neutral-950">Intellectual Property Protection</h4>
-              <p className="text-sm text-neutral-500 leading-relaxed">
-                We sign strict NDAs. For security-minded clients and enterprises, we manage and preview motion assets on password-secured, isolated servers.
-              </p>
-            </div>
-          </div>
-        </div>
 
       </div>
     </section>

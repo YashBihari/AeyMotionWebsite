@@ -5,7 +5,6 @@ import Pricing from './components/Pricing';
 import Process from './components/Process';
 import WhyUs from './components/WhyUs';
 import WhiteLabel from './components/WhiteLabel';
-import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -22,21 +21,20 @@ export default function App() {
             <Clients />
           </section>
 
-          {/* Section 2: Call to Action */}
-          <section id="cta" className="scroll-mt-[120px]">
-            <CTA />
+          {/* Section 3: Process */}
+          <section id="process" className="scroll-mt-[120px]">
+            <Process />
           </section>
 
-          {/* Section 3: Pricing */}
+          {/* Section 5: Pricing */}
           <section id="pricing" className="scroll-mt-[120px]">
             <Pricing />
-            <Process />
+            <WhiteLabel />
           </section>
 
           {/* Section 4: About */}
           <section id="about" className="scroll-mt-[120px]">
             <WhyUs />
-            <WhiteLabel />
           </section>
 
           {/* Section 5: Contact Us */}
