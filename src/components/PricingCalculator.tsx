@@ -244,17 +244,12 @@ export default function PricingCalculator() {
   };
 
   return (
-    <div id="pricing-calculator" className="relative mt-12 py-10 px-4 md:px-8 rounded-[32px] bg-white text-neutral-900 overflow-hidden shadow-xl isolate">
+    <section id="pricing-calculator" className="relative mt-8 py-6 px-6 md:px-12 rounded-[24px] bg-white text-neutral-900 overflow-hidden shadow-xl isolate">
       {/* Background glow shadow mimicking WhyUs */}
       <div className="absolute top-[20%] left-[-15%] w-[600px] h-[600px] rounded-full bg-[#E0B3CF]/8 blur-[150px] pointer-events-none -z-10" />
 
       {/* Default Border that matches WhyUs.tsx */}
-      <span className="absolute inset-0 rounded-[32px] border border-black/5 pointer-events-none" />
-
-      {/* Gradient border mask overlay matching sunset theme from WhyUs */}
-      <span className="absolute inset-0 rounded-[32px] p-[1.5px] bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] opacity-15 pointer-events-none -z-10">
-        <span className="block w-full h-full bg-white rounded-[30.5px]" />
-      </span>
+      <span className="absolute inset-0 rounded-[24px] border border-black/5 pointer-events-none" />
 
       {/* Apple-like soft backglow */}
       <span className="absolute inset-4 bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] opacity-[0.03] blur-[100px] rounded-[32px] pointer-events-none -z-20" />
@@ -718,6 +713,6 @@ export default function PricingCalculator() {
         </div>
 
       </div>
-    </div>
+    </section>
   );
 }

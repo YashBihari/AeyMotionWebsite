@@ -55,7 +55,7 @@ export default function Hero() {
               <motion.span 
                 whileHover={{ y: -12 }}
                 transition={{ type: "spring", stiffness: 450, damping: 12 }}
-                className="inline-block hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_35px_rgba(138,46,255,0.45)] transition-colors duration-300 cursor-default"
+                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] hover:drop-shadow-[0_0_35px_rgba(138,46,255,0.45)] transition-all duration-300 cursor-default mb-1"
               >
                 Motion
               </motion.span>
@@ -83,7 +83,7 @@ export default function Hero() {
             <motion.span 
               whileHover={{ y: -12 }}
               transition={{ type: "spring", stiffness: 450, damping: 12 }}
-              className="inline-block hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_35px_rgba(138,46,255,0.45)] transition-colors duration-300 cursor-default"
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] hover:drop-shadow-[0_0_35px_rgba(138,46,255,0.45)] transition-all duration-300 cursor-default"
             >
               Design
             </motion.span>
@@ -113,7 +113,7 @@ export default function Hero() {
             <motion.span 
               whileHover={{ y: -12 }}
               transition={{ type: "spring", stiffness: 450, damping: 12 }}
-              className="inline-block hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_35px_rgba(138,46,255,0.45)] transition-colors duration-300 cursor-default"
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] hover:drop-shadow-[0_0_35px_rgba(138,46,255,0.45)] transition-all duration-300 cursor-default"
             >
               Studio
             </motion.span>

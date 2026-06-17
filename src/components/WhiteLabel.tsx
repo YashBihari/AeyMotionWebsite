@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function WhiteLabel() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
+    <section className="py-16 md:py-20 px-6 md:px-12 max-w-[1400px] mx-auto">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ export default function WhiteLabel() {
         <div className="absolute top-[20%] right-[-10%] w-[350px] h-[350px] bg-[#E0B3CF]/6 blur-[100px] rounded-full pointer-events-none -z-10" />
         <div className="absolute bottom-[20%] left-[-10%] w-[400px] h-[400px] bg-[#8A2EFF]/5 blur-[120px] rounded-full pointer-events-none -z-10" />
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="p-10 md:p-16 lg:p-24 flex flex-col justify-center">
+          <section className="p-6 md:p-12 lg:p-16 flex flex-col justify-center">
             <h2 className="text-[40px] md:text-[56px] leading-[1.05] font-bold tracking-tight text-brand-950 mb-6">
               White-Label Motion Support for Agencies.
             </h2>
@@ -48,7 +48,7 @@ export default function WhiteLabel() {
               Partner with us
               <ArrowRight className="w-4 h-4" />
             </a>
-          </div>
+          </section>
           
           <div className="relative h-[400px] lg:h-auto bg-black overflow-hidden group">
             <video 
