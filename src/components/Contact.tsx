@@ -93,13 +93,12 @@ export default function Contact() {
       const subtotal = base + formatsCost + hooksCost;
       
       let multiplier = 1;
-      if (selectedTimeline === 'x1_25') multiplier = 1.25;
-      else if (selectedTimeline === 'x1_5') multiplier = 1.5;
+      if (selectedTimeline === 'priority') multiplier = 1.5;
       
       calculatedPrice = Math.round(subtotal * multiplier);
       
-      const baseDays = selectedDuration <= 15 ? 5 : selectedDuration <= 30 ? 7 : 10;
-      calculatedDays = Math.max(3, Math.round(baseDays / (selectedTimeline === 'standard' ? 1.0 : selectedTimeline === 'x1_25' ? 1.25 : 1.5)));
+      const baseDays = selectedDuration <= 45 ? 10 : 14;
+      calculatedDays = Math.max(3, Math.round(baseDays / (selectedTimeline === 'standard' ? 1.0 : 1.6667)));
     } else if (selectedOffer === 'growth') {
       const base = selectedDuration * selectedRate;
       const extraFormatsCount = selectedFormatIds.filter(f => f !== 'f16_9').length;

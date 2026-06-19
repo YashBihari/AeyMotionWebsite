@@ -19,9 +19,8 @@ const HOOK_OPTIONS = [
 ];
 
 const TIMELINE_OPTIONS = [
-  { id: 'standard', name: 'Standard', feeLabel: 'no fee', feeMultiplier: 0, speedMultiplier: 1.0 },
-  { id: 'x1_25', name: '×1.25', feeLabel: '+25%', feeMultiplier: 0.25, speedMultiplier: 1.25 },
-  { id: 'x1_5', name: '×1.5', feeLabel: '+50%', feeMultiplier: 0.50, speedMultiplier: 1.50 },
+  { id: 'standard', name: 'Standard (10-day)', feeLabel: 'no fee', feeMultiplier: 0, speedMultiplier: 1.0 },
+  { id: 'priority', name: 'Priority (6-day)', feeLabel: '+50%', feeMultiplier: 0.50, speedMultiplier: 1.6667 },
 ];
 
 const PACKAGES_OPTIONS = [
@@ -233,10 +232,10 @@ export default function PricingCalculator() {
   };
 
   const getBaseDaysForDuration = (dur: number): number => {
-    if (dur <= 30) return 7;
-    if (dur <= 45) return 7;
-    if (dur <= 60) return 10;
-    if (dur <= 90) return 10;
+    if (dur <= 30) return 10;
+    if (dur <= 45) return 10;
+    if (dur <= 60) return 12;
+    if (dur <= 90) return 12;
     return 14;
   };
 
@@ -457,9 +456,11 @@ export default function PricingCalculator() {
                   <button
                     type="button"
                     onClick={() => applyPackageConfig(pkg.specs)}
-                    className="w-full py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-950 text-white text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-1.5 transition-all text-center cursor-pointer hover:shadow-lg hover:shadow-neutral-950/10 active:scale-[0.98]"
+                    className="w-full p-[1.5px] rounded-xl bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] transition-all duration-300 cursor-pointer hover:shadow-[0_0_20px_rgba(138,46,255,0.35)] active:scale-[0.98] group/btn"
                   >
-                    Configure this Plan
+                    <span className="block w-full bg-white text-neutral-900 group-hover/btn:text-[#8A2EFF] text-[10px] font-black uppercase tracking-widest py-2 px-4 rounded-[10.5px] text-center transition-colors duration-300">
+                      Configure this Plan
+                    </span>
                   </button>
                 </div>
               </div>
@@ -665,6 +666,7 @@ export default function PricingCalculator() {
                             <button
                               type="button"
                               key={opt.id}
+                              disabled={opt.id === 'f16_9'}
                               onClick={() => {
                                 if (opt.id === 'f16_9') return;
                                 const alreadyChecked = launchFormats.includes(opt.id);
@@ -673,20 +675,26 @@ export default function PricingCalculator() {
                                   : [...launchFormats, opt.id]
                                 );
                               }}
-                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer ${
+                              className={`p-[1px] rounded-lg text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer group bg-gradient-to-r ${
                                 isChecked
-                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
-                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                                  ? 'from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] shadow-sm shadow-[#8A2EFF]/10 hover:shadow-[0_0_15px_rgba(138,46,255,0.4)]'
+                                  : opt.id === 'f16_9'
+                                  ? 'from-neutral-200 to-neutral-200 opacity-60 cursor-not-allowed'
+                                  : 'from-neutral-200 to-neutral-200 hover:from-[#8A2EFF]/50 hover:to-[#F4B179]/50 hover:shadow-[0_0_12px_rgba(138,46,255,0.2)]'
                               }`}
                             >
-                              <div className="flex items-center justify-between w-full font-bold">
-                                <span className="text-[10px] font-bold tracking-tight">
-                                  {opt.label}
-                                </span>
-                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
-                              </div>
-                              <div className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-400'} leading-none`}>
-                                {opt.res || opt.detail}
+                              <div className="bg-white rounded-[7px] p-1.5 w-full h-full flex flex-col justify-between">
+                                <div className="flex items-center justify-between w-full font-bold">
+                                  <span className={`text-[10px] font-bold tracking-tight transition-colors duration-300 ${
+                                    isChecked ? 'text-[#8A2EFF]' : 'text-neutral-500 group-hover:text-neutral-950'
+                                  }`}>
+                                    {opt.label}
+                                  </span>
+                                  {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                                </div>
+                                <div className="text-[8px] text-neutral-400 group-hover:text-neutral-500 transition-colors duration-300 leading-none">
+                                  {opt.res || opt.detail}
+                                </div>
                               </div>
                             </button>
                           );
@@ -713,19 +721,23 @@ export default function PricingCalculator() {
                                   : [...launchHooks, opt.id]
                                 );
                               }}
-                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[44px] cursor-pointer ${
+                              className={`p-[1px] rounded-lg text-left transition-all duration-300 relative flex flex-col justify-between h-[44px] cursor-pointer group bg-gradient-to-r ${
                                 isChecked
-                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
-                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                                  ? 'from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] shadow-sm shadow-[#8A2EFF]/10 hover:shadow-[0_0_15px_rgba(138,46,255,0.4)]'
+                                  : 'from-neutral-200 to-neutral-200 hover:from-[#8A2EFF]/50 hover:to-[#F4B179]/50 hover:shadow-[0_0_12px_rgba(138,46,255,0.2)]'
                               }`}
                             >
-                              <div className="flex justify-between items-center w-full leading-none">
-                                <span className="text-[9px] font-bold truncate pr-1">{opt.label}</span>
-                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                              <div className="bg-white rounded-[7px] p-1.5 w-full h-full flex flex-col justify-between">
+                                <div className="flex justify-between items-center w-full leading-none">
+                                  <span className={`text-[9px] font-bold truncate pr-1 transition-colors duration-300 ${
+                                    isChecked ? 'text-[#8A2EFF]' : 'text-neutral-500 group-hover:text-neutral-950'
+                                  }`}>{opt.label}</span>
+                                  {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                                </div>
+                                <span className={`text-[8px] ${isChecked ? 'text-neutral-400' : 'text-neutral-450'} font-mono`}>
+                                  +$25
+                                </span>
                               </div>
-                              <span className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-450'} font-mono`}>
-                                +$25
-                              </span>
                             </button>
                           );
                         })}
@@ -850,6 +862,7 @@ export default function PricingCalculator() {
                             <button
                               type="button"
                               key={opt.id}
+                              disabled={opt.id === 'f16_9'}
                               onClick={() => {
                                 if (opt.id === 'f16_9') return;
                                 const alreadyChecked = growthFormats.includes(opt.id);
@@ -858,18 +871,24 @@ export default function PricingCalculator() {
                                   : [...growthFormats, opt.id]
                                 );
                               }}
-                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer ${
+                              className={`p-[1px] rounded-lg text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer group bg-gradient-to-r ${
                                 isChecked
-                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
-                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                                  ? 'from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] shadow-sm shadow-[#8A2EFF]/10 hover:shadow-[0_0_15px_rgba(138,46,255,0.4)]'
+                                  : opt.id === 'f16_9'
+                                  ? 'from-neutral-200 to-neutral-200 opacity-60 cursor-not-allowed'
+                                  : 'from-neutral-200 to-neutral-200 hover:from-[#8A2EFF]/50 hover:to-[#F4B179]/50 hover:shadow-[0_0_12px_rgba(138,46,255,0.2)]'
                               }`}
                             >
-                              <div className="flex items-center justify-between w-full font-bold">
-                                <span className="text-[10px] font-bold tracking-tight">{opt.label}</span>
-                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
-                              </div>
-                              <div className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-400'} leading-none`}>
-                                {opt.res || opt.detail}
+                              <div className="bg-white rounded-[7px] p-1.5 w-full h-full flex flex-col justify-between font-sans">
+                                <div className="flex items-center justify-between w-full font-bold">
+                                  <span className={`text-[10px] font-bold tracking-tight transition-colors duration-300 ${
+                                    isChecked ? 'text-[#8A2EFF]' : 'text-neutral-500 group-hover:text-neutral-950'
+                                  }`}>{opt.label}</span>
+                                  {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                                </div>
+                                <div className="text-[8px] text-neutral-400 group-hover:text-neutral-500 transition-colors duration-300 leading-none">
+                                  {opt.res || opt.detail}
+                                </div>
                               </div>
                             </button>
                           );
@@ -896,19 +915,23 @@ export default function PricingCalculator() {
                                   : [...growthHooks, opt.id]
                                 );
                               }}
-                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[44px] cursor-pointer ${
+                              className={`p-[1px] rounded-lg text-left transition-all duration-300 relative flex flex-col justify-between h-[44px] cursor-pointer group bg-gradient-to-r ${
                                 isChecked
-                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
-                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                                  ? 'from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] shadow-sm shadow-[#8A2EFF]/10 hover:shadow-[0_0_15px_rgba(138,46,255,0.4)]'
+                                  : 'from-neutral-200 to-neutral-200 hover:from-[#8A2EFF]/50 hover:to-[#F4B179]/50 hover:shadow-[0_0_12px_rgba(138,46,255,0.2)]'
                               }`}
                             >
-                              <div className="flex justify-between items-center w-full leading-none">
-                                <span className="text-[9px] font-bold truncate pr-1">{opt.label}</span>
-                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                              <div className="bg-white rounded-[7px] p-1.5 w-full h-full flex flex-col justify-between">
+                                <div className="flex justify-between items-center w-full leading-none font-sans">
+                                  <span className={`text-[9px] font-bold truncate pr-1 transition-colors duration-300 ${
+                                    isChecked ? 'text-[#8A2EFF]' : 'text-neutral-500 group-hover:text-neutral-950'
+                                  }`}>{opt.label}</span>
+                                  {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                                </div>
+                                <span className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-450'} font-mono`}>
+                                  +$25
+                                </span>
                               </div>
-                              <span className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-450'} font-mono`}>
-                                +$25
-                              </span>
                             </button>
                           );
                         })}
@@ -987,6 +1010,7 @@ export default function PricingCalculator() {
                             <button
                               type="button"
                               key={opt.id}
+                              disabled={opt.id === 'f16_9'}
                               onClick={() => {
                                 if (opt.id === 'f16_9') return;
                                 const alreadyChecked = scaleFormats.includes(opt.id);
@@ -995,18 +1019,24 @@ export default function PricingCalculator() {
                                   : [...scaleFormats, opt.id]
                                 );
                               }}
-                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer ${
+                              className={`p-[1px] rounded-lg text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer group bg-gradient-to-r ${
                                 isChecked
-                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
-                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                                  ? 'from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] shadow-sm shadow-[#8A2EFF]/10 hover:shadow-[0_0_15px_rgba(138,46,255,0.4)]'
+                                  : opt.id === 'f16_9'
+                                  ? 'from-neutral-200 to-neutral-200 opacity-60 cursor-not-allowed'
+                                  : 'from-neutral-200 to-neutral-200 hover:from-[#8A2EFF]/50 hover:to-[#F4B179]/50 hover:shadow-[0_0_12px_rgba(138,46,255,0.2)]'
                               }`}
                             >
-                              <div className="flex items-center justify-between w-full font-bold font-sans">
-                                <span className="text-[10px] font-bold tracking-tight">{opt.label}</span>
-                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
-                              </div>
-                              <div className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-400'} leading-none`}>
-                                {opt.res || opt.detail}
+                              <div className="bg-white rounded-[7px] p-1.5 w-full h-full flex flex-col justify-between font-sans">
+                                <div className="flex items-center justify-between w-full font-bold">
+                                  <span className={`text-[10px] font-bold tracking-tight transition-colors duration-300 ${
+                                    isChecked ? 'text-[#8A2EFF]' : 'text-neutral-500 group-hover:text-neutral-950'
+                                  }`}>{opt.label}</span>
+                                  {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                                </div>
+                                <div className="text-[8px] text-neutral-400 group-hover:text-neutral-500 transition-colors duration-300 leading-none">
+                                  {opt.res || opt.detail}
+                                </div>
                               </div>
                             </button>
                           );
@@ -1025,7 +1055,7 @@ export default function PricingCalculator() {
                 <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
                   Delivery Timeline Target
                 </label>
-                <div className="grid grid-cols-3 sm:grid-cols-3 gap-1.5">
+                <div className="grid grid-cols-2 gap-1.5">
                   {TIMELINE_OPTIONS.map((opt) => {
                     const isSelected = timelineId === opt.id;
                     const factorDays = Math.ceil(getBaseDaysForDuration(launchDuration) / opt.speedMultiplier);
