@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 export default function Footer() {
   const links = [
     { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Services', href: '#services' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'About', href: '#about' },
     { label: 'Contact Us', href: '#contact' }

@@ -1,13 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Trash2, Link, Check } from 'lucide-react';
-
-interface VideoState {
-  id: string;
-  duration: number; // in seconds
-  formats: string[]; // ['f16_9', 'f9_16', etc.]
-  hooks: string[]; // ['Problem', 'Dream_Outcome', etc.]
-}
+import { Link, Check } from 'lucide-react';
 
 const FORMAT_OPTIONS = [
   { id: 'f16_9', label: '16:9', detail: '(default)', res: '1920×1080', isDefault: true },
@@ -31,83 +24,194 @@ const TIMELINE_OPTIONS = [
   { id: 'x1_5', name: '×1.5', feeLabel: '+50%', feeMultiplier: 0.50, speedMultiplier: 1.50 },
 ];
 
-const ALLOWED_DURATIONS = [30, 45, 60, 90, 120];
+const PACKAGES_OPTIONS = [
+  {
+    id: 'launch',
+    name: 'Launch',
+    subtitle: 'Core product tour',
+    description: 'Perfect for raising pre-seed interest or explaining a single hero feature.',
+    specs: {
+      offer: 'launch',
+      duration: 30,
+      rate: 25,
+      formats: ['f16_9'],
+      hooks: []
+    },
+    features: [
+      '30s Motion-Led video',
+      '16:9 widescreen format',
+      'High-fidelity vector kinetic choreography',
+      'Bespoke sound design & SFX mix',
+      '1 round of professional revisions',
+      '10 business days delivery'
+    ]
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    subtitle: 'Full launch campaign',
+    isPopular: true,
+    description: 'Our flagship cinematic product film designed for conversion on landing pages.',
+    specs: {
+      offer: 'growth',
+      quantity: 2,
+      duration: 60,
+      rate: 25,
+      formats: ['f16_9', 'f9_16'],
+      hooks: ['Problem']
+    },
+    features: [
+      '60s Motion-Led product reveal',
+      'Dual layouts (16:9 + 9:16 vertical adapt)',
+      '1 promotional Hook variety (A/B testing)',
+      'Cinema-grade SFX & audio mastering',
+      '2 rounds of professional refinements',
+      '10 business days delivery'
+    ]
+  },
+  {
+    id: 'scale',
+    name: 'Scale',
+    subtitle: 'High-stake product reveal',
+    description: 'Bespoke cinematic experience with premium soundscaping and multi-channel delivery.',
+    specs: {
+      offer: 'scale',
+      quantity: 10,
+      rate: 10,
+      formats: ['f16_9', 'f9_16', 'f1_1']
+    },
+    features: [
+      'Up to 120s widescreen kinetic film',
+      'Tri-platform formats (16:9, 9:16, 1:1)',
+      '3 alternative introductory custom hooks',
+      'Mastered cinematic soundtrack with license',
+      'Unlimited revisions priority feedback',
+      '14 business days delivery sequence'
+    ]
+  }
+];
 
 export default function PricingCalculator() {
-  const [mode, setMode] = useState<'motion' | 'founder'>('motion');
-  const [rate, setRate] = useState<number>(25);
-  const [videos, setVideos] = useState<VideoState[]>([
-    { id: 'v1', duration: 60, formats: ['f16_9'], hooks: [] }
-  ]);
+  const [activeOffer, setActiveOffer] = useState<'launch' | 'growth' | 'scale'>('launch');
+  const [rate, setRate] = useState<number>(25); // For Launch & Growth
+
+  // Offer 1: Launch States
+  const [launchDuration, setLaunchDuration] = useState<number>(30);
+  const [launchFormats, setLaunchFormats] = useState<string[]>(['f16_9']);
+  const [launchHooks, setLaunchHooks] = useState<string[]>([]);
   const [timelineId, setTimelineId] = useState<string>('standard');
+
+  // Offer 2: Growth States
+  const [growthQuantity, setGrowthQuantity] = useState<number>(2); // 2 or 4
+  const [growthDuration, setGrowthDuration] = useState<number>(60);
+  const [growthFormats, setGrowthFormats] = useState<string[]>(['f16_9', 'f9_16']);
+  const [growthHooks, setGrowthHooks] = useState<string[]>([]);
+  const [growthRush, setGrowthRush] = useState<boolean>(false);
+
+  // Offer 3: Scale States
+  const [scaleQuantity, setScaleQuantity] = useState<number>(10); // 10 or 15
+  const [scaleRate, setScaleRate] = useState<number>(10); // 5 or 10
+  const [scaleFormats, setScaleFormats] = useState<string[]>(['f16_9', 'f9_16', 'f1_1']);
+
   const [copied, setCopied] = useState<boolean>(false);
 
-  // Sync mode default rates on change
-  useEffect(() => {
-    if (mode === 'motion') {
-      setRate(25);
-    } else {
-      setRate(15);
+  // Dynamic syncing of active offer changes
+  const applyPackageConfig = (specs: any) => {
+    setActiveOffer(specs.offer);
+    if (specs.offer === 'launch') {
+      setLaunchDuration(specs.duration);
+      setRate(specs.rate);
+      setLaunchFormats(specs.formats);
+      setLaunchHooks(specs.hooks);
+      setTimelineId('standard');
+    } else if (specs.offer === 'growth') {
+      setGrowthQuantity(specs.quantity);
+      setGrowthDuration(specs.duration);
+      setRate(specs.rate);
+      setGrowthFormats(specs.formats);
+      setGrowthHooks(specs.hooks);
+      setGrowthRush(false);
+    } else if (specs.offer === 'scale') {
+      setScaleQuantity(specs.quantity);
+      setScaleRate(specs.rate);
+      setScaleFormats(specs.formats);
     }
-  }, [mode]);
+    
+    // Smoothly scroll down to the customization area
+    const el = document.getElementById('interactive-planner-anchor');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   // Read URL query parameters on mount to restore shared quote
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
-      const urlMode = params.get('mode');
+      const urlOffer = params.get('offer');
+      if (urlOffer === 'launch' || urlOffer === 'growth' || urlOffer === 'scale') {
+        setActiveOffer(urlOffer);
+      }
+      
+      const urlDur = params.get('dur');
       const urlRate = params.get('rate');
       const urlTimeline = params.get('timeline');
-      const urlVideos = params.get('v');
+      const urlFormats = params.get('formats');
+      const urlHooks = params.get('hooks');
+      const urlQty = params.get('qty');
+      const urlRush = params.get('rush');
 
-      if (urlMode === 'motion' || urlMode === 'founder') {
-        setMode(urlMode);
-      }
-      if (urlRate) {
-        setRate(Number(urlRate));
-      }
-      if (urlTimeline) {
-        setTimelineId(urlTimeline);
-      }
-      if (urlVideos) {
-        const decodedVideos: VideoState[] = urlVideos.split(',').map((videoStr, index) => {
-          const [durStr, formatsStr, hooksStr] = videoStr.split('_');
-          
-          const activeFormats: string[] = ['f16_9'];
-          if (formatsStr) {
-            formatsStr.split('-').forEach(idx => {
-              const opt = FORMAT_OPTIONS[Number(idx)];
-              if (opt && !activeFormats.includes(opt.id)) {
-                activeFormats.push(opt.id);
-              }
-            });
-          }
-
+      if (urlOffer === 'launch') {
+        if (urlDur) setLaunchDuration(Number(urlDur));
+        if (urlRate) setRate(Number(urlRate));
+        if (urlTimeline) setTimelineId(urlTimeline);
+        if (urlFormats) {
+          const activeFormats = ['f16_9'];
+          urlFormats.split('-').forEach(idx => {
+            const opt = FORMAT_OPTIONS[Number(idx)];
+            if (opt && !activeFormats.includes(opt.id)) activeFormats.push(opt.id);
+          });
+          setLaunchFormats(activeFormats);
+        }
+        if (urlHooks) {
           const activeHooks: string[] = [];
-          if (hooksStr) {
-            hooksStr.split('-').forEach(idx => {
-              const opt = HOOK_OPTIONS[Number(idx)];
-              if (opt) {
-                activeHooks.push(opt.id);
-              }
-            });
-          }
-
-          const rawDur = Number(durStr) || 60;
-          const snappedDur = ALLOWED_DURATIONS.reduce((prev, curr) => 
-            Math.abs(curr - rawDur) < Math.abs(prev - rawDur) ? curr : prev
-          , 60);
-
-          return {
-            id: `v_${Date.now()}_${index}`,
-            duration: snappedDur,
-            formats: activeFormats,
-            hooks: activeHooks
-          };
-        });
-
-        if (decodedVideos.length > 0) {
-          setVideos(decodedVideos);
+          urlHooks.split('-').forEach(idx => {
+            const opt = HOOK_OPTIONS[Number(idx)];
+            if (opt) activeHooks.push(opt.id);
+          });
+          setLaunchHooks(activeHooks);
+        }
+      } else if (urlOffer === 'growth') {
+        if (urlQty) setGrowthQuantity(Number(urlQty) === 4 ? 4 : 2);
+        if (urlDur) setGrowthDuration(Number(urlDur));
+        if (urlRate) setRate(Number(urlRate));
+        if (urlRush) setGrowthRush(urlRush === 'true');
+        if (urlFormats) {
+          const activeFormats = ['f16_9'];
+          urlFormats.split('-').forEach(idx => {
+            const opt = FORMAT_OPTIONS[Number(idx)];
+            if (opt && !activeFormats.includes(opt.id)) activeFormats.push(opt.id);
+          });
+          setGrowthFormats(activeFormats);
+        }
+        if (urlHooks) {
+          const activeHooks: string[] = [];
+          urlHooks.split('-').forEach(idx => {
+            const opt = HOOK_OPTIONS[Number(idx)];
+            if (opt) activeHooks.push(opt.id);
+          });
+          setGrowthHooks(activeHooks);
+        }
+      } else if (urlOffer === 'scale') {
+        if (urlQty) setScaleQuantity(Number(urlQty) === 15 ? 15 : 10);
+        if (urlRate) setScaleRate(Number(urlRate) === 5 ? 5 : 10);
+        if (urlFormats) {
+          const activeFormats = ['f16_9'];
+          urlFormats.split('-').forEach(idx => {
+            const opt = FORMAT_OPTIONS[Number(idx)];
+            if (opt && !activeFormats.includes(opt.id)) activeFormats.push(opt.id);
+          });
+          setScaleFormats(activeFormats);
         }
       }
     } catch (e) {
@@ -115,16 +219,11 @@ export default function PricingCalculator() {
     }
   }, []);
 
-  const rateMin = mode === 'motion' ? 50 : 30;
-  const rateMax = mode === 'motion' ? 200 : 120;
-
-  const calculateVideoCost = (video: VideoState) => {
-    const base = video.duration * rate;
-    const extraFormatsCount = video.formats.filter(f => f !== 'f16_9').length;
-    const formatsCost = extraFormatsCount * 10 * video.duration;
-    const hooksCount = video.hooks.length;
-    const hooksCost = hooksCount * 25;
-
+  const calculateSingleOfferCost = (duration: number, currentRate: number, selectedFormats: string[], selectedHooks: string[]) => {
+    const base = duration * currentRate;
+    const extraFormatsCount = selectedFormats.filter(f => f !== 'f16_9').length;
+    const formatsCost = extraFormatsCount * 5 * duration;
+    const hooksCost = selectedHooks.length * 25;
     return {
       base,
       formatsCost,
@@ -141,105 +240,140 @@ export default function PricingCalculator() {
     return 14;
   };
 
-  const calculateVideoProductionDays = (vid: VideoState) => {
-    return getBaseDaysForDuration(vid.duration);
-  };
+  // --- Calculation logic based on activeOffer ---
+  let subtotalCost = 0;
+  let discountAmount = 0;
+  let discountPercentage = 0;
+  let rushFee = 0;
+  let totalProjectPrice = 0;
+  let deliveryDays = 7;
 
-  const totalStandardDays = videos.reduce((sum, v) => sum + getBaseDaysForDuration(v.duration), 0);
-
-  const videoCostsBreakdown = videos.map(vid => {
-    const costs = calculateVideoCost(vid);
-    const days = calculateVideoProductionDays(vid);
-    return {
-      vid,
-      costs,
-      days
-    };
-  });
-
-  const subtotalCost = videoCostsBreakdown.reduce((sum, v) => sum + v.costs.total, 0);
-
-  const selectedTimeline = TIMELINE_OPTIONS.find(t => t.id === timelineId) || TIMELINE_OPTIONS[0];
-  const rushFee = subtotalCost * selectedTimeline.feeMultiplier;
-  const totalProjectPrice = subtotalCost + rushFee;
-
-  const deliveryDays = Math.ceil(totalStandardDays / selectedTimeline.speedMultiplier);
-
-  const handleAddVideo = () => {
-    setVideos([
-      ...videos,
-      {
-        id: `v_${Date.now()}`,
-        duration: 60,
-        formats: ['f16_9'],
-        hooks: []
-      }
-    ]);
-  };
-
-  const handleRemoveVideo = (id: string) => {
-    if (videos.length > 1) {
-      setVideos(videos.filter(v => v.id !== id));
+  if (activeOffer === 'launch') {
+    const singleCost = calculateSingleOfferCost(launchDuration, rate, launchFormats, launchHooks);
+    subtotalCost = singleCost.total;
+    
+    const selectedTimeline = TIMELINE_OPTIONS.find(t => t.id === timelineId) || TIMELINE_OPTIONS[0];
+    rushFee = subtotalCost * selectedTimeline.feeMultiplier;
+    totalProjectPrice = subtotalCost + rushFee;
+    
+    const baseDays = getBaseDaysForDuration(launchDuration);
+    deliveryDays = Math.ceil(baseDays / selectedTimeline.speedMultiplier);
+  } else if (activeOffer === 'growth') {
+    const singleCost = calculateSingleOfferCost(growthDuration, rate, growthFormats, growthHooks);
+    subtotalCost = singleCost.total * growthQuantity;
+    
+    discountPercentage = growthQuantity === 2 ? 10 : 30;
+    discountAmount = subtotalCost * (discountPercentage / 100);
+    
+    const basePriceAfterDiscount = subtotalCost - discountAmount;
+    if (growthQuantity === 2 && growthRush) {
+      rushFee = basePriceAfterDiscount * 0.25;
+    } else {
+      rushFee = 0;
     }
-  };
-
-  const handleUpdateDuration = (id: string, val: number) => {
-    setVideos(videos.map(v => v.id === id ? { ...v, duration: val } : v));
-  };
-
-  const handleToggleFormat = (id: string, formatId: string) => {
-    if (formatId === 'f16_9') return;
-
-    setVideos(videos.map(v => {
-      if (v.id === id) {
-        const alreadyChecked = v.formats.includes(formatId);
-        const nextFormats = alreadyChecked
-          ? v.formats.filter(f => f !== formatId)
-          : [...v.formats, formatId];
-        return { ...v, formats: nextFormats };
-      }
-      return v;
-    }));
-  };
-
-  const handleToggleHook = (id: string, hookId: string) => {
-    setVideos(videos.map(v => {
-      if (v.id === id) {
-        const alreadyChecked = v.hooks.includes(hookId);
-        const nextHooks = alreadyChecked
-          ? v.hooks.filter(h => h !== hookId)
-          : [...v.hooks, hookId];
-        return { ...v, hooks: nextHooks };
-      }
-      return v;
-    }));
-  };
+    
+    totalProjectPrice = basePriceAfterDiscount + rushFee;
+    
+    if (growthQuantity === 2) {
+      deliveryDays = growthRush ? 15 : 20;
+    } else {
+      deliveryDays = 30;
+    }
+  } else if (activeOffer === 'scale') {
+    const base = 15 * scaleRate * scaleQuantity;
+    const extraFormatsCount = scaleFormats.filter(f => f !== 'f16_9').length;
+    const formatsCost = extraFormatsCount * 250;
+    subtotalCost = base + formatsCost;
+    
+    discountPercentage = 0;
+    discountAmount = 0;
+    rushFee = 0;
+    totalProjectPrice = subtotalCost;
+    
+    deliveryDays = scaleQuantity === 10 ? 15 : 20;
+  }
 
   const handleCopyEstimateLink = () => {
     try {
-      const vEncoded = videos.map(v => {
-        const formatsIndices = v.formats
+      const baseUrl = window.location.origin + window.location.pathname;
+      let shareUrl = '';
+      if (activeOffer === 'launch') {
+        const formatsIndices = launchFormats
           .filter(f => f !== 'f16_9')
           .map(f => FORMAT_OPTIONS.findIndex(opt => opt.id === f))
           .filter(idx => idx !== -1)
           .join('-');
-        
-        const hooksIndices = v.hooks
+        const hooksIndices = launchHooks
           .map(h => HOOK_OPTIONS.findIndex(opt => opt.id === h))
           .filter(idx => idx !== -1)
           .join('-');
-
-        return `${v.duration}_${formatsIndices}_${hooksIndices}`;
-      }).join(',');
-
-      const baseUrl = window.location.origin + window.location.pathname;
-      const shareUrl = `${baseUrl}?mode=${mode}&rate=${rate}&timeline=${timelineId}&v=${vEncoded}#pricing-calculator`;
+        shareUrl = `${baseUrl}?offer=launch&dur=${launchDuration}&rate=${rate}&timeline=${timelineId}&formats=${formatsIndices}&hooks=${hooksIndices}#pricing-calculator`;
+      } else if (activeOffer === 'growth') {
+        const formatsIndices = growthFormats
+          .filter(f => f !== 'f16_9')
+          .map(f => FORMAT_OPTIONS.findIndex(opt => opt.id === f))
+          .filter(idx => idx !== -1)
+          .join('-');
+        const hooksIndices = growthHooks
+          .map(h => HOOK_OPTIONS.findIndex(opt => opt.id === h))
+          .filter(idx => idx !== -1)
+          .join('-');
+        shareUrl = `${baseUrl}?offer=growth&qty=${growthQuantity}&dur=${growthDuration}&rate=${rate}&formats=${formatsIndices}&hooks=${hooksIndices}&rush=${growthRush}#pricing-calculator`;
+      } else if (activeOffer === 'scale') {
+        const formatsIndices = scaleFormats
+          .filter(f => f !== 'f16_9')
+          .map(f => FORMAT_OPTIONS.findIndex(opt => opt.id === f))
+          .filter(idx => idx !== -1)
+          .join('-');
+        shareUrl = `${baseUrl}?offer=scale&qty=${scaleQuantity}&rate=${scaleRate}&formats=${formatsIndices}#pricing-calculator`;
+      }
 
       navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 3000);
     } catch (e) {
       alert('Could not copy link.');
+    }
+  };
+
+  const handleContactUsRedirect = () => {
+    try {
+      const baseUrl = window.location.origin + window.location.pathname;
+      let targetUrl = '';
+      if (activeOffer === 'launch') {
+        const formatsIndices = launchFormats
+          .filter(f => f !== 'f16_9')
+          .map(f => FORMAT_OPTIONS.findIndex(opt => opt.id === f))
+          .filter(idx => idx !== -1)
+          .join('-');
+        const hooksIndices = launchHooks
+          .map(h => HOOK_OPTIONS.findIndex(opt => opt.id === h))
+          .filter(idx => idx !== -1)
+          .join('-');
+        targetUrl = `${baseUrl}?source=calculator&offer=launch&dur=${launchDuration}&rate=${rate}&timeline=${timelineId}&formats=${formatsIndices}&hooks=${hooksIndices}&price=${totalProjectPrice}#contact`;
+      } else if (activeOffer === 'growth') {
+        const formatsIndices = growthFormats
+          .filter(f => f !== 'f16_9')
+          .map(f => FORMAT_OPTIONS.findIndex(opt => opt.id === f))
+          .filter(idx => idx !== -1)
+          .join('-');
+        const hooksIndices = growthHooks
+          .map(h => HOOK_OPTIONS.findIndex(opt => opt.id === h))
+          .filter(idx => idx !== -1)
+          .join('-');
+        targetUrl = `${baseUrl}?source=calculator&offer=growth&qty=${growthQuantity}&dur=${growthDuration}&rate=${rate}&formats=${formatsIndices}&hooks=${hooksIndices}&rush=${growthRush}&price=${totalProjectPrice}#contact`;
+      } else if (activeOffer === 'scale') {
+        const formatsIndices = scaleFormats
+          .filter(f => f !== 'f16_9')
+          .map(f => FORMAT_OPTIONS.findIndex(opt => opt.id === f))
+          .filter(idx => idx !== -1)
+          .join('-');
+        targetUrl = `${baseUrl}?source=calculator&offer=scale&qty=${scaleQuantity}&rate=${scaleRate}&formats=${formatsIndices}&price=${totalProjectPrice}#contact`;
+      }
+
+      window.location.href = targetUrl;
+    } catch (e) {
+      console.error('Inquiry redirect path check failed', e);
     }
   };
 
@@ -255,6 +389,94 @@ export default function PricingCalculator() {
       <span className="absolute inset-4 bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] opacity-[0.03] blur-[100px] rounded-[32px] pointer-events-none -z-20" />
 
       <div className="max-w-5xl mx-auto relative z-10 font-sans">
+        {/* Standard Motion Packages Title */}
+        <div className="text-center mb-10 pt-4">
+          <div className="text-[10px] font-semibold tracking-widest text-[#8A2EFF] uppercase mb-1.5">
+            Standard Motion Packages
+          </div>
+          <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 mb-2 font-sans leading-tight">
+            Select a curated package. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] font-medium italic">Lock in premium value instantly.</span>
+          </h3>
+          <p className="text-xs text-neutral-500 max-w-lg mx-auto font-light leading-normal">
+            Choose one of our production structures, or use the interactive calculator below to customize every parameter.
+          </p>
+        </div>
+
+        {/* Packages Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {PACKAGES_OPTIONS.map((pkg) => {
+            return (
+              <div 
+                key={pkg.id}
+                className={`p-6 md:p-8 rounded-[24px] bg-white flex flex-col justify-between hover:shadow-[0_20px_50px_rgba(138,46,255,0.08)] transition-all duration-500 ease-out relative group overflow-hidden isolate ${
+                  pkg.isPopular ? 'ring-2 ring-[#8A2EFF]/30 shadow-[0_15px_35px_rgba(138,46,255,0.05)]' : ''
+                }`}
+              >
+                {pkg.isPopular && (
+                  <span className="absolute top-4 right-4 bg-gradient-to-r from-[#8A2EFF] to-[#E0B3CF] text-white text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full shadow-sm z-20">
+                    Most Popular
+                  </span>
+                )}
+                
+                {/* Default Border that fades out on hover */}
+                <span className="absolute inset-0 rounded-[24px] border border-black/10 group-hover:border-transparent transition-colors duration-300 pointer-events-none" />
+                
+                {/* Gradient border mask overlay */}
+                <span className="absolute inset-0 rounded-[24px] p-[1.5px] bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10">
+                  <span className="block w-full h-full bg-white rounded-[22.5px]" />
+                </span>
+
+                {/* Apple-like soft backglow */}
+                <span className="absolute inset-2 bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] opacity-0 group-hover:opacity-15 blur-2xl rounded-[24px] transition-all duration-500 pointer-events-none -z-20" />
+
+                <div>
+                  <div className="text-[10px] font-semibold tracking-widest text-[#8A2EFF]/80 uppercase mb-1">
+                    {pkg.subtitle}
+                  </div>
+                  <div className="text-xl font-bold tracking-tight mb-2 text-[#141414] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#8A2EFF] group-hover:to-[#F4B179] transition-all duration-300">
+                    {pkg.name}
+                  </div>
+                  <p className="text-[11px] opacity-70 text-[#555] leading-relaxed mb-4 min-h-[44px]">
+                    {pkg.description}
+                  </p>
+                  
+                  <div className="my-6 border-t border-neutral-100" />
+
+                  <ul className="space-y-2 mb-6">
+                    {pkg.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-xs text-[#555]">
+                        <Check className="w-3.5 h-3.5 text-[#8A2EFF] shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => applyPackageConfig(pkg.specs)}
+                    className="w-full py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-950 text-white text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-1.5 transition-all text-center cursor-pointer hover:shadow-lg hover:shadow-neutral-950/10 active:scale-[0.98]"
+                  >
+                    Configure this Plan
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Divider */}
+        <div id="interactive-planner-anchor" className="relative flex items-center justify-center my-14">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-dashed border-neutral-200"></div>
+          </div>
+          <div className="relative px-5 bg-white text-[9px] uppercase font-bold tracking-[0.2em] text-neutral-400">
+            Or Design Custom Specification Below
+          </div>
+        </div>
+
         {/* Upper Title */}
         <div className="text-center mb-6">
           <div className="text-[10px] font-semibold tracking-widest text-[#8A2EFF] uppercase mb-1.5">
@@ -275,304 +497,565 @@ export default function PricingCalculator() {
           {/* LEFT AREA: Configuration Panel (7 columns) */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Mode Switcher */}
+            {/* Offer Selector */}
             <div className="space-y-2.5">
-              <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-neutral-400 block">
-                Production Trajectory
+              <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-neutral-450 block">
+                Selected Offer Tier
               </label>
-              <div className="grid grid-cols-2 p-1 rounded-xl bg-neutral-50 border border-neutral-200/50 gap-1 mt-1">
+              <div className="grid grid-cols-3 p-1 rounded-xl bg-neutral-50 border border-neutral-200/50 gap-1 mt-1">
                 <button
                   type="button"
-                  id="btn-trajectory-motion"
-                  onClick={() => setMode('motion')}
+                  onClick={() => {
+                    setActiveOffer('launch');
+                    setRate(25);
+                  }}
                   className={`py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                    mode === 'motion'
+                    activeOffer === 'launch'
                       ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179]'
                       : 'text-neutral-500 hover:text-neutral-800'
                   }`}
                 >
-                  Motion-Led
+                  Launch
                 </button>
                 <button
                   type="button"
-                  id="btn-trajectory-founder"
-                  onClick={() => setMode('founder')}
+                  onClick={() => {
+                    setActiveOffer('growth');
+                    setRate(25);
+                  }}
                   className={`py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                    mode === 'founder'
+                    activeOffer === 'growth'
                       ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179]'
                       : 'text-neutral-500 hover:text-neutral-800'
                   }`}
                 >
-                  Founder-Led
+                  Growth
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveOffer('scale');
+                  }}
+                  className={`py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                    activeOffer === 'scale'
+                      ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179]'
+                      : 'text-neutral-500 hover:text-neutral-800'
+                  }`}
+                >
+                  Scale
                 </button>
               </div>
             </div>
 
-            {/* Graphics Rate Slider */}
+            {/* Graphics Rate Slider / Selector */}
             <div className="space-y-2.5">
               <div className="flex justify-between items-baseline">
-                <span className="text-[9px] uppercase font-bold tracking-[0.2em] text-neutral-400">
+                <span className="text-[9px] uppercase font-bold tracking-[0.2em] text-neutral-450">
                   Estimated Graphics Rate
                 </span>
                 <span className="text-xl font-black font-sans text-neutral-900 tracking-tight">
-                  ${rate}/s <span className="text-[10px] font-normal text-neutral-400">rate</span>
+                  ${activeOffer === 'scale' ? scaleRate : rate}/s <span className="text-[10px] font-normal text-neutral-400">rate</span>
                 </span>
               </div>
               
               <div className="grid grid-cols-3 p-1 rounded-xl bg-neutral-50 border border-neutral-200/50 gap-1">
-                {[15, 25, 40].map((stepValue) => (
-                  <button
-                    key={stepValue}
-                    type="button"
-                    onClick={() => setRate(stepValue)}
-                    className={`py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer text-center relative ${
-                      rate === stepValue
-                        ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179]'
-                        : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50'
-                    }`}
-                  >
-                    ${stepValue}/s
-                  </button>
-                ))}
+                {activeOffer === 'scale' ? (
+                  [5, 10].map((stepValue) => (
+                    <button
+                      key={stepValue}
+                      type="button"
+                      onClick={() => setScaleRate(stepValue)}
+                      className={`py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer text-center relative ${
+                        scaleRate === stepValue
+                          ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179]'
+                          : 'text-neutral-550 hover:text-neutral-900 hover:bg-neutral-50'
+                      }`}
+                    >
+                      ${stepValue}/s
+                    </button>
+                  ))
+                ) : (
+                  [15, 25, 40].map((stepValue) => (
+                    <button
+                      key={stepValue}
+                      type="button"
+                      onClick={() => setRate(stepValue)}
+                      className={`py-2 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer text-center relative ${
+                        rate === stepValue
+                          ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179]'
+                          : 'text-neutral-550 hover:text-neutral-900 hover:bg-neutral-50'
+                      }`}
+                    >
+                      ${stepValue}/s
+                    </button>
+                  ))
+                )}
               </div>
 
               {/* Unique Bullet Descriptions */}
-              <ul className="space-y-1 text-[11px] font-light text-neutral-500 pt-1.5 border-t border-neutral-100 leading-snug">
+              <ul className="space-y-1 text-[11px] font-light text-neutral-500 pt-1.5 border-t border-[#f4f4f4] leading-snug">
                 <li className="flex items-center gap-1.5">
                   <span className="text-[#8A2EFF] font-bold">—</span>
                   <span>
-                    {mode === 'motion' 
-                      ? 'Motion graphics rate is our only core pricing variable.' 
-                      : 'B-roll editing and customized speech synthesis post-processing.'}
+                    {activeOffer === 'scale' 
+                      ? 'Scale graphics offer is hyper-optimized for high volume asset creation.' 
+                      : 'Graphics rate is our core customizable pricing variable.'}
                   </span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <span className="text-[#E0B3CF] font-bold">—</span>
-                  <span>Adjusted systematically based on creative storytelling complexity.</span>
-                </li>
-                <li className="flex items-center gap-1.5">
-                  <span className="text-[#F4B179] font-bold">—</span>
-                  <span>First collaborations often require higher setup; recurring clients secure volume benefits.</span>
+                  <span>Adjusted systematically based on production and storytelling complexity.</span>
                 </li>
               </ul>
             </div>
 
-            {/* Videos Array Section */}
-            <div className="space-y-4 pt-3 border-t border-neutral-100">
-              <div className="flex justify-between items-center">
-                <h4 className="text-[11px] font-bold uppercase tracking-wider text-neutral-900">
-                  Videos ({videos.length})
-                </h4>
-                <button
-                  type="button"
-                  onClick={handleAddVideo}
-                  id="btn-add-video"
-                  className="flex items-center gap-1 py-1.5 px-2.5 rounded-lg border border-neutral-200 bg-white text-[11px] font-semibold text-neutral-600 hover:text-[#8A2EFF] hover:border-[#8A2EFF]/30 transition-all cursor-pointer"
-                >
-                  <Plus className="w-3 h-3 text-[#8A2EFF]" />
-                  <span>Add Video</span>
-                </button>
-              </div>
+            {/* Custom Settings Configured For Selected Offer */}
+            <div className="space-y-6 pt-3 border-t border-neutral-100">
+              
+              {activeOffer === 'launch' && (
+                <div className="space-y-5">
+                  <div className="flex justify-between items-center">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-neutral-900">
+                      Launch Video Customization
+                    </h4>
+                    <span className="p-1 px-2 bg-neutral-100 text-neutral-600 rounded-md text-[9px] font-bold tracking-widest uppercase">
+                      Single Video
+                    </span>
+                  </div>
 
-              {/* Dynamic list of videos with standard layout cards */}
-              <div className="space-y-4">
-                <AnimatePresence initial={false}>
-                  {videos.map((video, idx) => {
-                    const videoCostTuple = calculateVideoCost(video);
+                  {/* Video Duration Selector */}
+                  <div className="p-4 md:p-5 rounded-[20px] bg-white border border-neutral-200/50 space-y-4 shadow-sm">
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-baseline">
+                        <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-neutral-400">
+                          Video duration
+                        </span>
+                        <span className="text-xl md:text-2xl font-bold text-neutral-900 tracking-tight">
+                          {launchDuration}s <span className="text-xs font-normal text-neutral-500">(${rate}/s)</span>
+                        </span>
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-neutral-50 border border-neutral-200/55">
+                        {[30, 45, 60].map((dur) => (
+                          <button
+                            key={dur}
+                            type="button"
+                            onClick={() => setLaunchDuration(dur)}
+                            className={`py-2 px-3 rounded-lg text-xs font-bold transition-all duration-300 cursor-pointer text-center ${
+                              launchDuration === dur
+                                ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] to-[#F4B179]'
+                                : 'text-neutral-500 hover:text-neutral-800'
+                            }`}
+                          >
+                            {dur}s
+                          </button>
+                        ))}
+                      </div>
+                    </div>
 
-                    return (
-                      <motion.div
-                        key={video.id}
-                        initial={{ opacity: 0, height: 0, y: 15 }}
-                        animate={{ opacity: 1, height: 'auto', y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -15 }}
-                        transition={{ duration: 0.3 }}
-                        className="relative p-4 md:p-5 rounded-[20px] bg-white border border-neutral-200/50 space-y-4 overflow-hidden shadow-sm hover:shadow-[0_15px_30px_rgba(138,46,255,0.03)] transition-all duration-300"
-                      >
-                        {/* Video Header / Delete tool */}
-                        <div className="flex justify-between items-center">
-                          <span className="text-[10px] uppercase font-black tracking-[0.2em] text-neutral-450">
-                            Video {idx + 1}
-                          </span>
-                          {videos.length > 1 && (
+                    {/* Format adaptations */}
+                    <div className="space-y-1.5 pt-1.5 border-t border-neutral-100">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
+                        Format Adaptations ($5/s each)
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+                        {FORMAT_OPTIONS.map((opt) => {
+                          const isChecked = launchFormats.includes(opt.id);
+                          return (
                             <button
                               type="button"
-                              onClick={() => handleRemoveVideo(video.id)}
-                              id={`btn-remove-video-${idx}`}
-                              className="p-1 px-2 rounded-lg text-neutral-400 hover:text-red-500 hover:bg-neutral-50 text-xs font-semibold flex items-center gap-1 transition-all pointer-events-auto cursor-pointer"
-                              title="Delete this video block"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                              <span>Remove</span>
-                            </button>
-                          )}
-                        </div>
-
-                        {/* Video Duration Slider */}
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-baseline">
-                            <span className="text-xl md:text-2xl font-bold text-neutral-900 tracking-tight">
-                              {video.duration}s <span className="text-xs font-normal text-neutral-500 font-sans">final duration (${rate}/s)</span>
-                            </span>
-                          </div>
-                          <div className="relative py-2">
-                            <input
-                              type="range"
-                              min={0}
-                              max={ALLOWED_DURATIONS.length - 1}
-                              step={1}
-                              value={ALLOWED_DURATIONS.indexOf(video.duration) !== -1 ? ALLOWED_DURATIONS.indexOf(video.duration) : 2}
-                              onChange={(e) => {
-                                const valIdx = Number(e.target.value);
-                                handleUpdateDuration(video.id, ALLOWED_DURATIONS[valIdx]);
+                              key={opt.id}
+                              onClick={() => {
+                                if (opt.id === 'f16_9') return;
+                                const alreadyChecked = launchFormats.includes(opt.id);
+                                setLaunchFormats(alreadyChecked 
+                                  ? launchFormats.filter(f => f !== opt.id)
+                                  : [...launchFormats, opt.id]
+                                );
                               }}
-                              className="w-full h-1 bg-neutral-100 rounded-lg appearance-none cursor-pointer accent-[#8A2EFF] [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[#8A2EFF] [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-[#8A2EFF] [&::-moz-range-thumb]:cursor-pointer"
-                            />
-                            <div className="flex justify-between text-[10px] text-neutral-400 mt-2 font-mono px-0.5">
-                              {ALLOWED_DURATIONS.map((dur) => (
-                                <button
-                                  key={dur}
-                                  type="button"
-                                  onClick={() => handleUpdateDuration(video.id, dur)}
-                                  className={`hover:text-[#8A2EFF] transition-colors cursor-pointer ${
-                                    video.duration === dur ? 'text-[#8A2EFF] font-bold' : ''
-                                  }`}
-                                >
-                                  {dur}s
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
+                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer ${
+                                isChecked
+                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
+                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between w-full font-bold">
+                                <span className="text-[10px] font-bold tracking-tight">
+                                  {opt.label}
+                                </span>
+                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                              </div>
+                              <div className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-400'} leading-none`}>
+                                {opt.res || opt.detail}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
 
-                        {/* Format Adaptations Section */}
-                        <div className="space-y-1.5">
-                          <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
-                            Format Adaptations ($10/s each)
-                          </label>
-                          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
-                            {FORMAT_OPTIONS.map((opt) => {
-                              const isChecked = video.formats.includes(opt.id);
-                              return (
-                                <button
-                                  type="button"
-                                  id={`btn-format-${idx}-${opt.id}`}
-                                  key={opt.id}
-                                  onClick={() => handleToggleFormat(video.id, opt.id)}
-                                  className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer ${
-                                    isChecked
-                                      ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
-                                      : 'bg-white border-neutral-200/80 text-neutral-500 hover:text-neutral-900 hover:border-neutral-300'
-                                  }`}
-                                >
-                                  <div className="flex items-center justify-between w-full font-bold">
-                                    <span className="text-[10px] font-bold tracking-tight">
-                                      {opt.label}
-                                    </span>
-                                    {isChecked && (
-                                      <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />
-                                    )}
-                                  </div>
-                                  <div className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-400'} leading-none`}>
-                                    {opt.res || opt.detail}
-                                  </div>
-                                </button>
-                              );
-                            })}
+                    {/* Hook Variations Section */}
+                    <div className="space-y-1.5 pt-1.5 border-t border-neutral-100">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
+                        Hook Variations ($25 each)
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+                        {HOOK_OPTIONS.map((opt) => {
+                          const isChecked = launchHooks.includes(opt.id);
+                          return (
+                            <button
+                              type="button"
+                              key={opt.id}
+                              onClick={() => {
+                                const alreadyChecked = launchHooks.includes(opt.id);
+                                setLaunchHooks(alreadyChecked
+                                  ? launchHooks.filter(h => h !== opt.id)
+                                  : [...launchHooks, opt.id]
+                                );
+                              }}
+                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[44px] cursor-pointer ${
+                                isChecked
+                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
+                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                              }`}
+                            >
+                              <div className="flex justify-between items-center w-full leading-none">
+                                <span className="text-[9px] font-bold truncate pr-1">{opt.label}</span>
+                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                              </div>
+                              <span className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-450'} font-mono`}>
+                                +$25
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeOffer === 'growth' && (
+                <div className="space-y-5">
+                  <div className="flex justify-between items-center">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-neutral-900">
+                      Growth Options & Customization
+                    </h4>
+                    <span className="p-1 px-2 bg-[#8A2EFF]/10 text-[#8A2EFF] rounded-md text-[9px] font-bold tracking-widest uppercase">
+                      Package Plan
+                    </span>
+                  </div>
+
+                  {/* Quantity and Discount Selector */}
+                  <div className="p-4 md:p-5 rounded-[20px] bg-white border border-neutral-200/50 space-y-4 shadow-sm">
+                    <div className="space-y-3">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
+                        Choose Quantity Per Month
+                      </label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setGrowthQuantity(2)}
+                          className={`p-3 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between relative cursor-pointer overflow-hidden ${
+                            growthQuantity === 2
+                              ? 'border-[#8A2EFF] bg-[#8A2EFF]/5 shadow-sm'
+                              : 'border-neutral-200 bg-white hover:border-neutral-300 text-neutral-600'
+                          }`}
+                        >
+                          <div className="flex justify-between items-center w-full mb-1">
+                            <span className="text-xs font-bold text-neutral-900">2 Videos / Mo</span>
+                            {growthQuantity === 2 && <Check className="w-3 h-3 text-[#8A2EFF]" />}
                           </div>
-                          <p className="text-[9px] text-neutral-450 italic mt-0.5 font-light leading-none">
-                            Same video, resized for default requirements.
+                          <span className="text-[10px] text-[#8A2EFF] font-semibold uppercase tracking-wider">
+                            10% OFF Package
+                          </span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setGrowthQuantity(4);
+                            setGrowthRush(false); // Can't select rush for 4 videos
+                          }}
+                          className={`p-3 rounded-xl border text-left transition-all duration-300 flex flex-col justify-between relative cursor-pointer overflow-hidden ${
+                            growthQuantity === 4
+                              ? 'border-[#8A2EFF] bg-[#8A2EFF]/5 shadow-sm'
+                              : 'border-neutral-200 bg-white hover:border-neutral-300 text-neutral-600'
+                          }`}
+                        >
+                          <div className="flex justify-between items-center w-full mb-1">
+                            <span className="text-xs font-bold text-neutral-900">4 Videos / Mo</span>
+                            {growthQuantity === 4 && <Check className="w-3 h-3 text-[#8A2EFF]" />}
+                          </div>
+                          <span className="text-[10px] text-emerald-600 font-semibold uppercase tracking-wider">
+                            30% OFF Package
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Standard Duration selector for Growth videos */}
+                    <div className="space-y-2 pt-3 border-t border-neutral-100">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-400 block">
+                        Video Duration (Applies to all)
+                      </label>
+                      <div className="grid grid-cols-5 gap-1.5 p-1 rounded-xl bg-neutral-50 border border-neutral-200/50">
+                        {[30, 45, 60, 90, 120].map((dur) => (
+                          <button
+                            key={dur}
+                            type="button"
+                            onClick={() => setGrowthDuration(dur)}
+                            className={`py-1.5 rounded-lg text-[10px] font-bold transition-all cursor-pointer text-center ${
+                              growthDuration === dur
+                                ? 'text-white shadow-sm bg-gradient-to-r from-[#8A2EFF] to-[#F4B179]'
+                                : 'text-neutral-550 hover:text-neutral-800'
+                            }`}
+                          >
+                            {dur}s
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Keep in 2 videos per month whether he needs 2 videos in 15 days */}
+                    {growthQuantity === 2 && (
+                      <div className="pt-3 border-t border-neutral-100 flex items-start gap-3">
+                        <input
+                          id="chk-growth-rush"
+                          type="checkbox"
+                          checked={growthRush}
+                          onChange={(e) => setGrowthRush(e.target.checked)}
+                          className="w-4 h-4 rounded border-neutral-300 text-[#8A2EFF] focus:ring-[#8A2EFF] mt-0.5 cursor-pointer"
+                        />
+                        <div className="space-y-0.5">
+                          <label htmlFor="chk-growth-rush" className="text-xs font-bold text-neutral-800 cursor-pointer">
+                            Need both videos in 15 days?
+                          </label>
+                          <p className="text-[10px] text-neutral-500 font-light leading-snug">
+                            Ensures priority queue speed delivery for your launch. Adds +25% custom turnaround rush factor.
                           </p>
                         </div>
+                      </div>
+                    )}
 
-                        {/* Hook Variations Section */}
-                        <div className="space-y-1.5">
-                          <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
-                            Hook Variations ($25 each)
-                          </label>
-                          <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
-                            {HOOK_OPTIONS.map((opt) => {
-                              const isChecked = video.hooks.includes(opt.id);
-                              return (
-                                <button
-                                  type="button"
-                                  id={`btn-hook-${idx}-${opt.id.replace(/\s+/g, '_')}`}
-                                  key={opt.id}
-                                  onClick={() => handleToggleHook(video.id, opt.id)}
-                                  className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[44px] cursor-pointer ${
-                                    isChecked
-                                      ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
-                                      : 'bg-white border-neutral-200/80 text-neutral-500 hover:text-neutral-900 hover:border-neutral-300'
-                                  }`}
-                                >
-                                  <div className="flex justify-between items-center w-full leading-none">
-                                    <span className="text-[9px] font-bold truncate pr-1">
-                                      {opt.label}
-                                    </span>
-                                    {isChecked && (
-                                      <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />
-                                    )}
-                                  </div>
-                                  <span className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-450'} font-mono`}>
-                                    +$25
-                                  </span>
-                                </button>
-                              );
-                            })}
+                    {/* Format adaptations */}
+                    <div className="space-y-1.5 pt-3 border-t border-neutral-100">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
+                        Format Adaptations ($5/s each per video)
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+                        {FORMAT_OPTIONS.map((opt) => {
+                          const isChecked = growthFormats.includes(opt.id);
+                          return (
+                            <button
+                              type="button"
+                              key={opt.id}
+                              onClick={() => {
+                                if (opt.id === 'f16_9') return;
+                                const alreadyChecked = growthFormats.includes(opt.id);
+                                setGrowthFormats(alreadyChecked 
+                                  ? growthFormats.filter(f => f !== opt.id)
+                                  : [...growthFormats, opt.id]
+                                );
+                              }}
+                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer ${
+                                isChecked
+                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
+                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between w-full font-bold">
+                                <span className="text-[10px] font-bold tracking-tight">{opt.label}</span>
+                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                              </div>
+                              <div className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-400'} leading-none`}>
+                                {opt.res || opt.detail}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Hook Variations Section */}
+                    <div className="space-y-1.5 pt-3 border-t border-neutral-100">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
+                        Hook Variations ($25 each per video)
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+                        {HOOK_OPTIONS.map((opt) => {
+                          const isChecked = growthHooks.includes(opt.id);
+                          return (
+                            <button
+                              type="button"
+                              key={opt.id}
+                              onClick={() => {
+                                const alreadyChecked = growthHooks.includes(opt.id);
+                                setGrowthHooks(alreadyChecked
+                                  ? growthHooks.filter(h => h !== opt.id)
+                                  : [...growthHooks, opt.id]
+                                );
+                              }}
+                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[44px] cursor-pointer ${
+                                isChecked
+                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
+                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                              }`}
+                            >
+                              <div className="flex justify-between items-center w-full leading-none">
+                                <span className="text-[9px] font-bold truncate pr-1">{opt.label}</span>
+                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                              </div>
+                              <span className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-450'} font-mono`}>
+                                +$25
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeOffer === 'scale' && (
+                <div className="space-y-5">
+                  <div className="flex justify-between items-center">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-neutral-900">
+                      Scale Customization & Quantities
+                    </h4>
+                    <span className="p-1 px-2 bg-gradient-to-r from-[#8A2EFF] to-[#F4B179] text-white rounded-md text-[9px] font-bold tracking-widest uppercase">
+                      High Volume
+                    </span>
+                  </div>
+
+                  <div className="p-4 md:p-5 rounded-[20px] bg-white border border-neutral-200/50 space-y-4 shadow-sm">
+                    {/* Fixed Duration Note */}
+                    <div className="p-3 bg-neutral-50 border border-neutral-100 rounded-lg text-xs leading-relaxed text-neutral-600">
+                      ⚡ <span className="font-bold text-neutral-900 font-sans">Fixed 15-Second duration:</span> Scale plans are hyper-optimized for high density hooks, social ads, and repetitive promotional assets. Duration is hardcoded to 15s.
+                    </div>
+
+                    {/* Quantity choices */}
+                    <div className="space-y-2.5">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
+                        Select Quantity Options
+                      </label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setScaleQuantity(10)}
+                          className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between relative cursor-pointer overflow-hidden ${
+                            scaleQuantity === 10
+                              ? 'border-[#8A2EFF] bg-[#8A2EFF]/5 shadow-sm'
+                              : 'border-neutral-200 bg-white hover:border-neutral-300 text-neutral-600'
+                          }`}
+                        >
+                          <div className="flex justify-between items-center w-full mb-0.5">
+                            <span className="text-xs font-bold text-neutral-900 font-sans">10 Videos</span>
+                            {scaleQuantity === 10 && <Check className="w-3 h-3 text-[#8A2EFF]" />}
                           </div>
-                          <p className="text-[9px] text-neutral-450 italic mt-0.5 font-light leading-none">
-                            Alternative promotional intro hooks.
-                          </p>
-                        </div>
+                          <span className="text-[10px] text-neutral-400 font-light">Per Month</span>
+                        </button>
 
-                        {/* Video Card Breakdown line */}
-                        <div className="flex justify-between items-center pt-2.5 border-t border-neutral-100 text-xs text-neutral-550 font-sans">
-                          <span className="font-mono text-[11px]">{video.duration}s × ${rate}/s</span>
-                          <span className="text-xs font-bold text-neutral-900">${videoCostTuple.total.toLocaleString()}</span>
+                        <button
+                          type="button"
+                          onClick={() => setScaleQuantity(15)}
+                          className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between relative cursor-pointer overflow-hidden ${
+                            scaleQuantity === 15
+                              ? 'border-[#8A2EFF] bg-[#8A2EFF]/5 shadow-sm'
+                              : 'border-neutral-200 bg-white hover:border-neutral-300 text-neutral-600'
+                          }`}
+                        >
+                          <div className="flex justify-between items-center w-full mb-0.5">
+                            <span className="text-xs font-bold text-neutral-900 font-sans">15 Videos</span>
+                            {scaleQuantity === 15 && <Check className="w-3 h-3 text-[#8A2EFF]" />}
+                          </div>
+                          <span className="text-[10px] text-neutral-400 font-light font-sans">Per Month</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Format adaptations */}
+                    <div className="space-y-1.5 pt-3 border-t border-neutral-100">
+                      <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-410 block">
+                        Format Adaptations ($250 per adaptation)
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+                        {FORMAT_OPTIONS.map((opt) => {
+                          const isChecked = scaleFormats.includes(opt.id);
+                          return (
+                            <button
+                              type="button"
+                              key={opt.id}
+                              onClick={() => {
+                                if (opt.id === 'f16_9') return;
+                                const alreadyChecked = scaleFormats.includes(opt.id);
+                                setScaleFormats(alreadyChecked 
+                                  ? scaleFormats.filter(f => f !== opt.id)
+                                  : [...scaleFormats, opt.id]
+                                );
+                              }}
+                              className={`p-1.5 rounded-lg border text-left transition-all duration-300 relative flex flex-col justify-between h-[52px] cursor-pointer ${
+                                isChecked
+                                  ? 'bg-neutral-950 border-neutral-955 text-white shadow-md'
+                                  : 'bg-white border border-neutral-200 text-neutral-500 hover:text-neutral-950'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between w-full font-bold font-sans">
+                                <span className="text-[10px] font-bold tracking-tight">{opt.label}</span>
+                                {isChecked && <Check className="w-2.5 h-2.5 text-[#8A2EFF]" />}
+                              </div>
+                              <div className={`text-[8px] ${isChecked ? 'text-neutral-300' : 'text-neutral-400'} leading-none`}>
+                                {opt.res || opt.detail}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+            </div>
+
+            {/* Delivery Timeline Card Switcher (Only for Launch offer) */}
+            {activeOffer === 'launch' && (
+              <div className="space-y-2 pt-3 border-t border-neutral-100 font-sans">
+                <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
+                  Delivery Timeline Target
+                </label>
+                <div className="grid grid-cols-3 sm:grid-cols-3 gap-1.5">
+                  {TIMELINE_OPTIONS.map((opt) => {
+                    const isSelected = timelineId === opt.id;
+                    const factorDays = Math.ceil(getBaseDaysForDuration(launchDuration) / opt.speedMultiplier);
+
+                    return (
+                      <button
+                        type="button"
+                        key={opt.id}
+                        onClick={() => setTimelineId(opt.id)}
+                        className={`p-2 rounded-xl border flex flex-col items-center text-center justify-between gap-0.5 transition-all duration-300 cursor-pointer ${
+                          isSelected
+                            ? 'border-[#8A2EFF] bg-[#8A2EFF]/5 text-[#8A2EFF] shadow-md shadow-[#8A2EFF]/5'
+                            : 'border border-neutral-200 bg-white text-neutral-500 hover:text-neutral-900'
+                        }`}
+                      >
+                        <div className="text-[10px] font-bold leading-tight">
+                          {opt.name}
                         </div>
-                      </motion.div>
+                        <div className={`text-[8px] ${isSelected ? 'text-[#8A2EFF]/80' : 'text-neutral-405'} font-semibold uppercase tracking-wider`}>
+                          {opt.feeLabel}
+                        </div>
+                        <div className={`text-[10px] font-mono font-bold pt-0.5 border-t w-full mt-0.5 ${isSelected ? 'border-[#8A2EFF]/25' : 'border-neutral-150'}`}>
+                          {factorDays} d
+                        </div>
+                      </button>
                     );
                   })}
-                </AnimatePresence>
+                </div>
               </div>
-            </div>
-
-            {/* Delivery Timeline Card Switcher */}
-            <div className="space-y-2 pt-3 border-t border-neutral-100 font-sans">
-              <label className="text-[9px] uppercase font-bold tracking-[0.15em] text-neutral-450 block">
-                Delivery Timeline Target
-              </label>
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
-                {TIMELINE_OPTIONS.map((opt) => {
-                  const isSelected = timelineId === opt.id;
-                  const factorDays = Math.ceil(totalStandardDays / opt.speedMultiplier);
-
-                  return (
-                    <button
-                      type="button"
-                      id={`btn-timeline-${opt.id}`}
-                      key={opt.id}
-                      onClick={() => setTimelineId(opt.id)}
-                      className={`p-2 rounded-xl border flex flex-col items-center text-center justify-between gap-0.5 transition-all duration-300 cursor-pointer ${
-                        isSelected
-                          ? 'border-[#8A2EFF] bg-[#8A2EFF]/5 text-[#8A2EFF] shadow-md shadow-[#8A2EFF]/5'
-                          : 'border-neutral-200 bg-white text-neutral-500 hover:text-neutral-900 hover:border-neutral-350'
-                      }`}
-                    >
-                      <div className="text-[10px] font-bold leading-tight">
-                        {opt.name}
-                      </div>
-                      <div className={`text-[8px] ${isSelected ? 'text-[#8A2EFF]/80' : 'text-neutral-400'} font-semibold uppercase tracking-wider`}>
-                        {opt.feeLabel}
-                      </div>
-                      <div className={`text-[10px] font-mono font-bold pt-0.5 border-t w-full mt-0.5 ${isSelected ? 'border-[#8A2EFF]/25' : 'border-neutral-150'}`}>
-                        {factorDays} d
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            )}
 
           </div>
 
@@ -583,16 +1066,18 @@ export default function PricingCalculator() {
             <div className="grid grid-cols-2 gap-3">
               {/* Total Estimate Panel */}
               <div className="p-3.5 rounded-xl bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] text-white shadow-md relative overflow-hidden">
-                <span className="text-[9px] uppercase font-bold tracking-widest text-white/85 block mb-0.5">
+                <span className="text-[9px] uppercase font-bold tracking-widest text-white/85 block mb-0.5 font-sans">
                   Total Estimate
                 </span>
                 <span className="text-xl md:text-2xl font-black font-sans text-white tracking-tight leading-none block my-1">
                   ${totalProjectPrice.toLocaleString()}
                 </span>
-                <span className="text-[9px] text-white/95 block font-medium leading-none">
-                  {selectedTimeline.feeMultiplier > 0 
-                    ? `+$${rushFee.toLocaleString()} rush` 
-                    : 'No speed overrides'}
+                <span className="text-[9px] text-white/95 block font-medium leading-none font-sans">
+                  {activeOffer === 'launch' && timelineId !== 'standard'
+                    ? 'Speed priority fee included'
+                    : activeOffer === 'growth' && growthRush
+                    ? '+25% rush delivery'
+                    : 'Package tier rates'}
                 </span>
               </div>
 
@@ -604,8 +1089,8 @@ export default function PricingCalculator() {
                 <span className="text-xl md:text-2xl font-bold italic tracking-tight text-[#8A2EFF] leading-none block my-1">
                   {deliveryDays} days
                 </span>
-                <span className="text-[9px] text-neutral-500 block leading-none">
-                  {selectedTimeline.name === 'Standard' ? 'Standard sequence' : `${selectedTimeline.name} timeline`}
+                <span className="text-[9px] text-neutral-500 block leading-none font-sans">
+                  Estimated fulfillment
                 </span>
               </div>
             </div>
@@ -616,61 +1101,122 @@ export default function PricingCalculator() {
                 Itemized Estimate Breakdown
               </span>
 
-              {/* Map itemized values per video */}
-              <div className="space-y-3 max-h-[160px] overflow-y-auto pr-1.5 custom-scrollbar">
-                {videoCostsBreakdown.map(({ vid, costs, days }, index) => (
-                  <div key={vid.id} className="space-y-1 border-b border-neutral-100 pb-2.5 last:border-b-0 last:pb-0 font-sans">
-                    <div className="flex justify-between items-baseline font-bold text-[11px] text-neutral-800">
-                      <span>Video {index + 1} ({vid.duration}s)</span>
-                      <span className="font-mono text-[#8A2EFF]">${costs.total.toLocaleString()}</span>
+              {/* Map itemized values based on selected offer */}
+              <div className="space-y-3 max-h-[220px] overflow-y-auto pr-1.5 custom-scrollbar">
+                
+                {activeOffer === 'launch' && (
+                  <div className="space-y-1 font-sans">
+                    <div className="flex justify-between items-baseline font-bold text-[11px] text-neutral-800 font-sans">
+                      <span>Launch Video ({launchDuration}s)</span>
+                      <span className="font-mono text-[#8A2EFF]">${subtotalCost.toLocaleString()}</span>
                     </div>
 
-                    {/* Main Cut detail */}
                     <div className="flex justify-between text-[10px] text-neutral-500 pl-1.5">
-                      <span>Main cut — {vid.duration}s × ${rate}/s</span>
-                      <span className="font-mono font-medium">${costs.base.toLocaleString()}</span>
+                      <span>Main story block — {launchDuration}s × ${rate}/s</span>
+                      <span className="font-mono font-medium">${(launchDuration * rate).toLocaleString()}</span>
                     </div>
 
-                    {/* Format list adaptive details */}
-                    {vid.formats.filter(f => f !== 'f16_9').map(formatId => {
+                    {launchFormats.filter(f => f !== 'f16_9').map(formatId => {
                       const fOpt = FORMAT_OPTIONS.find(f => f.id === formatId);
                       return (
-                        <div key={formatId} className="flex justify-between text-[10px] text-neutral-500 pl-1.5 italic">
-                          <span>↳ Adapt ({fOpt?.label}) — {vid.duration}s × $10/s</span>
-                          <span className="font-mono font-medium">${(10 * vid.duration).toLocaleString()}</span>
+                        <div key={formatId} className="flex justify-between text-[10px] text-neutral-500 pl-1.5 italic font-sans">
+                          <span>↳ Adapt ({fOpt?.label}) — {launchDuration}s × $5/s</span>
+                          <span className="font-mono font-medium">${(5 * launchDuration).toLocaleString()}</span>
                         </div>
                       );
                     })}
 
-                    {/* Hooks details */}
-                    {vid.hooks.map(hId => (
-                      <div key={hId} className="flex justify-between text-[10px] text-neutral-500 pl-1.5 italic font-sans">
+                    {launchHooks.map(hId => (
+                      <div key={hId} className="flex justify-between text-[10px] text-neutral-500 pl-1.5 italic font-sans animate-fade-in">
                         <span>↳ Hook ({hId}) — flat rate</span>
                         <span className="font-mono font-medium">$25</span>
                       </div>
                     ))}
 
-                    {/* Video internal timeline days label */}
-                    <div className="text-[9px] text-neutral-450 pl-1.5 block font-light leading-none pt-0.5">
-                      {days} business days base build
+                    <div className="text-[9px] text-neutral-400 pl-1.5 block font-light leading-none pt-0.5">
+                      {getBaseDaysForDuration(launchDuration)} business days standard build
                     </div>
                   </div>
-                ))}
+                )}
+
+                {activeOffer === 'growth' && (
+                  <div className="space-y-1 font-sans">
+                    <div className="flex justify-between items-baseline font-bold text-[11px] text-neutral-800 font-sans">
+                      <span>Growth Pack — {growthQuantity} Videos ({growthDuration}s each)</span>
+                      <span className="font-mono text-[#8A2EFF]">${(subtotalCost).toLocaleString()}</span>
+                    </div>
+
+                    <div className="flex justify-between text-[10px] text-neutral-500 pl-1.5 animate-fade-in">
+                      <span>{growthQuantity}x Main story — {growthDuration}s × ${rate}/s</span>
+                      <span className="font-mono font-medium">${(growthQuantity * growthDuration * rate).toLocaleString()}</span>
+                    </div>
+
+                    {growthFormats.filter(f => f !== 'f16_9').map(formatId => {
+                      const fOpt = FORMAT_OPTIONS.find(f => f.id === formatId);
+                      return (
+                        <div key={formatId} className="flex justify-between text-[10px] text-neutral-500 pl-1.5 italic animate-fade-in font-sans">
+                          <span>↳ Adapt ({fOpt?.label}) — {growthQuantity}x @ $5/s</span>
+                          <span className="font-mono font-medium">${(growthQuantity * 5 * growthDuration).toLocaleString()}</span>
+                        </div>
+                      );
+                    })}
+
+                    {growthHooks.map(hId => (
+                      <div key={hId} className="flex justify-between text-[10px] text-neutral-500 pl-1.5 italic font-sans animate-fade-in">
+                        <span>↳ Hook ({hId}) — {growthQuantity}x flat rate</span>
+                        <span className="font-mono font-medium">${(growthQuantity * 25).toLocaleString()}</span>
+                      </div>
+                    ))}
+
+                    <div className="text-[9px] text-neutral-400 pl-1.5 block font-light leading-none pt-0.5 font-sans">
+                      {growthQuantity === 2 ? '20' : '30'} business days standard delivery
+                    </div>
+                  </div>
+                )}
+
+                {activeOffer === 'scale' && (
+                  <div className="space-y-1 font-sans">
+                    <div className="flex justify-between items-baseline font-bold text-[11px] text-neutral-800 font-sans animate-fade-in">
+                      <span>Scale Content Pack ({scaleQuantity}x 15s clips)</span>
+                      <span className="font-mono text-[#8A2EFF]">${subtotalCost.toLocaleString()}</span>
+                    </div>
+
+                    <div className="flex justify-between text-[10px] text-neutral-500 pl-1.5">
+                      <span>{scaleQuantity}x main clip — 15s × ${scaleRate}/s</span>
+                      <span className="font-mono font-medium">${(scaleQuantity * 15 * scaleRate).toLocaleString()}</span>
+                    </div>
+
+                    {scaleFormats.filter(f => f !== 'f16_9').map(formatId => {
+                      const fOpt = FORMAT_OPTIONS.find(f => f.id === formatId);
+                      return (
+                        <div key={formatId} className="flex justify-between text-[10px] text-neutral-500 pl-1.5 italic font-sans">
+                          <span>↳ Adapt ({fOpt?.label}) — flat rate</span>
+                          <span className="font-mono font-medium">$250</span>
+                        </div>
+                      );
+                    })}
+
+                    <div className="text-[9px] text-neutral-400 pl-1.5 block font-light leading-none pt-0.5 font-sans">
+                      {scaleQuantity === 10 ? '15' : '20'} business days standard delivery
+                    </div>
+                  </div>
+                )}
+
               </div>
 
               {/* Global summary rows */}
               <div className="border-t border-neutral-200/80 pt-2.5 space-y-1.5 font-sans">
                 
-                {/* Graphics Subtotal */}
-                <div className="flex justify-between text-xs text-neutral-500 font-sans">
-                  <span>Graphics Subtotal</span>
-                  <span className="font-mono text-neutral-700 font-bold">${subtotalCost.toLocaleString()}</span>
-                </div>
+                {activeOffer === 'growth' && (
+                  <div className="flex justify-between text-xs text-neutral-500 font-sans">
+                    <span>Package Discount ({discountPercentage}%)</span>
+                    <span className="font-mono text-emerald-600 font-bold">-${discountAmount.toLocaleString()}</span>
+                  </div>
+                )}
 
-                {/* Speed Rush factor line */}
-                {selectedTimeline.feeMultiplier > 0 && (
+                {rushFee > 0 && (
                   <div className="flex justify-between text-xs text-[#8A2EFF] font-sans">
-                    <span>Rush surcharge ({selectedTimeline.name})</span>
+                    <span>Rush Surcharge</span>
                     <span className="font-mono font-bold">+${rushFee.toLocaleString()}</span>
                   </div>
                 )}
@@ -690,19 +1236,28 @@ export default function PricingCalculator() {
               </div>
 
               {/* Copy links & alerts */}
-              <div className="pt-1.5 font-sans">
+              <div className="pt-1.5 font-sans space-y-2">
                 <button
                   type="button"
                   id="btn-copy-estimate-link"
                   onClick={handleCopyEstimateLink}
-                  className="w-full py-2.5 rounded-lg bg-neutral-950 text-white hover:bg-neutral-900 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-[0.98] cursor-pointer relative overflow-hidden group"
+                  className="w-full py-2.5 rounded-lg bg-neutral-950 text-white hover:bg-neutral-900 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-[0.98] cursor-pointer relative overflow-hidden group font-sans"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-[#8A2EFF] via-[#E0B3CF] to-[#F4B179] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  <Link className="w-3 h-3 text-[#F4B179] relative z-10 group-hover:text-white transition-colors duration-300" />
                   <span className="relative z-10">{copied ? 'Estimate Link Copied!' : 'Copy Estimate Link'}</span>
                 </button>
-                <span className="text-[9px] text-neutral-500 text-center block mt-2 leading-snug font-sans">
-                  Share this unique link directly with stakeholders.
+
+                <button
+                  type="button"
+                  id="btn-contact-us-redirect"
+                  onClick={handleContactUsRedirect}
+                  className="w-full py-2.5 rounded-lg border border-[#8A2EFF]/30 bg-[#8A2EFF]/5 text-[#8A2EFF] hover:bg-[#8A2EFF]/10 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-[0.98] cursor-pointer relative overflow-hidden group font-sans"
+                >
+                  <span className="relative z-10">Contact Us with Estimate</span>
+                </button>
+
+                <span className="text-[9px] text-neutral-500 text-center block leading-snug font-sans">
+                  Share this custom scope directly with stakeholders or send an inquiry with this preset.
                 </span>
               </div>
 

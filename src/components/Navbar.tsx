@@ -3,42 +3,26 @@ import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 
 export default function Navbar() {
-  const [activeHash, setActiveHash] = useState(() => window.location.hash.toLowerCase() || '#portfolio');
+  const [activeHash, setActiveHash] = useState(() => {
+    const hash = window.location.hash.toLowerCase();
+    return ['#portfolio', '#pricing', '#about', '#contact'].includes(hash) ? hash : '#portfolio';
+  });
 
   useEffect(() => {
-    const sections = ['portfolio', 'process', 'pricing', 'about', 'contact'];
-    
-    const handleScroll = () => {
-      let currentSection = 'portfolio';
-      // Buffer of scroll offset for better natural transition timing
-      const scrollPosition = window.scrollY + 200;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            currentSection = section;
-          }
-        }
-      }
-      setActiveHash(`#${currentSection}`);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Run initially
-    handleScroll();
-
     const handleHash = () => {
-      if (window.location.hash) {
-        setActiveHash(window.location.hash.toLowerCase());
+      const hash = window.location.hash.toLowerCase();
+      if (['#portfolio', '#pricing', '#about', '#contact'].includes(hash)) {
+        setActiveHash(hash);
+      } else {
+        setActiveHash('#portfolio');
       }
     };
+
     window.addEventListener('hashchange', handleHash);
+    // Sync initially
+    handleHash();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('hashchange', handleHash);
     };
   }, []);
