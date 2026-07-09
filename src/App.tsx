@@ -1,34 +1,37 @@
 import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Clients from './components/Clients';
+import SectionIndex from './components/SectionIndex';
+import PortfolioGrid from './components/PortfolioGrid';
+import WhyUs from './components/WhyUs';
 import Pricing from './components/Pricing';
 import Process from './components/Process';
-import WhyUs from './components/WhyUs';
-import WhiteLabel from './components/WhiteLabel';
+import ProofOfProcess from './components/ProofOfProcess';
+import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import WhiteLabel from './components/WhiteLabel';
 import { motion } from 'motion/react';
 
 export default function App() {
-  const [activePage, setActivePage] = useState<'portfolio' | 'pricing' | 'about' | 'contact'>(() => {
+  const [activePage, setActivePage] = useState<'home' | 'portfolio' | 'pricing' | 'about' | 'contact'>(() => {
     const hash = window.location.hash.toLowerCase().replace('#', '');
-    if (['portfolio', 'pricing', 'about', 'contact'].includes(hash)) {
-      return hash as 'portfolio' | 'pricing' | 'about' | 'contact';
+    if (['home', 'portfolio', 'pricing', 'about', 'contact'].includes(hash)) {
+      return hash as 'home' | 'portfolio' | 'pricing' | 'about' | 'contact';
     }
-    return 'portfolio';
+    return 'home';
   });
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.toLowerCase().replace('#', '');
-      if (['portfolio', 'pricing', 'about', 'contact'].includes(hash)) {
-        setActivePage(hash as 'portfolio' | 'pricing' | 'about' | 'contact');
+      if (['home', 'portfolio', 'pricing', 'about', 'contact'].includes(hash)) {
+        setActivePage(hash as 'home' | 'portfolio' | 'pricing' | 'about' | 'contact');
       } else {
-        // Fallback to portfolio if hash is empty or unrecognized
-        setActivePage('portfolio');
+        // Fallback to home if hash is empty or unrecognized
+        setActivePage('home');
         if (hash === '') {
-          window.location.hash = '#portfolio';
+          window.location.hash = '#home';
         }
       }
     };
@@ -37,7 +40,9 @@ export default function App() {
     
     // Set default hash on initial load if none exists
     if (!window.location.hash) {
-      window.location.hash = '#portfolio';
+      window.location.hash = '#home';
+    } else {
+      handleHashChange();
     }
 
     return () => {
@@ -57,15 +62,40 @@ export default function App() {
           <Navbar />
           
           <main className="w-full pt-[72px] md:pt-[96px] flex-grow">
+            {activePage === 'home' && (
+              <motion.div
+                key="home"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Hero />
+                <SectionIndex />
+                <PortfolioGrid />
+                <WhyUs />
+                <Pricing />
+                <WhiteLabel />
+                <Process />
+                <ProofOfProcess />
+                <CTA />
+                <Contact />
+              </motion.div>
+            )}
+
             {activePage === 'portfolio' && (
               <motion.div
                 key="portfolio"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full max-w-7xl mx-auto px-6 py-12 md:px-16 md:py-20 relative"
               >
-                <Hero />
-                <Clients />
+                {/* Background glow layers for the portfolio page to make it extremely premium */}
+                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] rounded-full bg-gradient-to-tr from-[#8A2EFF]/5 via-[#E0B3CF]/10 to-[#F4B179]/5 blur-[120px] pointer-events-none -z-20" />
+                <div className="absolute top-[25%] left-[5%] w-[400px] h-[400px] rounded-full bg-[#8A2EFF]/5 blur-[100px] pointer-events-none -z-10" />
+                <div className="absolute bottom-[15%] right-[5%] w-[500px] h-[500px] rounded-full bg-[#F4B179]/5 blur-[120px] pointer-events-none -z-10" />
+                
+                <PortfolioGrid />
               </motion.div>
             )}
 

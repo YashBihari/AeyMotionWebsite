@@ -2,10 +2,10 @@ import { useEffect, useRef } from 'react';
 
 export default function Footer() {
   const links = [
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact Us', href: '#contact' }
+    { label: 'Selected Work', href: '#portfolio' },
+    { label: 'Services & Value', href: '#about' },
+    { label: 'Pricing & Offers', href: '#pricing' },
+    { label: 'Start Inquiry', href: '#contact' }
   ];
 
   const leftEyeRef = useRef<HTMLDivElement>(null);
@@ -94,20 +94,20 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-transparent border-t border-black/5 pt-16 pb-0 px-6 md:px-12 mt-12 relative overflow-hidden">
+    <footer className="bg-[#050505] border-t border-white/[0.06] pt-16 pb-0 px-6 md:px-12 mt-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start justify-items-stretch pb-44 md:pb-56 relative z-20">
         
         {/* Left column: Vertical Navigation list */}
         <div className="flex flex-col gap-4 items-start text-left">
-          <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#AAA] mb-1">
-            SECTIONS
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#8B5CF6] mb-1">
+            SECTIONS // NAV
           </span>
           <nav className="flex flex-col gap-2.5 items-start">
             {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="font-sans text-[21px] font-black tracking-tighter text-neutral-900 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_15px_rgba(138,46,255,0.45)] transition-all duration-300 block py-0.5"
+                className="font-sans text-[18px] uppercase font-black tracking-tight text-neutral-400 hover:text-white transition-colors block py-0.5"
               >
                 {link.label}
               </a>
@@ -123,23 +123,23 @@ export default function Footer() {
           <div className="flex items-center gap-2.5 group justify-end">
             <img 
               src="/logo.svg" 
-              className="w-6 h-6 rounded-full shadow-[0_2px_8px_rgba(138,46,255,0.15)] group-hover:scale-108 transition-all duration-500" 
+              className="w-6 h-6 rounded-full shadow-[0_2px_8px_rgba(139,92,246,0.15)] group-hover:scale-108 transition-all duration-500" 
               alt="Logo" 
             />
-            <span className="text-xl font-black tracking-tighter uppercase text-black hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#F4B179] hover:via-[#E0B3CF] hover:to-[#8A2EFF] hover:drop-shadow-[0_0_15px_rgba(138,46,255,0.45)] transition-all duration-300 cursor-default">
+            <span className="text-xl font-black tracking-tighter uppercase text-white hover:text-[#8B5CF6] transition-colors cursor-default">
               Aeymotion.
             </span>
           </div>
           
-          <p className="text-[10px] uppercase font-semibold tracking-widest text-[#AAA] leading-relaxed">
+          <p className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 leading-relaxed">
             © {new Date().getFullYear()} Aeymotion Studio.<br />
             All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6 text-[10px] uppercase font-semibold tracking-widest text-[#AAA]">
-            <a href="https://dribbble.com/aeymotion" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Dribbble</a>
-            <a href="https://www.instagram.com/aey.motion/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Instagram</a>
-            <a href="https://www.linkedin.com/company/aeymotion/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">LinkedIn</a>
+          <div className="flex items-center gap-6 text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+            <a href="https://dribbble.com/aeymotion" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Dribbble</a>
+            <a href="https://www.instagram.com/aey.motion/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+            <a href="https://www.linkedin.com/company/aeymotion/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
           </div>
         </div>
 
@@ -150,7 +150,7 @@ export default function Footer() {
         <div 
           ref={bodyRef}
           style={{ borderRadius: '50% 50% 0 0 / 100% 100% 0 0' }}
-          className="w-[101%] h-[260px] md:h-[320px] bg-gradient-to-tr from-[#DEE7FF] via-[#E9BEFF] to-[#F3A5FF] shadow-[0_-15px_45px_rgba(233,190,255,0.35)] relative translate-y-0 transition-transform duration-200 ease-out flex justify-center cursor-pointer group pointer-events-auto"
+          className="w-[101%] h-[260px] md:h-[320px] bg-gradient-to-tr from-[#8B5CF6] via-[#A855F7] to-[#F59E7B] shadow-[0_-15px_45px_rgba(139,92,246,0.3)] relative translate-y-0 transition-transform duration-200 ease-out flex justify-center cursor-pointer group pointer-events-auto"
         >
           {/* Eyes container */}
           <div className="absolute top-[18%] md:top-[16%] flex gap-12 md:gap-24">
@@ -162,7 +162,7 @@ export default function Footer() {
               {/* Pupil */}
               <div 
                 ref={leftPupilRef} 
-                className="w-[28px] h-[32px] md:w-[35px] md:h-[40px] bg-[#EE9ED8] rounded-full shadow-[inset_1px_1.5px_3px_rgba(255,255,255,0.6)] transition-transform duration-75 ease-out" 
+                className="w-[28px] h-[32px] md:w-[35px] md:h-[40px] bg-[#050505] rounded-full shadow-[inset_1px_1.5px_3px_rgba(255,255,255,0.6)] transition-transform duration-75 ease-out" 
               />
             </div>
 
@@ -174,7 +174,7 @@ export default function Footer() {
               {/* Pupil */}
               <div 
                 ref={rightPupilRef} 
-                className="w-[28px] h-[32px] md:w-[35px] md:h-[40px] bg-[#EE9ED8] rounded-full shadow-[inset_1px_1.5px_3px_rgba(255,255,255,0.6)] transition-transform duration-75 ease-out" 
+                className="w-[28px] h-[32px] md:w-[35px] md:h-[40px] bg-[#050505] rounded-full shadow-[inset_1px_1.5px_3px_rgba(255,255,255,0.6)] transition-transform duration-75 ease-out" 
               />
             </div>
           </div>

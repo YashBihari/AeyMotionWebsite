@@ -17,14 +17,26 @@
   --color-brand-800: #262626;
   --color-brand-900: #171717;
   --color-brand-950: #141414;
+
+  /* Editorial theme colors */
+  --color-bg-main: #050505;
+  --color-bg-secondary: #0B0B0F;
+  --color-bg-card: #121218;
+  --color-text-primary: #F4F4F5;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-accent-violet: #8B5CF6;
+  --color-electric-violet: #A855F7;
+  --color-warm-badge: #F59E7B;
 }
 
 @layer base {
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #FBFBFB;
-    color: #141414;
+    background-color: #050505;
+    color: #F4F4F5;
   }
 }
 
