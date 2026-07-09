@@ -66,10 +66,10 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-4 pt-2"
             >
               <a 
-                href="#contact"
+                href="#book"
                 className="px-6 py-4 bg-white text-black text-xs font-mono font-bold uppercase tracking-widest hover:bg-[#8B5CF6] hover:text-white transition-all duration-300 rounded-xl inline-flex items-center gap-2 shadow-xl hover:shadow-[#8B5CF6]/10"
               >
-                Start a project
+                Book a Call
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a 

@@ -8,16 +8,16 @@ import Pricing from './components/Pricing';
 import Process from './components/Process';
 import ProofOfProcess from './components/ProofOfProcess';
 import CTA from './components/CTA';
-import Contact from './components/Contact';
+import BookingSection from './components/BookingSection';
 import Footer from './components/Footer';
 import WhiteLabel from './components/WhiteLabel';
 import { motion } from 'motion/react';
 
 export default function App() {
-  const [activePage, setActivePage] = useState<'home' | 'portfolio' | 'pricing' | 'about' | 'contact'>(() => {
+  const [activePage, setActivePage] = useState<'home' | 'portfolio' | 'pricing' | 'about' | 'book'>(() => {
     const hash = window.location.hash.toLowerCase().replace('#', '');
-    if (['home', 'portfolio', 'pricing', 'about', 'contact'].includes(hash)) {
-      return hash as 'home' | 'portfolio' | 'pricing' | 'about' | 'contact';
+    if (['home', 'portfolio', 'pricing', 'about', 'book'].includes(hash)) {
+      return hash as 'home' | 'portfolio' | 'pricing' | 'about' | 'book';
     }
     return 'home';
   });
@@ -25,8 +25,8 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.toLowerCase().replace('#', '');
-      if (['home', 'portfolio', 'pricing', 'about', 'contact'].includes(hash)) {
-        setActivePage(hash as 'home' | 'portfolio' | 'pricing' | 'about' | 'contact');
+      if (['home', 'portfolio', 'pricing', 'about', 'book'].includes(hash)) {
+        setActivePage(hash as 'home' | 'portfolio' | 'pricing' | 'about' | 'book');
       } else {
         // Fallback to home if hash is empty or unrecognized
         setActivePage('home');
@@ -78,7 +78,7 @@ export default function App() {
                 <Process />
                 <ProofOfProcess />
                 <CTA />
-                <Contact />
+                <BookingSection />
               </motion.div>
             )}
 
@@ -124,14 +124,14 @@ export default function App() {
               </motion.div>
             )}
 
-            {activePage === 'contact' && (
+            {activePage === 'book' && (
               <motion.div
-                key="contact"
+                key="book"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                <Contact />
+                <BookingSection />
               </motion.div>
             )}
           </main>

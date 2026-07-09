@@ -5,13 +5,13 @@ import { Menu } from 'lucide-react';
 export default function Navbar() {
   const [activeHash, setActiveHash] = useState(() => {
     const hash = window.location.hash.toLowerCase();
-    return ['#home', '#portfolio', '#pricing', '#about', '#contact'].includes(hash) ? hash : '#home';
+    return ['#home', '#portfolio', '#pricing', '#about', '#book'].includes(hash) ? hash : '#home';
   });
 
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.toLowerCase();
-      if (['#home', '#portfolio', '#pricing', '#about', '#contact'].includes(hash)) {
+      if (['#home', '#portfolio', '#pricing', '#about', '#book'].includes(hash)) {
         setActiveHash(hash);
       } else {
         setActiveHash('#home');
@@ -31,7 +31,7 @@ export default function Navbar() {
     { num: '01', label: 'Selected Work', href: '#portfolio' },
     { num: '02', label: 'Services', href: '#about' },
     { num: '03', label: 'Pricing & Offers', href: '#pricing' },
-    { num: '04', label: 'Contact', href: '#contact' }
+    { num: '04', label: 'Book a Call', href: '#book' }
   ];
 
   return (

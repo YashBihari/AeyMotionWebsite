@@ -47,7 +47,7 @@ export default function WhiteLabel() {
             </ul>
 
             <a
-              href="#contact"
+              href="#book"
               className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#8B5CF6] hover:text-white transition-colors"
             >
               Partner with us

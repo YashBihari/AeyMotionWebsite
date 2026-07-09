@@ -1,13 +1,6 @@
 import { useEffect, useRef } from 'react';
 
 export default function Footer() {
-  const links = [
-    { label: 'Selected Work', href: '#portfolio' },
-    { label: 'Services & Value', href: '#about' },
-    { label: 'Pricing & Offers', href: '#pricing' },
-    { label: 'Start Inquiry', href: '#contact' }
-  ];
-
   const leftEyeRef = useRef<HTMLDivElement>(null);
   const rightEyeRef = useRef<HTMLDivElement>(null);
   const leftPupilRef = useRef<HTMLDivElement>(null);
@@ -100,19 +93,19 @@ export default function Footer() {
         {/* Left column: Vertical Navigation list */}
         <div className="flex flex-col gap-4 items-start text-left">
           <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#8B5CF6] mb-1">
-            SECTIONS // NAV
+            CONTACT // DIRECT
           </span>
-          <nav className="flex flex-col gap-2.5 items-start">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="font-sans text-[18px] uppercase font-black tracking-tight text-neutral-400 hover:text-white transition-colors block py-0.5"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          <div className="space-y-2">
+            <a
+              href="mailto:hello@aeymotion.com"
+              className="font-sans text-[20px] md:text-[24px] uppercase font-black tracking-tight text-white hover:text-[#8B5CF6] transition-all duration-300 block py-0.5 border-b border-white/10 hover:border-[#8B5CF6] pb-1.5"
+            >
+              hello@aeymotion.com
+            </a>
+            <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-relaxed">
+              Write to us directly with your product brief or inquiries.
+            </p>
+          </div>
         </div>
 
         {/* Center column - Spacer for elegance */}

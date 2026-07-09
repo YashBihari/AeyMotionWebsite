@@ -215,10 +215,10 @@ export default function CTA() {
               
               <div className="pt-6 border-t border-white/[0.06]">
                 <button
-                  onClick={() => handleScrollToSection('contact')}
+                  onClick={() => handleScrollToSection('book')}
                   className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#8B5CF6] hover:text-white transition-colors"
                 >
-                  Have another question? Ask directly <ArrowRight className="w-3.5 h-3.5" />
+                  Ready to start? Book a call directly <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -317,11 +317,11 @@ export default function CTA() {
               {/* Action Buttons */}
               <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
-                  onClick={() => handleScrollToSection('contact')}
+                  onClick={() => handleScrollToSection('book')}
                   className="w-full sm:w-auto px-8 py-4 bg-[#8B5CF6] text-white hover:brightness-110 text-[10px] font-mono uppercase tracking-widest transition-all rounded-xl font-bold cursor-pointer inline-flex items-center justify-center gap-2"
                   id="cta-start-project"
                 >
-                  Start a project <ArrowRight className="w-3.5 h-3.5" />
+                  Book a Call <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
                 <button

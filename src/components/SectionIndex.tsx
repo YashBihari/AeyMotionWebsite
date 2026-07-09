@@ -25,10 +25,10 @@ export default function SectionIndex() {
     },
     {
       num: "04",
-      title: "Inquiry Brief",
-      desc: "Dynamic cost planner and intake portal",
+      title: "Book a Call",
+      desc: "Review your product and lock in strategy",
       frame: "00:01:00:00",
-      href: "#contact"
+      href: "#book"
     }
   ];
 
