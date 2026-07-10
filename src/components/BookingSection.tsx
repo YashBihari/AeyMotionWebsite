@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Target, Cpu, Compass, ArrowRight, Loader2, Calendar, Mail } from 'lucide-react';
+import InteractiveTiltCard from './InteractiveTiltCard';
 
 interface ValueBlock {
   title: string;
@@ -19,33 +20,33 @@ export default function BookingSection() {
       title: "Product clarity",
       description: "We’ll look at what your product does and where users may be getting confused.",
       icon: Target,
-      bg: "bg-[#13111C]/60",
-      borderColor: "border-purple-500/10 hover:border-purple-500/20",
-      accentColor: "#8B5CF6"
+      bg: "bg-[#12101A]/60",
+      borderColor: "border-[#8C4BFF]/10 hover:border-[#8C4BFF]/20",
+      accentColor: "#8C4BFF"
     },
     {
       title: "Motion opportunity",
       description: "We’ll identify where video or motion can create the most impact — website, demo, ads, onboarding, or launch.",
       icon: Cpu,
-      bg: "bg-[#0B1520]/60",
-      borderColor: "border-sky-500/10 hover:border-sky-500/20",
-      accentColor: "#38BDF8"
+      bg: "bg-[#12101A]/60",
+      borderColor: "border-[#B98FD4]/10 hover:border-[#B98FD4]/20",
+      accentColor: "#B98FD4"
     },
     {
       title: "Best next step",
       description: "You’ll get a clear recommendation: launch video, feature pack, GTM motion system, or monthly motion support.",
       icon: Compass,
-      bg: "bg-[#181210]/60",
-      borderColor: "border-orange-500/10 hover:border-orange-500/20",
-      accentColor: "#F59E7B"
+      bg: "bg-[#12101A]/60",
+      borderColor: "border-[#D9A6B4]/10 hover:border-[#D9A6B4]/20",
+      accentColor: "#D9A6B4"
     }
   ];
 
   return (
     <section id="book" className="py-24 md:py-32 bg-[#050507] text-white border-b border-white/[0.06] relative overflow-hidden isolate font-sans">
       {/* Background ambient radial glows for dark premium SaaS studio feel */}
-      <div className="absolute top-[15%] left-[-10%] w-[600px] h-[600px] bg-[#8B5CF6]/4 blur-[130px] pointer-events-none -z-10" />
-      <div className="absolute bottom-[15%] right-[-10%] w-[600px] h-[600px] bg-[#38BDF8]/3 blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-[15%] left-[-10%] w-[600px] h-[600px] bg-[#8C4BFF]/4 blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute bottom-[15%] right-[-10%] w-[600px] h-[600px] bg-[#B98FD4]/3 blur-[130px] pointer-events-none -z-10" />
 
       {/* Subtle Motion Timeline DNA background lines behind the booking section */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none select-none">
@@ -60,8 +61,8 @@ export default function BookingSection() {
           
           {/* Left Side: Headline, Copy, and Value Blocks */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="border-l-2 border-[#8B5CF6] pl-6">
-              <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] mb-3 block">
+            <div className="border-l-2 border-[#8C4BFF] pl-6">
+              <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] mb-3 block">
                 08 / BOOK A CALL
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[0.95] mb-4">
@@ -72,7 +73,7 @@ export default function BookingSection() {
               </h2>
             </div>
             
-            <p className="text-sm text-[#A1A1AA] font-light leading-relaxed max-w-lg">
+            <p className="text-sm text-[#B9B2C2] font-light leading-relaxed max-w-lg">
               Book a free 30-minute Motion Strategy Call. We’ll review your product, launch goal, and current visual communication — then recommend the best motion direction for your website, demo, ads, or campaign.
             </p>
 
@@ -90,9 +91,9 @@ export default function BookingSection() {
                 {valueBlocks.map((block, i) => {
                   const Icon = block.icon;
                   return (
-                    <div 
+                    <InteractiveTiltCard 
                       key={i} 
-                      className={`p-5 rounded-xl border ${block.borderColor} ${block.bg} transition-all duration-300 flex gap-4 relative overflow-hidden group`}
+                      className={`p-5 rounded-xl border ${block.borderColor} ${block.bg} transition-all duration-300 flex gap-4 relative overflow-hidden group h-full`}
                     >
                       {/* Left vertical visual accent */}
                       <div 
@@ -106,11 +107,11 @@ export default function BookingSection() {
                         <h4 className="text-xs font-bold uppercase tracking-wider text-white">
                           {block.title}
                         </h4>
-                        <p className="text-[11px] text-neutral-400 font-light leading-relaxed">
+                        <p className="text-[11px] text-[#B9B2C2] font-light leading-relaxed">
                           {block.description}
                         </p>
                       </div>
-                    </div>
+                    </InteractiveTiltCard>
                   );
                 })}
               </div>
@@ -121,7 +122,7 @@ export default function BookingSection() {
               <span className="text-neutral-500 uppercase tracking-wider">Prefer email?</span>
               <a 
                 href="mailto:hello@aeymotion.com" 
-                className="inline-flex items-center gap-2 text-[#8B5CF6] hover:text-white border-b border-[#8B5CF6]/20 hover:border-white transition-all pb-0.5 font-bold tracking-tight"
+                className="inline-flex items-center gap-2 text-[#8C4BFF] hover:text-white border-b border-[#8C4BFF]/20 hover:border-white transition-all pb-0.5 font-bold tracking-tight"
               >
                 <Mail className="w-3.5 h-3.5" />
                 hello@aeymotion.com
@@ -136,12 +137,12 @@ export default function BookingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative rounded-2xl border border-white/[0.08] bg-[#0B0B0F]/90 overflow-hidden shadow-2xl p-2 md:p-4 min-h-[660px]"
+              className="relative rounded-2xl border border-white/[0.08] bg-[#0B0A10]/90 overflow-hidden shadow-2xl p-2 md:p-4 min-h-[660px] h-full"
             >
               {/* Premium Header/Status Indicator inside the Scheduler Container */}
               <div className="px-4 py-3 border-b border-white/[0.04] flex items-center justify-between text-[10px] font-mono text-neutral-500 mb-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#8B5CF6] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#8C4BFF] animate-pulse" />
                   <span className="uppercase font-bold tracking-wider text-neutral-300">CALENDLY INTERNET ENGINE</span>
                 </div>
                 <span className="uppercase tracking-widest">30-MIN STRATEGY CALL</span>
@@ -154,9 +155,9 @@ export default function BookingSection() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0B0B0F] text-neutral-400 gap-3"
+                    className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0B0A10] text-neutral-400 gap-3"
                   >
-                    <Loader2 className="w-8 h-8 text-[#8B5CF6] animate-spin" />
+                    <Loader2 className="w-8 h-8 text-[#8C4BFF] animate-spin" />
                     <span className="font-mono text-[10px] tracking-widest uppercase">Initializing booking terminal...</span>
                   </motion.div>
                 )}
@@ -164,7 +165,7 @@ export default function BookingSection() {
 
               {/* Calendly Inline Embed */}
               <iframe
-                src="https://calendly.com/aeymotion/motion-strategy-call?embed_domain=aeymotion.com&embed_type=Inline&background_color=0b0b0f&text_color=ffffff&primary_color=8b5cf6"
+                src="https://calendly.com/aeymotion/motion-strategy-call?embed_domain=aeymotion.com&embed_type=Inline&background_color=0b0a10&text_color=ffffff&primary_color=8c4bff"
                 width="100%"
                 height="650"
                 frameBorder="0"

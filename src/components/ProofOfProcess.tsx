@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Target, Cpu, Send, Workflow, Sparkles, ArrowRight } from 'lucide-react';
+import InteractiveTiltCard from './InteractiveTiltCard';
 
 interface ProofBlock {
   title: string;
@@ -20,9 +21,9 @@ export default function ProofOfProcess() {
       title: "Strategy before animation",
       description: "We start with the product, audience, and conversion goal before touching keyframes.",
       icon: Target,
-      bg: "bg-[#13111C]/80",
-      borderColor: "border-purple-500/10 hover:border-purple-500/30",
-      accentColor: "#A78BFA",
+      bg: "bg-[#12101A]/80",
+      borderColor: "border-[#8C4BFF]/10 hover:border-[#8C4BFF]/30",
+      accentColor: "#8C4BFF",
       cols: "md:col-span-7"
     },
     {
@@ -30,9 +31,9 @@ export default function ProofOfProcess() {
       title: "Built for SaaS & AI",
       description: "We focus on complex products that need to be explained quickly and visually.",
       icon: Cpu,
-      bg: "bg-[#0B1520]/80",
-      borderColor: "border-sky-500/10 hover:border-sky-500/30",
-      accentColor: "#38BDF8",
+      bg: "bg-[#12101A]/80",
+      borderColor: "border-[#B98FD4]/10 hover:border-[#B98FD4]/30",
+      accentColor: "#B98FD4",
       cols: "md:col-span-5"
     },
     {
@@ -40,9 +41,9 @@ export default function ProofOfProcess() {
       title: "Launch-ready deliverables",
       description: "Assets are prepared for websites, LinkedIn, Instagram, YouTube Shorts, pitch decks, and ads.",
       icon: Send,
-      bg: "bg-[#181210]/80",
-      borderColor: "border-orange-500/10 hover:border-orange-500/30",
-      accentColor: "#F59E7B",
+      bg: "bg-[#12101A]/80",
+      borderColor: "border-[#D9A6B4]/10 hover:border-[#D9A6B4]/30",
+      accentColor: "#D9A6B4",
       cols: "md:col-span-4"
     },
     {
@@ -50,9 +51,9 @@ export default function ProofOfProcess() {
       title: "Structured workflow",
       description: "Clear steps, async reviews, and organized delivery reduce confusion during production.",
       icon: Workflow,
-      bg: "bg-[#0B1612]/80",
-      borderColor: "border-emerald-500/10 hover:border-emerald-500/30",
-      accentColor: "#34D399",
+      bg: "bg-[#12101A]/80",
+      borderColor: "border-[#F2A979]/10 hover:border-[#F2A979]/30",
+      accentColor: "#F2A979",
       cols: "md:col-span-4"
     },
     {
@@ -60,9 +61,9 @@ export default function ProofOfProcess() {
       title: "Premium visual systems",
       description: "We build motion that makes your product feel sharper, clearer, and more valuable.",
       icon: Sparkles,
-      bg: "bg-[#16101B]/80",
-      borderColor: "border-indigo-500/10 hover:border-indigo-500/30",
-      accentColor: "#8B5CF6",
+      bg: "bg-[#12101A]/80",
+      borderColor: "border-[#F3E4D8]/10 hover:border-[#F3E4D8]/30",
+      accentColor: "#F3E4D8",
       cols: "md:col-span-4"
     }
   ];
@@ -77,8 +78,8 @@ export default function ProofOfProcess() {
   return (
     <section id="proof" className="py-24 md:py-32 bg-[#050507] border-b border-white/[0.06] relative overflow-hidden font-sans">
       {/* Background ambient radial glow layers for premium editorial feel */}
-      <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-[#8B5CF6]/3 blur-[130px] pointer-events-none -z-10" />
-      <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-[#38BDF8]/2 blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-[#8C4BFF]/3 blur-[130px] pointer-events-none -z-10" />
+      <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-[#B98FD4]/2 blur-[130px] pointer-events-none -z-10" />
 
       {/* Motion Timeline DNA Background Accent lines */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none select-none">
@@ -95,8 +96,8 @@ export default function ProofOfProcess() {
         
         {/* Section Header with Flex CTA */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-20">
-          <div className="border-l-2 border-[#8B5CF6] pl-6 md:pl-8 max-w-2xl">
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] mb-2.5 block">
+          <div className="border-l-2 border-[#8C4BFF] pl-6 md:pl-8 max-w-2xl">
+            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] mb-2.5 block">
               06 / PROOF
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[0.95] mb-4">
@@ -114,7 +115,7 @@ export default function ProofOfProcess() {
             id="btn-proof-cta"
           >
             See how we work
-            <ArrowRight className="w-4 h-4 text-[#8B5CF6] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#8C4BFF] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
@@ -123,13 +124,14 @@ export default function ProofOfProcess() {
           {proofBlocks.map((block, idx) => {
             const Icon = block.icon;
             return (
-              <motion.div
+              <InteractiveTiltCard
                 key={idx}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
-                className={`p-8 rounded-2xl border ${block.borderColor} ${block.bg} flex flex-col justify-between group relative overflow-hidden transition-all duration-300 min-h-[220px] ${block.cols}`}
+                containerClassName={block.cols}
+                className={`p-8 rounded-2xl border ${block.borderColor} ${block.bg} flex flex-col justify-between group relative overflow-hidden transition-all duration-300 min-h-[220px] h-full`}
               >
                 {/* Visual Connector tick background indicator */}
                 <div className="absolute top-4 right-4 font-mono text-[9px] text-white/5 group-hover:text-white/10 transition-colors">
@@ -161,7 +163,7 @@ export default function ProofOfProcess() {
                   className="absolute -bottom-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-[0.06] blur-2xl transition-opacity duration-500"
                   style={{ backgroundColor: block.accentColor }}
                 />
-              </motion.div>
+              </InteractiveTiltCard>
             );
           })}
         </div>

@@ -18,25 +18,30 @@
   --color-brand-900: #171717;
   --color-brand-950: #141414;
 
+  /* Core Aeymotion palette */
+  --color-aey-cream: #F3E4D8;
+  --color-aey-peach: #F2A979;
+  --color-aey-blush: #D9A6B4;
+  --color-aey-lavender: #B98FD4;
+  --color-aey-violet: #8C4BFF;
+  --color-aey-purple: #6F2BFF;
+
   /* Editorial theme colors */
-  --color-bg-main: #050505;
-  --color-bg-secondary: #0B0B0F;
-  --color-bg-card: #121218;
-  --color-text-primary: #F4F4F5;
-  --color-text-secondary: #A1A1AA;
+  --color-bg-main: #050507;
+  --color-bg-secondary: #0B0A10;
+  --color-bg-card: #12101A;
+  --color-text-primary: #F7F4F8;
+  --color-text-secondary: #B9B2C2;
   --color-text-muted: #71717A;
   --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-accent-violet: #8B5CF6;
-  --color-electric-violet: #A855F7;
-  --color-warm-badge: #F59E7B;
 }
 
 @layer base {
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #050505;
-    color: #F4F4F5;
+    background-color: #050507;
+    color: #F7F4F8;
   }
 }
 

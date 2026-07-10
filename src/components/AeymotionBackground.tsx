@@ -3,9 +3,10 @@ import { motion } from 'motion/react';
 
 interface AeymotionBackgroundProps {
   variant?: 'hero' | 'work' | 'services' | 'pricing' | 'process' | 'cta';
+  isHovered?: boolean;
 }
 
-export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackgroundProps) {
+export default function AeymotionBackground({ variant = 'hero', isHovered = false }: AeymotionBackgroundProps) {
   // Configured opacities and visibility multipliers
   const glowOpacityClass = "opacity-[0.45]"; // Boosted for high visibility
   
@@ -33,57 +34,218 @@ export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackg
         <rect width="100%" height="100%" filter="url(#aey-grain)" />
       </svg>
 
-      {/* 3. Variant-Specific Blurred Glow Blobs */}
-      {variant === 'hero' && (
+      {/* Centered dark radial overlay to dim the middle of the screen (less glow at mid, more continuous at left & right sides) */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(5,5,7,0.85) 0%, transparent 75%)'
+        }}
+      />
+
+      {/* 3. Wrapped Glows and Curves with feathered masks to make section transitions perfectly seamless */}
+      <div 
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          // Linear gradient mask to smoothly feather/fade the top and bottom of each section, preventing sharp boundaries.
+          maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)'
+        }}
+      >
+        {/* 3. Variant-Specific Blurred Glow Blobs */}
+        {variant === 'hero' && (
         <>
-          {/* Main Hero ambient system */}
-          <div className="absolute top-[-10%] right-[-5%] w-[60%] h-[70%] bg-gradient-to-bl from-[#8B5CF6]/35 via-[#4C1D95]/15 to-transparent rounded-full blur-[140px] opacity-100" />
-          <div className="absolute top-[20%] left-[-10%] w-[50%] h-[60%] bg-[#38BDF8]/20 rounded-full blur-[150px] opacity-100" />
-          <div className="absolute bottom-[10%] right-[15%] w-[45%] h-[50%] bg-[#F59E7B]/15 rounded-full blur-[130px] opacity-100" />
+          {/* Main Hero ambient system - strictly brand colors */}
+          <div className="absolute top-[-10%] right-[-5%] w-[60%] h-[70%] bg-gradient-to-bl from-[#8C4BFF]/35 via-[#6F2BFF]/15 to-transparent rounded-full blur-[140px] opacity-100" />
+          <div className="absolute top-[20%] left-[-10%] w-[50%] h-[60%] bg-[#B98FD4]/20 rounded-full blur-[150px] opacity-100" />
+          <div className="absolute bottom-[10%] right-[15%] w-[45%] h-[50%] bg-[#F2A979]/15 rounded-full blur-[130px] opacity-100" />
+
+          {/* Glowing transparent film strip along the curve (matching reference style) */}
+          <style dangerouslySetInnerHTML={{ __html: `
+            @keyframes film-roll-sync {
+              0% {
+                stroke-dashoffset: 0;
+              }
+              100% {
+                stroke-dashoffset: -1386;
+              }
+            }
+            .animate-film-sync {
+              animation: film-roll-sync ${isHovered ? '180s' : '60s'} linear infinite;
+              transition: animation-duration 0.5s ease-out;
+            }
+          `}} />
+          <svg 
+            className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 opacity-[0.8]"
+            viewBox="0 0 1440 900"
+            preserveAspectRatio="xMidYMid slice"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="film-glow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#ffb03a" /> {/* Golden orange */}
+                <stop offset="35%" stopColor="#ff4eb0" /> {/* Hot pink */}
+                <stop offset="70%" stopColor="#a35bff" /> {/* Neon violet */}
+                <stop offset="100%" stopColor="#6366f1" /> {/* Indigo */}
+              </linearGradient>
+
+              {/* High-performance blur filter for the neon glow layer */}
+              <filter id="film-glow-blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="8" />
+              </filter>
+
+              {/* Unified Mask: Subtracts sprocket holes and inner frame windows from a solid 80px strip */}
+              <mask id="perfect-film-mask" maskUnits="userSpaceOnUse" x="-50%" y="-50%" width="200%" height="200%">
+                {/* 1. Solid White Base Shape */}
+                <path 
+                  d="M 650,-100 C 740,140 820,260 880,330 C 960,420 1150,580 1480,780" 
+                  stroke="#ffffff" 
+                  strokeWidth="80" 
+                  fill="none" 
+                />
+                
+                {/* 2. Subtract Top Sprocket Holes (Black dashed line) */}
+                <path 
+                  d="M 618,-100 C 708,140 788,260 848,330 C 928,420 1118,580 1448,780" 
+                  stroke="#000000" 
+                  strokeWidth="6" 
+                  strokeDasharray="12 10"
+                  className="animate-film-sync"
+                  fill="none" 
+                />
+
+                {/* 3. Subtract Bottom Sprocket Holes (Black dashed line) */}
+                <path 
+                  d="M 682,-100 C 772,140 852,260 912,330 C 992,420 1182,580 1512,780" 
+                  stroke="#000000" 
+                  strokeWidth="6" 
+                  strokeDasharray="12 10"
+                  className="animate-film-sync"
+                  fill="none" 
+                />
+
+                {/* 4. Subtract Center Frame Windows (Black dashed line) */}
+                {/* 44px wide leaving 7px of solid rail on either side, 110px length, 16px dividers */}
+                <path 
+                  d="M 650,-100 C 740,140 820,260 880,330 C 960,420 1150,580 1480,780" 
+                  stroke="#000000" 
+                  strokeWidth="44" 
+                  strokeDasharray="110 16"
+                  className="animate-film-sync"
+                  fill="none" 
+                />
+              </mask>
+            </defs>
+
+            {/* LAYER 1: Ambient soft blur glow (Unmasked base layer) */}
+            <path 
+              d="M 650,-100 C 740,140 820,260 880,330 C 960,420 1150,580 1480,780" 
+              stroke="url(#film-glow-grad)"
+              strokeWidth="90"
+              fill="none"
+              filter="url(#film-glow-blur)"
+              opacity="0.2"
+            />
+
+            {/* LAYER 2: Masked Core Film Strip (Sprockets and windows perfectly cut out) */}
+            <g mask="url(#perfect-film-mask)">
+              {/* Semi-transparent glow body */}
+              <path 
+                d="M 650,-100 C 740,140 820,260 880,330 C 960,420 1150,580 1480,780" 
+                stroke="url(#film-glow-grad)"
+                strokeWidth="80"
+                fill="none"
+                opacity="0.8"
+              />
+
+              {/* Extra pure neon-white overlay for highlight brilliance */}
+              <path 
+                d="M 650,-100 C 740,140 820,260 880,330 C 960,420 1150,580 1480,780" 
+                stroke="#ffffff"
+                strokeWidth="80"
+                fill="none"
+                opacity="0.12"
+              />
+            </g>
+
+            {/* LAYER 3: Sharp Edge Boundaries (Thin structural rails for visual definition) */}
+            {/* Top Outer Edge */}
+            <path 
+              d="M 610,-100 C 700,140 780,260 840,330 C 920,420 1110,580 1440,780" 
+              stroke="url(#film-glow-grad)"
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.8"
+            />
+            {/* Top Inner Edge (border between sprocket holes and center frame windows) */}
+            <path 
+              d="M 628,-100 C 718,140 798,260 858,330 C 938,420 1128,580 1458,780" 
+              stroke="url(#film-glow-grad)"
+              strokeWidth="0.75"
+              fill="none"
+              opacity="0.4"
+            />
+
+            {/* Bottom Inner Edge (border between center frame windows and bottom sprocket holes) */}
+            <path 
+              d="M 672,-100 C 762,140 842,260 902,330 C 982,420 1172,580 1502,780" 
+              stroke="url(#film-glow-grad)"
+              strokeWidth="0.75"
+              fill="none"
+              opacity="0.4"
+            />
+            {/* Bottom Outer Edge */}
+            <path 
+              d="M 690,-100 C 780,140 860,260 920,330 C 1000,420 1190,580 1520,780" 
+              stroke="url(#film-glow-grad)"
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.8"
+            />
+          </svg>
         </>
       )}
 
       {variant === 'work' && (
         <>
           {/* Selected Work visual layers */}
-          <div className="absolute top-[15%] left-[5%] w-[55%] h-[50%] bg-[#24180F]/45 rounded-full blur-[130px]" />
-          <div className="absolute bottom-[20%] right-[5%] w-[50%] h-[55%] bg-[#1A102B]/45 rounded-full blur-[140px]" />
-          <div className="absolute top-[40%] right-[20%] w-[350px] h-[350px] bg-[#8B5CF6]/12 rounded-full blur-[120px]" />
+          <div className="absolute top-[15%] left-[5%] w-[55%] h-[50%] bg-[#F2A979]/10 rounded-full blur-[130px]" />
+          <div className="absolute bottom-[20%] right-[5%] w-[50%] h-[55%] bg-[#8C4BFF]/12 rounded-full blur-[140px]" />
+          <div className="absolute top-[40%] right-[20%] w-[350px] h-[350px] bg-[#D9A6B4]/12 rounded-full blur-[120px]" />
         </>
       )}
 
       {variant === 'services' && (
         <>
           {/* Services/WhyUs ambient layers */}
-          <div className="absolute top-[10%] right-[10%] w-[50%] h-[50%] bg-[#0D1B2E]/50 rounded-full blur-[130px]" />
-          <div className="absolute bottom-[15%] left-[5%] w-[55%] h-[50%] bg-[#1A102B]/45 rounded-full blur-[145px]" />
-          <div className="absolute top-[35%] left-[30%] w-[300px] h-[300px] bg-[#38BDF8]/12 rounded-full blur-[110px]" />
+          <div className="absolute top-[10%] right-[10%] w-[50%] h-[50%] bg-[#B98FD4]/12 rounded-full blur-[130px]" />
+          <div className="absolute bottom-[15%] left-[5%] w-[55%] h-[50%] bg-[#8C4BFF]/12 rounded-full blur-[145px]" />
+          <div className="absolute top-[35%] left-[30%] w-[300px] h-[300px] bg-[#F2A979]/10 rounded-full blur-[110px]" />
         </>
       )}
 
       {variant === 'pricing' && (
         <>
           {/* Pricing premium layers */}
-          <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[65%] h-[55%] bg-gradient-to-b from-[#8B5CF6]/25 via-[#4C1D95]/10 to-transparent rounded-full blur-[150px]" />
-          <div className="absolute bottom-[10%] right-[5%] w-[40%] h-[40%] bg-[#F59E7B]/12 rounded-full blur-[120px]" />
-          <div className="absolute bottom-[15%] left-[10%] w-[350px] h-[350px] bg-[#34D399]/10 rounded-full blur-[110px]" />
+          <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[65%] h-[55%] bg-gradient-to-b from-[#8C4BFF]/25 via-[#6F2BFF]/10 to-transparent rounded-full blur-[150px]" />
+          <div className="absolute bottom-[10%] right-[5%] w-[40%] h-[40%] bg-[#F2A979]/12 rounded-full blur-[120px]" />
+          <div className="absolute bottom-[15%] left-[10%] w-[350px] h-[350px] bg-[#D9A6B4]/12 rounded-full blur-[110px]" />
         </>
       )}
 
       {variant === 'process' && (
         <>
           {/* Process step visual tracks */}
-          <div className="absolute top-[25%] left-[-5%] w-[45%] h-[45%] bg-[#1A102B]/50 rounded-full blur-[130px]" />
-          <div className="absolute bottom-[25%] right-[-5%] w-[45%] h-[45%] bg-[#0D211B]/45 rounded-full blur-[130px]" />
-          <div className="absolute top-[50%] left-[35%] w-[400px] h-[400px] bg-[#38BDF8]/10 rounded-full blur-[140px]" />
+          <div className="absolute top-[25%] left-[-5%] w-[45%] h-[45%] bg-[#8C4BFF]/12 rounded-full blur-[130px]" />
+          <div className="absolute bottom-[25%] right-[-5%] w-[45%] h-[45%] bg-[#F2A979]/10 rounded-full blur-[130px]" />
+          <div className="absolute top-[50%] left-[35%] w-[400px] h-[400px] bg-[#B98FD4]/10 rounded-full blur-[140px]" />
         </>
       )}
 
       {variant === 'cta' && (
         <>
           {/* Strong final CTA glow */}
-          <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[75%] h-[60%] bg-gradient-to-r from-[#8B5CF6]/30 via-[#38BDF8]/20 to-[#F59E7B]/15 rounded-full blur-[140px] opacity-90" />
-          <div className="absolute -bottom-10 left-[20%] w-[400px] h-[400px] bg-[#4C1D95]/20 rounded-full blur-[120px]" />
+          <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[75%] h-[60%] bg-gradient-to-r from-[#8C4BFF]/30 via-[#B98FD4]/20 to-[#F2A979]/15 rounded-full blur-[140px] opacity-90" />
+          <div className="absolute -bottom-10 left-[20%] w-[400px] h-[400px] bg-[#6F2BFF]/15 rounded-full blur-[120px]" />
         </>
       )}
 
@@ -95,15 +257,16 @@ export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackg
       >
         <defs>
           <linearGradient id="aey-dna-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.8" />
-            <stop offset="40%" stopColor="#A855F7" stopOpacity="0.8" />
-            <stop offset="75%" stopColor="#38BDF8" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#F59E7B" stopOpacity="0.8" />
+            <stop offset="0%" stopColor="#F3E4D8" stopOpacity="0.8" />
+            <stop offset="22%" stopColor="#F2A979" stopOpacity="0.8" />
+            <stop offset="48%" stopColor="#D9A6B4" stopOpacity="0.8" />
+            <stop offset="72%" stopColor="#B98FD4" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#8C4BFF" stopOpacity="0.8" />
           </linearGradient>
           <linearGradient id="aey-dna-grad-secondary" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.7" />
-            <stop offset="50%" stopColor="#8B5CF6" stopOpacity="0.7" />
-            <stop offset="100%" stopColor="#34D399" stopOpacity="0.7" />
+            <stop offset="0%" stopColor="#F2A979" stopOpacity="0.7" />
+            <stop offset="50%" stopColor="#D9A6B4" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="#8C4BFF" stopOpacity="0.7" />
           </linearGradient>
         </defs>
 
@@ -131,20 +294,20 @@ export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackg
             />
 
             {/* AE Tangent Handles visual */}
-            <circle cx="400" cy="220" r="4" fill="#8B5CF6" />
-            <line x1="400" y1="220" x2="480" y2="150" stroke="#8B5CF6" strokeWidth="1.2" />
-            <circle cx="480" cy="150" r="5" fill="#F59E7B" />
+            <circle cx="400" cy="220" r="4" fill="#8C4BFF" />
+            <line x1="400" y1="220" x2="480" y2="150" stroke="#8C4BFF" strokeWidth="1.2" />
+            <circle cx="480" cy="150" r="5" fill="#F2A979" />
 
-            <circle cx="1100" cy="380" r="4" fill="#38BDF8" />
-            <line x1="1100" y1="380" x2="1020" y2="440" stroke="#38BDF8" strokeWidth="1.2" />
-            <circle cx="1020" cy="440" r="5" fill="#8B5CF6" />
+            <circle cx="1100" cy="380" r="4" fill="#B98FD4" />
+            <line x1="1100" y1="380" x2="1020" y2="440" stroke="#B98FD4" strokeWidth="1.2" />
+            <circle cx="1020" cy="440" r="5" fill="#8C4BFF" />
 
             {/* Keyframe Nodes (Diamond structures) */}
             <g transform="translate(620, 290) rotate(45)">
-              <rect x="-5" y="-5" width="10" height="10" fill="#38BDF8" stroke="#ffffff" strokeWidth="1" />
+              <rect x="-5" y="-5" width="10" height="10" fill="#B98FD4" stroke="#ffffff" strokeWidth="1" />
             </g>
             <g transform="translate(1350, 420) rotate(45)">
-              <rect x="-5" y="-5" width="10" height="10" fill="#F59E7B" stroke="#ffffff" strokeWidth="1" />
+              <rect x="-5" y="-5" width="10" height="10" fill="#F2A979" stroke="#ffffff" strokeWidth="1" />
             </g>
 
             {/* Grid Frame Boxes with labels */}
@@ -178,10 +341,10 @@ export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackg
 
             {/* Diamond Keyframes at intervals */}
             <g transform="translate(480, 150) rotate(45)">
-              <rect x="-4" y="-4" width="8" height="8" fill="#8B5CF6" />
+              <rect x="-4" y="-4" width="8" height="8" fill="#8C4BFF" />
             </g>
             <g transform="translate(900, 200) rotate(45)">
-              <rect x="-4" y="-4" width="8" height="8" fill="#F59E7B" />
+              <rect x="-4" y="-4" width="8" height="8" fill="#F2A979" />
             </g>
           </>
         )}
@@ -199,15 +362,15 @@ export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackg
             <path 
               d="M 100,450 C 400,450 300,100 650,200 S 900,400 1200,100" 
               fill="none" 
-              stroke="#38BDF8" 
+              stroke="#B98FD4" 
               strokeWidth="1.5" 
               strokeDasharray="6 6"
             />
             {/* Control handles and vectors */}
-            <line x1="650" y1="200" x2="600" y2="120" stroke="#38BDF8" strokeWidth="1" />
-            <circle cx="600" cy="120" r="4" fill="#38BDF8" />
-            <line x1="650" y1="200" x2="700" y2="280" stroke="#38BDF8" strokeWidth="1" />
-            <circle cx="700" cy="280" r="4" fill="#8B5CF6" />
+            <line x1="650" y1="200" x2="600" y2="120" stroke="#B98FD4" strokeWidth="1" />
+            <circle cx="600" cy="120" r="4" fill="#B98FD4" />
+            <line x1="650" y1="200" x2="700" y2="280" stroke="#B98FD4" strokeWidth="1" />
+            <circle cx="700" cy="280" r="4" fill="#8C4BFF" />
           </>
         )}
 
@@ -225,10 +388,10 @@ export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackg
 
             {/* keyframe markers */}
             <g transform="translate(375, 420) rotate(45)">
-              <rect x="-4" y="-4" width="8" height="8" fill="#8B5CF6" />
+              <rect x="-4" y="-4" width="8" height="8" fill="#8C4BFF" />
             </g>
             <g transform="translate(1125, 600) rotate(45)">
-              <rect x="-4" y="-4" width="8" height="8" fill="#34D399" />
+              <rect x="-4" y="-4" width="8" height="8" fill="#D9A6B4" />
             </g>
           </>
         )}
@@ -264,11 +427,13 @@ export default function AeymotionBackground({ variant = 'hero' }: AeymotionBackg
 
             {/* Keyframe intersection points */}
             <g transform="translate(500, 350) rotate(45)">
-              <rect x="-4" y="-4" width="8" height="8" fill="#8B5CF6" />
+              <rect x="-4" y="-4" width="8" height="8" fill="#8C4BFF" />
             </g>
           </>
         )}
       </svg>
+
+      </div>
 
       {/* 5. Additional Monospaced Ticker Code Overlays */}
       <div className="absolute top-4 left-6 font-mono text-[7px] text-neutral-500/50 hidden md:block select-none">

@@ -13,15 +13,7 @@ import {
   Video
 } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
-
-interface ProofItem {
-  title: string;
-  desc: string;
-  bg: string;
-  accent: string;
-  icon: React.ComponentType<any>;
-  spec: string;
-}
+import InteractiveTiltCard from './InteractiveTiltCard';
 
 interface FAQItem {
   q: string;
@@ -30,50 +22,7 @@ interface FAQItem {
 
 export default function CTA() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [hoveredProof, setHoveredProof] = useState<number | null>(null);
-
-  const proofItems: ProofItem[] = [
-    {
-      title: "SaaS & AI Focused",
-      desc: "We translate deep technical features, agent chains, and data models into smooth visual narratives without losing depth.",
-      bg: "#0D1B2E",
-      accent: "#38BDF8",
-      icon: Cpu,
-      spec: "MODEL_SYNC // OK"
-    },
-    {
-      title: "Strategy First",
-      desc: "We align the script, pacing, and visual story to your conversion goals before rendering a single frame.",
-      bg: "#1A102B",
-      accent: "#A78BFA",
-      icon: Target,
-      spec: "GTM_KPI // ALIGNED"
-    },
-    {
-      title: "Launch-Ready Deliverables",
-      desc: "Clean exports in multiple aspect ratios, responsive sizes, and high-DPI assets optimized for direct use.",
-      bg: "#0D211B",
-      accent: "#34D399",
-      icon: Video,
-      spec: "ASSETS // COMPILED"
-    },
-    {
-      title: "Fast, Structured Workflow",
-      desc: "Our repeatable sprints keep design and feedback cycles ultra-short, delivering top-tier work on tight timelines.",
-      bg: "#24180F",
-      accent: "#F59E7B",
-      icon: Zap,
-      spec: "SPRINT_CYCLE // 10D"
-    },
-    {
-      title: "Built for Web, Ads & Social",
-      desc: "Assets calibrated perfectly for website conversion, LinkedIn engagement, performance marketing, and launch milestones.",
-      bg: "#101827",
-      accent: "#94A3B8",
-      icon: Tv,
-      spec: "OUTPUT_RENDER // MULTI"
-    }
-  ];
+  const [isHovered, setIsHovered] = useState(false);
 
   const faqs: FAQItem[] = [
     {
@@ -108,88 +57,6 @@ export default function CTA() {
   return (
     <div className="bg-[#050507]">
       
-      {/* SECTION 1: PROOF / TRUST */}
-      <section id="proof" className="py-24 md:py-32 border-b border-white/[0.06] relative overflow-hidden font-sans">
-        {/* Premium background system */}
-        <AeymotionBackground variant="work" />
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
-          {/* Section Header */}
-          <div className="mb-20 md:mb-24 border-l-2 border-[#8B5CF6] pl-6 md:pl-8">
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] mb-2 block">
-              06 / PROOF
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[0.95]">
-              Built for teams that care about <br />
-              <span className="text-neutral-500">clarity, speed, and premium perception.</span>
-            </h2>
-          </div>
-
-          {/* Modular Proof Panels Asymmetrical Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {proofItems.map((item, idx) => {
-              const Icon = item.icon;
-              const isHovered = hoveredProof === idx;
-              const isAnyHovered = hoveredProof !== null;
-
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
-                  onMouseEnter={() => setHoveredProof(idx)}
-                  onMouseLeave={() => setHoveredProof(null)}
-                  style={{ 
-                    backgroundColor: item.bg,
-                    borderColor: isHovered ? `${item.accent}30` : 'rgba(255,255,255,0.08)'
-                  }}
-                  className={`p-6 sm:p-8 rounded-2xl border flex flex-col justify-between min-h-[260px] transition-all duration-500 relative overflow-hidden group ${
-                    isAnyHovered && !isHovered ? 'opacity-50 scale-[0.99]' : 'opacity-100 scale-100'
-                  }`}
-                >
-                  {/* Top Header */}
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="font-mono text-[9px] text-neutral-500 uppercase font-bold">
-                        UNIT // 06.{idx + 1}
-                      </span>
-                      <div 
-                        style={{ borderColor: `${item.accent}20` }}
-                        className="p-2.5 rounded-xl bg-white/5 border text-white transition-transform duration-500 group-hover:scale-105"
-                      >
-                        <Icon className="w-4 h-4" style={{ color: item.accent }} />
-                      </div>
-                    </div>
-
-                    <h3 className="text-base font-black uppercase tracking-tight text-white mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-[#A1A1AA] font-light leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  {/* Bottom Spec */}
-                  <div className="mt-8 pt-4 border-t border-white/[0.04] flex items-center justify-between font-mono text-[8px] text-neutral-500">
-                    <span>{item.spec}</span>
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: item.accent }} />
-                  </div>
-
-                  {/* Left Accent indicator */}
-                  <div 
-                    style={{ backgroundColor: item.accent }}
-                    className="absolute left-0 top-0 bottom-0 w-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  />
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 2: FAQ TEASER */}
       <section id="faq-teaser" className="py-24 md:py-32 border-b border-white/[0.06] relative overflow-hidden font-sans">
         {/* Premium background system */}
@@ -201,22 +68,22 @@ export default function CTA() {
             
             {/* Left Header Column */}
             <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-32">
-              <div className="border-l-2 border-[#8B5CF6] pl-5 space-y-2">
-                <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] block">
+              <div className="border-l-2 border-[#8C4BFF] pl-5 space-y-2">
+                <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] block">
                   07 / QUESTIONS
                 </span>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-[0.95]">
                   Before you book, here’s what most teams ask.
                 </h2>
               </div>
-              <p className="text-sm text-[#A1A1AA] font-light leading-relaxed max-w-sm">
+              <p className="text-sm text-[#B9B2C2] font-light leading-relaxed max-w-sm">
                 Get clarity on our scope, communication system, deliverables formats, and operational SLA before kicking off.
               </p>
               
               <div className="pt-6 border-t border-white/[0.06]">
                 <button
                   onClick={() => handleScrollToSection('book')}
-                  className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#8B5CF6] hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#8C4BFF] hover:text-white transition-colors cursor-pointer"
                 >
                   Ready to start? Book a call directly <ArrowRight className="w-3.5 h-3.5" />
                 </button>
@@ -230,11 +97,11 @@ export default function CTA() {
                 return (
                   <div 
                     key={idx}
-                    className="border border-white/[0.06] bg-[#0B0B0F]/60 overflow-hidden rounded-xl hover:border-white/10 transition-colors"
+                    className="border border-white/[0.06] bg-[#0B0A10]/60 overflow-hidden rounded-xl hover:border-white/10 transition-colors"
                   >
                     <button
                       onClick={() => setActiveFaq(isOpen ? null : idx)}
-                      className="w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]/30"
+                      className="w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#8C4BFF]/30 cursor-pointer"
                       id={`faq-btn-teaser-${idx}`}
                     >
                       <span className="text-sm font-black uppercase text-white tracking-wide pr-6">
@@ -255,7 +122,7 @@ export default function CTA() {
                           exit={{ height: 0 }}
                           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         >
-                          <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-neutral-400 leading-relaxed font-light border-t border-white/[0.04] bg-black/10">
+                          <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-[#B9B2C2] leading-relaxed font-light border-t border-white/[0.04] bg-black/10">
                             {faq.a}
                           </div>
                         </motion.div>
@@ -272,26 +139,57 @@ export default function CTA() {
       </section>
 
       {/* SECTION 3: FINAL CTA */}
-      <section id="final-cta" className="py-24 md:py-32 px-6 md:px-12 relative overflow-hidden font-sans">
+      <section id="final-cta" className="py-20 md:py-28 px-6 md:px-12 relative overflow-hidden font-sans">
         {/* Premium background system */}
         <AeymotionBackground variant="cta" />
 
-        <div className="max-w-5xl mx-auto relative z-10">
-          <motion.div
+        {/* Ambient bright blurred colorful backdrop circles exactly matching user colors */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {/* Top left light blue-sky blend */}
+          <div className="absolute -top-[10%] -left-[5%] w-[500px] h-[500px] bg-[#38bdf8]/25 rounded-full blur-[130px]" />
+          {/* Top right intense purple blend */}
+          <div className="absolute -top-[15%] -right-[5%] w-[600px] h-[600px] bg-[#8C4BFF]/35 rounded-full blur-[140px]" />
+          {/* Bottom left vibrant orange-yellow blend */}
+          <div className="absolute -bottom-[10%] -left-[5%] w-[500px] h-[500px] bg-[#F2A979]/30 rounded-full blur-[120px]" />
+          {/* Bottom right violet blend */}
+          <div className="absolute -bottom-[15%] -right-[5%] w-[500px] h-[500px] bg-[#EC4899]/15 rounded-full blur-[130px]" />
+        </div>
+
+        <div className="max-w-4xl mx-auto relative z-10">
+          <InteractiveTiltCard
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full border border-white/[0.12] rounded-3xl bg-[#0F0D15] p-12 md:p-20 text-center relative overflow-hidden isolate shadow-2xl"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={`w-full border rounded-3xl p-8 md:py-16 md:px-12 text-center relative overflow-hidden isolate transition-all duration-700 ease-out bg-gradient-to-br ${
+              isHovered 
+                ? 'border-white/55 from-[#5B21B6] via-[#7C3AED] to-[#A78BFA] shadow-[0_0_80px_rgba(140,75,255,0.45)] scale-[1.015]' 
+                : 'border-white/25 from-[#4C1D95] via-[#6D28D9] to-[#8C4BFF] shadow-[0_4px_30px_rgba(0,0,0,0.2)] scale-100'
+            }`}
           >
-            {/* Elegant Ambient Aeymotion Gradients (controlled, not too neon) */}
-            <div className="absolute -top-12 -right-12 w-[350px] h-[350px] bg-[#A78BFA]/10 blur-[110px] rounded-full pointer-events-none -z-10" />
-            <div className="absolute -bottom-12 -left-12 w-[350px] h-[350px] bg-[#F59E7B]/10 blur-[110px] rounded-full pointer-events-none -z-10" />
+            {/* Elegant Ambient inner card Gradients (controlled, not too neon) */}
+            <div className={`absolute -top-12 -right-12 w-[300px] h-[300px] rounded-full pointer-events-none -z-10 transition-all duration-700 ${
+              isHovered ? 'bg-[#D9C3FF]/25 blur-[70px] scale-125' : 'bg-[#D9C3FF]/15 blur-[90px]'
+            }`} />
+            <div className={`absolute -bottom-12 -left-12 w-[300px] h-[300px] rounded-full pointer-events-none -z-10 transition-all duration-700 ${
+              isHovered ? 'bg-[#F2A979]/20 blur-[70px] scale-125' : 'bg-[#F2A979]/10 blur-[90px]'
+            }`} />
+
+            {/* Diagonal stream lines glow */}
+            <div className={`absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_60%)] pointer-events-none -z-10 transition-opacity duration-700 ${
+              isHovered ? 'opacity-100' : 'opacity-0'
+            }`} />
 
             {/* Motion Timeline DNA element in background inside card */}
-            <div className="absolute inset-x-0 top-8 h-4 flex items-center justify-between px-8 opacity-25 select-none pointer-events-none font-mono text-[7px] text-neutral-500">
+            <div className={`absolute inset-x-0 top-6 h-4 flex items-center justify-between px-8 select-none pointer-events-none font-mono text-[7px] transition-all duration-500 ${
+              isHovered ? 'opacity-70 text-white' : 'opacity-35 text-white/80'
+            }`}>
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6] animate-pulse" />
+                <span className={`w-1.5 h-1.5 rounded-full animate-pulse transition-colors duration-500 ${
+                  isHovered ? 'bg-[#9D66FF] shadow-[0_0_8px_#8C4BFF]' : 'bg-[#FFF]'
+                }`} />
                 <span>CHOREOGRAPHY_SYNC_ON</span>
               </div>
               <div className="flex items-center gap-3">
@@ -300,25 +198,37 @@ export default function CTA() {
               </div>
             </div>
 
-            <div className="space-y-6 max-w-2xl mx-auto pt-6">
-              <span className="px-3 py-1 bg-white/5 border border-white/10 text-[9px] font-mono uppercase tracking-widest text-neutral-400 rounded-full inline-block">
+            <div className="space-y-6 max-w-2xl mx-auto pt-4">
+              <span className={`px-3 py-1 border text-[9px] font-mono uppercase tracking-widest rounded-full inline-block transition-all duration-500 ${
+                isHovered 
+                  ? 'bg-white/20 border-white/40 text-white shadow-[0_0_15px_rgba(255,255,255,0.25)]' 
+                  : 'bg-white/10 border-white/20 text-white/90'
+              }`}>
                 CHOOSE KINETIC CLARITY
               </span>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[0.95]">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-[0.95]">
                 Your product deserves motion that does <br />
-                <span className="text-[#8B5CF6]">more than look good.</span>
+                <span className={`transition-all duration-500 ${
+                  isHovered ? 'text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]' : 'text-purple-100'
+                }`}>
+                  more than look good.
+                </span>
               </h2>
 
-              <p className="text-sm md:text-base text-[#A1A1AA] font-light leading-relaxed">
+              <p className="text-xs md:text-sm text-purple-100/90 font-light leading-relaxed max-w-lg mx-auto">
                 Let’s turn your product into a clear, premium visual story built for launch, sales, and growth.
               </p>
 
               {/* Action Buttons */}
-              <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
                   onClick={() => handleScrollToSection('book')}
-                  className="w-full sm:w-auto px-8 py-4 bg-[#8B5CF6] text-white hover:brightness-110 text-[10px] font-mono uppercase tracking-widest transition-all rounded-xl font-bold cursor-pointer inline-flex items-center justify-center gap-2"
+                  className={`w-full sm:w-auto px-8 py-3.5 text-[10px] font-mono uppercase tracking-widest rounded-xl font-bold cursor-pointer inline-flex items-center justify-center gap-2 transition-all duration-300 ${
+                    isHovered 
+                      ? 'bg-white text-[#7C3AED] shadow-[0_4px_25px_rgba(255,255,255,0.4)] hover:scale-105' 
+                      : 'bg-white text-[#5B21B6] hover:bg-neutral-100'
+                  }`}
                   id="cta-start-project"
                 >
                   Book a Call <ArrowRight className="w-3.5 h-3.5" />
@@ -326,7 +236,11 @@ export default function CTA() {
 
                 <button
                   onClick={() => handleScrollToSection('pricing')}
-                  className="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 text-neutral-300 hover:text-white hover:bg-white/10 text-[10px] font-mono uppercase tracking-widest transition-all rounded-xl font-bold"
+                  className={`w-full sm:w-auto px-8 py-3.5 border text-[10px] font-mono uppercase tracking-widest transition-all rounded-xl font-bold cursor-pointer duration-300 ${
+                    isHovered 
+                      ? 'bg-white/20 border-white/30 text-white hover:bg-white/25' 
+                      : 'bg-white/10 border-white/15 text-white/90 hover:bg-white/15'
+                  }`}
                   id="cta-view-packages"
                 >
                   View packages
@@ -335,11 +249,13 @@ export default function CTA() {
             </div>
 
             {/* Bottom spec ticker */}
-            <div className="absolute inset-x-0 bottom-6 flex justify-between items-center px-8 opacity-15 select-none pointer-events-none font-mono text-[7px] text-neutral-500">
+            <div className={`absolute inset-x-0 bottom-5 flex justify-between items-center px-8 select-none pointer-events-none font-mono text-[7px] transition-all duration-500 ${
+              isHovered ? 'opacity-55 text-white' : 'opacity-30 text-white/80'
+            }`}>
               <span>SLA_SPEED_TRUE</span>
               <span>RENDER_VERSION_3.5_STABLE</span>
             </div>
-          </motion.div>
+          </InteractiveTiltCard>
         </div>
       </section>
 

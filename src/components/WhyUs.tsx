@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Video, Monitor, Layers, Sparkles, ArrowRight } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
+import InteractiveTiltCard from './InteractiveTiltCard';
 
 export default function WhyUs() {
   const services = [
@@ -8,8 +9,8 @@ export default function WhyUs() {
       num: "01",
       name: "Launch Videos",
       sentence: "Explain your product clearly in 60 seconds or less.",
-      bg: "#1A102B",
-      accent: "#8B5CF6",
+      bg: "rgba(140, 75, 255, 0.12)",
+      accent: "#8C4BFF",
       icon: Video,
       frame: "00:00:15:00",
       progress: "35%"
@@ -18,8 +19,8 @@ export default function WhyUs() {
       num: "02",
       name: "Product Demos",
       sentence: "Turn complex workflows into smooth, visual product walkthroughs.",
-      bg: "#0D1B2E",
-      accent: "#38BDF8",
+      bg: "rgba(185, 143, 212, 0.10)",
+      accent: "#B98FD4",
       icon: Monitor,
       frame: "00:00:30:00",
       progress: "60%"
@@ -28,8 +29,8 @@ export default function WhyUs() {
       num: "03",
       name: "Feature Motion Packs",
       sentence: "Give every new feature a launch-ready visual story.",
-      bg: "#0D211B",
-      accent: "#10B981",
+      bg: "rgba(217, 166, 180, 0.10)",
+      accent: "#D9A6B4",
       icon: Layers,
       frame: "00:00:45:00",
       progress: "85%"
@@ -38,8 +39,8 @@ export default function WhyUs() {
       num: "04",
       name: "Social Motion Assets",
       sentence: "Create short-form motion content built for attention and action.",
-      bg: "#24180F",
-      accent: "#F59E7B",
+      bg: "rgba(242, 169, 121, 0.10)",
+      accent: "#F2A979",
       icon: Sparkles,
       frame: "00:01:00:00",
       progress: "100%"
@@ -56,8 +57,8 @@ export default function WhyUs() {
           
           {/* Sticky Left Sidebar Column */}
           <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-32">
-            <div className="border-l-2 border-[#8B5CF6] pl-5 space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] block">
+            <div className="border-l-2 border-[#8C4BFF] pl-5 space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] block">
                 02 // SERVICES
               </span>
               <motion.h2 
@@ -98,7 +99,7 @@ export default function WhyUs() {
             {services.map((service, i) => {
               const Icon = service.icon;
               return (
-                <motion.div 
+                <InteractiveTiltCard 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -161,7 +162,7 @@ export default function WhyUs() {
                     style={{ backgroundColor: service.accent }}
                     className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500" 
                   />
-                </motion.div>
+                </InteractiveTiltCard>
               );
             })}
           </div>

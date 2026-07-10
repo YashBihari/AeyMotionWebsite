@@ -12,6 +12,7 @@ import {
   Tv
 } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
+import InteractiveTiltCard from './InteractiveTiltCard';
 
 interface ProcessStep {
   number: string;
@@ -30,8 +31,8 @@ export default function Process() {
     {
       number: "01",
       title: "Diagnose",
-      bg: "#1A102B",
-      accent: "#A78BFA",
+      bg: "rgba(140, 75, 255, 0.12)",
+      accent: "#8C4BFF",
       icon: Compass,
       description: "We understand your product, audience, offer, and conversion goal.",
       spec: "INPUT_ANALYSIS"
@@ -39,8 +40,8 @@ export default function Process() {
     {
       number: "02",
       title: "Script",
-      bg: "#0D1B2E",
-      accent: "#38BDF8",
+      bg: "rgba(185, 143, 212, 0.10)",
+      accent: "#B98FD4",
       icon: FileText,
       description: "We turn complex ideas into a clear visual story.",
       spec: "NARRATIVE_BEAT"
@@ -48,8 +49,8 @@ export default function Process() {
     {
       number: "03",
       title: "Design",
-      bg: "#24180F",
-      accent: "#F59E7B",
+      bg: "rgba(217, 166, 180, 0.10)",
+      accent: "#D9A6B4",
       icon: Palette,
       description: "We create a premium visual direction aligned with your brand and market.",
       spec: "STYLE_ALIGN"
@@ -57,8 +58,8 @@ export default function Process() {
     {
       number: "04",
       title: "Animate",
-      bg: "#0D211B",
-      accent: "#34D399",
+      bg: "rgba(242, 169, 121, 0.10)",
+      accent: "#F2A979",
       icon: Play,
       description: "We build motion assets for web, ads, social, and launch moments.",
       spec: "RENDER_QUEUE"
@@ -66,8 +67,8 @@ export default function Process() {
     {
       number: "05",
       title: "Deliver",
-      bg: "#101827",
-      accent: "#94A3B8",
+      bg: "rgba(243, 228, 216, 0.08)",
+      accent: "#F3E4D8",
       icon: CheckCircle,
       description: "You receive organized, platform-ready files built for execution.",
       spec: "MASTER_READY"
@@ -82,8 +83,8 @@ export default function Process() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-20 md:mb-24 border-l-2 border-[#8B5CF6] pl-6 md:pl-8">
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] mb-2 block">
+        <div className="mb-20 md:mb-24 border-l-2 border-[#8C4BFF] pl-6 md:pl-8">
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] mb-2 block">
             05 / PROCESS
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[0.95]">
@@ -109,9 +110,11 @@ export default function Process() {
             />
             <defs>
               <linearGradient id="grid-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#8B5CF6" />
-                <stop offset="50%" stopColor="#38BDF8" />
-                <stop offset="100%" stopColor="#34D399" />
+                <stop offset="0%" stopColor="#F3E4D8" />
+                <stop offset="25%" stopColor="#F2A979" />
+                <stop offset="50%" stopColor="#D9A6B4" />
+                <stop offset="75%" stopColor="#B98FD4" />
+                <stop offset="100%" stopColor="#8C4BFF" />
               </linearGradient>
             </defs>
           </svg>
@@ -125,7 +128,7 @@ export default function Process() {
             const isAnyHovered = hoveredIdx !== null;
             
             return (
-              <motion.div
+              <InteractiveTiltCard
                 key={step.number}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -199,14 +202,14 @@ export default function Process() {
                     width: isHovered ? '100%' : '0%'
                   }}
                 />
-              </motion.div>
+              </InteractiveTiltCard>
             );
           })}
         </div>
 
         {/* Operational Quality Assurance framework card */}
         <div className="p-8 md:p-12 bg-[#0B0B0F] border border-white/[0.08] rounded-2xl shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#8B5CF6]/3 blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#8C4BFF]/3 blur-[100px] pointer-events-none" />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4 space-y-4">
@@ -222,35 +225,35 @@ export default function Process() {
             </div>
 
             <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="p-6 bg-black/40 border border-white/[0.04] rounded-xl space-y-3">
-                <div className="p-2.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 w-fit">
+              <InteractiveTiltCard className="p-6 bg-black/40 border border-white/[0.04] rounded-xl space-y-3 h-full">
+                <div className="p-2.5 rounded-lg bg-[#8C4BFF]/10 border border-[#8C4BFF]/20 text-[#8C4BFF] w-fit">
                   <TrendingUp className="w-4 h-4" />
                 </div>
                 <h4 className="text-sm font-black uppercase text-white">42% Growth Lift</h4>
                 <p className="text-[11px] text-neutral-400 font-light leading-relaxed">
                   Engineered layout structures built explicitly to raise conversions on landing pages and sales decks.
                 </p>
-              </div>
+              </InteractiveTiltCard>
 
-              <div className="p-6 bg-black/40 border border-white/[0.04] rounded-xl space-y-3">
-                <div className="p-2.5 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 w-fit">
+              <InteractiveTiltCard className="p-6 bg-black/40 border border-white/[0.04] rounded-xl space-y-3 h-full">
+                <div className="p-2.5 rounded-lg bg-[#B98FD4]/10 border border-[#B98FD4]/20 text-[#B98FD4] w-fit">
                   <Cpu className="w-4 h-4" />
                 </div>
                 <h4 className="text-sm font-black uppercase text-white">Tech-Native</h4>
                 <p className="text-[11px] text-neutral-400 font-light leading-relaxed">
                   We understand microservices, cloud models, and agent architectures without needing hand-holding.
                 </p>
-              </div>
+              </InteractiveTiltCard>
 
-              <div className="p-6 bg-black/40 border border-white/[0.04] rounded-xl space-y-3">
-                <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 w-fit">
+              <InteractiveTiltCard className="p-6 bg-black/40 border border-white/[0.04] rounded-xl space-y-3 h-full">
+                <div className="p-2.5 rounded-lg bg-[#F2A979]/10 border border-[#F2A979]/20 text-[#F2A979] w-fit">
                   <Tv className="w-4 h-4" />
                 </div>
                 <h4 className="text-sm font-black uppercase text-white">Lossless Vector</h4>
                 <p className="text-[11px] text-neutral-400 font-light leading-relaxed">
                   Every mockup and layout is scaled dynamically for high-DPI screens and Retina devices.
                 </p>
-              </div>
+              </InteractiveTiltCard>
             </div>
           </div>
         </div>

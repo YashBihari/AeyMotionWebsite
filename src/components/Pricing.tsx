@@ -13,6 +13,7 @@ import {
   PlayCircle
 } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
+import InteractiveTiltCard from './InteractiveTiltCard';
 
 interface Offer {
   id: string;
@@ -46,8 +47,8 @@ export default function Pricing() {
       shortDesc: "For early-stage SaaS, AI, and tech startups that need one clear product video.",
       tags: ["Launch", "Explainer", "Website"],
       ctaText: "Start your launch video",
-      bg: "#17111F",
-      accent: "#A78BFA",
+      bg: "rgba(140, 75, 255, 0.12)",
+      accent: "#8C4BFF",
       bestFor: [
         "Website hero sections",
         "Product launches",
@@ -78,8 +79,8 @@ export default function Pricing() {
       shortDesc: "For product teams launching new features, updates, or app walkthroughs.",
       tags: ["Features", "UI Motion", "Product"],
       ctaText: "Build my feature pack",
-      bg: "#0B1A2A",
-      accent: "#38BDF8",
+      bg: "rgba(185, 143, 212, 0.10)",
+      accent: "#B98FD4",
       bestFor: [
         "Feature launches",
         "Product update campaigns",
@@ -111,8 +112,8 @@ export default function Pricing() {
       shortDesc: "For SaaS, AI, and funded startups preparing a serious launch or campaign.",
       tags: ["GTM", "Campaign", "Premium"],
       ctaText: "Plan my GTM video",
-      bg: "#1C1033",
-      accent: "#F59E7B",
+      bg: "rgba(217, 166, 180, 0.10)",
+      accent: "#D9A6B4",
       bestFor: [
         "GTM campaigns",
         "SaaS landing pages",
@@ -147,8 +148,8 @@ export default function Pricing() {
       shortDesc: "For teams that need ongoing motion content without hiring in-house.",
       tags: ["Retainer", "Ads", "Ongoing"],
       ctaText: "Become a motion partner",
-      bg: "#0E201A",
-      accent: "#34D399",
+      bg: "rgba(242, 169, 121, 0.10)",
+      accent: "#F2A979",
       bestFor: [
         "Marketing teams",
         "SaaS founders",
@@ -243,8 +244,8 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10" ref={containerRef}>
         
         {/* Editorial Section Header */}
-        <div className="mb-20 md:mb-24 border-l-2 border-[#8B5CF6] pl-6 md:pl-8">
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] mb-2 block">
+        <div className="mb-20 md:mb-24 border-l-2 border-[#8C4BFF] pl-6 md:pl-8">
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] mb-2 block">
             04 / OFFERS
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[0.95]">
@@ -275,7 +276,7 @@ export default function Pricing() {
                     const isDimmed = hoveredId !== null && hoveredId !== offer.id;
                     
                     return (
-                      <div
+                      <InteractiveTiltCard
                         key={offer.id}
                         id={`offer-card-desktop-${offer.id}`}
                         tabIndex={0}
@@ -299,7 +300,7 @@ export default function Pricing() {
                             </span>
                             
                             {offer.badge ? (
-                              <span className="px-2 py-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#F59E7B] text-[8px] font-mono uppercase tracking-wider text-white font-semibold rounded">
+                              <span className="px-2 py-0.5 text-[8px] font-mono uppercase tracking-wider text-white font-semibold rounded" style={{ backgroundImage: 'linear-gradient(135deg, #F3E4D8 0%, #F2A979 22%, #D9A6B4 48%, #B98FD4 72%, #8C4BFF 100%)' }}>
                                 {offer.badge}
                               </span>
                             ) : (
@@ -350,7 +351,7 @@ export default function Pricing() {
                           className="absolute top-0 left-0 right-0 h-[2px] bg-transparent transition-colors duration-300"
                           style={{ backgroundColor: isHovered ? offer.accent : 'transparent' }}
                         />
-                      </div>
+                      </InteractiveTiltCard>
                     );
                   })}
                 </div>
@@ -369,7 +370,7 @@ export default function Pricing() {
                           SYSTEM // {offer.num}
                         </span>
                         {offer.badge && (
-                          <span className="px-2 py-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#F59E7B] text-[7px] font-mono uppercase tracking-wider text-white rounded">
+                          <span className="px-2 py-0.5 text-[7px] font-mono uppercase tracking-wider text-white rounded" style={{ backgroundImage: 'linear-gradient(135deg, #F3E4D8 0%, #F2A979 22%, #D9A6B4 48%, #B98FD4 72%, #8C4BFF 100%)' }}>
                             {offer.badge}
                           </span>
                         )}
@@ -443,7 +444,7 @@ export default function Pricing() {
                                 SYSTEM SPECS // {offer.num}
                               </span>
                               {offer.badge && (
-                                <span className="px-2 py-0.5 bg-gradient-to-r from-[#8B5CF6] to-[#F59E7B] text-[8px] font-mono uppercase tracking-wider text-white font-semibold rounded">
+                                <span className="px-2 py-0.5 text-[8px] font-mono uppercase tracking-wider text-white font-semibold rounded" style={{ backgroundImage: 'linear-gradient(135deg, #F3E4D8 0%, #F2A979 22%, #D9A6B4 48%, #B98FD4 72%, #8C4BFF 100%)' }}>
                                   {offer.badge}
                                 </span>
                               )}
@@ -536,7 +537,7 @@ export default function Pricing() {
                           {/* Suggested Output if Monthly retainers */}
                           {offer.suggestedOutput && (
                             <div className="pt-6 border-t border-white/[0.04]">
-                              <span className="block text-[9px] font-mono uppercase tracking-widest text-[#34D399] mb-2 font-bold">
+                              <span className="block text-[9px] font-mono uppercase tracking-widest text-[#F2A979] mb-2 font-bold">
                                 SUGGESTED MONTHLY OUTPUT
                               </span>
                               <p className="text-xs text-neutral-300 font-light leading-relaxed">
@@ -570,8 +571,8 @@ export default function Pricing() {
 
         {/* SYSTEM COMPARISON MATRIX */}
         <div className="mb-24">
-          <div className="mb-12 border-l-2 border-[#8B5CF6] pl-6">
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] mb-2 block">
+          <div className="mb-12 border-l-2 border-[#8C4BFF] pl-6">
+            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] mb-2 block">
               05 / COMPARATIVE SPEC
             </span>
             <h3 className="text-2xl font-black uppercase text-white tracking-tight">
@@ -587,19 +588,19 @@ export default function Pricing() {
               <thead>
                 <tr className="border-b border-white/[0.08] bg-black/40">
                   <th className="p-5 font-mono text-[10px] text-neutral-400 uppercase tracking-wider">Capabilities & Specs</th>
-                  <th className="p-5 font-mono text-[10px] text-[#A78BFA] uppercase tracking-wider font-bold">01 / Launch Sprint</th>
-                  <th className="p-5 font-mono text-[10px] text-[#38BDF8] uppercase tracking-wider font-bold">02 / Feature Pack</th>
-                  <th className="p-5 font-mono text-[10px] text-[#F59E7B] uppercase tracking-wider font-bold">03 / GTM Story</th>
-                  <th className="p-5 font-mono text-[10px] text-[#34D399] uppercase tracking-wider font-bold">04 / Monthly Partner</th>
+                  <th className="p-5 font-mono text-[10px] text-[#8C4BFF] uppercase tracking-wider font-bold">01 / Launch Sprint</th>
+                  <th className="p-5 font-mono text-[10px] text-[#B98FD4] uppercase tracking-wider font-bold">02 / Feature Pack</th>
+                  <th className="p-5 font-mono text-[10px] text-[#D9A6B4] uppercase tracking-wider font-bold">03 / GTM Story</th>
+                  <th className="p-5 font-mono text-[10px] text-[#F2A979] uppercase tracking-wider font-bold">04 / Monthly Partner</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/[0.04] text-neutral-300 font-light">
                 <tr className="hover:bg-white/[0.01] transition-colors">
                   <td className="p-5 font-medium text-white font-mono text-[11px] uppercase tracking-wider">Starting Price</td>
-                  <td className="p-5 font-mono text-sm font-black text-[#A78BFA]">From $1,500</td>
-                  <td className="p-5 font-mono text-sm font-black text-[#38BDF8]">From $2,500</td>
-                  <td className="p-5 font-mono text-sm font-black text-[#F59E7B]">From $3,500</td>
-                  <td className="p-5 font-mono text-sm font-black text-[#34D399]">From $4,000/mo</td>
+                  <td className="p-5 font-mono text-sm font-black text-[#8C4BFF]">From $1,500</td>
+                  <td className="p-5 font-mono text-sm font-black text-[#B98FD4]">From $2,500</td>
+                  <td className="p-5 font-mono text-sm font-black text-[#D9A6B4]">From $3,500</td>
+                  <td className="p-5 font-mono text-sm font-black text-[#F2A979]">From $4,000/mo</td>
                 </tr>
                 <tr className="hover:bg-white/[0.01] transition-colors">
                   <td className="p-5 font-medium text-white font-mono text-[11px] uppercase tracking-wider">Primary Deliverable</td>
@@ -611,7 +612,7 @@ export default function Pricing() {
                 <tr className="hover:bg-white/[0.01] transition-colors">
                   <td className="p-5 font-medium text-white font-mono text-[11px] uppercase tracking-wider">Included Cutdowns</td>
                   <td className="p-5 flex items-center gap-1.5 py-5">
-                    <Check className="w-3.5 h-3.5 text-[#A78BFA] shrink-0" />
+                    <Check className="w-3.5 h-3.5 text-[#8C4BFF] shrink-0" />
                     <span>1x Social (9:16 / 1:1)</span>
                   </td>
                   <td className="p-5">
@@ -619,13 +620,13 @@ export default function Pricing() {
                   </td>
                   <td className="p-5">
                     <div className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#F59E7B] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#D9A6B4] shrink-0" />
                       <span>2x Social Cutdowns</span>
                     </div>
                   </td>
                   <td className="p-5">
                     <div className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#F2A979] shrink-0" />
                       <span>Unlimited customized</span>
                     </div>
                   </td>
@@ -639,12 +640,12 @@ export default function Pricing() {
                     <span className="text-neutral-600">—</span>
                   </td>
                   <td className="p-5 flex items-center gap-1.5 py-5">
-                    <Check className="w-3.5 h-3.5 text-[#F59E7B] shrink-0" />
+                    <Check className="w-3.5 h-3.5 text-[#D9A6B4] shrink-0" />
                     <span>3x Web GIFs / Assets</span>
                   </td>
                   <td className="p-5">
                     <div className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#F2A979] shrink-0" />
                       <span>Dynamic micro-assets</span>
                     </div>
                   </td>
@@ -653,25 +654,25 @@ export default function Pricing() {
                   <td className="p-5 font-medium text-white font-mono text-[11px] uppercase tracking-wider">Scriptwriting</td>
                   <td className="p-5">
                     <div className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#A78BFA] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#8C4BFF] shrink-0" />
                       <span>Full Narrative Script</span>
                     </div>
                   </td>
                   <td className="p-5">
                     <div className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#B98FD4] shrink-0" />
                       <span>Team Script Support</span>
                     </div>
                   </td>
                   <td className="p-5">
                     <div className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#F59E7B] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#D9A6B4] shrink-0" />
                       <span>Complete Strategic Copy</span>
                     </div>
                   </td>
                   <td className="p-5">
                     <div className="flex items-center gap-1.5">
-                      <Check className="w-3.5 h-3.5 text-[#34D399] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#F2A979] shrink-0" />
                       <span>Direct Copywriter Access</span>
                     </div>
                   </td>
@@ -726,14 +727,14 @@ export default function Pricing() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {addOns.map((addon, idx) => (
-              <div 
+              <InteractiveTiltCard 
                 key={idx} 
-                className="p-6 bg-[#0B0B0F]/80 border border-white/[0.06] hover:border-white/10 transition-all duration-300 flex flex-col justify-between rounded-xl relative overflow-hidden group"
+                className="p-6 bg-[#0B0B0F]/80 border border-white/[0.06] hover:border-white/10 transition-all duration-300 flex flex-col justify-between rounded-xl relative overflow-hidden group h-full"
               >
                 <div>
                   <div className="flex justify-between items-baseline mb-4">
                     <h4 className="text-sm font-black uppercase text-white tracking-wide">{addon.title}</h4>
-                    <span className="text-xs font-mono text-[#8B5CF6] shrink-0 ml-2">{addon.price}</span>
+                    <span className="text-xs font-mono text-[#8C4BFF] shrink-0 ml-2">{addon.price}</span>
                   </div>
                   <p className="text-xs text-neutral-400 font-light leading-relaxed">
                     {addon.desc}
@@ -741,8 +742,8 @@ export default function Pricing() {
                 </div>
                 
                 {/* Micro accent corner */}
-                <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-[#8B5CF6]/40 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
+                <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-[#8C4BFF]/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </InteractiveTiltCard>
             ))}
           </div>
         </div>
@@ -765,7 +766,7 @@ export default function Pricing() {
                 >
                   <button
                     onClick={() => setActiveFAQ(isOpen ? null : i)}
-                    className="w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#8B5CF6]/30"
+                    className="w-full p-6 text-left flex justify-between items-center focus:outline-none focus:ring-1 focus:ring-[#8C4BFF]/30"
                     id={`faq-btn-${i}`}
                   >
                     <span className="text-sm font-black uppercase text-white tracking-wide pr-6">

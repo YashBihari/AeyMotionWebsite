@@ -10,7 +10,6 @@ import ProofOfProcess from './components/ProofOfProcess';
 import CTA from './components/CTA';
 import BookingSection from './components/BookingSection';
 import Footer from './components/Footer';
-import WhiteLabel from './components/WhiteLabel';
 import { motion } from 'motion/react';
 
 export default function App() {
@@ -74,7 +73,6 @@ export default function App() {
                 <PortfolioGrid />
                 <WhyUs />
                 <Pricing />
-                <WhiteLabel />
                 <Process />
                 <ProofOfProcess />
                 <CTA />
@@ -108,7 +106,6 @@ export default function App() {
                 className="scroll-mt-[120px]"
               >
                 <Pricing />
-                <WhiteLabel />
               </motion.div>
             )}
 

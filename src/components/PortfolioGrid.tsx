@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { Play, X, ArrowUpRight, HelpCircle, Sparkles, CheckCircle2, Video } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
+import InteractiveTiltCard from './InteractiveTiltCard';
 
 interface CaseStudy {
   id: string;
@@ -66,13 +67,13 @@ export default function PortfolioGrid() {
   return (
     <section id="portfolio" className="py-24 md:py-32 bg-[#050507] border-b border-white/[0.06] font-sans relative overflow-hidden">
       {/* Cinematic Aeymotion background system */}
-      <AeymotionBackground variant="work" />
+      <AeymotionBackground variant="work" isHovered={hoveredCaseId !== null} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-20 md:mb-24 border-l-2 border-[#8B5CF6] pl-6 md:pl-8">
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8B5CF6] mb-2 block">
+        <div className="mb-20 md:mb-24 border-l-2 border-[#8C4BFF] pl-6 md:pl-8">
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#8C4BFF] mb-2 block">
             01 / SELECTED WORK
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[0.95]">
@@ -124,9 +125,9 @@ export default function PortfolioGrid() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/60 pointer-events-none" />
 
                       {/* Top DNA Overlay info bar */}
-                      <div className="absolute top-4 inset-x-4 flex items-center justify-between font-mono text-[8px] text-neutral-400">
+                      <div className="absolute top-4 inset-x-4 flex items-center justify-between font-mono text-[8px] text-[#B9B2C2]">
                         <div className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 bg-[#8B5CF6] rounded-full animate-pulse" />
+                          <span className="w-1.5 h-1.5 bg-[#8C4BFF] rounded-full animate-pulse" />
                           <span>CAPTURE_READY // DEV_FEED</span>
                         </div>
                         <span>TIMECODE // {c.timecode}</span>
@@ -137,16 +138,16 @@ export default function PortfolioGrid() {
                         onClick={() => setSelectedVideo(c.videoEmbed)}
                         className="absolute inset-0 flex items-center justify-center cursor-pointer group"
                       >
-                        <div className="w-14 h-14 rounded-full bg-[#8B5CF6]/90 text-white flex items-center justify-center shadow-xl backdrop-blur-sm group-hover:bg-[#8B5CF6] group-hover:scale-110 transition-all duration-300">
+                        <div className="w-14 h-14 rounded-full bg-[#8C4BFF]/90 text-white flex items-center justify-center shadow-xl backdrop-blur-sm group-hover:bg-[#8C4BFF] group-hover:scale-110 transition-all duration-300">
                           <Play className="w-5 h-5 fill-white ml-0.5" />
                         </div>
                       </div>
 
                       {/* Bottom DNA Progress Slider Accent */}
-                      <div className="absolute bottom-4 inset-x-4 flex items-center justify-between font-mono text-[8px] text-neutral-400">
+                      <div className="absolute bottom-4 inset-x-4 flex items-center justify-between font-mono text-[8px] text-[#B9B2C2]">
                         <span>FPS // 24.00</span>
                         <div className="w-24 h-[1px] bg-white/10 relative rounded overflow-hidden">
-                          <div className="absolute inset-y-0 left-0 w-1/2 bg-[#8B5CF6]" />
+                          <div className="absolute inset-y-0 left-0 w-1/2 bg-[#8C4BFF]" />
                         </div>
                         <span>STREAM // {c.bitrate}</span>
                       </div>
@@ -167,7 +168,7 @@ export default function PortfolioGrid() {
                   <div className={`lg:col-span-6 ${isAlternating ? 'lg:order-1' : 'lg:order-2'} flex flex-col justify-center space-y-6 md:space-y-8`}>
                     <div>
                       <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <span className="font-mono text-[9px] text-[#8B5CF6] uppercase tracking-[0.2em] font-bold">
+                        <span className="font-mono text-[9px] text-[#8C4BFF] uppercase tracking-[0.2em] font-bold">
                           CASE STUDY 0{idx + 1}
                         </span>
                         <span className="w-1 h-1 rounded-full bg-white/20" />
@@ -186,34 +187,34 @@ export default function PortfolioGrid() {
 
                     <div className="space-y-6">
                       {/* Challenge */}
-                      <div className="border-l border-white/[0.08] pl-4 space-y-1 hover:border-[#38BDF8]/40 transition-colors">
-                        <h4 className="text-[9px] font-mono text-sky-400 uppercase tracking-widest font-bold">
+                      <div className="border-l border-white/[0.08] pl-4 space-y-1 hover:border-[#B98FD4]/40 transition-colors">
+                        <h4 className="text-[9px] font-mono text-[#B98FD4] uppercase tracking-widest font-bold">
                           01 / The Challenge
                         </h4>
-                        <p className="text-sm text-[#A1A1AA] font-light leading-relaxed">
+                        <p className="text-sm text-[#B9B2C2] font-light leading-relaxed">
                           "{c.problem}"
                         </p>
                       </div>
 
                       {/* Motion System */}
-                      <div className="border-l border-white/[0.08] pl-4 space-y-1 hover:border-[#8B5CF6]/40 transition-colors">
-                        <h4 className="text-[9px] font-mono text-purple-400 uppercase tracking-widest font-bold">
+                      <div className="border-l border-white/[0.08] pl-4 space-y-1 hover:border-[#8C4BFF]/40 transition-colors">
+                        <h4 className="text-[9px] font-mono text-[#8C4BFF] uppercase tracking-widest font-bold">
                           02 / Motion System
                         </h4>
-                        <p className="text-sm text-[#A1A1AA] font-light leading-relaxed">
+                        <p className="text-sm text-[#B9B2C2] font-light leading-relaxed">
                           {c.solution}
                         </p>
                       </div>
 
                       {/* Growth Outcome */}
-                      <div className="border-l border-white/[0.08] pl-4 space-y-1 hover:border-[#34D399]/40 transition-colors">
-                        <h4 className="text-[9px] font-mono text-emerald-400 uppercase tracking-widest font-bold">
+                      <InteractiveTiltCard className="border-l border-white/[0.08] pl-4 space-y-1 hover:border-[#F2A979]/40 transition-colors">
+                        <h4 className="text-[9px] font-mono text-[#F2A979] uppercase tracking-widest font-bold">
                           03 / Growth Outcome
                         </h4>
-                        <p className="text-sm text-neutral-200 font-light leading-relaxed">
+                        <p className="text-sm text-[#B9B2C2] font-light leading-relaxed">
                           {c.outcome}
                         </p>
-                      </div>
+                      </InteractiveTiltCard>
                     </div>
 
                     {/* Footer Details & Action Button */}
@@ -223,7 +224,7 @@ export default function PortfolioGrid() {
                       </span>
                       <button
                         onClick={() => setSelectedVideo(c.videoEmbed)}
-                        className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-[#8B5CF6] hover:text-white transition-colors group/btn"
+                        className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-[#8C4BFF] hover:text-white transition-colors group/btn"
                         id={`btn-view-case-${c.id}`}
                       >
                         Play case video <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
@@ -260,7 +261,7 @@ export default function PortfolioGrid() {
             >
               <button 
                 onClick={() => setSelectedVideo(null)}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-[#8B5CF6] transition-all flex items-center justify-center z-30 group focus:outline-none"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-[#8C4BFF] transition-all flex items-center justify-center z-30 group focus:outline-none"
               >
                 <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
               </button>

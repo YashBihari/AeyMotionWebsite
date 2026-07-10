@@ -50,7 +50,7 @@ export default function Navbar() {
             alt="Aeymotion Logo" 
           />
         </div>
-        <span className="font-sans text-[21px] font-black uppercase tracking-tighter text-[#F4F4F5] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#F59E7B] group-hover:via-[#A855F7] group-hover:to-[#8B5CF6] group-hover:drop-shadow-[0_0_15px_rgba(139,92,246,0.4)] transition-all duration-300">
+        <span className="font-sans text-[21px] font-black uppercase tracking-tighter text-[#F4F4F5] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#F2A979] group-hover:via-[#D9A6B4] group-hover:to-[#8C4BFF] group-hover:drop-shadow-[0_0_15px_rgba(140,75,255,0.4)] transition-all duration-300">
           Aeymotion
         </span>
       </a>
@@ -65,7 +65,7 @@ export default function Navbar() {
               href={link.href}
               className={`text-xs uppercase font-semibold tracking-wider transition-all duration-300 relative py-1 flex items-center gap-1.5 ${
                 isActive 
-                  ? "text-[#8B5CF6]" 
+                  ? "text-[#8C4BFF]" 
                   : "text-neutral-400 hover:text-white"
               }`}
             >
@@ -74,7 +74,7 @@ export default function Navbar() {
               {isActive && (
                 <motion.span 
                   layoutId="activeHeaderIndicator"
-                  className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[#8B5CF6] to-[#A855F7]"
+                  className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[#8C4BFF] to-[#B98FD4]"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -90,7 +90,7 @@ export default function Navbar() {
             const isActive = activeHash === link.href;
             if (!isActive) return null;
             return (
-              <span key={link.label} className="text-[10px] font-bold bg-[#8B5CF6]/20 text-[#A855F7] rounded-full px-2.5 py-0.5 uppercase tracking-wider">
+              <span key={link.label} className="text-[10px] font-bold bg-[#8C4BFF]/20 text-[#B98FD4] rounded-full px-2.5 py-0.5 uppercase tracking-wider">
                 {link.label}
               </span>
             );
