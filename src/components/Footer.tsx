@@ -131,8 +131,6 @@ export default function Footer({ onBookCall }: FooterProps) {
             <a href={BRAND_LINKS.dribbble} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Dribbble</a>
             <a href={BRAND_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
             <a href={BRAND_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
-            <a href={BRAND_LINKS.behance} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Behance</a>
-            <a href={BRAND_LINKS.x} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X</a>
           </div>
 
           <p className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 pt-4">
