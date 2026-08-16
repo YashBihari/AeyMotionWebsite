@@ -35,7 +35,7 @@ export default function PortfolioGrid() {
             Selected Work
           </h2>
           <p className="text-neutral-600 font-normal text-base max-w-xl mt-3 leading-relaxed">
-            Videos and animations created for ambitious AI products.
+            Motion, product storytelling, and visual systems for ambitious technology teams.
           </p>
         </div>
 

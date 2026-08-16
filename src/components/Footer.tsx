@@ -102,7 +102,7 @@ export default function Footer({ onBookCall }: FooterProps) {
             </span>
           </div>
           <p className="text-xs text-neutral-400 font-normal leading-relaxed max-w-sm">
-            Motion and interactive animation studio focused exclusively on AI companies.
+            Motion and interactive animation studio for AI, SaaS, and technology companies.
           </p>
           <div className="pt-2">
             <a

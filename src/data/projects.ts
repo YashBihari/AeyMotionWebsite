@@ -15,7 +15,7 @@ export const PROJECTS: Project[] = [
   {
     id: "haleum-ai",
     name: "Haleum AI",
-    category: "AI Product Storytelling",
+    category: "Product Storytelling",
     description: "Launch video demonstrating multi-agent workflows and benefit-led UI storytelling.",
     previewVideo: "https://res.cloudinary.com/dnbwf7xqd/video/upload/v1785544263/Haleum_AI_1_wzpdxn.mp4",
     fullVideoEmbed: "https://res.cloudinary.com/dnbwf7xqd/video/upload/v1785544263/Haleum_AI_1_wzpdxn.mp4",

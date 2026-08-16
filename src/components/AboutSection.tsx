@@ -51,7 +51,7 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
     <section id="about" className="py-24 md:py-32 bg-[#FAF9F5] border-b border-neutral-200/80 font-sans relative overflow-hidden">
       <AeymotionBackground variant="about" />
 
-      <div className="max-w-3xl mx-auto px-6 md:px-8 relative z-10" style={{ perspective: '1000px' }}>
+      <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10" style={{ perspective: '1000px' }}>
         
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -92,13 +92,13 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
               <span className="font-mono text-[9px] sm:text-[10px] text-white/70 font-bold uppercase tracking-widest block mb-2.5">
                 WE COLLABORATE DIRECTLY WITH:
               </span>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-nowrap items-center gap-2 sm:gap-2.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
                 {ABOUT_SECTION.audiences.map((aud, i) => (
                   <div 
                     key={i}
-                    className="px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-xs font-bold uppercase text-white flex items-center gap-2"
+                    className="px-3 sm:px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-[11px] sm:text-xs font-bold uppercase text-white flex items-center gap-2 shrink-0 whitespace-nowrap"
                   >
-                    <Users className="w-3 h-3 text-[#F2A979]" />
+                    <Users className="w-3 h-3 text-[#F2A979] shrink-0" />
                     <span>{aud}</span>
                   </div>
                 ))}
@@ -110,7 +110,7 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
                 onClick={onBookCall}
                 className="px-6 py-3 bg-white text-[#6F2BFF] hover:bg-neutral-100 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-lg inline-flex items-center gap-2 cursor-pointer hover:scale-105"
               >
-                Work With Us
+                Start a Project
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#6F2BFF]" />
               </button>
             </div>

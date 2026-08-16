@@ -1,75 +1,91 @@
 export interface ServiceItem {
+  id: string;
   number: string;
+  label: string;
   title: string;
-  subtitle: string;
+  tagline: string;
   description: string;
   deliverables: string[];
-  isFeatured?: boolean;
+  ctaText: string;
+  isFlagship?: boolean;
 }
 
 export const SERVICES: ServiceItem[] = [
   {
+    id: "product-storytelling",
     number: "01",
-    title: "Product Storytelling Videos",
-    subtitle: "Core High-Value Service",
-    description: "Explain how your product works, demonstrate its value, or introduce a new product or feature through clear storytelling and polished motion.",
+    label: "FLAGSHIP SERVICE // 01",
+    title: "PRODUCT STORYTELLING",
+    tagline: "EXPLAIN WHAT YOU'RE BUILDING.",
+    description: "Product videos, demos, explainers, walkthroughs, and feature stories designed to communicate your product clearly.",
     deliverables: [
-      "Explainer videos",
-      "Product videos",
-      "Product demo videos",
-      "Launch videos",
-      "Feature announcement videos",
-      "Homepage videos"
+      "Explainer Videos",
+      "Product Demos",
+      "Product Walkthroughs",
+      "Homepage Videos",
+      "Feature Explainers"
     ],
-    isFeatured: true
+    ctaText: "DISCUSS PRODUCT STORYTELLING",
+    isFlagship: true
   },
   {
+    id: "launch-gtm",
     number: "02",
-    title: "Short-Form Product Content",
-    subtitle: "Social & Growth Motion",
-    description: "Focused 15–45 second videos designed to communicate product benefits, promote features, and keep your company visible across social platforms.",
+    label: "SERVICE // 02",
+    title: "LAUNCH & GTM MOTION",
+    tagline: "Make the launch matter.",
+    description: "Motion assets built around new products, features, announcements, and go-to-market campaigns.",
     deliverables: [
-      "15–45 second vertical videos",
-      "LinkedIn videos",
-      "Instagram Reels",
-      "YouTube Shorts",
-      "Paid social creative",
-      "Feature clips",
-      "Product announcements"
+      "Launch Films",
+      "Feature Launches",
+      "Product Teasers",
+      "Campaign Assets",
+      "Social Cutdowns"
     ],
-    isFeatured: false
+    ctaText: "PLAN A LAUNCH",
+    isFlagship: false
   },
   {
+    id: "motion-systems",
     number: "03",
-    title: "Brand Motion",
-    subtitle: "Visual Identity System",
-    description: "Logo and brand animations that give your product a distinctive, polished, and consistent motion identity.",
+    label: "SERVICE // 03",
+    title: "PRODUCT MOTION SYSTEMS",
+    tagline: "Keep your product moving.",
+    description: "Ongoing motion assets that turn product updates, features, and ideas into content across your marketing channels.",
     deliverables: [
-      "Logo animations",
-      "Logo reveals",
-      "Intro animations",
-      "Outro animations",
-      "Animated brand elements",
-      "Loading animations",
-      "Splash-screen animations"
+      "Feature Motion",
+      "LinkedIn Content",
+      "Short-form Product Videos",
+      "Reels",
+      "YouTube Shorts",
+      "UI Motion"
     ],
-    isFeatured: false
+    ctaText: "BUILD A MOTION SYSTEM",
+    isFlagship: false
   },
   {
+    id: "interactive-experiences",
     number: "04",
-    title: "Interactive Product Animation",
-    subtitle: "Web & In-App Motion",
-    description: "Lightweight Rive and Lottie animations created for websites, product interfaces, onboarding, and interactive digital experiences.",
+    label: "SERVICE // 04",
+    title: "INTERACTIVE EXPERIENCES",
+    tagline: "Make the interface part of the story.",
+    description: "Interactive motion for websites, products, and digital experiences.",
     deliverables: [
-      "Rive animation",
-      "Lottie animation",
-      "Interactive web animation",
-      "Animated icons",
-      "UI microinteractions",
-      "Loading states",
-      "Product onboarding animation",
-      "Interface feedback"
+      "Rive",
+      "Lottie",
+      "Interactive Web Animation",
+      "Animated UI",
+      "3D Web Experiences",
+      "Interactive Product Experiences"
     ],
-    isFeatured: false
+    ctaText: "DISCUSS AN EXPERIENCE",
+    isFlagship: false
   }
+];
+
+export const ADDITIONAL_CAPABILITIES = [
+  "Brand Motion",
+  "3D Visualization",
+  "Motion Systems",
+  "AI-assisted Production"
 ];
