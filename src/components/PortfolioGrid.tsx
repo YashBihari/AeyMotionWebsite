@@ -20,27 +20,27 @@ export default function PortfolioGrid() {
   }, []);
 
   return (
-    <section id="work" className="py-24 md:py-32 bg-[#FAF9F5] border-b border-neutral-200/80 font-sans relative overflow-hidden">
+    <section id="work" className="py-10 md:py-14 bg-transparent font-sans relative overflow-hidden">
       {/* Background system */}
       <AeymotionBackground variant="work" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-neutral-200 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest text-[#8C4BFF] mb-3">
+        <div className="mb-6 md:mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur-md border border-purple-200/90 rounded-full text-[10.5px] font-mono font-bold uppercase tracking-widest text-[#8C4BFF] mb-2.5 shadow-xs">
             01 / PORTFOLIO
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
             Selected Work
           </h2>
-          <p className="text-neutral-600 font-normal text-base max-w-xl mt-3 leading-relaxed">
+          <p className="text-neutral-600 font-normal text-sm md:text-base max-w-xl mt-2 leading-relaxed">
             Motion, product storytelling, and visual systems for ambitious technology teams.
           </p>
         </div>
 
         {/* 2-column x 3-row Desktop Grid (6 Projects total) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {PROJECTS.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -80,7 +80,7 @@ export default function PortfolioGrid() {
         </div>
 
         {/* View More on Dribbble Button */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-12 md:mt-16 mb-4 md:mb-6">
           <a
             href={BRAND_LINKS.dribbble}
             target="_blank"

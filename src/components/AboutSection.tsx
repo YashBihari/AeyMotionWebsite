@@ -48,7 +48,7 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
   };
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#FAF9F5] border-b border-neutral-200/80 font-sans relative overflow-hidden">
+    <section id="about" className="py-10 md:py-14 bg-transparent font-sans relative overflow-hidden">
       <AeymotionBackground variant="about" />
 
       <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10" style={{ perspective: '1000px' }}>

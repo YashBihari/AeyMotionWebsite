@@ -7,122 +7,96 @@ interface AeymotionBackgroundProps {
 
 export default function AeymotionBackground({ variant = 'hero', isHovered = false }: AeymotionBackgroundProps) {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0 bg-[#FAF9F5]">
+    <div 
+      className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0 bg-transparent"
+      style={{
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)'
+      }}
+    >
       
-      {/* 1. Refined Editorial Grid Overlay */}
+      {/* 1. Subtle Dot Matrix Texture */}
       <div 
-        className="absolute inset-0 w-full h-full opacity-[0.12]" 
+        className="absolute inset-0 w-full h-full opacity-[0.22]" 
         style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(140, 75, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(140, 75, 255, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '48px 48px'
+          backgroundImage: 'radial-gradient(rgba(140, 75, 255, 0.16) 1px, transparent 1px)',
+          backgroundSize: '32px 32px'
         }}
       />
 
-      {/* 2. Soft Grain / Noise Filter */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.03] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg">
-        <filter id="aey-grain-light">
-          <feTurbulence type="fractalNoise" baseFrequency="0.80" numOctaves="3" stitchTiles="stitch" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#aey-grain-light)" />
-      </svg>
-
-      {/* 3. Aeymotion Signature Glowing Gradient Orbs */}
-      {variant === 'hero' && (
-        <>
-          <div className="absolute top-[-10%] right-[-5%] w-[60%] h-[65%] bg-gradient-to-br from-[#8C4BFF]/40 via-[#B98FD4]/35 to-[#F2A979]/30 rounded-full blur-[100px] shadow-[0_0_120px_rgba(140,75,255,0.4)]" />
-          <div className="absolute top-[20%] left-[-10%] w-[50%] h-[55%] bg-gradient-to-tr from-[#F2A979]/35 via-[#B98FD4]/30 to-[#8C4BFF]/30 rounded-full blur-[110px] shadow-[0_0_100px_rgba(242,169,121,0.35)]" />
-          <div className="absolute bottom-[5%] right-[10%] w-[45%] h-[50%] bg-gradient-to-tl from-[#8C4BFF]/35 via-[#D9A6B4]/30 to-[#F2A979]/25 rounded-full blur-[100px]" />
-        </>
-      )}
-
+      {/* 2. Soft Ambient Lavender & Pink Glow Spots */}
       {variant === 'work' && (
         <>
-          <div className="absolute top-[10%] left-[5%] w-[55%] h-[50%] bg-gradient-to-r from-[#8C4BFF]/35 via-[#B98FD4]/30 to-[#F2A979]/25 rounded-full blur-[100px] shadow-[0_0_100px_rgba(140,75,255,0.3)]" />
-          <div className="absolute bottom-[10%] right-[5%] w-[50%] h-[55%] bg-gradient-to-l from-[#F2A979]/35 via-[#B98FD4]/30 to-[#8C4BFF]/30 rounded-full blur-[110px] shadow-[0_0_100px_rgba(242,169,121,0.3)]" />
+          <div className="absolute top-[5%] left-[-5%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full bg-gradient-to-br from-[#8C4BFF]/18 via-[#C084FC]/20 to-[#F472B6]/15 blur-[120px]" />
+          <div className="absolute bottom-[5%] right-[-5%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-gradient-to-tl from-[#9333EA]/15 via-[#E879F9]/18 to-transparent blur-[110px]" />
         </>
       )}
 
       {variant === 'services' && (
         <>
-          <div className="absolute top-[15%] right-[10%] w-[55%] h-[55%] bg-gradient-to-bl from-[#B98FD4]/35 via-[#8C4BFF]/35 to-[#F2A979]/25 rounded-full blur-[100px] shadow-[0_0_100px_rgba(185,143,212,0.3)]" />
-          <div className="absolute bottom-[10%] left-[5%] w-[50%] h-[50%] bg-gradient-to-tr from-[#8C4BFF]/35 via-[#F2A979]/30 to-[#B98FD4]/25 rounded-full blur-[110px]" />
+          <div className="absolute top-[10%] right-[-5%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full bg-gradient-to-bl from-[#C084FC]/22 via-[#8C4BFF]/18 to-[#F472B6]/15 blur-[120px]" />
+          <div className="absolute bottom-[5%] left-[-5%] w-[50vw] max-w-[550px] h-[50vw] max-h-[550px] rounded-full bg-gradient-to-tr from-[#8C4BFF]/20 via-[#F472B6]/15 to-transparent blur-[110px]" />
         </>
       )}
 
       {variant === 'problems' && (
         <>
-          <div className="absolute top-[15%] left-[15%] w-[50%] h-[50%] bg-gradient-to-br from-[#F2A979]/35 via-[#B98FD4]/30 to-[#8C4BFF]/30 rounded-full blur-[100px]" />
-          <div className="absolute bottom-[15%] right-[15%] w-[48%] h-[48%] bg-gradient-to-tl from-[#8C4BFF]/35 via-[#D9A6B4]/30 to-[#F2A979]/30 rounded-full blur-[100px]" />
+          <div className="absolute top-[10%] left-[10%] w-[50vw] max-w-[550px] h-[50vw] max-h-[550px] rounded-full bg-gradient-to-br from-[#E879F9]/18 via-[#C084FC]/18 to-[#8C4BFF]/15 blur-[110px]" />
+          <div className="absolute bottom-[10%] right-[10%] w-[45vw] max-w-[500px] h-[45vw] max-h-[500px] rounded-full bg-gradient-to-tl from-[#8C4BFF]/18 via-[#F472B6]/15 to-transparent blur-[100px]" />
         </>
       )}
 
       {variant === 'process' && (
         <>
-          <div className="absolute top-[15%] left-[-5%] w-[50%] h-[50%] bg-gradient-to-r from-[#8C4BFF]/35 via-[#B98FD4]/30 to-[#F2A979]/30 rounded-full blur-[110px]" />
-          <div className="absolute bottom-[15%] right-[-5%] w-[50%] h-[50%] bg-gradient-to-l from-[#F2A979]/35 via-[#8C4BFF]/30 to-[#B98FD4]/30 rounded-full blur-[110px]" />
+          <div className="absolute top-[10%] left-[-5%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-gradient-to-r from-[#8C4BFF]/18 via-[#C084FC]/18 to-[#F472B6]/15 blur-[120px]" />
+          <div className="absolute bottom-[10%] right-[-5%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-gradient-to-l from-[#F472B6]/15 via-[#8C4BFF]/18 to-[#C084FC]/15 blur-[120px]" />
         </>
       )}
 
       {variant === 'why' && (
         <>
-          <div className="absolute top-[10%] right-[5%] w-[45%] h-[45%] bg-gradient-to-bl from-[#B98FD4]/35 via-[#8C4BFF]/30 to-[#F2A979]/30 rounded-full blur-[100px]" />
-          <div className="absolute bottom-[10%] left-[5%] w-[45%] h-[45%] bg-gradient-to-tr from-[#8C4BFF]/35 via-[#F2A979]/30 to-[#B98FD4]/25 rounded-full blur-[100px]" />
+          <div className="absolute top-[10%] right-[5%] w-[45vw] max-w-[550px] h-[45vw] max-h-[550px] rounded-full bg-gradient-to-bl from-[#C084FC]/20 via-[#8C4BFF]/16 to-[#F472B6]/15 blur-[100px]" />
+          <div className="absolute bottom-[10%] left-[5%] w-[45vw] max-w-[550px] h-[45vw] max-h-[550px] rounded-full bg-gradient-to-tr from-[#8C4BFF]/18 via-[#F472B6]/15 to-[#C084FC]/15 blur-[100px]" />
         </>
       )}
 
       {variant === 'about' && (
         <>
-          <div className="absolute top-[15%] left-[10%] w-[50%] h-[50%] bg-gradient-to-br from-[#F2A979]/35 via-[#B98FD4]/30 to-[#8C4BFF]/35 rounded-full blur-[100px] shadow-[0_0_90px_rgba(242,169,121,0.3)]" />
-          <div className="absolute bottom-[10%] right-[10%] w-[50%] h-[50%] bg-gradient-to-tl from-[#8C4BFF]/40 via-[#B98FD4]/30 to-[#F2A979]/25 rounded-full blur-[110px] shadow-[0_0_90px_rgba(140,75,255,0.35)]" />
+          <div className="absolute top-[10%] left-[15%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-gradient-to-br from-[#8C4BFF]/20 via-[#C084FC]/20 to-[#F472B6]/15 blur-[110px]" />
+          <div className="absolute bottom-[10%] right-[15%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-gradient-to-tl from-[#8C4BFF]/22 via-[#E879F9]/18 to-transparent blur-[110px]" />
         </>
       )}
 
-      {variant === 'cta' && (
-        <>
-          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[75%] h-[65%] bg-gradient-to-r from-[#8C4BFF]/40 via-[#B98FD4]/35 to-[#F2A979]/35 rounded-full blur-[110px] shadow-[0_0_120px_rgba(140,75,255,0.4)]" />
-        </>
-      )}
-
-      {/* 4. Vibrant Glowing Vector Lines in SVG */}
+      {/* 3. Violet/Lilac Dashed Wave Lines */}
       <svg 
-        className="absolute inset-0 w-full h-full opacity-[0.35]" 
+        className="absolute inset-0 w-full h-full opacity-40" 
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
+        viewBox="0 0 1440 600"
       >
         <defs>
-          <linearGradient id="aey-light-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#8C4BFF" />
-            <stop offset="50%" stopColor="#B98FD4" />
-            <stop offset="100%" stopColor="#F2A979" />
+          <linearGradient id={`aey-grad-${variant}`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#8C4BFF" stopOpacity="0.15" />
+            <stop offset="30%" stopColor="#8C4BFF" stopOpacity="0.65" />
+            <stop offset="70%" stopColor="#C084FC" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#F472B6" stopOpacity="0.35" />
           </linearGradient>
-          <filter id="aey-line-glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
         </defs>
 
         <path 
-          d="M -50,150 C 300,50 600,450 1100,200 S 1500,400 1900,250" 
+          d="M -50,180 C 300,80 650,420 1100,160 S 1400,320 1600,190" 
           fill="none" 
-          stroke="url(#aey-light-grad)" 
-          strokeWidth="2.5" 
-          strokeDasharray="10 8"
-          filter="url(#aey-line-glow)"
+          stroke={`url(#aey-grad-${variant})`} 
+          strokeWidth="2" 
+          strokeDasharray="6 7"
         />
         <path 
-          d="M -100,350 C 400,250 700,50 1200,300 S 1600,150 2000,380" 
+          d="M -80,380 C 350,280 700,100 1150,280 S 1450,120 1650,300" 
           fill="none" 
-          stroke="url(#aey-light-grad)" 
+          stroke={`url(#aey-grad-${variant})`} 
           strokeWidth="1.5" 
+          strokeDasharray="5 7"
           opacity="0.6"
-          filter="url(#aey-line-glow)"
         />
       </svg>
     </div>
