@@ -111,9 +111,9 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
                   {/* What is Included */}
                   <div className="pt-4 border-t border-neutral-100 space-y-2.5">
                     <span className="font-mono text-[10px] text-neutral-400 font-bold uppercase tracking-widest block">
-                      WHAT IS INCLUDED:
+                      WHAT'S INCLUDED:
                     </span>
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       {service.deliverables.map((item, i) => (
                         <div key={i} className="text-xs text-neutral-700 flex items-center gap-2.5">
                           <span className="w-4 h-4 rounded-full bg-purple-50 border border-purple-200/80 flex items-center justify-center text-[#8C4BFF] shrink-0 group-hover:border-[#8C4BFF]/40 transition-colors">

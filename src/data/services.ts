@@ -18,11 +18,14 @@ export const SERVICES: ServiceItem[] = [
     tagline: "EXPLAIN WHAT YOU'RE BUILDING.",
     description: "Product videos, demos, explainers, walkthroughs, and feature stories designed to communicate your product clearly.",
     deliverables: [
-      "Explainer Videos",
-      "Product Demos",
-      "Product Walkthroughs",
-      "Homepage Videos",
-      "Feature Explainers"
+      "Product & Audience Research",
+      "Story & Concept Development",
+      "Scriptwriting",
+      "Storyboarding",
+      "Art Direction",
+      "Motion Design",
+      "Sound Design",
+      "Final Delivery"
     ],
     ctaText: "DISCUSS PRODUCT STORYTELLING"
   },
@@ -34,10 +37,13 @@ export const SERVICES: ServiceItem[] = [
     tagline: "MAKE THE LAUNCH MATTER.",
     description: "Motion assets built around new products, features, announcements, and go-to-market campaigns.",
     deliverables: [
-      "Launch Films",
-      "Feature Launches",
-      "Product Teasers",
-      "Campaign Assets",
+      "Launch Strategy",
+      "Creative Concept",
+      "Messaging & Copy Direction",
+      "Storyboarding",
+      "Art Direction",
+      "Motion Production",
+      "Campaign Adaptations",
       "Social Cutdowns"
     ],
     ctaText: "PLAN A LAUNCH"
@@ -50,12 +56,14 @@ export const SERVICES: ServiceItem[] = [
     tagline: "KEEP YOUR PRODUCT MOVING.",
     description: "Ongoing motion assets that turn product updates, features, and ideas into content across your marketing channels.",
     deliverables: [
-      "Feature Motion",
-      "LinkedIn Content",
-      "Short-form Product Videos",
-      "Reels",
-      "YouTube Shorts",
-      "UI Motion"
+      "Creative Direction",
+      "Visual System Development",
+      "Motion Guidelines",
+      "Asset Design",
+      "Motion Production",
+      "Content Adaptations",
+      "Platform Optimization",
+      "Ongoing Content Support"
     ],
     ctaText: "BUILD A MOTION SYSTEM"
   }
