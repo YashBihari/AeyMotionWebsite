@@ -46,7 +46,7 @@ export default function CalendlyModal({ isOpen, onClose }: CalendlyModalProps) {
                     Book a Motion Strategy Call
                   </h3>
                   <p className="text-[11px] text-neutral-500 font-mono">
-                    30-min product & video strategy call with Aeymotion
+                    15-min product & video strategy call with Aeymotion
                   </p>
                 </div>
               </div>
