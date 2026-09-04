@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import React from 'react';
-import { Users, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Users, ArrowUpRight } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import { ABOUT_SECTION } from '../data/content';
 
@@ -74,45 +74,58 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F2A979]/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-6 relative z-10">
-            
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-[10px] font-mono uppercase font-bold tracking-widest text-white">
-              <Sparkles className="w-3.5 h-3.5 text-[#F2A979]" />
-              06 / ABOUT AEYMOTION
-            </div>
-
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-black uppercase tracking-tight text-white leading-tight">
               {ABOUT_SECTION.title}
             </h2>
 
             <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">
-              "{ABOUT_SECTION.copy}"
+              {ABOUT_SECTION.copy}
             </p>
 
-            <div className="pt-3 border-t border-white/20">
-              <span className="font-mono text-[9px] sm:text-[10px] text-white/70 font-bold uppercase tracking-widest block mb-2.5">
-                WE COLLABORATE DIRECTLY WITH:
-              </span>
-              <div className="flex flex-nowrap items-center gap-2 sm:gap-2.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
-                {ABOUT_SECTION.audiences.map((aud, i) => (
-                  <div 
-                    key={i}
-                    className="px-3 sm:px-3.5 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-[11px] sm:text-xs font-bold uppercase text-white flex items-center gap-2 shrink-0 whitespace-nowrap"
-                  >
-                    <Users className="w-3 h-3 text-[#F2A979] shrink-0" />
-                    <span>{aud}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Founder Context & Collaborate Adjacent Row */}
+            <div className="pt-4 border-t border-white/20 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 items-stretch">
+              {/* Founder Context & CTA */}
+              <div className="flex flex-col justify-between space-y-4">
+                <div className="space-y-1">
+                  <span className="font-mono text-[9px] sm:text-[10px] text-white/70 font-bold uppercase tracking-widest block">
+                    FOUNDER-LED STRATEGY & CREATIVE DIRECTION
+                  </span>
+                  <span className="text-base sm:text-lg font-black uppercase text-white tracking-wide block">
+                    {ABOUT_SECTION.founder.name}
+                  </span>
+                  <span className="text-xs text-white/80 font-mono block">
+                    {ABOUT_SECTION.founder.role}
+                  </span>
+                </div>
 
-            <div className="pt-2 flex items-center justify-start">
-              <button
-                onClick={onBookCall}
-                className="px-6 py-3 bg-white text-[#6F2BFF] hover:bg-neutral-100 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-lg inline-flex items-center gap-2 cursor-pointer hover:scale-105"
-              >
-                Start a Project
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#6F2BFF]" />
-              </button>
+                <div>
+                  <button
+                    onClick={onBookCall}
+                    className="px-6 py-3 bg-white text-[#6F2BFF] hover:bg-neutral-100 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-lg inline-flex items-center gap-2 cursor-pointer hover:scale-105"
+                  >
+                    Plan your launch
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#6F2BFF]" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Vertical Collaborate With List */}
+              <div className="sm:border-l sm:border-white/20 sm:pl-6 space-y-2">
+                <span className="font-mono text-[9px] sm:text-[10px] text-white/70 font-bold uppercase tracking-widest block">
+                  WE COLLABORATE DIRECTLY WITH:
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  {ABOUT_SECTION.audiences.map((aud, i) => (
+                    <div 
+                      key={i}
+                      className="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-[11px] sm:text-xs font-bold uppercase text-white flex items-center gap-2.5 w-fit"
+                    >
+                      <Users className="w-3.5 h-3.5 text-[#F2A979] shrink-0" />
+                      <span>{aud}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
           </div>

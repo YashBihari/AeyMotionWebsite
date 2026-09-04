@@ -1,6 +1,6 @@
 {
-  "name": "Aeymotion Studio",
-  "description": "Premium motion design studio portfolio geared towards SaaS and AI founders.",
+  "name": "Aeymotion",
+  "description": "Product launch storytelling and campaign creative for B2B AI and technical SaaS companies.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

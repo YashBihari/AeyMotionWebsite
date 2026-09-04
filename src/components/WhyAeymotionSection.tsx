@@ -14,9 +14,6 @@ export default function WhyAeymotionSection() {
         
         {/* Section Header */}
         <div className="mb-6 md:mb-8 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur-md border border-purple-200/90 rounded-full text-[10.5px] font-mono font-bold uppercase tracking-widest text-[#8C4BFF] mb-2.5 shadow-xs">
-            05 / ADVANTAGE
-          </div>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
             {WHY_AEYMOTION_SECTION.title}
           </h2>

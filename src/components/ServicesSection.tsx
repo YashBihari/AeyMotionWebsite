@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
-import { ArrowUpRight, Sparkles, Rocket, Cpu, Check } from 'lucide-react';
+import { ArrowUpRight, Compass, Film, Check, Star } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
-import { SERVICES, ADDITIONAL_CAPABILITIES, ServiceItem } from '../data/services';
+import { SERVICES, ServiceItem } from '../data/services';
 
 interface ServicesSectionProps {
   onBookCall: () => void;
@@ -11,14 +11,12 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
   // Service-specific icon map
   const getServiceIcon = (id: string) => {
     switch (id) {
-      case 'product-storytelling':
-        return Sparkles;
-      case 'launch-gtm':
-        return Rocket;
-      case 'motion-systems':
-        return Cpu;
+      case 'launch-narrative-sprint':
+        return Compass;
+      case 'launch-story-system':
+        return Film;
       default:
-        return Sparkles;
+        return Compass;
     }
   };
 
@@ -33,25 +31,18 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-6 md:mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 backdrop-blur-md border border-purple-200/90 rounded-full shadow-xs mb-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#8C4BFF]" />
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-neutral-800">
-              SERVICES // 01–03
-            </span>
-          </div>
-
+        <div className="max-w-3xl mb-8 md:mb-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[1.02]">
-            MOTION FOR EVERY STAGE OF YOUR PRODUCT.
+            TWO WAYS TO WORK WITH AEYMOTION
           </h2>
 
           <p className="text-neutral-600 font-normal text-sm md:text-base mt-2.5 leading-relaxed max-w-2xl">
-            From first introduction to launch and everything that follows, we create motion assets designed around how technology companies communicate.
+            Start with the story, or take it all the way to launch.
           </p>
         </div>
 
-        {/* 3-Column Equal-Weight Horizontal Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        {/* 2-Column Balanced Horizontal Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch max-w-5xl mx-auto">
           {SERVICES.map((service: ServiceItem, idx: number) => {
             const Icon = getServiceIcon(service.id);
             return (
@@ -61,44 +52,46 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ 
                   y: -14, 
-                  scale: 1.035,
+                  scale: 1.025,
                   transition: { type: 'spring', stiffness: 500, damping: 22 }
                 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="group bg-white/85 backdrop-blur-md border border-purple-100/90 hover:border-[#8C4BFF]/60 rounded-3xl p-7 sm:p-8 lg:p-8 shadow-xs hover:shadow-xl hover:shadow-[#8C4BFF]/10 transition-[border-color,box-shadow] duration-200 flex flex-col justify-between cursor-pointer select-none"
+                className={`group bg-white/85 backdrop-blur-md rounded-3xl p-7 sm:p-8 lg:p-9 flex flex-col justify-between cursor-pointer select-none relative transition-[border-color,box-shadow] duration-200 ${
+                  service.isFlagship
+                    ? 'border-2 border-[#8C4BFF]/70 shadow-[0_12px_35px_rgba(140,75,255,0.14)] hover:shadow-2xl hover:shadow-[#8C4BFF]/20 hover:border-[#8C4BFF]'
+                    : 'border border-purple-100/90 hover:border-[#8C4BFF]/60 shadow-xs hover:shadow-xl hover:shadow-[#8C4BFF]/10'
+                }`}
               >
+                {service.isFlagship && (
+                  <div className="absolute -top-3.5 left-8 px-3 py-1 bg-[#8C4BFF] text-white font-mono text-[10px] font-black uppercase tracking-widest rounded-full shadow-sm flex items-center gap-1.5">
+                    <Star className="w-3 h-3 fill-white" />
+                    Flagship Offer
+                  </div>
+                )}
+
                 <div className="space-y-5">
-                  {/* Top Metadata: Service Label + Icon Badge */}
-                  <div className="flex items-center justify-between">
+                  {/* Top Metadata: Service Label + Icon */}
+                  <div className="flex items-center justify-between pt-1">
                     <span className="font-mono text-[11px] font-bold text-[#8C4BFF] uppercase tracking-widest bg-[#8C4BFF]/10 px-3 py-1 rounded-full border border-[#8C4BFF]/20 group-hover:bg-[#8C4BFF] group-hover:text-white transition-colors duration-200">
                       {service.label}
                     </span>
-                    <div className="w-9 h-9 rounded-xl bg-neutral-100 group-hover:bg-[#8C4BFF]/15 text-neutral-700 group-hover:text-[#8C4BFF] group-hover:scale-110 flex items-center justify-center transition-all duration-200">
+                    <div className="w-9 h-9 rounded-xl bg-neutral-100 group-hover:bg-[#8C4BFF]/15 text-neutral-700 group-hover:text-[#8C4BFF] group-hover:scale-110 flex items-center justify-center transition-all duration-200 shrink-0">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  {/* Title & Tagline */}
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-neutral-900 group-hover:text-[#8C4BFF] transition-colors duration-200 leading-tight">
-                      {service.id === 'launch-gtm' ? (
-                        <>
-                          LAUNCH<br />& GTM MOTION
-                        </>
-                      ) : service.id === 'product-storytelling' ? (
-                        <>
-                          PRODUCT<br />STORYTELLING
-                        </>
-                      ) : service.id === 'motion-systems' ? (
-                        <>
-                          PRODUCT<br />MOTION SYSTEMS
-                        </>
-                      ) : (
-                        service.title
-                      )}
+                  {/* Title, Scope Badge & Tagline */}
+                  <div className="space-y-2.5">
+                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-900 group-hover:text-[#8C4BFF] transition-colors duration-200 leading-tight">
+                      {service.titleLine1}<br />{service.titleLine2}
                     </h3>
-                    <p className="text-xs font-mono font-bold text-[#8C4BFF] uppercase tracking-wider mt-1.5">
+                    <div>
+                      <span className="inline-block font-mono text-[9.5px] font-bold uppercase tracking-wider text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full border border-neutral-200/90">
+                        {service.scopeBadge}
+                      </span>
+                    </div>
+                    <p className="text-xs font-mono font-bold text-[#8C4BFF] uppercase tracking-wider pt-0.5">
                       {service.tagline}
                     </p>
                   </div>
@@ -123,6 +116,24 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
                         </div>
                       ))}
                     </div>
+
+                    {service.optionalExtensions && service.optionalExtensions.length > 0 && (
+                      <div className="pt-3.5 mt-2 border-t border-dashed border-neutral-200/90 space-y-2">
+                        <span className="font-mono text-[10px] text-neutral-400 font-bold uppercase tracking-widest block">
+                          OPTIONAL EXTENSIONS:
+                        </span>
+                        <div className="space-y-1.5">
+                          {service.optionalExtensions.map((ext, i) => (
+                            <div key={i} className="text-xs text-neutral-600 flex items-center gap-2.5">
+                              <span className="w-4 h-4 rounded-full bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-500 font-mono text-[10px] font-bold shrink-0">
+                                +
+                              </span>
+                              <span className="font-medium text-neutral-600">{ext}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -140,30 +151,6 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
             );
           })}
         </div>
-
-        {/* Additional Capabilities subtle bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="pt-8 mt-6 border-t border-purple-200/50 text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs font-mono"
-        >
-          <span className="text-neutral-400 font-bold uppercase tracking-widest text-[10px]">
-            ADDITIONAL CAPABILITIES
-          </span>
-          <span className="hidden sm:inline text-neutral-300">•</span>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-neutral-600 font-medium">
-            {ADDITIONAL_CAPABILITIES.map((cap, i) => (
-              <span key={i} className="inline-flex items-center gap-2">
-                <span>{cap}</span>
-                {i < ADDITIONAL_CAPABILITIES.length - 1 && (
-                  <span className="text-neutral-300">·</span>
-                )}
-              </span>
-            ))}
-          </div>
-        </motion.div>
 
       </div>
     </section>

@@ -2,76 +2,75 @@ export interface ServiceItem {
   id: string;
   number: string;
   label: string;
+  scopeBadge: string;
+  titleLine1: string;
+  titleLine2: string;
   title: string;
   tagline: string;
   description: string;
   deliverables: string[];
+  optionalExtensions?: string[];
   ctaText: string;
+  isFlagship?: boolean;
 }
 
 export const SERVICES: ServiceItem[] = [
   {
-    id: "product-storytelling",
+    id: "launch-narrative-sprint",
     number: "01",
-    label: "SERVICE // 01",
-    title: "PRODUCT STORYTELLING",
-    tagline: "EXPLAIN WHAT YOU'RE BUILDING.",
-    description: "Product videos, demos, explainers, walkthroughs, and feature stories designed to communicate your product clearly.",
+    label: "OFFER // 01",
+    scopeBadge: "STRATEGY + STORY",
+    titleLine1: "LAUNCH",
+    titleLine2: "NARRATIVE SPRINT",
+    title: "LAUNCH NARRATIVE SPRINT",
+    tagline: "GET THE STORY RIGHT BEFORE YOU CREATE THE LAUNCH.",
+    description: "For B2B AI companies with a strong product but an unclear story. We research the market, sharpen the positioning, and build the launch narrative that guides the creative.",
     deliverables: [
       "Product & Audience Research",
-      "Story & Concept Development",
-      "Scriptwriting",
-      "Storyboarding",
-      "Art Direction",
-      "Motion Design",
-      "Sound Design",
-      "Final Delivery"
+      "Competitive Context",
+      "Positioning & Differentiation",
+      "Message Hierarchy",
+      "Launch Angle",
+      "Core Narrative",
+      "Draft Script",
+      "Creative Direction"
     ],
-    ctaText: "DISCUSS PRODUCT STORYTELLING"
+    ctaText: "BUILD YOUR LAUNCH STORY"
   },
   {
-    id: "launch-gtm",
+    id: "launch-story-system",
     number: "02",
-    label: "SERVICE // 02",
-    title: "LAUNCH & GTM MOTION",
-    tagline: "MAKE THE LAUNCH MATTER.",
-    description: "Motion assets built around new products, features, announcements, and go-to-market campaigns.",
+    label: "OFFER // 02",
+    scopeBadge: "STRATEGY + STORY + CREATIVE",
+    titleLine1: "LAUNCH",
+    titleLine2: "STORY SYSTEM",
+    title: "LAUNCH STORY SYSTEM",
+    tagline: "FROM PRODUCT STRATEGY TO LAUNCH-READY CREATIVE.",
+    description: "For B2B AI companies preparing to launch a new company, product, or major feature. We take the launch from strategy and narrative through a premium launch film and supporting creative.",
     deliverables: [
-      "Launch Strategy",
-      "Creative Concept",
-      "Messaging & Copy Direction",
-      "Storyboarding",
-      "Art Direction",
-      "Motion Production",
-      "Campaign Adaptations",
-      "Social Cutdowns"
+      "Everything in the Narrative Sprint",
+      "Final Launch Script",
+      "Storyboard & Creative Direction",
+      "Hero Launch Film",
+      "Social / Campaign Cutdowns",
+      "Product & Launch Assets",
+      "Additional Feature / Product Videos",
+      "Distribution Recommendations"
     ],
-    ctaText: "PLAN A LAUNCH"
-  },
-  {
-    id: "motion-systems",
-    number: "03",
-    label: "SERVICE // 03",
-    title: "PRODUCT MOTION SYSTEMS",
-    tagline: "KEEP YOUR PRODUCT MOVING.",
-    description: "Ongoing motion assets that turn product updates, features, and ideas into content across your marketing channels.",
-    deliverables: [
-      "Creative Direction",
-      "Visual System Development",
-      "Motion Guidelines",
-      "Asset Design",
-      "Motion Production",
-      "Content Adaptations",
-      "Platform Optimization",
-      "Ongoing Content Support"
-    ],
-    ctaText: "BUILD A MOTION SYSTEM"
+    ctaText: "PLAN YOUR LAUNCH",
+    isFlagship: true
   }
 ];
 
 export const ADDITIONAL_CAPABILITIES = [
-  "Brand Motion",
-  "3D Visualization",
-  "Motion Systems",
-  "AI-assisted Production"
+  "Motion Design",
+  "UI Animation",
+  "Product Visualization",
+  "3D Design",
+  "AI-Assisted Visuals",
+  "Sound Design",
+  "Product Demos",
+  "Social Cutdowns",
+  "Website Motion",
+  "Brand Motion Systems"
 ];

@@ -20,8 +20,8 @@ export default function Navbar({ onBookCall }: NavbarProps) {
 
   const navLinks = [
     { label: 'Work', href: '#work' },
-    { label: 'Services', href: '#services' },
-    { label: 'Process', href: '#process' },
+    { label: 'Approach', href: '#process' },
+    { label: 'Offers', href: '#services' },
     { label: 'About', href: '#about' }
   ];
 
@@ -86,7 +86,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
             onClick={onBookCall}
             className="px-5 py-2.5 bg-[#8C4BFF] hover:bg-[#6F2BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm hover:shadow-md transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
           >
-            Book a Call
+            Plan your launch
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -97,7 +97,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
             onClick={onBookCall}
             className="px-3.5 py-1.5 bg-[#8C4BFF] text-white text-[10px] font-bold uppercase tracking-wider rounded-lg"
           >
-            Book a Call
+            Plan your launch
           </button>
 
           <button 
@@ -139,7 +139,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
                   }}
                   className="w-full py-3 bg-[#8C4BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2"
                 >
-                  Book a Call
+                  Plan your launch
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </div>

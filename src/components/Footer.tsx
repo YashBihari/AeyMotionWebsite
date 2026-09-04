@@ -102,7 +102,7 @@ export default function Footer({ onBookCall }: FooterProps) {
             </span>
           </div>
           <p className="text-xs text-neutral-400 font-normal leading-relaxed max-w-sm">
-            Motion and interactive animation studio for AI, SaaS, and technology companies.
+            Product storytelling and launch creative for B2B AI and technical SaaS companies.
           </p>
           <div className="pt-2">
             <a
@@ -118,10 +118,10 @@ export default function Footer({ onBookCall }: FooterProps) {
         <div className="flex flex-col gap-2.5 text-xs font-mono uppercase tracking-wider text-neutral-400">
           <span className="text-[10px] font-bold text-[#8C4BFF] mb-1">NAVIGATION</span>
           <a href="#work" onClick={(e) => handleScrollNav(e, 'work')} className="hover:text-white transition-colors">Work</a>
-          <a href="#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors">Services</a>
-          <a href="#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors">Process</a>
+          <a href="#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors">Offers</a>
+          <a href="#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors">Approach</a>
           <a href="#about" onClick={(e) => handleScrollNav(e, 'about')} className="hover:text-white transition-colors">About</a>
-          <button onClick={onBookCall} className="text-left hover:text-white transition-colors uppercase cursor-pointer">Book a Call</button>
+          <button onClick={onBookCall} className="text-left hover:text-white transition-colors uppercase cursor-pointer">Plan your launch</button>
         </div>
 
         {/* Right column: Social links & Copyright */}

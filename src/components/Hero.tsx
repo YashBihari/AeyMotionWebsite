@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Star, TrendingUp, Heart, ArrowUpRight, X } from 'lucide-react';
+import { Play, Star, TrendingUp, Heart, ArrowUpRight, X, Compass, MessageSquare, Film, Share2 } from 'lucide-react';
 
 interface HeroProps {
   onBookCall: () => void;
@@ -19,24 +19,24 @@ export default function Hero({ onBookCall }: HeroProps) {
 
   const valueProps = [
     {
-      icon: Play,
-      titleTop: 'EXPLAIN',
-      titleBottom: 'SIMPLY',
+      icon: Compass,
+      titleTop: 'POSITION',
+      titleBottom: 'WITH CLARITY',
     },
     {
-      icon: Star,
-      titleTop: 'ENGAGE',
-      titleBottom: 'VISUALLY',
+      icon: MessageSquare,
+      titleTop: 'STORY',
+      titleBottom: 'WITH DISTINCTION',
     },
     {
-      icon: TrendingUp,
-      titleTop: 'CONVERT',
-      titleBottom: 'FASTER',
+      icon: Film,
+      titleTop: 'LAUNCH',
+      titleBottom: 'WITH CRAFT',
     },
     {
-      icon: Heart,
-      titleTop: 'LEAVE',
-      titleBottom: 'LASTING IMPACT',
+      icon: Share2,
+      titleTop: 'EXTEND',
+      titleBottom: 'ACROSS CHANNELS',
     },
   ];
 
@@ -134,7 +134,7 @@ export default function Hero({ onBookCall }: HeroProps) {
           >
             <span className="w-2.5 h-2.5 rounded-full bg-[#8C4BFF] animate-pulse shadow-[0_0_8px_#8C4BFF]" />
             <span className="text-[10.5px] sm:text-xs font-mono uppercase tracking-widest text-neutral-800 font-bold">
-              MOTION STUDIO FOR AI, SAAS & TECHNOLOGY
+              PRODUCT STORYTELLING FOR B2B AI COMPANIES
             </span>
           </motion.div>
 
@@ -145,11 +145,11 @@ export default function Hero({ onBookCall }: HeroProps) {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
             className="space-y-1 sm:space-y-2"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-black uppercase tracking-tight text-[#121217] leading-[1.03]">
-              YOUR PRODUCT IS COMPLEX.
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[60px] font-black uppercase tracking-tight text-[#121217] leading-[1.04]">
+              MAKE COMPLEX AI PRODUCTS
             </h1>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-black uppercase tracking-tight leading-[1.03] text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#BA63F8] to-[#E585AF]">
-              YOUR STORY SHOULDN'T BE.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[60px] font-black uppercase tracking-tight leading-[1.04] text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#BA63F8] to-[#E585AF]">
+              EASY TO UNDERSTAND AND HARD TO IGNORE.
             </h2>
           </motion.div>
 
@@ -160,7 +160,7 @@ export default function Hero({ onBookCall }: HeroProps) {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-xl text-balance"
           >
-            We create premium motion design that helps AI, SaaS, and technology companies explain products, launch ideas, and communicate what they’re building.
+            Aeymotion helps B2B AI companies turn complex products into clear launch narratives, premium launch films and supporting campaign creative.
           </motion.p>
 
           {/* 4 Value Pillars (Horizontal Row) */}
@@ -186,10 +186,10 @@ export default function Hero({ onBookCall }: HeroProps) {
                     <IconComponent className="w-4 h-4 text-white fill-white/20" />
                   </div>
                   <div className="flex flex-col leading-tight min-w-0">
-                    <span className="text-[11px] font-sans font-bold tracking-tight text-[#8C4BFF] uppercase truncate">
+                    <span className="text-[10px] sm:text-[11px] font-sans font-bold tracking-tight text-[#8C4BFF] uppercase truncate">
                       {prop.titleTop}
                     </span>
-                    <span className="text-[11px] font-sans font-bold tracking-tight text-neutral-900 uppercase truncate group-hover:text-[#8C4BFF] transition-colors duration-200">
+                    <span className="text-[9.5px] sm:text-[10.5px] xl:text-[11px] font-sans font-bold tracking-tight text-neutral-900 uppercase truncate group-hover:text-[#8C4BFF] transition-colors duration-200">
                       {prop.titleBottom}
                     </span>
                   </div>
@@ -209,16 +209,16 @@ export default function Hero({ onBookCall }: HeroProps) {
               onClick={onBookCall}
               className="px-7 py-4 bg-[#8C4BFF] hover:bg-[#7828E8] text-white text-xs font-sans font-bold uppercase tracking-wider transition-all duration-300 rounded-xl inline-flex items-center gap-2 shadow-[0_6px_20px_rgba(140,75,255,0.35)] hover:shadow-[0_8px_25px_rgba(140,75,255,0.45)] hover:scale-[1.02] cursor-pointer"
             >
-              Start a Project
+              Plan your launch
               <ArrowUpRight className="w-4 h-4" />
             </button>
 
             <a
               href="#work"
               onClick={handleScrollToWork}
-              className="px-7 py-4 bg-white/90 hover:bg-white border border-purple-200 hover:border-neutral-900 text-neutral-900 text-xs font-sans font-bold uppercase tracking-wider transition-all duration-300 rounded-xl inline-flex items-center gap-2 shadow-xs hover:shadow-sm"
+              className="px-7 py-4 bg-white/90 hover:bg-white border border-purple-200 hover:border-neutral-900 text-neutral-900 text-xs font-sans font-bold uppercase tracking-wider transition-all duration-300 rounded-xl inline-flex items-center gap-2 shadow-xs hover:shadow-sm cursor-pointer"
             >
-              View Our Work
+              See our work
             </a>
           </motion.div>
         </div>

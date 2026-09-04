@@ -35,10 +35,10 @@ export default function App() {
       <main className="w-full flex-grow">
         <Hero onBookCall={handleOpenCalendly} />
         <PortfolioGrid />
-        <ServicesSection onBookCall={handleOpenCalendly} />
         <ProblemsSection />
-        <ProcessSection />
         <WhyAeymotionSection />
+        <ProcessSection />
+        <ServicesSection onBookCall={handleOpenCalendly} />
         <AboutSection onBookCall={handleOpenCalendly} />
       </main>
 
