@@ -116,24 +116,6 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
                         </div>
                       ))}
                     </div>
-
-                    {service.optionalExtensions && service.optionalExtensions.length > 0 && (
-                      <div className="pt-3.5 mt-2 border-t border-dashed border-neutral-200/90 space-y-2">
-                        <span className="font-mono text-[10px] text-neutral-400 font-bold uppercase tracking-widest block">
-                          OPTIONAL EXTENSIONS:
-                        </span>
-                        <div className="space-y-1.5">
-                          {service.optionalExtensions.map((ext, i) => (
-                            <div key={i} className="text-xs text-neutral-600 flex items-center gap-2.5">
-                              <span className="w-4 h-4 rounded-full bg-neutral-100 border border-neutral-200/80 flex items-center justify-center text-neutral-500 font-mono text-[10px] font-bold shrink-0">
-                                +
-                              </span>
-                              <span className="font-medium text-neutral-600">{ext}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
 

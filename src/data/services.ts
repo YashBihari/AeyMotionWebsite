@@ -9,7 +9,6 @@ export interface ServiceItem {
   tagline: string;
   description: string;
   deliverables: string[];
-  optionalExtensions?: string[];
   ctaText: string;
   isFlagship?: boolean;
 }
