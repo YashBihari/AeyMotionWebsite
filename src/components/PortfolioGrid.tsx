@@ -124,7 +124,11 @@ export default function PortfolioGrid() {
                   />
                 ) : (
                   <iframe 
-                    src={selectedProject.fullVideoEmbed}
+                    src={
+                      selectedProject.fullVideoEmbed.includes('vimeo.com') && !selectedProject.fullVideoEmbed.includes('player.vimeo.com')
+                        ? `https://player.vimeo.com/video/${selectedProject.fullVideoEmbed.match(/vimeo\.com\/(\d+)/)?.[1] || ''}?autoplay=1`
+                        : selectedProject.fullVideoEmbed
+                    }
                     className="w-full h-full"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
