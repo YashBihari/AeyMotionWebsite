@@ -56,6 +56,7 @@ export default function PortfolioGrid() {
                 muted
                 loop
                 playsInline
+                preload="metadata"
               />
 
               {/* Play Icon Overlay Center */}
@@ -129,9 +130,9 @@ export default function PortfolioGrid() {
                         ? `https://player.vimeo.com/video/${selectedProject.fullVideoEmbed.match(/vimeo\.com\/(\d+)/)?.[1] || ''}?autoplay=1`
                         : selectedProject.fullVideoEmbed
                     }
-                    className="w-full h-full"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture"
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
                     title={selectedProject.name}
                   />
