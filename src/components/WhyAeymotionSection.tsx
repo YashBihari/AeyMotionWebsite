@@ -13,9 +13,10 @@ export default function WhyAeymotionSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-6 md:mb-8 max-w-3xl">
+        <div className="mb-6 md:mb-8 max-w-4xl">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
-            {WHY_AEYMOTION_SECTION.title}
+            <span className="block">WHY B2B AI COMPANIES</span>
+            <span className="block">WORK WITH AEYMOTION.</span>
           </h2>
           <p className="text-neutral-600 font-normal text-sm md:text-base mt-2 leading-relaxed">
             {WHY_AEYMOTION_SECTION.subtitle}
