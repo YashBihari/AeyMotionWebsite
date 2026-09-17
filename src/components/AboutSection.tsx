@@ -48,10 +48,10 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
   };
 
   return (
-    <section id="about" className="py-10 md:py-14 bg-transparent font-sans relative overflow-hidden">
+    <section id="about" className="pt-6 lg:pt-8 pb-14 md:pb-20 bg-transparent font-sans relative">
       <AeymotionBackground variant="about" />
 
-      <div className="max-w-4xl mx-auto px-6 md:px-8 relative z-10" style={{ perspective: '1000px' }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10" style={{ perspective: '1000px' }}>
         
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -67,33 +67,33 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
             transformStyle: 'preserve-3d',
             willChange: 'transform',
           }}
-          className="p-8 sm:p-10 md:p-14 bg-gradient-to-br from-[#8C4BFF] via-[#6F2BFF] to-[#5116D9] rounded-3xl text-white shadow-2xl relative overflow-hidden"
+          className="p-8 sm:p-10 md:p-14 lg:p-16 bg-gradient-to-br from-[#8C4BFF] via-[#6F2BFF] to-[#5116D9] rounded-3xl text-white shadow-2xl relative overflow-hidden"
         >
           {/* Glowing Ambient Background Circles */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#B98FD4]/30 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F2A979]/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#B98FD4]/30 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#F2A979]/20 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="space-y-6 relative z-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-black uppercase tracking-tight text-white leading-tight">
+          <div className="space-y-6 md:space-y-8 relative z-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight">
               {ABOUT_SECTION.title}
             </h2>
 
-            <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-white/90 font-normal leading-relaxed max-w-4xl">
               {ABOUT_SECTION.copy}
             </p>
 
             {/* Founder Context & Collaborate Adjacent Row */}
-            <div className="pt-4 border-t border-white/20 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 items-stretch">
+            <div className="pt-6 border-t border-white/20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-stretch">
               {/* Founder Context & CTA */}
-              <div className="flex flex-col justify-between space-y-4">
-                <div className="space-y-1">
+              <div className="flex flex-col justify-between space-y-6">
+                <div className="space-y-1.5">
                   <span className="font-mono text-[9px] sm:text-[10px] text-white/70 font-bold uppercase tracking-widest block">
                     FOUNDER-LED STRATEGY & CREATIVE DIRECTION
                   </span>
-                  <span className="text-base sm:text-lg font-black uppercase text-white tracking-wide block">
+                  <span className="text-lg sm:text-xl font-black uppercase text-white tracking-wide block">
                     {ABOUT_SECTION.founder.name}
                   </span>
-                  <span className="text-xs text-white/80 font-mono block">
+                  <span className="text-xs sm:text-sm text-white/80 font-mono block">
                     {ABOUT_SECTION.founder.role}
                   </span>
                 </div>
@@ -101,7 +101,7 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
                 <div>
                   <button
                     onClick={onBookCall}
-                    className="px-6 py-3 bg-white text-[#6F2BFF] hover:bg-neutral-100 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-lg inline-flex items-center gap-2 cursor-pointer hover:scale-105"
+                    className="px-6 py-3.5 bg-white text-[#6F2BFF] hover:bg-neutral-100 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-lg inline-flex items-center gap-2 cursor-pointer hover:scale-105"
                   >
                     Plan your launch
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#6F2BFF]" />
@@ -110,17 +110,17 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
               </div>
 
               {/* Vertical Collaborate With List */}
-              <div className="sm:border-l sm:border-white/20 sm:pl-6 space-y-2">
+              <div className="md:border-l md:border-white/20 md:pl-8 space-y-3">
                 <span className="font-mono text-[9px] sm:text-[10px] text-white/70 font-bold uppercase tracking-widest block">
                   WE COLLABORATE DIRECTLY WITH:
                 </span>
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-2">
                   {ABOUT_SECTION.audiences.map((aud, i) => (
                     <div 
                       key={i}
-                      className="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-[11px] sm:text-xs font-bold uppercase text-white flex items-center gap-2.5 w-fit"
+                      className="px-3.5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-xs sm:text-sm font-bold uppercase text-white flex items-center gap-2.5 w-fit"
                     >
-                      <Users className="w-3.5 h-3.5 text-[#F2A979] shrink-0" />
+                      <Users className="w-4 h-4 text-[#F2A979] shrink-0" />
                       <span>{aud}</span>
                     </div>
                   ))}

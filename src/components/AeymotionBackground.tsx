@@ -6,13 +6,20 @@ interface AeymotionBackgroundProps {
 }
 
 export default function AeymotionBackground({ variant = 'hero', isHovered = false }: AeymotionBackgroundProps) {
+  const maskStyle = variant === 'about'
+    ? {
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 100%)'
+      }
+    : {
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)'
+      };
+
   return (
     <div 
       className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0 bg-transparent"
-      style={{
-        maskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)'
-      }}
+      style={maskStyle}
     >
       
       {/* 1. Subtle Dot Matrix Texture */}
@@ -62,8 +69,12 @@ export default function AeymotionBackground({ variant = 'hero', isHovered = fals
 
       {variant === 'about' && (
         <>
-          <div className="absolute top-[10%] left-[15%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-gradient-to-br from-[#8C4BFF]/20 via-[#C084FC]/20 to-[#F472B6]/15 blur-[110px]" />
-          <div className="absolute bottom-[10%] right-[15%] w-[50vw] max-w-[600px] h-[50vw] max-h-[600px] rounded-full bg-gradient-to-tl from-[#8C4BFF]/22 via-[#E879F9]/18 to-transparent blur-[110px]" />
+          <div className="absolute top-[5%] left-[10%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full bg-gradient-to-br from-[#8C4BFF]/22 via-[#C084FC]/22 to-[#F472B6]/18 blur-[120px]" />
+          <div className="absolute bottom-[5%] right-[10%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full bg-gradient-to-tl from-[#7C3AED]/30 via-[#8C4BFF]/25 to-transparent blur-[120px]" />
+          
+          {/* Enhanced Purple Atmosphere at the end of the About section */}
+          <div className="absolute bottom-0 left-0 right-0 h-[300px] bg-gradient-to-t from-[#8C4BFF]/30 via-[#6F2BFF]/15 to-transparent pointer-events-none" />
+          <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90vw] max-w-[1100px] h-[280px] rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#8C4BFF]/35 via-[#7C3AED]/20 to-transparent blur-[90px] pointer-events-none" />
         </>
       )}
 

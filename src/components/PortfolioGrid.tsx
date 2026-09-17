@@ -1,9 +1,8 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
-import { Play, X, ExternalLink } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import { PROJECTS, Project } from '../data/projects';
-import { BRAND_LINKS } from '../data/config';
 
 export default function PortfolioGrid() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -67,19 +66,6 @@ export default function PortfolioGrid() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* View More on Dribbble Button */}
-        <div className="flex justify-center mt-12 md:mt-16 mb-4 md:mb-6">
-          <a
-            href={BRAND_LINKS.dribbble}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 bg-white border border-neutral-300 hover:border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-xs inline-flex items-center gap-2.5"
-          >
-            View More on Dribbble
-            <ExternalLink className="w-4 h-4" />
-          </a>
         </div>
 
       </div>

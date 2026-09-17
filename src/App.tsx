@@ -3,9 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
 import ServicesSection from './components/ServicesSection';
-import ProblemsSection from './components/ProblemsSection';
 import ProcessSection from './components/ProcessSection';
-import WhyAeymotionSection from './components/WhyAeymotionSection';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 import CalendlyModal from './components/CalendlyModal';
@@ -31,12 +29,10 @@ export default function App() {
       {/* Fixed Navigation */}
       <Navbar onBookCall={handleOpenCalendly} />
 
-      {/* Main Single Page Sections in Exact Required Sequence */}
+      {/* Main Single Page Sections */}
       <main className="w-full flex-grow">
         <Hero onBookCall={handleOpenCalendly} />
         <PortfolioGrid />
-        <ProblemsSection />
-        <WhyAeymotionSection />
         <ProcessSection />
         <ServicesSection onBookCall={handleOpenCalendly} />
         <AboutSection onBookCall={handleOpenCalendly} />

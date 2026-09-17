@@ -36,38 +36,37 @@ export const PROBLEMS_SECTION = {
 };
 
 export const PROCESS_SECTION = {
-  title: "THE AEYMOTION LAUNCH CLARITY SYSTEM.",
-  subtitle: "We do not begin with animation. We begin by deciding what your buyers need to understand.",
+  title: "How we work",
   steps: [
     {
       number: "01",
-      title: "UNDERSTAND",
-      description: "Research the product, audience psychology, market context, competitors, existing messaging, and primary launch objectives."
+      title: "Discovery call",
+      description: "We learn your product, audience, and what the video needs to achieve — a launch, a feature drop, or a fundraise."
     },
     {
       number: "02",
-      title: "POSITION",
-      description: "Clarify customer value, competitive differentiation, alternative solutions, and message hierarchy before creative work begins."
+      title: "Script",
+      description: "A tight script built around one clear idea, not a feature list. Approved by you before anything is animated."
     },
     {
       number: "03",
-      title: "STORY",
-      description: "Develop the central launch idea, narrative hook, draft script, visual direction, and scene-by-scene storyboard."
+      title: "Storyboard",
+      description: "Every scene laid out in sequence, so you see and approve the full video before a single frame is animated."
     },
     {
       number: "04",
-      title: "CREATE",
-      description: "Translate the story into premium launch creative, centered around a high-craft hero launch film."
+      title: "Animation",
+      description: "Your real product UI, rebuilt as motion graphics — not a template with your logo dropped in."
     },
     {
       number: "05",
-      title: "EXTEND",
-      description: "Turn the core story into modular launch-day assets, short social cuts, product clips, UI sequences, and website motion."
+      title: "Review & revisions",
+      description: "You review the first cut and request changes within your included feedback rounds."
     },
     {
       number: "06",
-      title: "ACTIVATE",
-      description: "Recommend how the launch story and creative should be deployed across founder channels, company social, website, launch platforms, sales and selected campaigns."
+      title: "Final delivery",
+      description: "Finished video delivered in your chosen format, ready to publish."
     }
   ]
 };
@@ -107,7 +106,7 @@ export const ABOUT_SECTION = {
   title: "FROM MOTION DESIGN TO PRODUCT LAUNCH STORYTELLING",
   copy: "Aeymotion started through motion design. Working with AI and SaaS companies revealed a bigger problem: complex products often do not need more animation. They need a clearer way to communicate why they matter. Today, Aeymotion combines positioning, product storytelling, creative strategy and premium visual execution to help technology companies launch with clarity.",
   founder: {
-    name: "Yash Bihari",
+    name: "Yash",
     role: "Founder & Creative Strategist",
     focus: [
       "Product Positioning",

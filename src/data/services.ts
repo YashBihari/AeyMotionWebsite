@@ -1,65 +1,69 @@
-export interface ServiceItem {
+export interface PackageOffer {
   id: string;
-  number: string;
-  label: string;
-  scopeBadge: string;
-  titleLine1: string;
-  titleLine2: string;
-  title: string;
-  tagline: string;
+  name: string;
+  startingPrice: string;
   description: string;
-  deliverables: string[];
+  duration: string;
+  timeline: string;
+  includes: string[];
   ctaText: string;
-  isFlagship?: boolean;
 }
 
-export const SERVICES: ServiceItem[] = [
+export const PACKAGES: PackageOffer[] = [
   {
-    id: "launch-narrative-sprint",
-    number: "01",
-    label: "OFFER // 01",
-    scopeBadge: "STRATEGY + STORY",
-    titleLine1: "LAUNCH",
-    titleLine2: "NARRATIVE SPRINT",
-    title: "LAUNCH NARRATIVE SPRINT",
-    tagline: "GET THE STORY RIGHT BEFORE YOU CREATE THE LAUNCH.",
-    description: "For B2B AI companies with a strong product but an unclear story. We research the market, sharpen the positioning, and build the launch narrative that guides the creative.",
-    deliverables: [
-      "Product & Audience Research",
-      "Competitive Context",
-      "Positioning & Differentiation",
-      "Message Hierarchy",
-      "Launch Angle",
-      "Core Narrative",
-      "Draft Script",
-      "Creative Direction"
+    id: "feature-spotlight",
+    name: "Feature Spotlight",
+    startingPrice: "$300",
+    description: "Put one feature in the spotlight.",
+    duration: "Up to 20 seconds",
+    timeline: "5–7 business days",
+    includes: [
+      "Script & scene plan",
+      "UI animation & motion graphics",
+      "Music & sound effects",
+      "One aspect ratio"
     ],
-    ctaText: "BUILD YOUR LAUNCH STORY"
+    ctaText: "Discuss your feature video"
   },
   {
-    id: "launch-story-system",
-    number: "02",
-    label: "OFFER // 02",
-    scopeBadge: "STRATEGY + STORY + CREATIVE",
-    titleLine1: "LAUNCH",
-    titleLine2: "STORY SYSTEM",
-    title: "LAUNCH STORY SYSTEM",
-    tagline: "FROM PRODUCT STRATEGY TO LAUNCH-READY CREATIVE.",
-    description: "For B2B AI companies preparing to launch a new company, product, or major feature. We take the launch from strategy and narrative through a premium launch film and supporting creative.",
-    deliverables: [
-      "Everything in the Narrative Sprint",
-      "Final Launch Script",
-      "Storyboard & Creative Direction",
-      "Hero Launch Film",
-      "Social / Campaign Cutdowns",
-      "Product & Launch Assets",
-      "Additional Feature / Product Videos",
-      "Distribution Recommendations"
+    id: "product-launch-video",
+    name: "Product Launch Video",
+    startingPrice: "$800",
+    description: "Introduce your product. Give people a reason to care.",
+    duration: "Up to 45 seconds",
+    timeline: "10–15 business days",
+    includes: [
+      "Script & storyboard",
+      "UI animation & motion graphics",
+      "Music & sound design",
+      "AI voiceover or text-led video",
+      "One aspect ratio"
     ],
-    ctaText: "PLAN YOUR LAUNCH",
-    isFlagship: true
+    ctaText: "Plan your product video"
+  },
+  {
+    id: "product-explainer",
+    name: "Product Explainer",
+    startingPrice: "$1,500",
+    description: "Make your product easy to understand.",
+    duration: "60–90 seconds",
+    timeline: "15–20 business days",
+    includes: [
+      "Script & storyboard",
+      "Key feature & workflow animation",
+      "Supporting motion graphics",
+      "Music & sound design",
+      "AI voiceover or text-led video",
+      "One aspect ratio"
+    ],
+    ctaText: "Plan your product explainer"
   }
 ];
+
+// Deprecated alias for backwards compatibility if needed
+export type ServiceItem = PackageOffer;
+export const SERVICES = PACKAGES;
+
 
 export const ADDITIONAL_CAPABILITIES = [
   "Motion Design",
