@@ -36,7 +36,7 @@ export default function PortfolioGrid() {
         </div>
 
         {/* 2-column x 3-row Desktop Grid (6 Projects total) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {PROJECTS.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -45,24 +45,46 @@ export default function PortfolioGrid() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
               onClick={() => setSelectedProject(project)}
-              className="group bg-neutral-900 border-0 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(20,20,28,0.35)] hover:shadow-[0_20px_45px_rgba(140,75,255,0.45),0_0_25px_rgba(242,169,121,0.3)] transition-all duration-500 cursor-pointer relative aspect-[16/10]"
+              className="group cursor-pointer flex flex-col"
             >
               {/* Media Container with muted looping video */}
-              <video
-                src={project.previewVideo}
-                className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700 ease-out select-none pointer-events-none"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
+              <div className="bg-neutral-900 border-0 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(20,20,28,0.35)] group-hover:shadow-[0_20px_45px_rgba(140,75,255,0.45),0_0_25px_rgba(242,169,121,0.3)] transition-all duration-500 relative aspect-[16/10] w-full">
+                <video
+                  ref={(el) => {
+                    if (el) {
+                      el.defaultMuted = true;
+                      el.muted = true;
+                      const playPromise = el.play();
+                      if (playPromise !== undefined) {
+                        playPromise.catch(() => {});
+                      }
+                    }
+                  }}
+                  src={project.previewVideo}
+                  className="w-full h-full object-cover opacity-100 select-none pointer-events-none"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                />
 
-              {/* Play Icon Overlay Center */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-14 h-14 bg-black/40 backdrop-blur-md border border-white/40 text-white rounded-full flex items-center justify-center transform scale-90 group-hover:scale-110 group-hover:bg-[#8C4BFF]/50 group-hover:border-white transition-all duration-300 shadow-xl">
-                  <Play className="w-6 h-6 fill-white ml-0.5 text-white" />
+                {/* Play Icon Overlay Center */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-14 h-14 bg-black/40 backdrop-blur-md border border-white/40 text-white rounded-full flex items-center justify-center transform scale-90 group-hover:scale-110 group-hover:bg-[#8C4BFF]/50 group-hover:border-white transition-all duration-300 shadow-xl">
+                    <Play className="w-6 h-6 fill-white ml-0.5 text-white" />
+                  </div>
                 </div>
+              </div>
+
+              {/* Title & Description just below each video */}
+              <div className="mt-3.5 px-1">
+                <h3 className="text-lg md:text-xl font-bold text-neutral-900 tracking-tight group-hover:text-[#8C4BFF] transition-colors duration-200">
+                  {project.name}
+                </h3>
+                <p className="text-sm md:text-[15px] text-neutral-600 font-normal leading-relaxed mt-1">
+                  {project.description}
+                </p>
               </div>
             </motion.div>
           ))}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface AeymotionBackgroundProps {
-  variant?: 'hero' | 'work' | 'services' | 'problems' | 'process' | 'why' | 'about' | 'cta';
+  variant?: 'hero' | 'work' | 'services' | 'problems' | 'process' | 'why' | 'about' | 'cta' | 'faq';
   isHovered?: boolean;
 }
 
@@ -64,6 +64,13 @@ export default function AeymotionBackground({ variant = 'hero', isHovered = fals
         <>
           <div className="absolute top-[10%] right-[5%] w-[45vw] max-w-[550px] h-[45vw] max-h-[550px] rounded-full bg-gradient-to-bl from-[#C084FC]/20 via-[#8C4BFF]/16 to-[#F472B6]/15 blur-[100px]" />
           <div className="absolute bottom-[10%] left-[5%] w-[45vw] max-w-[550px] h-[45vw] max-h-[550px] rounded-full bg-gradient-to-tr from-[#8C4BFF]/18 via-[#F472B6]/15 to-[#C084FC]/15 blur-[100px]" />
+        </>
+      )}
+
+      {variant === 'faq' && (
+        <>
+          <div className="absolute top-[8%] left-[-5%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full bg-gradient-to-r from-[#8C4BFF]/18 via-[#C084FC]/18 to-[#F472B6]/15 blur-[120px]" />
+          <div className="absolute bottom-[8%] right-[-5%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full bg-gradient-to-l from-[#7C3AED]/20 via-[#8C4BFF]/18 to-[#C084FC]/15 blur-[120px]" />
         </>
       )}
 

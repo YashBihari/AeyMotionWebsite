@@ -1,128 +1,45 @@
-import { useState, useRef, useEffect, useCallback, type KeyboardEvent } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Plus, X } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
-import InteractiveDiscoveryCallVisual from './InteractiveDiscoveryCallVisual';
-import InteractiveScriptVisual from './InteractiveScriptVisual';
-import InteractiveStoryboardVisual from './InteractiveStoryboardVisual';
-import InteractiveAnimationVisual from './InteractiveAnimationVisual';
-import InteractiveReviewVisual from './InteractiveReviewVisual';
-import InteractiveDeliveryVisual from './InteractiveDeliveryVisual';
-import { PROCESS_SECTION } from '../data/content';
+import { FAQ_SECTION } from '../data/content';
 
-interface StepItem {
-  number: string;
-  title: string;
-  description: string;
-}
-
-function WorkflowStepContent({ step, stepIndex }: { step: StepItem; stepIndex: number }) {
-  const paragraphRef = useRef<HTMLParagraphElement>(null);
-  const [paragraphHeight, setParagraphHeight] = useState<number>(85);
-
-  useEffect(() => {
-    if (!paragraphRef.current) return;
-
-    const measureHeight = () => {
-      if (paragraphRef.current) {
-        const h = paragraphRef.current.offsetHeight;
-        if (h > 0) {
-          setParagraphHeight(h);
-        }
-      }
-    };
-
-    measureHeight();
-    const observer = new ResizeObserver(measureHeight);
-    observer.observe(paragraphRef.current);
-    return () => observer.disconnect();
-  }, [step.description]);
-
-  // Scaled proportionally while preventing visual from forcing unnecessary panel height
-  const visualHeight = Math.max(180, Math.min(240, Math.round(paragraphHeight * 1.25 * 1.8)));
-
-  return (
-    <div className="flex flex-col md:flex-row items-start gap-6 sm:gap-8 md:gap-10 lg:gap-12 w-full">
-      {/* Visual Element on the left (stacked on mobile) */}
-      <div className="shrink-0 flex items-start justify-center">
-        {stepIndex === 0 && (
-          <InteractiveDiscoveryCallVisual height={visualHeight} />
-        )}
-        {stepIndex === 1 && (
-          <InteractiveScriptVisual height={visualHeight} />
-        )}
-        {stepIndex === 2 && (
-          <InteractiveStoryboardVisual height={visualHeight} />
-        )}
-        {stepIndex === 3 && (
-          <InteractiveAnimationVisual height={visualHeight} />
-        )}
-        {stepIndex === 4 && (
-          <InteractiveReviewVisual height={visualHeight} />
-        )}
-        {stepIndex === 5 && (
-          <InteractiveDeliveryVisual height={visualHeight} />
-        )}
-        {stepIndex > 5 && (
-          <div 
-            style={{ 
-              height: `${visualHeight}px`, 
-              width: `${Math.round(visualHeight * 1.34)}px` 
-            }}
-            className="rounded-2xl bg-white/60 border border-purple-100/80 shadow-2xs backdrop-blur-xs flex items-center justify-center"
-          />
-        )}
-      </div>
-
-      {/* Corresponding paragraph on the right (stacked below on mobile) - Dark neutral text for high contrast */}
-      <div className="flex-1 min-w-0 pt-1 sm:pt-2">
-        <p 
-          ref={paragraphRef}
-          className="text-base sm:text-lg md:text-xl text-[#171717] font-medium leading-relaxed max-w-2xl text-left"
-        >
-          {step.description}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-export default function ProcessSection() {
-  // Open "01 — Discovery call" by default (index 0)
+export default function FAQSection() {
+  // Open the first question by default (index 0)
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const shouldReduceMotion = useReducedMotion();
 
-  const toggleStep = (idx: number) => {
+  const toggleItem = (idx: number) => {
     setOpenIndex(current => (current === idx ? null : idx));
   };
 
   const handleKeyDown = (e: KeyboardEvent, idx: number) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      toggleStep(idx);
+      toggleItem(idx);
     }
   };
 
   return (
-    <section id="process" className="py-12 md:py-16 lg:py-20 bg-transparent font-sans relative overflow-hidden">
-      <AeymotionBackground variant="process" />
+    <section id="faq" className="py-12 md:py-16 lg:py-20 bg-transparent font-sans relative overflow-hidden">
+      <AeymotionBackground variant="faq" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Heading */}
         <div className="mb-8 md:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
-            {PROCESS_SECTION.title}
+            {FAQ_SECTION.title}
           </h2>
         </div>
 
         {/* Full-width vertical accordion list */}
         <div className="border-t border-purple-100/90 divide-y-0">
-          {PROCESS_SECTION.steps.map((step, idx) => {
+          {FAQ_SECTION.items.map((item, idx) => {
             const isOpen = openIndex === idx;
             const stepId = String(idx + 1).padStart(2, '0');
-            const headerId = `workflow-trigger-${stepId}`;
-            const panelId = `workflow-panel-${stepId}`;
+            const headerId = `faq-trigger-${stepId}`;
+            const panelId = `faq-panel-${stepId}`;
 
             return (
               <div 
@@ -133,13 +50,13 @@ export default function ProcessSection() {
                     : 'border-b border-purple-100/90 hover:bg-white/40'
                 }`}
               >
-                {/* Clickable Row Header - seamlessly integrated into unified card */}
+                {/* Clickable Row Header - matches Approach styling */}
                 <button
                   type="button"
                   id={headerId}
                   aria-expanded={isOpen}
                   aria-controls={panelId}
-                  onClick={() => toggleStep(idx)}
+                  onClick={() => toggleItem(idx)}
                   onKeyDown={(e) => handleKeyDown(e, idx)}
                   className={`w-full flex items-center justify-between gap-4 text-left group cursor-pointer border-0 outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8C4BFF] focus-visible:ring-offset-2 transition-colors duration-200 ${
                     isOpen 
@@ -147,12 +64,12 @@ export default function ProcessSection() {
                       : 'px-4 sm:px-6 py-5 sm:py-6 md:py-7 bg-transparent rounded-xl'
                   }`}
                 >
-                  {/* Step number and title on the left */}
+                  {/* Item number and question */}
                   <div className="flex items-center gap-3 sm:gap-4 md:gap-5 text-left min-w-0">
                     <span className={`font-mono text-sm sm:text-base md:text-lg font-bold shrink-0 transition-colors ${
                       isOpen ? 'text-[#8C4BFF]' : 'text-neutral-400 group-hover:text-[#8C4BFF]'
                     }`}>
-                      {step.number}
+                      {item.number}
                     </span>
                     <span className={`font-light text-sm sm:text-base shrink-0 select-none transition-colors ${
                       isOpen ? 'text-[#8C4BFF]/50' : 'text-neutral-300'
@@ -164,7 +81,7 @@ export default function ProcessSection() {
                         isOpen ? 'text-[#8C4BFF]' : 'text-neutral-900 group-hover:text-[#8C4BFF]'
                       }`}
                     >
-                      {step.title}
+                      {item.question}
                     </span>
                   </div>
 
@@ -187,7 +104,7 @@ export default function ProcessSection() {
                   </div>
                 </button>
 
-                {/* Collapsible Content Area - begins directly below opened header as part of the row */}
+                {/* Collapsible Content Area - clean text sized to content */}
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
@@ -218,9 +135,10 @@ export default function ProcessSection() {
                       style={{ willChange: 'height, opacity' }}
                       className="overflow-hidden bg-transparent"
                     >
-                      {/* Inner step content */}
-                      <div className="w-full px-6 sm:px-8 md:px-10 lg:px-12 pt-1 pb-8 sm:pb-10 bg-transparent">
-                        <WorkflowStepContent step={step} stepIndex={idx} />
+                      <div className="w-full px-6 sm:px-8 md:px-10 lg:px-12 pt-1 pb-6 sm:pb-8 bg-transparent">
+                        <p className="text-base sm:text-lg md:text-xl text-[#171717] font-medium leading-relaxed max-w-4xl text-left">
+                          {item.answer}
+                        </p>
                       </div>
                     </motion.div>
                   )}

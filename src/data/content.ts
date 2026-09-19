@@ -39,34 +39,34 @@ export const PROCESS_SECTION = {
   title: "How we work",
   steps: [
     {
-      number: "01",
+      number: "{ 1 }",
       title: "Discovery call",
-      description: "We learn your product, audience, and what the video needs to achieve — a launch, a feature drop, or a fundraise."
+      description: "We start with a conversation about your product, who it’s for, and what you want the video to achieve. You walk us through the key features and share your brand assets, product screens, and any references you like. Together, we agree on the main message, project scope, price, and timeline before production begins."
     },
     {
-      number: "02",
+      number: "{ 2 }",
       title: "Script",
-      description: "A tight script built around one clear idea, not a feature list. Approved by you before anything is animated."
+      description: "We turn your product’s value into a clear story, from the opening hook to the final call to action. The script outlines what viewers will read or hear and which product moments we’ll highlight. You review the wording and product details, and we refine the script with your feedback before moving into visuals."
     },
     {
-      number: "03",
+      number: "{ 3 }",
       title: "Storyboard",
-      description: "Every scene laid out in sequence, so you see and approve the full video before a single frame is animated."
+      description: "We map the approved script into a sequence of still scenes, showing how your product screens, text, and supporting graphics will work together. This gives you a clear picture of the visual direction and story flow before animation begins. You review and approve the scenes so we’re aligned on what we’re bringing to life."
     },
     {
-      number: "04",
+      number: "{ 4 }",
       title: "Animation",
-      description: "Your real product UI, rebuilt as motion graphics — not a template with your logo dropped in."
+      description: "We bring the approved scenes to life with product UI animation, motion graphics, and transitions that guide attention to what matters. Music and sound effects help set the pace, with AI narration added if it’s part of your agreed scope. We then assemble everything into a first cut for you to review."
     },
     {
-      number: "05",
+      number: "{ 5 }",
       title: "Review & revisions",
-      description: "You review the first cut and request changes within your included feedback rounds."
+      description: "You watch the first cut and share one combined list of feedback from your team, ideally with timestamps so we know exactly what to adjust. We refine the video within your package’s included feedback rounds and agreed scope. If a request changes an approved script or storyboard, we discuss any additional cost or timing with you before proceeding."
     },
     {
-      number: "06",
+      number: "{ 6 }",
       title: "Final delivery",
-      description: "Finished video delivered in your chosen format, ready to publish."
+      description: "Once you approve the finished video, we check the visuals, audio, and export quality, then deliver the final files in the format and aspect ratio agreed at the start. You receive a download link with your files clearly organized and ready to publish on the channels we planned for."
     }
   ]
 };
@@ -98,6 +98,78 @@ export const WHY_AEYMOTION_SECTION = {
     {
       title: "MULTI-CHANNEL LAUNCH ASSETS",
       description: "One core story can extend into a hero launch film, social cutdowns, product clips, website assets, and sales content."
+    }
+  ]
+};
+
+export const FAQ_SECTION = {
+  title: "Frequently asked questions",
+  items: [
+    {
+      id: "01",
+      number: "{ 1 }",
+      question: "Which package is right for me?",
+      answer: "Choose Feature Spotlight for one feature or product update, Product Launch Video to introduce your product, or Product Explainer to explain a broader workflow and its benefits. If you’re unsure, share your goal and we’ll help you choose."
+    },
+    {
+      id: "02",
+      number: "{ 2 }",
+      question: "What do you need from me to get started?",
+      answer: "We’ll need a brief overview of your product, your target audience, brand assets, and the product screens or a walkthrough you want us to feature. References are helpful too. We’ll confirm everything needed before production begins."
+    },
+    {
+      id: "03",
+      number: "{ 3 }",
+      question: "Do I need to provide a script?",
+      answer: "No. Scriptwriting is included in every package. We develop the story using your product information and goals, then send it to you for approval. If you already have a script, we can use it as a starting point."
+    },
+    {
+      id: "04",
+      number: "{ 4 }",
+      question: "How much will my video cost?",
+      answer: "Feature Spotlight starts at $300, Product Launch Video at $800, and Product Explainer at $1,500. Your final price depends on the agreed scope and complexity. We confirm a fixed quote before production begins, and any additional work is quoted for your approval first."
+    },
+    {
+      id: "05",
+      number: "{ 5 }",
+      question: "How long does production take?",
+      answer: "Feature Spotlight typically takes 5–7 business days, Product Launch Video 10–15 business days, and Product Explainer 15–20 business days. Your schedule starts once we have the required assets and initial payment. Timely feedback helps us keep the agreed delivery date."
+    },
+    {
+      id: "06",
+      number: "{ 6 }",
+      question: "How many revisions are included?",
+      answer: "Feature Spotlight includes two consolidated feedback rounds: one before animation and one on the first cut. Product Launch Video and Product Explainer include three: script, storyboard, and first cut. Each round means one combined set of comments from your team."
+    },
+    {
+      id: "07",
+      number: "{ 7 }",
+      question: "Can I change the script after animation starts?",
+      answer: "Yes, but changes to an approved script or storyboard may affect the cost and delivery date. We’ll explain the impact and agree on any additional work with you before making those changes."
+    },
+    {
+      id: "08",
+      number: "{ 8 }",
+      question: "Is voiceover included?",
+      answer: "Product Launch Video and Product Explainer include your choice of AI narration or text-led storytelling. Professional human voiceover can be quoted separately."
+    },
+    {
+      id: "09",
+      number: "{ 9 }",
+      question: "Can I get different sizes or shorter versions?",
+      answer: "Each package includes one aspect ratio. Additional formats and shorter edits can be quoted separately. Let us know where you plan to publish the video so we can include the right deliverables in your quote."
+    },
+    {
+      id: "10",
+      number: "{ 10 }",
+      question: "Can you work with a product that hasn’t launched yet?",
+      answer: "Yes. We can work from design files, screenshots, or a product walkthrough. We’ll confirm which screens and features are ready to show before building the video around them."
+    },
+    {
+      id: "11",
+      number: "{ 11 }",
+      question: "How involved will I be?",
+      answer: "You’ll provide the initial product information and review the work at the agreed approval stages. We handle the script, visuals, and animation, and you work directly with the person creating your video."
     }
   ]
 };

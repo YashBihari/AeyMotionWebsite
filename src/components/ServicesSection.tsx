@@ -26,12 +26,13 @@ const PACKAGES_DATA: PackageOfferData[] = [
     title: 'FEATURE SPOTLIGHT',
     price: '$300',
     description: 'Put one feature in the spotlight.',
-    duration: 'Up to 20 seconds',
+    duration: 'Up to 20 seconds (minimum 2 videos)',
     timeline: '5–7 business days',
     includes: [
       'Script & scene plan',
       'UI animation & motion graphics',
       'Music & sound effects',
+      'AI voiceover or text-led video',
       'One aspect ratio'
     ],
     ctaText: 'DISCUSS YOUR FEATURE VIDEO'
@@ -67,6 +68,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
       'Supporting motion graphics',
       'Music & sound design',
       'AI voiceover or text-led video',
+      '2 Social cutdown, up to 15 seconds',
       'One aspect ratio'
     ],
     ctaText: 'PLAN YOUR PRODUCT EXPLAINER'
@@ -390,6 +392,35 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
                 <strong className="font-bold text-[#171717] block sm:inline sm:mr-1">Direct collaboration:</strong>
                 Work directly with Yash throughout the project—no account manager in between.
               </p>
+            </div>
+
+            {/* Point 5: Optional Extras spanning full width below all 4 points */}
+            <div className="md:col-span-2 pt-4 border-t border-purple-100/80 flex items-start gap-3">
+              <span className="w-5 h-5 rounded-full bg-purple-50 border border-purple-200/80 flex items-center justify-center text-[#8C4BFF] shrink-0 mt-0.5">
+                <Check className="w-3 h-3 stroke-[2.5]" />
+              </span>
+              <div className="flex-1 min-w-0 text-xs sm:text-sm text-[#64606B] leading-relaxed">
+                <strong className="font-bold text-[#171717] block sm:inline sm:mr-1">Optional extras:</strong>
+                
+                <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 my-2.5 list-none p-0">
+                  <li className="p-2.5 rounded-xl bg-purple-50/50 border border-purple-100/70 flex flex-col justify-between">
+                    <span className="text-xs font-semibold text-[#171717]">Additional aspect ratio</span>
+                    <span className="text-xs font-mono font-bold text-[#8C4BFF] mt-1">from $100</span>
+                  </li>
+                  <li className="p-2.5 rounded-xl bg-purple-50/50 border border-purple-100/70 flex flex-col justify-between">
+                    <span className="text-xs font-semibold text-[#171717]">Social cutdown, up to 15 seconds</span>
+                    <span className="text-xs font-mono font-bold text-[#8C4BFF] mt-1">from $150</span>
+                  </li>
+                  <li className="p-2.5 rounded-xl bg-purple-50/50 border border-purple-100/70 flex flex-col justify-between">
+                    <span className="text-xs font-semibold text-[#171717]">Professional human voiceover</span>
+                    <span className="text-xs font-mono font-bold text-[#8C4BFF] mt-1">quoted separately</span>
+                  </li>
+                </ul>
+
+                <p className="text-xs sm:text-sm text-[#64606B] mt-1.5">
+                  Extras are priced around your video’s length and complexity. We agree on the full cost before starting.
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>

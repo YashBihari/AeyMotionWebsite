@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
 import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
+import FAQSection from './components/FAQSection';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 import CalendlyModal from './components/CalendlyModal';
@@ -35,6 +36,7 @@ export default function App() {
         <PortfolioGrid />
         <ProcessSection />
         <ServicesSection onBookCall={handleOpenCalendly} />
+        <FAQSection />
         <AboutSection onBookCall={handleOpenCalendly} />
       </main>
 
