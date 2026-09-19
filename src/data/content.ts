@@ -126,48 +126,36 @@ export const FAQ_SECTION = {
     {
       id: "04",
       number: "{ 4 }",
-      question: "How much will my video cost?",
-      answer: "Feature Spotlight starts at $300, Product Launch Video at $800, and Product Explainer at $1,500. Your final price depends on the agreed scope and complexity. We confirm a fixed quote before production begins, and any additional work is quoted for your approval first."
-    },
-    {
-      id: "05",
-      number: "{ 5 }",
-      question: "How long does production take?",
-      answer: "Feature Spotlight typically takes 5–7 business days, Product Launch Video 10–15 business days, and Product Explainer 15–20 business days. Your schedule starts once we have the required assets and initial payment. Timely feedback helps us keep the agreed delivery date."
-    },
-    {
-      id: "06",
-      number: "{ 6 }",
       question: "How many revisions are included?",
       answer: "Feature Spotlight includes two consolidated feedback rounds: one before animation and one on the first cut. Product Launch Video and Product Explainer include three: script, storyboard, and first cut. Each round means one combined set of comments from your team."
     },
     {
-      id: "07",
-      number: "{ 7 }",
+      id: "05",
+      number: "{ 5 }",
       question: "Can I change the script after animation starts?",
       answer: "Yes, but changes to an approved script or storyboard may affect the cost and delivery date. We’ll explain the impact and agree on any additional work with you before making those changes."
     },
     {
-      id: "08",
-      number: "{ 8 }",
+      id: "06",
+      number: "{ 6 }",
       question: "Is voiceover included?",
       answer: "Product Launch Video and Product Explainer include your choice of AI narration or text-led storytelling. Professional human voiceover can be quoted separately."
     },
     {
-      id: "09",
-      number: "{ 9 }",
+      id: "07",
+      number: "{ 7 }",
       question: "Can I get different sizes or shorter versions?",
       answer: "Each package includes one aspect ratio. Additional formats and shorter edits can be quoted separately. Let us know where you plan to publish the video so we can include the right deliverables in your quote."
     },
     {
-      id: "10",
-      number: "{ 10 }",
+      id: "08",
+      number: "{ 8 }",
       question: "Can you work with a product that hasn’t launched yet?",
       answer: "Yes. We can work from design files, screenshots, or a product walkthrough. We’ll confirm which screens and features are ready to show before building the video around them."
     },
     {
-      id: "11",
-      number: "{ 11 }",
+      id: "09",
+      number: "{ 9 }",
       question: "How involved will I be?",
       answer: "You’ll provide the initial product information and review the work at the agreed approval stages. We handle the script, visuals, and animation, and you work directly with the person creating your video."
     }
