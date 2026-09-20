@@ -45,9 +45,6 @@ export default function CalendlyModal({ isOpen, onClose }: CalendlyModalProps) {
                   <h3 className="font-bold uppercase tracking-tight text-neutral-900 text-sm">
                     Plan Your Product Launch
                   </h3>
-                  <p className="text-[11px] text-neutral-500 font-mono">
-                    15-min launch storytelling and positioning call with Aeymotion
-                  </p>
                 </div>
               </div>
 
