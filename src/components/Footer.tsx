@@ -29,7 +29,7 @@ export default function Footer({ onBookCall }: FooterProps) {
           <div className="flex items-center gap-3">
             <img 
               src="/logo.svg" 
-              className="w-7 h-7 rounded-full shadow-sm" 
+              className="w-7 h-7 rounded-full border-none" 
               alt="Aeymotion Logo" 
             />
             <span className="text-xl font-black tracking-tight uppercase text-white">

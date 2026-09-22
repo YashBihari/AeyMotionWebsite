@@ -23,7 +23,7 @@
   </defs>
   
   <!-- Gradient background circle -->
-  <circle cx="256" cy="256" r="230" fill="url(#sunset-gradient)" />
+  <circle cx="256" cy="256" r="256" fill="url(#sunset-gradient)" stroke="none" />
   
   <!-- "aey" text with clean drop shadow -->
   <text x="256" y="246" class="logo-text" filter="url(#drop-shadow)">aey</text>

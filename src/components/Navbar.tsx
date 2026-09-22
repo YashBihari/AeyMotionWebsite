@@ -56,7 +56,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
           <div className="relative w-8 h-8 flex items-center justify-center shrink-0">
             <img 
               src="/logo.svg" 
-              className="w-full h-full rounded-full shadow-sm group-hover:scale-105 transition-transform duration-300" 
+              className="w-full h-full rounded-full border-none group-hover:scale-105 transition-transform duration-300" 
               alt="Aeymotion Logo" 
             />
           </div>

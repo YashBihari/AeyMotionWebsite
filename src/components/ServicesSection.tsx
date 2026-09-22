@@ -24,10 +24,10 @@ const PACKAGES_DATA: PackageOfferData[] = [
     id: 'feature-spotlight',
     tag: '01 / FEATURE',
     title: 'FEATURE SPOTLIGHT',
-    price: '$300',
-    description: 'Put one feature in the spotlight.',
-    duration: 'Up to 20 seconds (minimum 2 videos)',
-    timeline: '5–7 business days',
+    price: '$600',
+    description: 'Put features in the spotlight.',
+    duration: '2 videos up to 20 seconds each',
+    timeline: '5–7 business days per video',
     includes: [
       'Script & scene plan',
       'UI animation & motion graphics',
@@ -40,7 +40,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
   {
     id: 'product-launch-video',
     tag: '02 / LAUNCH',
-    title: 'PRODUCT LAUNCH VIDEO',
+    title: 'PRODUCT LAUNCH',
     price: '$800',
     description: 'Introduce your product. Give people a reason to care.',
     duration: 'Up to 45 seconds',
@@ -192,11 +192,24 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
 
                   {/* 3. Price (Strongest visual element) */}
                   <div 
-                    className={`mt-3 text-4xl sm:text-5xl font-black tracking-tight leading-none transition-colors duration-200 ${
+                    className={`mt-3 text-4xl sm:text-5xl font-black tracking-tight leading-none transition-colors duration-200 flex items-baseline gap-2 ${
                       isHovered ? 'text-white' : 'text-[#171717]'
                     }`}
                   >
-                    {pkg.price}
+                    {pkg.price.toLowerCase().startsWith('from ') ? (
+                      <>
+                        <span 
+                          className={`font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors duration-200 ${
+                            isHovered ? 'text-white/80' : 'text-[#8C4BFF]'
+                          }`}
+                        >
+                          FROM
+                        </span>
+                        <span>{pkg.price.slice(5)}</span>
+                      </>
+                    ) : (
+                      <span>{pkg.price}</span>
+                    )}
                   </div>
 
                   {/* 4. Short description (with min-height to maintain aligned dividers) */}

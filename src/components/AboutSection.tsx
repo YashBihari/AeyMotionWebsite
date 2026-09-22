@@ -98,14 +98,17 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
                   </span>
                 </div>
 
-                <div>
+                <div className="space-y-2">
                   <button
                     onClick={onBookCall}
                     className="px-5 py-2.5 bg-white text-[#6F2BFF] hover:bg-neutral-100 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-md inline-flex items-center gap-2 cursor-pointer hover:scale-105"
                   >
-                    Plan your launch
+                    PLAN YOUR LAUNCH
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#6F2BFF]" />
                   </button>
+                  <p className="font-mono text-[11px] text-white/80 tracking-tight block">
+                    20-minute intro call · No commitment
+                  </p>
                 </div>
               </div>
 

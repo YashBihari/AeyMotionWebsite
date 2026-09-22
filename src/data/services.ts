@@ -13,10 +13,10 @@ export const PACKAGES: PackageOffer[] = [
   {
     id: "feature-spotlight",
     name: "Feature Spotlight",
-    startingPrice: "$300",
-    description: "Put one feature in the spotlight.",
-    duration: "Up to 20 seconds",
-    timeline: "5–7 business days",
+    startingPrice: "$600",
+    description: "Put features in the spotlight.",
+    duration: "2 videos up to 20 seconds each",
+    timeline: "5–7 business days per video",
     includes: [
       "Script & scene plan",
       "UI animation & motion graphics",
@@ -27,7 +27,7 @@ export const PACKAGES: PackageOffer[] = [
   },
   {
     id: "product-launch-video",
-    name: "Product Launch Video",
+    name: "Product Launch",
     startingPrice: "$800",
     description: "Introduce your product. Give people a reason to care.",
     duration: "Up to 45 seconds",
