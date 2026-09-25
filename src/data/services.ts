@@ -18,10 +18,15 @@ export const PACKAGES: PackageOffer[] = [
     duration: "Up to 20 seconds",
     timeline: "5–7 business days per video",
     includes: [
-      "Script & scene plan",
-      "UI animation & motion graphics",
-      "Music & sound effects",
-      "One aspect ratio"
+      "Product & messaging review",
+      "Creative concept",
+      "Short-form script / messaging",
+      "UI & product animation",
+      "Custom motion design",
+      "AI voiceover or text-led storytelling",
+      "Music & sound design",
+      "2 revision rounds",
+      "Final web & social-ready export"
     ],
     ctaText: "Discuss your feature video"
   },
@@ -33,11 +38,16 @@ export const PACKAGES: PackageOffer[] = [
     duration: "Up to 45 seconds",
     timeline: "10–15 business days",
     includes: [
-      "Script & storyboard",
-      "UI animation & motion graphics",
+      "Product & audience analysis",
+      "Launch concept & narrative",
+      "Scriptwriting",
+      "Storyboard",
+      "Custom visual direction",
+      "UI & product animation",
+      "AI voiceover or text-led storytelling",
       "Music & sound design",
-      "AI voiceover or text-led video",
-      "One aspect ratio"
+      "2 revision rounds",
+      "Final launch-ready exports"
     ],
     ctaText: "Plan your product video"
   },
@@ -49,12 +59,17 @@ export const PACKAGES: PackageOffer[] = [
     duration: "60–90 seconds",
     timeline: "15–20 business days",
     includes: [
-      "Script & storyboard",
-      "Key feature & workflow animation",
-      "Supporting motion graphics",
-      "Music & sound design",
-      "AI voiceover or text-led video",
-      "One aspect ratio"
+      "Product, audience & messaging analysis",
+      "Creative concept & narrative",
+      "Scriptwriting",
+      "Detailed storyboard",
+      "Custom visual direction",
+      "UI, product & motion design",
+      "AI voiceover or text-led storytelling",
+      "Full sound design",
+      "2 social cutdowns",
+      "2 revision rounds",
+      "Final exports for web & social"
     ],
     ctaText: "Plan your product explainer"
   }
