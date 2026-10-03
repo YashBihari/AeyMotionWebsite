@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Star, TrendingUp, Heart, ArrowUpRight, X, Compass, MessageSquare, Film, Share2 } from 'lucide-react';
+import { Play, Star, TrendingUp, Heart, ArrowUpRight, X } from 'lucide-react';
 
 interface HeroProps {
   onBookCall: () => void;
@@ -16,29 +16,6 @@ export default function Hero({ onBookCall }: HeroProps) {
       workSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const valueProps = [
-    {
-      icon: Compass,
-      titleTop: 'POSITION',
-      titleBottom: 'WITH CLARITY',
-    },
-    {
-      icon: MessageSquare,
-      titleTop: 'STORY',
-      titleBottom: 'WITH DISTINCTION',
-    },
-    {
-      icon: Film,
-      titleTop: 'LAUNCH',
-      titleBottom: 'WITH CRAFT',
-    },
-    {
-      icon: Share2,
-      titleTop: 'EXTEND',
-      titleBottom: 'ACROSS CHANNELS',
-    },
-  ];
 
   return (
     <section 
@@ -163,41 +140,6 @@ export default function Hero({ onBookCall }: HeroProps) {
             Aeymotion helps B2B AI companies turn complex products into clear launch narratives, premium launch films and supporting campaign creative.
           </motion.p>
 
-          {/* 4 Value Pillars (Horizontal Row) */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.22 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1"
-          >
-            {valueProps.map((prop, idx) => {
-              const IconComponent = prop.icon;
-              return (
-                <motion.div 
-                  key={idx}
-                  whileHover={{ 
-                    y: -6, 
-                    scale: 1.04,
-                    transition: { type: 'spring', stiffness: 500, damping: 22 }
-                  }}
-                  className="flex items-center gap-2.5 p-2.5 sm:p-2 bg-white/80 backdrop-blur-md rounded-xl border border-purple-100/90 shadow-xs hover:shadow-lg hover:shadow-[#8C4BFF]/15 hover:border-[#8C4BFF]/60 hover:bg-white transition-[border-color,box-shadow,background-color] duration-200 group cursor-pointer select-none"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#8C4BFF] to-[#A855F7] flex items-center justify-center shrink-0 shadow-[0_2px_8px_rgba(140,75,255,0.28)] group-hover:scale-110 transition-transform duration-200">
-                    <IconComponent className="w-4 h-4 text-white fill-white/20" />
-                  </div>
-                  <div className="flex flex-col leading-tight min-w-0">
-                    <span className="text-[10px] sm:text-[11px] font-sans font-bold tracking-tight text-[#8C4BFF] uppercase truncate">
-                      {prop.titleTop}
-                    </span>
-                    <span className="text-[9.5px] sm:text-[10.5px] xl:text-[11px] font-sans font-bold tracking-tight text-neutral-900 uppercase truncate group-hover:text-[#8C4BFF] transition-colors duration-200">
-                      {prop.titleBottom}
-                    </span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-
           {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -220,6 +162,77 @@ export default function Hero({ onBookCall }: HeroProps) {
             >
               See our work
             </a>
+          </motion.div>
+
+          {/* Worked With Logo Marquee */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.36 }}
+            className="flex items-center gap-3.5 pt-2.5 select-none"
+          >
+            <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider shrink-0 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8C4BFF] animate-pulse" />
+              Worked With:
+            </span>
+
+            <div 
+              className="relative overflow-hidden w-64 sm:w-80 md:w-[420px] h-9 flex items-center"
+              style={{
+                maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 88%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 88%, transparent 100%)'
+              }}
+            >
+              <motion.div
+                className="flex items-center whitespace-nowrap will-change-transform"
+                animate={{ x: ['0%', '-50%'] }}
+                transition={{
+                  repeat: Infinity,
+                  ease: 'linear',
+                  duration: 24,
+                }}
+              >
+                {/* Track Segment 1 */}
+                <div className="flex items-center gap-6 sm:gap-7 pr-6 sm:pr-7 shrink-0 text-neutral-500 font-medium">
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    SEORCE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    ESSENITE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    SEORCE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    ESSENITE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                </div>
+
+                {/* Track Segment 2 (Exact duplicate for seamless infinite loop) */}
+                <div className="flex items-center gap-6 sm:gap-7 pr-6 sm:pr-7 shrink-0 text-neutral-500 font-medium" aria-hidden="true">
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    SEORCE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    ESSENITE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    SEORCE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    ESSENITE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 

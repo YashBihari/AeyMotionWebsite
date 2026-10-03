@@ -13,10 +13,10 @@ export const PACKAGES: PackageOffer[] = [
   {
     id: "feature-spotlight",
     name: "Feature Spotlight",
-    startingPrice: "$900",
+    startingPrice: "$300",
     description: "Put features in the spotlight.",
-    duration: "Up to 20 seconds",
-    timeline: "5–7 business days per video",
+    duration: "Up to 15 seconds",
+    timeline: "3–5 business days",
     includes: [
       "Product & messaging review",
       "Creative concept",
@@ -33,10 +33,10 @@ export const PACKAGES: PackageOffer[] = [
   {
     id: "product-launch-video",
     name: "Product Launch",
-    startingPrice: "$1,800",
+    startingPrice: "$900",
     description: "Introduce your product. Give people a reason to care.",
     duration: "Up to 45 seconds",
-    timeline: "10–15 business days",
+    timeline: "5–7 business days",
     includes: [
       "Product & audience analysis",
       "Launch concept & narrative",
@@ -54,10 +54,10 @@ export const PACKAGES: PackageOffer[] = [
   {
     id: "product-explainer",
     name: "Product Explainer",
-    startingPrice: "$2,800",
+    startingPrice: "$1,200",
     description: "Make your product easy to understand.",
     duration: "60–90 seconds",
-    timeline: "15–20 business days",
+    timeline: "7–10 business days",
     includes: [
       "Product, audience & messaging analysis",
       "Creative concept & narrative",
@@ -67,7 +67,6 @@ export const PACKAGES: PackageOffer[] = [
       "UI, product & motion design",
       "AI voiceover or text-led storytelling",
       "Full sound design",
-      "2 social cutdowns",
       "2 revision rounds",
       "Final exports for web & social"
     ],
