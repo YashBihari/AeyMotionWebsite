@@ -189,7 +189,7 @@ export default function Hero({ onBookCall }: HeroProps) {
                 transition={{
                   repeat: Infinity,
                   ease: 'linear',
-                  duration: 24,
+                  duration: 28,
                 }}
               >
                 {/* Track Segment 1 */}
@@ -203,11 +203,19 @@ export default function Hero({ onBookCall }: HeroProps) {
                   </span>
                   <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
                   <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    MELAYA
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
                     SEORCE
                   </span>
                   <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
                   <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
                     ESSENITE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    MELAYA
                   </span>
                   <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
                 </div>
@@ -223,11 +231,19 @@ export default function Hero({ onBookCall }: HeroProps) {
                   </span>
                   <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
                   <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    MELAYA
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
                     SEORCE
                   </span>
                   <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
                   <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
                     ESSENITE
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
+                  <span className="text-xs sm:text-[13px] font-sans font-bold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors select-none">
+                    MELAYA
                   </span>
                   <span className="w-1 h-1 rounded-full bg-neutral-300 shrink-0" />
                 </div>
