@@ -1,16 +1,16 @@
 import { useId } from 'react';
-import { motion, type MotionValue } from 'motion/react';
+import { motion, useTransform, type MotionValue } from 'motion/react';
 
 const NIGHT = {
-  sky: ['#4C1D95', '#8C4BFF', '#C084FC'], sea: ['#A855F7', '#7C3AED', '#4C1D95'],
+  sky: ['#6B21A8', '#8C4BFF', '#C084FC'], sea: ['#A855F7', '#7C3AED', '#4C1D95'],
   cloud: '#D8B4FE', cloudShade: '#A855F7', island: '#7E22CE',
   leaf: '#581C87', leafLight: '#9333EA', ink: '#3B0764', rock: '#6B21A8',
   foam: '#E9D5FF', skin: '#D8B4FE'
 };
 const DAY = {
-  sky: ['#C4B5FD', '#E9D5FF', '#FDF2F8'], sea: ['#C084FC', '#B37AF8', '#8C4BFF'],
+  sky: ['#E9D5FF', '#F3E8FF', '#FDF2F8'], sea: ['#D8B4FE', '#C084FC', '#A855F7'],
   cloud: '#FAF5FF', cloudShade: '#F5D0FE', island: '#A855F7',
-  leaf: '#7E22CE', leafLight: '#C084FC', ink: '#581C87', rock: '#B37AF8',
+  leaf: '#9333EA', leafLight: '#C084FC', ink: '#6B21A8', rock: '#D8B4FE',
   foam: '#FDF4FF', skin: '#F5D0FE'
 };
 
@@ -111,11 +111,13 @@ function Illustration({ day }: { day: boolean }) {
 }
 
 export default function AboutLandscape({ daylight }: { daylight: MotionValue<number> }) {
+  const nightOpacity = useTransform(daylight, [0, 1], [1, 0]);
   return (
     <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0 }}><Illustration day={false} /></div>
       <motion.div style={{ position: 'absolute', inset: 0, opacity: daylight }}><Illustration day /></motion.div>
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(46,16,101,.88) 0%, rgba(59,7,100,.76) 52%, rgba(59,7,100,.60) 100%), linear-gradient(0deg, rgba(46,16,101,.45), transparent 70%)' }} />
+      <motion.div style={{ position: 'absolute', inset: 0, opacity: nightOpacity, background: 'linear-gradient(90deg, rgba(59,7,100,.82), rgba(59,7,100,.68) 52%, rgba(59,7,100,.42)), linear-gradient(0deg, rgba(76,29,149,.3), transparent 70%)' }} />
+      <motion.div style={{ position: 'absolute', inset: 0, opacity: daylight, background: 'linear-gradient(90deg, rgba(250,245,255,.95), rgba(250,245,255,.85) 52%, rgba(250,245,255,.65)), linear-gradient(0deg, rgba(233,213,255,.3), transparent 70%)' }} />
     </div>
   );
 }
