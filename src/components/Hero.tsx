@@ -111,7 +111,7 @@ export default function Hero({ onBookCall }: HeroProps) {
           >
             <span className="w-2.5 h-2.5 rounded-full bg-[#8C4BFF] animate-pulse shadow-[0_0_8px_#8C4BFF]" />
             <span className="text-[10.5px] sm:text-xs font-mono uppercase tracking-widest text-neutral-800 font-bold">
-              PRODUCT STORYTELLING FOR B2B AI COMPANIES
+              CREATIVE VIDEO PARTNER FOR TECH STARTUPS
             </span>
           </motion.div>
 
@@ -123,11 +123,11 @@ export default function Hero({ onBookCall }: HeroProps) {
             className="space-y-1 sm:space-y-2"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[60px] font-black uppercase tracking-tight text-[#121217] leading-[1.04]">
-              MAKE COMPLEX AI PRODUCTS
+              <span className="block">Make your product look premium.</span>
+              <span className="block mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#BA63F8] to-[#E585AF]">
+                And impossible to ignore.
+              </span>
             </h1>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[60px] font-black uppercase tracking-tight leading-[1.04] text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#BA63F8] to-[#E585AF]">
-              EASY TO UNDERSTAND AND HARD TO IGNORE.
-            </h2>
           </motion.div>
 
           {/* Subtitle / Description */}
@@ -137,7 +137,7 @@ export default function Hero({ onBookCall }: HeroProps) {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-xl text-balance"
           >
-            Aeymotion helps B2B AI companies turn complex products into clear launch narratives, premium launch films and supporting campaign creative.
+            Product videos and launch creative for AI &amp; SaaS teams—built to show your value, elevate your brand, and give people a reason to care.
           </motion.p>
 
           {/* CTAs */}
