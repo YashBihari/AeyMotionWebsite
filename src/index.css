@@ -118,11 +118,12 @@
   .offer-panel { transition: none; }
 }
 
-/* Titles above sculptural covers on softly tinted, light card surfaces. */
-.offer-card-cover { position: absolute; inset: 180px 0 82px; overflow: hidden; pointer-events: none; }
-.offer-card-cover svg { display: block; width: 100%; height: 100%; }
+/* Bottom-anchored covers with a color ramp that ends below the text. */
+.offer-card-cover { position: absolute; inset: auto 0 -2px; height: min(58%, 260px); z-index: 1; overflow: hidden; pointer-events: none; }
+.offer-card-cover svg { display: block; width: 100%; height: 100%; transform: translateY(42px); }
 @media (min-width: 1024px) {
-  .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFF; background: radial-gradient(ellipse at 90% 85%, #F5E6F080, transparent 65%), linear-gradient(165deg, #FFFFFF 0%, #FCF9FF 45%, #F0E8F9 100%); }
+  .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFF; background: #FCF9FF; }
+  .offer-panel:not(.offer-panel--open)::before { content: ''; position: absolute; inset: 180px 0 0; pointer-events: none; background: linear-gradient(to top, #B98FD4 0%, #D7B4E7 24%, #EDD3E8 48%, #F0E4F8 72%, #F0E4F800 100%); }
   .offer-panel:not(.offer-panel--open) .offer-trigger { padding: 30px 22px 312px; gap: 12px; }
   .offer-panel:not(.offer-panel--open) .offer-title { font-size: clamp(18px, 1.8vw, 25px); }
   .offer-panel:not(.offer-panel--open) .offer-tag { color: #7950A0; }
