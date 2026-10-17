@@ -2,6 +2,7 @@ import { motion, useMotionValue, useSpring } from 'motion/react';
 import React from 'react';
 import { Users, ArrowUpRight } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
+import AboutLandscape from './AboutLandscape';
 import { ABOUT_SECTION } from '../data/content';
 
 interface AboutSectionProps {
@@ -11,6 +12,8 @@ interface AboutSectionProps {
 export default function AboutSection({ onBookCall }: AboutSectionProps) {
   const rawRotateX = useMotionValue(0);
   const rawRotateY = useMotionValue(0);
+  const rawDaylight = useMotionValue(0);
+  const daylight = useSpring(rawDaylight, { damping: 28, stiffness: 65, mass: 1.1 });
 
   // Smooth, physical spring interpolation for restrained ±8° gravity tilt
   const rotateX = useSpring(rawRotateX, { damping: 20, stiffness: 130, mass: 0.6 });
@@ -40,11 +43,14 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
 
     rawRotateX.set(targetX);
     rawRotateY.set(targetY);
+    // The same cursor position drives gravity and a continuous night-to-day blend.
+    rawDaylight.set(Math.max(0, Math.min(1, (normX + 1) / 2)));
   };
 
   const handleMouseLeave = () => {
     rawRotateX.set(0);
     rawRotateY.set(0);
+    rawDaylight.set(0);
   };
 
   return (
@@ -67,11 +73,9 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
             transformStyle: 'preserve-3d',
             willChange: 'transform',
           }}
-          className="w-full md:max-w-[75%] mx-auto p-5 sm:p-7 md:p-8 lg:p-9 bg-gradient-to-br from-[#8C4BFF] via-[#6F2BFF] to-[#5116D9] rounded-2xl sm:rounded-3xl text-white shadow-xl relative overflow-hidden"
+          className="w-full md:max-w-[75%] mx-auto p-5 sm:p-7 md:p-8 lg:p-9 bg-[#261541] rounded-2xl sm:rounded-3xl text-white shadow-xl relative overflow-hidden"
         >
-          {/* Glowing Ambient Background Circles */}
-          <div className="absolute top-0 right-0 w-72 h-72 bg-[#B98FD4]/30 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#F2A979]/20 rounded-full blur-3xl pointer-events-none" />
+          <AboutLandscape daylight={daylight} />
 
           <div className="space-y-4 md:space-y-5 relative z-10">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3.5xl font-black uppercase tracking-tight text-white leading-snug">
