@@ -50,10 +50,6 @@ export default function OfferCardCover({ index }: { index: number }) {
             </g>
             <ellipse cx="50" cy="195" rx="25" ry="14" transform="rotate(-25 50 195)" fill={paint('blush')} />
             </g>
-            <g transform="translate(241 53) rotate(25)">
-              <rect x="-23" y="-7" width="46" height="16" rx="8" fill={paint('edge')} />
-              <rect x="-23" y="-9" width="46" height="16" rx="8" fill={paint('blush')} stroke="#F6E4FF" strokeWidth=".8" />
-            </g>
             <circle cx="267" cy="169" r="12" fill={paint('pearl')} />
             <path d="M113 39V51M107 45H119" stroke="#D7BAEE" strokeWidth="3" strokeLinecap="round" />
           </>
@@ -76,10 +72,6 @@ export default function OfferCardCover({ index }: { index: number }) {
             <path d="M24 221C74 176 125 244 189 219" stroke={paint('blush')} strokeWidth="13" strokeLinecap="round" />
             </g>
             <circle cx="249" cy="209" r="13" fill={paint('pearl')} />
-            <g transform="translate(61 62) rotate(-20)">
-              <rect x="-18" y="-5" width="36" height="12" rx="6" fill={paint('edge')} />
-              <rect x="-18" y="-7" width="36" height="12" rx="6" fill={paint('blush')} stroke="#F6E4FF" strokeWidth=".8" />
-            </g>
             <path d="M175 34V46M169 40H181" stroke="#C7A0E5" strokeWidth="3" strokeLinecap="round" />
           </>
         )}
@@ -101,10 +93,6 @@ export default function OfferCardCover({ index }: { index: number }) {
             <path d="M120 36C142 32 160 47 163 59" stroke="#F0D8FF" strokeOpacity=".6" strokeWidth="1.5" strokeLinecap="round" />
             </g>
             <circle cx="252" cy="66" r="14" fill={paint('pearl')} />
-            <g transform="translate(63 207) rotate(-30)">
-              <rect x="-21" y="-5" width="42" height="15" rx="7.5" fill={paint('edge')} />
-              <rect x="-21" y="-8" width="42" height="15" rx="7.5" fill={paint('blush')} stroke="#F6E4FF" strokeWidth=".8" />
-            </g>
             <path d="M57 57V69M51 63H63" stroke="#CAA5E6" strokeWidth="3" strokeLinecap="round" />
           </>
         )}
