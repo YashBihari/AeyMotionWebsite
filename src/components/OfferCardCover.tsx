@@ -5,7 +5,7 @@ export default function OfferCardCover({ index }: { index: number }) {
   const id = useId().replace(/:/g, '');
   const paint = (name: string) => `url(#${id}-${name})`;
   return (
-    <div className="offer-card-cover" aria-hidden="true">
+    <span className="offer-card-cover" aria-hidden="true">
       <svg viewBox="0 0 300 250" fill="none" focusable="false" preserveAspectRatio="xMidYMax meet">
         <defs>
           <linearGradient id={`${id}-ceramic`} x1="-65" y1="-80" x2="65" y2="85" gradientUnits="userSpaceOnUse">
@@ -39,19 +39,29 @@ export default function OfferCardCover({ index }: { index: number }) {
           <>
             <g transform="translate(35 44) scale(.75)">
             <g transform="translate(48 65) rotate(-28)">
+              <g className="offer-cover-shape">
               <ellipse cx="0" cy="6" rx="66" ry="46" stroke={paint('edge')} strokeWidth="27" />
               <ellipse rx="66" ry="46" stroke={paint('violet')} strokeWidth="25" />
               <path d="M-63 -11C-44 -47 17 -49 47 -26" stroke="#F5E2FF" strokeOpacity=".65" strokeWidth="2" strokeLinecap="round" />
+                          </g>
             </g>
             <g transform="translate(195 157) rotate(-13)">
+              <g className="offer-cover-shape">
               <path d="M-6.8281612705645 -78.82748481411306Q5.449678256205722e-15 -89 6.828161270564494 -78.82748481411306Q13.656322541128983 -68.65496962822613 16.395247079691735 -57.424473126895236Q19.13417161825449 -46.19397662556434 29.012043964813326 -52.19842474337125Q38.88991631137216 -58.202872861178164 50.911209918487444 -60.567688193390445Q62.93250352560273 -62.932503525602726 60.56768819339045 -50.911209918487444Q58.202872861178164 -38.889916311372154 52.19842474337125 -29.012043964813323Q46.19397662556434 -19.134171618254488 57.424473126895236 -16.395247079691732Q68.65496962822613 -13.656322541128977 78.82748481411306 -6.828161270564489Q89 0 78.82748481411306 6.828161270564489Q68.65496962822613 13.656322541128977 57.424473126895236 16.395247079691732Q46.19397662556434 19.134171618254488 52.198424743371255 29.012043964813316Q58.20287286117817 38.88991631137215 60.56768819339045 50.91120991848744Q62.93250352560273 62.932503525602726 50.911209918487444 60.56768819339045Q38.88991631137215 58.20287286117817 29.01204396481332 52.198424743371255Q19.13417161825449 46.19397662556434 16.395247079691742 57.424473126895236Q13.656322541128997 68.65496962822613 6.828161270564501 78.82748481411306Q5.449678256205722e-15 89 -6.828161270564492 78.82748481411306Q-13.65632254112899 68.65496962822613 -16.39524707969174 57.424473126895236Q-19.134171618254488 46.19397662556434 -29.012043964813316 52.19842474337126Q-38.88991631137214 58.20287286117818 -50.91120991848743 60.56768819339045Q-62.932503525602726 62.93250352560273 -60.56768819339045 50.911209918487444Q-58.20287286117817 38.889916311372154 -52.19842474337125 29.012043964813333Q-46.193976625564325 19.134171618254513 -57.42447312689522 16.395247079691757Q-68.65496962822613 13.656322541129002 -78.82748481411306 6.8281612705645065Q-89 1.0899356512411444e-14 -78.82748481411306 -6.828161270564487Q-68.65496962822613 -13.656322541128985 -57.42447312689523 -16.395247079691742Q-46.19397662556433 -19.134171618254502 -52.198424743371255 -29.012043964813323Q-58.20287286117818 -38.88991631137214 -60.56768819339046 -50.91120991848743Q-62.93250352560274 -62.932503525602726 -50.911209918487444 -60.567688193390445Q-38.889916311372154 -58.202872861178164 -29.012043964813337 -52.19842474337125Q-19.134171618254516 -46.193976625564325 -16.39524707969176 -57.42447312689522Q-13.656322541129006 -68.65496962822613 -6.8281612705645 -78.82748481411306Z" transform="translate(0 7)" fill={paint('edge')} />
               <path d="M-6.8281612705645 -78.82748481411306Q5.449678256205722e-15 -89 6.828161270564494 -78.82748481411306Q13.656322541128983 -68.65496962822613 16.395247079691735 -57.424473126895236Q19.13417161825449 -46.19397662556434 29.012043964813326 -52.19842474337125Q38.88991631137216 -58.202872861178164 50.911209918487444 -60.567688193390445Q62.93250352560273 -62.932503525602726 60.56768819339045 -50.911209918487444Q58.202872861178164 -38.889916311372154 52.19842474337125 -29.012043964813323Q46.19397662556434 -19.134171618254488 57.424473126895236 -16.395247079691732Q68.65496962822613 -13.656322541128977 78.82748481411306 -6.828161270564489Q89 0 78.82748481411306 6.828161270564489Q68.65496962822613 13.656322541128977 57.424473126895236 16.395247079691732Q46.19397662556434 19.134171618254488 52.198424743371255 29.012043964813316Q58.20287286117817 38.88991631137215 60.56768819339045 50.91120991848744Q62.93250352560273 62.932503525602726 50.911209918487444 60.56768819339045Q38.88991631137215 58.20287286117817 29.01204396481332 52.198424743371255Q19.13417161825449 46.19397662556434 16.395247079691742 57.424473126895236Q13.656322541128997 68.65496962822613 6.828161270564501 78.82748481411306Q5.449678256205722e-15 89 -6.828161270564492 78.82748481411306Q-13.65632254112899 68.65496962822613 -16.39524707969174 57.424473126895236Q-19.134171618254488 46.19397662556434 -29.012043964813316 52.19842474337126Q-38.88991631137214 58.20287286117818 -50.91120991848743 60.56768819339045Q-62.932503525602726 62.93250352560273 -60.56768819339045 50.911209918487444Q-58.20287286117817 38.889916311372154 -52.19842474337125 29.012043964813333Q-46.193976625564325 19.134171618254513 -57.42447312689522 16.395247079691757Q-68.65496962822613 13.656322541129002 -78.82748481411306 6.8281612705645065Q-89 1.0899356512411444e-14 -78.82748481411306 -6.828161270564487Q-68.65496962822613 -13.656322541128985 -57.42447312689523 -16.395247079691742Q-46.19397662556433 -19.134171618254502 -52.198424743371255 -29.012043964813323Q-58.20287286117818 -38.88991631137214 -60.56768819339046 -50.91120991848743Q-62.93250352560274 -62.932503525602726 -50.911209918487444 -60.567688193390445Q-38.889916311372154 -58.202872861178164 -29.012043964813337 -52.19842474337125Q-19.134171618254516 -46.193976625564325 -16.39524707969176 -57.42447312689522Q-13.656322541129006 -68.65496962822613 -6.8281612705645 -78.82748481411306Z" fill={paint('ceramic')} stroke="#EAD5F8" strokeWidth="1" />
               <path d="M-23 -52Q-12 -37 0 -39Q13 -38 22 -55" stroke="white" strokeOpacity=".5" strokeWidth="1.5" strokeLinecap="round" />
+                          </g>
             </g>
-            <ellipse cx="50" cy="195" rx="25" ry="14" transform="rotate(-25 50 195)" fill={paint('blush')} />
+            <g className="offer-cover-shape">
+              <ellipse cx="50" cy="195" rx="25" ry="14" transform="rotate(-25 50 195)" fill={paint('blush')} />
             </g>
-            <circle cx="267" cy="169" r="12" fill={paint('pearl')} />
-            <path d="M113 39V51M107 45H119" stroke="#D7BAEE" strokeWidth="3" strokeLinecap="round" />
+            </g>
+            <g className="offer-cover-shape">
+              <circle cx="267" cy="169" r="12" fill={paint('pearl')} />
+            </g>
+            <g className="offer-cover-shape">
+              <path d="M113 39V51M107 45H119" stroke="#D7BAEE" strokeWidth="3" strokeLinecap="round" />
+            </g>
           </>
         )}
 
@@ -59,20 +69,30 @@ export default function OfferCardCover({ index }: { index: number }) {
           <>
             <g transform="translate(26 52) scale(.76)">
             <g transform="translate(18 20) rotate(-13 130 110)">
+              <g className="offer-cover-shape">
               <path d="M88 38Q74 30 74 48V182Q74 201 91 191L214 119Q231 109 214 99Z
                 M110 78V150L173 114Z" transform="translate(0 7)" fill={paint('edge')} fillRule="evenodd" />
               <path d="M88 38Q74 30 74 48V182Q74 201 91 191L214 119Q231 109 214 99Z
                 M110 78V150L173 114Z" fill={paint('violet')} fillRule="evenodd" stroke="#DBB9F7" strokeWidth="1.1" />
               <path d="M84 45L204 107M83 54V174" stroke="#F5E4FF" strokeOpacity=".6" strokeWidth="2" strokeLinecap="round" />
+                          </g>
             </g>
             <g transform="translate(244 65) rotate(25)">
+              <g className="offer-cover-shape">
               <ellipse cy="5" rx="42" ry="58" stroke={paint('edge')} strokeWidth="18" />
               <ellipse rx="42" ry="58" stroke={paint('blush')} strokeWidth="17" />
+                          </g>
             </g>
-            <path d="M24 221C74 176 125 244 189 219" stroke={paint('blush')} strokeWidth="13" strokeLinecap="round" />
+            <g className="offer-cover-shape">
+              <path d="M24 221C74 176 125 244 189 219" stroke={paint('blush')} strokeWidth="13" strokeLinecap="round" />
             </g>
-            <circle cx="249" cy="209" r="13" fill={paint('pearl')} />
-            <path d="M175 34V46M169 40H181" stroke="#C7A0E5" strokeWidth="3" strokeLinecap="round" />
+            </g>
+            <g className="offer-cover-shape">
+              <circle cx="249" cy="209" r="13" fill={paint('pearl')} />
+            </g>
+            <g className="offer-cover-shape">
+              <path d="M175 34V46M169 40H181" stroke="#C7A0E5" strokeWidth="3" strokeLinecap="round" />
+            </g>
           </>
         )}
 
@@ -80,23 +100,33 @@ export default function OfferCardCover({ index }: { index: number }) {
           <>
             <g transform="translate(30 52) scale(.76)">
             <g transform="translate(112 94) rotate(-32)">
+              <g className="offer-cover-shape">
               <rect x="-63" y="-44" width="126" height="98" rx="48" transform="translate(0 6)" stroke={paint('edge')} strokeWidth="26" />
               <rect x="-63" y="-44" width="126" height="98" rx="48" stroke={paint('violet')} strokeWidth="25" />
               <path d="M-52 -24Q-39 -39 -17 -39H18" stroke="#F6E5FF" strokeOpacity=".65" strokeWidth="2" strokeLinecap="round" />
+                          </g>
             </g>
             <g transform="translate(193 151) rotate(-32)">
+              <g className="offer-cover-shape">
               <rect x="-63" y="-44" width="126" height="98" rx="48" transform="translate(0 6)" stroke={paint('edge')} strokeWidth="26" />
               <rect x="-63" y="-44" width="126" height="98" rx="48" stroke={paint('blush')} strokeWidth="25" />
               <path d="M-52 -24Q-39 -39 -17 -39H18" stroke="#FFF3FF" strokeOpacity=".75" strokeWidth="2" strokeLinecap="round" />
+                          </g>
             </g>
+            <g className="offer-cover-shape">
             <path d="M120 47C150 40 169 61 169 77" stroke={paint('violet')} strokeWidth="25" strokeLinecap="round" />
             <path d="M120 36C142 32 160 47 163 59" stroke="#F0D8FF" strokeOpacity=".6" strokeWidth="1.5" strokeLinecap="round" />
             </g>
-            <circle cx="252" cy="66" r="14" fill={paint('pearl')} />
-            <path d="M57 57V69M51 63H63" stroke="#CAA5E6" strokeWidth="3" strokeLinecap="round" />
+            </g>
+            <g className="offer-cover-shape">
+              <circle cx="252" cy="66" r="14" fill={paint('pearl')} />
+            </g>
+            <g className="offer-cover-shape">
+              <path d="M57 57V69M51 63H63" stroke="#CAA5E6" strokeWidth="3" strokeLinecap="round" />
+            </g>
           </>
         )}
       </svg>
-    </div>
+    </span>
   );
 }

@@ -119,8 +119,8 @@
 }
 
 /* Bottom-anchored covers with a color ramp that ends below the text. */
-.offer-card-cover { position: absolute; inset: auto 0 0; height: min(58%, 260px); z-index: 1; overflow: visible; pointer-events: none; }
-.offer-card-cover svg { display: block; width: 100%; height: 100%; overflow: visible; transform: scale(1.25); transform-origin: 50% 100%; transition: transform 380ms cubic-bezier(.34,1.56,.64,1); }
+.offer-card-cover { position: absolute; inset: auto 0 0; height: min(58%, 260px); z-index: 4; overflow: visible; pointer-events: none; }
+.offer-card-cover svg { display: block; width: 100%; height: 100%; overflow: visible; transform: scale(1.25); transform-origin: 50% 100%; }
 @media (min-width: 1024px) {
   .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFF; background: #FCF9FF; }
   .offer-panel:not(.offer-panel--open)::before { content: ''; position: absolute; inset: 180px 0 0; pointer-events: none; background: linear-gradient(to top, #B98FD4 0%, #D7B4E7 24%, #EDD3E8 48%, #F0E4F8 72%, #F0E4F800 100%); transform: scaleY(1.25); transform-origin: 50% 100%; mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); }
@@ -132,10 +132,12 @@
 }
 @media (max-width: 1023px) { .offer-card-cover { display: none; } }
 
-/* Match the hero's spring-like zoom while leaving text and controls stationary. */
+/* Each painted shape receives its own hover; blank space stays click-through. */
+.offer-cover-shape { pointer-events: visiblePainted; transform-box: fill-box; transform-origin: center; transition: transform 380ms cubic-bezier(.34,1.56,.64,1); }
+.offer-panel:not(.offer-panel--open) .offer-toggle { z-index: 5; }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .offer-panel:not(.offer-panel--open):hover .offer-card-cover svg { transform: scale(1.375); }
+  .offer-cover-shape:hover { transform: scale(1.15); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .offer-card-cover svg { transition: none; }
+  .offer-cover-shape { transition: none; }
 }

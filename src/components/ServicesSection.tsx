@@ -174,12 +174,11 @@ export default function ServicesSection(_props: ServicesSectionProps) {
                   <span className="offer-tag">{pkg.tag}</span>
                   <span className="offer-title">{pkg.title}</span>
                   {!isOpen && <span className="offer-summary">{pkg.duration}</span>}
+                  {!isOpen && <OfferCardCover index={idx} />}
                   <span className="offer-toggle" aria-hidden="true">
                     {isOpen ? <Minus size={20} /> : <Plus size={20} />}
                   </span>
                 </button>
-
-                {!isOpen && <OfferCardCover index={idx} />}
 
                 <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!isOpen} className="offer-details">
                   <p className="offer-description">{pkg.description}</p>
