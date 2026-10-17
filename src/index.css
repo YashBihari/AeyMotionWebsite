@@ -113,9 +113,9 @@
 .offer-decoration--2 .offer-decoration-tile { transform: rotate(-8deg) rotateY(20deg) rotateX(10deg); }
 .offer-panel:not(.offer-panel--open) .offer-trigger { position: static; }
 .offer-panel:not(.offer-panel--open) .offer-trigger::after { content: ''; position: absolute; inset: 0; z-index: 3; }
-.offer-panel:not(.offer-panel--open) .offer-toggle { position: absolute; bottom: 24px; right: 20px; z-index: 4; pointer-events: none; width: 48px; height: 48px; color: white; border: 1px solid #FFFFFF99; background: linear-gradient(145deg, #B774FF, #8C4BFF 50%, #6B23D9); box-shadow: inset 0 2px 2px #FFFFFF66, 0 5px 0 #6620BF, 0 12px 24px #8C4BFF59; }
+.offer-panel:not(.offer-panel--open) .offer-toggle { position: absolute; bottom: 24px; right: 20px; z-index: 4; pointer-events: none; width: 48px; height: 48px; color: #7943C9; border: 1px solid #FFFFFFCC; background: linear-gradient(140deg, #F6EEFFCC, #E8D8F599); box-shadow: 0 4px 14px #945CC91A; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .offer-panel:not(.offer-panel--open) .offer-toggle svg { width: 24px; height: 24px; stroke-width: 2.5; }
-.offer-panel:not(.offer-panel--open):hover .offer-toggle { box-shadow: inset 0 2px 2px #FFFFFF88, 0 5px 0 #6620BF, 0 15px 28px #8C4BFF80; }
+.offer-panel:not(.offer-panel--open):hover .offer-toggle { background: #F6EEFFEE; border-color: #C9A9EE; box-shadow: 0 4px 14px #945CC91A; }
 .offer-decoration-tile { animation: offer-art-float 6s ease-in-out infinite; }
 .offer-decoration-tile--back { animation-duration: 7s; animation-delay: -2s; }
 .offer-decoration-orb { animation: offer-art-float 5s ease-in-out -1.4s infinite; }
