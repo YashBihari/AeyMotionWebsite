@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import { Check, Plus, Minus } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
-import OfferCardGraphic from './OfferCardGraphic';
+import OfferCardCover from './OfferCardCover';
 
 interface ServicesSectionProps {
   onBookCall: () => void;
@@ -179,7 +179,7 @@ export default function ServicesSection(_props: ServicesSectionProps) {
                   </span>
                 </button>
 
-                {!isOpen && <OfferCardGraphic index={idx} />}
+                {!isOpen && <OfferCardCover index={idx} />}
 
                 <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!isOpen} className="offer-details">
                   <p className="offer-description">{pkg.description}</p>

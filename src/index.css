@@ -118,10 +118,15 @@
   .offer-panel { transition: none; }
 }
 
-/* Surface diagrams: quiet linework, one accent and no floating scene. */
-.offer-card-graphic { position: absolute; inset-inline: 0; bottom: 78px; height: min(47%, 240px); pointer-events: none; overflow: hidden; }
-.offer-card-graphic svg { display: block; width: 100%; height: 100%; }
-.offer-card-accent { opacity: .72; transition: opacity 240ms ease; }
-.offer-panel:hover .offer-card-accent, .offer-panel:focus-within .offer-card-accent { opacity: 1; }
-@media (max-width: 1023px) { .offer-card-graphic { display: none; } }
-@media (prefers-reduced-motion: reduce) { .offer-card-accent { transition: none; } }
+/* Sculptural offer covers: bright violet artwork dissolves into a light reading area. */
+.offer-card-cover { position: absolute; inset: 0 0 auto; height: 245px; overflow: hidden; pointer-events: none; }
+.offer-card-cover svg { display: block; width: 100%; height: 100%; }
+@media (min-width: 1024px) {
+  .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFF; background: radial-gradient(ellipse at 8% 8%, #B98FD4B3, transparent 50%), linear-gradient(170deg, #8C4BFF 0%, #AA76ED 25%, #D9A6D9 44%, #F4E8F8 63%, #FCF8FF 83%); }
+  .offer-panel:not(.offer-panel--open) .offer-trigger { padding: 250px 22px 92px; gap: 12px; }
+  .offer-panel:not(.offer-panel--open) .offer-title { font-size: clamp(18px, 1.8vw, 25px); }
+  .offer-panel:not(.offer-panel--open) .offer-tag { color: #7950A0; }
+  .offer-panel:not(.offer-panel--open) .offer-toggle { border-color: #FFFFFF; background: #FFFFFFB3; box-shadow: none; }
+  .offer-panel:not(.offer-panel--open):hover .offer-toggle { background: #FFFFFF; box-shadow: none; }
+}
+@media (max-width: 1023px) { .offer-card-cover { display: none; } }
