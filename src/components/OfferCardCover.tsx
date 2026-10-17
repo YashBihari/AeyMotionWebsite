@@ -40,9 +40,9 @@ export default function OfferCardCover({ index }: { index: number }) {
             <g transform="translate(35 44) scale(.75)">
             <g transform="translate(48 65) rotate(-28)">
               <g className="offer-cover-shape">
-              <ellipse cx="0" cy="6" rx="66" ry="46" stroke={paint('edge')} strokeWidth="27" />
-              <ellipse rx="66" ry="46" stroke={paint('violet')} strokeWidth="25" />
-              <path d="M-63 -11C-44 -47 17 -49 47 -26" stroke="#F5E2FF" strokeOpacity=".65" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="0" cy="6" r="56" stroke={paint('edge')} strokeWidth="27" />
+              <circle r="56" stroke={paint('violet')} strokeWidth="25" />
+              <path d="M-54 -14A56 56 0 0 1 25 -50" stroke="#F5E2FF" strokeOpacity=".65" strokeWidth="2" strokeLinecap="round" />
                           </g>
             </g>
             <g transform="translate(195 157) rotate(-13)">
@@ -53,7 +53,7 @@ export default function OfferCardCover({ index }: { index: number }) {
                           </g>
             </g>
             <g className="offer-cover-shape">
-              <ellipse cx="50" cy="195" rx="25" ry="14" transform="rotate(-25 50 195)" fill={paint('blush')} />
+              <circle cx="50" cy="195" r="19" transform="rotate(-25 50 195)" fill={paint('blush')} />
             </g>
             </g>
             <g className="offer-cover-shape">
@@ -79,8 +79,8 @@ export default function OfferCardCover({ index }: { index: number }) {
             </g>
             <g transform="translate(244 65) rotate(25)">
               <g className="offer-cover-shape">
-              <ellipse cy="5" rx="42" ry="58" stroke={paint('edge')} strokeWidth="18" />
-              <ellipse rx="42" ry="58" stroke={paint('blush')} strokeWidth="17" />
+              <circle cy="5" r="50" stroke={paint('edge')} strokeWidth="18" />
+              <circle r="50" stroke={paint('blush')} strokeWidth="17" />
                           </g>
             </g>
             <g className="offer-cover-shape">
@@ -101,21 +101,21 @@ export default function OfferCardCover({ index }: { index: number }) {
             <g transform="translate(30 52) scale(.76)">
             <g transform="translate(112 94) rotate(-32)">
               <g className="offer-cover-shape">
-              <rect x="-63" y="-44" width="126" height="98" rx="48" transform="translate(0 6)" stroke={paint('edge')} strokeWidth="26" />
-              <rect x="-63" y="-44" width="126" height="98" rx="48" stroke={paint('violet')} strokeWidth="25" />
-              <path d="M-52 -24Q-39 -39 -17 -39H18" stroke="#F6E5FF" strokeOpacity=".65" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="0" cy="11" r="56" stroke={paint('edge')} strokeWidth="26" />
+              <circle cx="0" cy="5" r="56" stroke={paint('violet')} strokeWidth="25" />
+              <path d="M-53 -13A56 56 0 0 1 23 -46" stroke="#F6E5FF" strokeOpacity=".65" strokeWidth="2" strokeLinecap="round" />
                           </g>
             </g>
             <g transform="translate(193 151) rotate(-32)">
               <g className="offer-cover-shape">
-              <rect x="-63" y="-44" width="126" height="98" rx="48" transform="translate(0 6)" stroke={paint('edge')} strokeWidth="26" />
-              <rect x="-63" y="-44" width="126" height="98" rx="48" stroke={paint('blush')} strokeWidth="25" />
-              <path d="M-52 -24Q-39 -39 -17 -39H18" stroke="#FFF3FF" strokeOpacity=".75" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="0" cy="11" r="56" stroke={paint('edge')} strokeWidth="26" />
+              <circle cx="0" cy="5" r="56" stroke={paint('blush')} strokeWidth="25" />
+              <path d="M-53 -13A56 56 0 0 1 23 -46" stroke="#FFF3FF" strokeOpacity=".75" strokeWidth="2" strokeLinecap="round" />
                           </g>
             </g>
             <g className="offer-cover-shape">
-            <path d="M120 47C150 40 169 61 169 77" stroke={paint('violet')} strokeWidth="25" strokeLinecap="round" />
-            <path d="M120 36C142 32 160 47 163 59" stroke="#F0D8FF" strokeOpacity=".6" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M100 44A56 56 0 0 1 169 84" stroke={paint('violet')} strokeWidth="25" strokeLinecap="round" />
+            <path d="M98 33A67 67 0 0 1 177 66" stroke="#F0D8FF" strokeOpacity=".6" strokeWidth="1.5" strokeLinecap="round" />
             </g>
             </g>
             <g className="offer-cover-shape">
