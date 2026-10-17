@@ -73,15 +73,15 @@
 
 /* Offer accordion: compact panels and a full-width detail view. */
 .offer-accordion { display: flex; gap: 16px; align-items: stretch; }
-.offer-panel { flex: 1 1 0; min-width: 0; position: relative; overflow: hidden; border: 1px solid #DED0FB; border-radius: 28px; background: linear-gradient(155deg, #FFFFFFE6, #F4ECFCBF); transition: flex-grow 400ms cubic-bezier(.22,1,.36,1); }
-.offer-panel--open { flex-grow: 3.4; background: linear-gradient(135deg, #FFFFFFEF, #FBF6FFE6); }
+.offer-panel { flex: 1 1 0; min-width: 0; position: relative; overflow: hidden; border: 1px solid #FFFFFFE6; border-radius: 28px; background: linear-gradient(135deg, #FFFFFFCC, #F5EBFF99 50%, #FDF2F8B3); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transition: flex-grow 400ms cubic-bezier(.22,1,.36,1); }
+.offer-panel--open { flex-grow: 3.4; background: linear-gradient(135deg, #FFFFFFEF, #F3E8FFD9); }
 .offer-trigger { display: flex; flex-direction: column; align-items: flex-start; text-align: left; width: 100%; padding: 30px 24px; gap: 18px; cursor: pointer; position: relative; z-index: 2; }
 .offer-trigger[aria-expanded="true"] { padding-bottom: 12px; padding-right: 64px; }
 .offer-tag, .offer-label, .offer-metadata dt { font: 700 10px/1.5 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #8C4BFF; }
 .offer-title { font-size: clamp(18px, 1.8vw, 25px); font-weight: 900; letter-spacing: -.04em; line-height: 1.12; overflow-wrap: normal; }
 .offer-panel--open .offer-title { font-size: clamp(25px, 2.4vw, 36px); }
 .offer-summary { color: #716480; font-size: 13px; line-height: 1.5; }
-.offer-toggle { width: 40px; height: 40px; border-radius: 50%; background: #FFFFFFDF; border: 1px solid #E9DCFF; color: #7943C9; display: grid; place-items: center; isolation: isolate; }
+.offer-toggle { width: 40px; height: 40px; border-radius: 50%; background: #FFFFFFDF; border: 1px solid #E9DCFF; color: #8C4BFF; display: grid; place-items: center; isolation: isolate; }
 .offer-panel--open .offer-toggle { position: absolute; top: 25px; right: 20px; background: #8C4BFF; color: white; border-color: transparent; }
 .offer-trigger:focus-visible { outline: 3px solid #8C4BFF; outline-offset: -5px; border-radius: 24px; }
 .offer-details { padding: 0 24px 24px; position: relative; z-index: 2; }
@@ -97,7 +97,7 @@
 .offer-includes svg { background: #EFE3FF; color: #8C4BFF; padding: 3px; width: 19px; height: 19px; border-radius: 50%; flex-shrink: 0; }
 .offer-panel:not(.offer-panel--open) .offer-trigger { position: static; }
 .offer-panel:not(.offer-panel--open) .offer-trigger::after { content: ''; position: absolute; inset: 0; z-index: 3; }
-.offer-panel:not(.offer-panel--open) .offer-toggle { position: absolute; bottom: 24px; right: 20px; z-index: 4; pointer-events: none; width: 48px; height: 48px; color: #7943C9; border: 1px solid #FFFFFFCC; background: linear-gradient(140deg, #F6EEFFCC, #E8D8F599); box-shadow: 0 4px 14px #945CC91A; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.offer-panel:not(.offer-panel--open) .offer-toggle { position: absolute; bottom: 24px; right: 20px; z-index: 4; pointer-events: none; width: 48px; height: 48px; color: #8C4BFF; border: 1px solid #FFFFFFCC; background: linear-gradient(140deg, #F6EEFFCC, #E8D8F599); box-shadow: 0 4px 14px #945CC91A; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .offer-panel:not(.offer-panel--open) .offer-toggle svg { width: 24px; height: 24px; stroke-width: 2.5; }
 .offer-panel:not(.offer-panel--open):hover .offer-toggle { background: #F6EEFFEE; border-color: #C9A9EE; box-shadow: 0 4px 14px #945CC91A; }
 @media (max-width: 1023px) {
@@ -122,11 +122,11 @@
 .offer-card-cover { position: absolute; inset: auto 0 0; height: min(58%, 260px); z-index: 4; overflow: visible; pointer-events: none; }
 .offer-card-cover svg { display: block; width: 100%; height: 100%; overflow: visible; transform: scale(1.25); transform-origin: 50% 100%; }
 @media (min-width: 1024px) {
-  .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFF; background: #FCF9FF; }
-  .offer-panel:not(.offer-panel--open)::before { content: ''; position: absolute; inset: 180px 0 0; pointer-events: none; background: linear-gradient(to top, #B98FD4 0%, #D7B4E7 24%, #EDD3E8 48%, #F0E4F8 72%, #F0E4F800 100%); transform: scaleY(1.25); transform-origin: 50% 100%; mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); }
+  .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFFE6; background: linear-gradient(135deg, #FFFFFFBF, #F5EBFF8C 50%, #FDF2F88C); }
+  .offer-panel:not(.offer-panel--open)::before { content: ''; position: absolute; inset: 180px 0 0; pointer-events: none; background: linear-gradient(to top, #C084FC88 0%, #D8B4FE80 24%, #F5D0FE66 48%, #F3E8FF22 72%, #F3E8FF00 100%); transform: scaleY(1.25); transform-origin: 50% 100%; mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); }
   .offer-panel:not(.offer-panel--open) .offer-trigger { padding: 30px 22px 312px; gap: 12px; }
   .offer-panel:not(.offer-panel--open) .offer-title { font-size: clamp(18px, 1.8vw, 25px); }
-  .offer-panel:not(.offer-panel--open) .offer-tag { color: #7950A0; }
+  .offer-panel:not(.offer-panel--open) .offer-tag { color: #7C3AED; }
   .offer-panel:not(.offer-panel--open) .offer-toggle { border-color: #FFFFFF; background: #FFFFFFB3; box-shadow: none; }
   .offer-panel:not(.offer-panel--open):hover .offer-toggle { background: #FFFFFF; box-shadow: none; }
 }
