@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
-import { Check, Plus, Minus, Film, Layers, Sparkles } from 'lucide-react';
+import { Check, Plus, Minus } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
+import OfferArtwork from './OfferArtwork';
 
 interface ServicesSectionProps {
   onBookCall: () => void;
@@ -157,7 +158,6 @@ export default function ServicesSection(_props: ServicesSectionProps) {
         <div className="offer-accordion" style={{ minHeight: offerHeight }} aria-label="Explore video offers">
           {PACKAGES_DATA.map((pkg, idx) => {
             const isOpen = activeOfferId === pkg.id;
-            const Icon = [Sparkles, Film, Layers][idx];
             const panelId = `offer-panel-${pkg.id}`;
             const triggerId = `offer-trigger-${pkg.id}`;
 
@@ -179,19 +179,7 @@ export default function ServicesSection(_props: ServicesSectionProps) {
                   </span>
                 </button>
 
-                {!isOpen && (
-                  <div className={`offer-decoration offer-decoration--${idx}`} aria-hidden="true">
-                    <span className="offer-decoration-halo" />
-                    <span className="offer-decoration-orb" />
-                    <span className="offer-decoration-ring" />
-                    <span className="offer-decoration-tile">
-                      <span className="offer-decoration-icon"><Icon strokeWidth={1.6} /></span>
-                      <span className="offer-decoration-bars"><i /><i /><i /></span>
-                    </span>
-                    <span className="offer-decoration-tile offer-decoration-tile--back" />
-                    <span className="offer-decoration-pearl" />
-                  </div>
-                )}
+                {!isOpen && <OfferArtwork index={idx} />}
 
                 <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!isOpen} className="offer-details">
                   <p className="offer-description">{pkg.description}</p>

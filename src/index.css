@@ -95,35 +95,11 @@
 .offer-includes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; line-height: 1.5; color: #443A50; }
 .offer-includes li { display: flex; gap: 8px; align-items: flex-start; }
 .offer-includes svg { background: #EFE3FF; color: #8C4BFF; padding: 3px; width: 19px; height: 19px; border-radius: 50%; flex-shrink: 0; }
-.offer-decoration { position: absolute; bottom: 0; left: 0; right: 0; height: 47%; pointer-events: none; overflow: hidden; perspective: 650px; }
-.offer-decoration-halo { position: absolute; inset: 0; background: radial-gradient(ellipse at 45% 80%, #C29AF66B, transparent 70%); }
-.offer-decoration-orb { position: absolute; z-index: 1; width: 85px; height: 85px; border-radius: 50%; right: -14px; top: 14px; background: radial-gradient(circle at 28% 20%, #FFF5FF, #EDABEF 32%, #BA6CE7 65%, #6D27BA 100%); box-shadow: inset -6px -9px 12px #61269B33, inset 3px 4px 8px #FFFFFF99, 0 14px 22px #8E47C62B; }
-.offer-decoration-tile { position: absolute; z-index: 2; bottom: 14px; left: 14%; width: 142px; height: 150px; border-radius: 24px; background: linear-gradient(140deg, #FFFFFFF0, #F4E6FFDF 48%, #D8AEF1C9); border: 1px solid white; box-shadow: inset 2px 3px 3px white, inset -3px -3px 4px #BA83DC66, 5px 7px 0 #CB9DEB, 8px 11px 0 #A769CB50, 0 22px 30px #7940AC38; transform: rotate(-15deg) rotateY(-18deg) rotateX(8deg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; }
-.offer-decoration-icon { display: grid; place-items: center; width: 57px; height: 57px; border-radius: 17px; color: white; background: linear-gradient(140deg, #E0B6FF, #A957F2 38%, #6B21D7); box-shadow: inset 2px 3px 3px #F4D8FF99, inset -2px -3px 3px #581AA8, 3px 5px 0 #8C3FCB, 0 10px 14px #8D39CB40; }
-.offer-decoration-icon svg { width: 32px; height: 32px; filter: drop-shadow(1px 2px 1px #4B148B66); }
-.offer-decoration-bars { display: flex; flex-direction: column; gap: 5px; width: 65%; }
-.offer-decoration-bars i { height: 5px; border-radius: 6px; background: linear-gradient(90deg, #B26CF0, #E2ABE9); box-shadow: inset 0 1px 1px #FFFFFF77; }
-.offer-decoration-bars i:nth-child(2) { width: 75%; }
-.offer-decoration-bars i:nth-child(3) { width: 45%; }
-.offer-decoration-tile--back { z-index: 0; left: -10%; bottom: 10px; transform: rotate(10deg) rotateY(12deg); background: linear-gradient(145deg, #FFFFFFD9, #DAB8F1A6); }
-.offer-decoration-ring { position: absolute; z-index: 1; width: 100px; height: 100px; left: -28px; top: 1px; border: 10px solid #BD84F1; border-right-color: #E9C5FF; border-bottom-color: #9F5ACF; border-radius: 50%; transform: rotateX(36deg) rotateY(-22deg); box-shadow: inset 2px 2px 3px #FFFFFFCC, 3px 6px 0 #9E61C955, 0 10px 18px #8648B32B; }
-.offer-decoration-pearl { position: absolute; z-index: 3; width: 26px; height: 26px; border-radius: 50%; left: 14px; bottom: 30px; background: radial-gradient(circle at 30% 25%, white, #F3E5FF 30%, #B887DF 80%); box-shadow: 0 7px 12px #6E36A02E; }
-.offer-decoration--1 .offer-decoration-tile { transform: rotate(12deg) rotateY(-20deg) rotateX(8deg); }
-.offer-decoration--1 .offer-decoration-ring { left: auto; right: -25px; }
-.offer-decoration--2 .offer-decoration-tile { transform: rotate(-8deg) rotateY(20deg) rotateX(10deg); }
 .offer-panel:not(.offer-panel--open) .offer-trigger { position: static; }
 .offer-panel:not(.offer-panel--open) .offer-trigger::after { content: ''; position: absolute; inset: 0; z-index: 3; }
 .offer-panel:not(.offer-panel--open) .offer-toggle { position: absolute; bottom: 24px; right: 20px; z-index: 4; pointer-events: none; width: 48px; height: 48px; color: #7943C9; border: 1px solid #FFFFFFCC; background: linear-gradient(140deg, #F6EEFFCC, #E8D8F599); box-shadow: 0 4px 14px #945CC91A; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .offer-panel:not(.offer-panel--open) .offer-toggle svg { width: 24px; height: 24px; stroke-width: 2.5; }
 .offer-panel:not(.offer-panel--open):hover .offer-toggle { background: #F6EEFFEE; border-color: #C9A9EE; box-shadow: 0 4px 14px #945CC91A; }
-.offer-decoration-tile { animation: offer-art-float 6s ease-in-out infinite; }
-.offer-decoration-tile--back { animation-duration: 7s; animation-delay: -2s; }
-.offer-decoration-orb { animation: offer-art-float 5s ease-in-out -1.4s infinite; }
-.offer-decoration-ring { animation: offer-art-float 6.5s ease-in-out -3s infinite; }
-.offer-decoration-pearl { animation: offer-art-float 4.5s ease-in-out -2s infinite; }
-.offer-decoration--1 .offer-decoration-tile { animation-delay: -2s; }
-.offer-decoration--2 .offer-decoration-tile { animation-delay: -4s; }
-@keyframes offer-art-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
 @media (max-width: 1023px) {
   .offer-accordion { flex-direction: column; }
   .offer-panel, .offer-panel--open { flex: none; }
@@ -131,7 +107,6 @@
   .offer-title { font-size: 22px; }
   .offer-toggle { position: absolute; top: 24px; right: 20px; }
   .offer-panel:not(.offer-panel--open) .offer-toggle { top: 24px; bottom: auto; }
-  .offer-decoration { display: none; }
 }
 @media (max-width: 599px) {
   .offer-content { grid-template-columns: 1fr; gap: 24px; }
@@ -141,5 +116,16 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .offer-panel { transition: none; }
-  .offer-decoration-tile, .offer-decoration-orb, .offer-decoration-ring, .offer-decoration-pearl { animation: none; }
 }
+
+/* Bespoke miniatures: feature UI, launch film, and connected storyboard. */
+.offer-artwork { position: absolute; left: -8%; right: -8%; bottom: 20px; height: min(57%, 280px); pointer-events: none; overflow: hidden; }
+.offer-artwork-scene { width: 100%; height: 100%; overflow: visible; }
+.offer-artwork-drift { animation: offer-scene-float 7s ease-in-out infinite; }
+.offer-artwork-detail { animation: offer-detail-float 5s ease-in-out -2s infinite; }
+.offer-panel:nth-child(2) .offer-artwork-drift { animation-delay: -2.5s; }
+.offer-panel:nth-child(3) .offer-artwork-drift { animation-delay: -4s; }
+@keyframes offer-scene-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+@keyframes offer-detail-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+@media (max-width: 1023px) { .offer-artwork { display: none; } }
+@media (prefers-reduced-motion: reduce) { .offer-artwork-drift, .offer-artwork-detail { animation: none; } }
