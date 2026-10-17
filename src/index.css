@@ -119,8 +119,8 @@
 }
 
 /* Bottom-anchored covers with a color ramp that ends below the text. */
-.offer-card-cover { position: absolute; inset: auto 0 -2px; height: min(58%, 260px); z-index: 1; overflow: hidden; pointer-events: none; }
-.offer-card-cover svg { display: block; width: 100%; height: 100%; transform: translateY(42px); }
+.offer-card-cover { position: absolute; inset: auto 0 0; height: min(58%, 260px); z-index: 1; overflow: visible; pointer-events: none; }
+.offer-card-cover svg { display: block; width: 100%; height: 100%; overflow: visible; }
 @media (min-width: 1024px) {
   .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFF; background: #FCF9FF; }
   .offer-panel:not(.offer-panel--open)::before { content: ''; position: absolute; inset: 180px 0 0; pointer-events: none; background: linear-gradient(to top, #B98FD4 0%, #D7B4E7 24%, #EDD3E8 48%, #F0E4F8 72%, #F0E4F800 100%); }
