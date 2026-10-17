@@ -120,10 +120,10 @@
 
 /* Bottom-anchored covers with a color ramp that ends below the text. */
 .offer-card-cover { position: absolute; inset: auto 0 0; height: min(58%, 260px); z-index: 1; overflow: visible; pointer-events: none; }
-.offer-card-cover svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.offer-card-cover svg { display: block; width: 100%; height: 100%; overflow: visible; transform: scale(1.25); transform-origin: 50% 100%; transition: transform 380ms cubic-bezier(.34,1.56,.64,1); }
 @media (min-width: 1024px) {
   .offer-panel:not(.offer-panel--open) { border: 2px solid #FFFFFF; background: #FCF9FF; }
-  .offer-panel:not(.offer-panel--open)::before { content: ''; position: absolute; inset: 180px 0 0; pointer-events: none; background: linear-gradient(to top, #B98FD4 0%, #D7B4E7 24%, #EDD3E8 48%, #F0E4F8 72%, #F0E4F800 100%); }
+  .offer-panel:not(.offer-panel--open)::before { content: ''; position: absolute; inset: 180px 0 0; pointer-events: none; background: linear-gradient(to top, #B98FD4 0%, #D7B4E7 24%, #EDD3E8 48%, #F0E4F8 72%, #F0E4F800 100%); transform: scaleY(1.25); transform-origin: 50% 100%; mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000); }
   .offer-panel:not(.offer-panel--open) .offer-trigger { padding: 30px 22px 312px; gap: 12px; }
   .offer-panel:not(.offer-panel--open) .offer-title { font-size: clamp(18px, 1.8vw, 25px); }
   .offer-panel:not(.offer-panel--open) .offer-tag { color: #7950A0; }
@@ -131,3 +131,11 @@
   .offer-panel:not(.offer-panel--open):hover .offer-toggle { background: #FFFFFF; box-shadow: none; }
 }
 @media (max-width: 1023px) { .offer-card-cover { display: none; } }
+
+/* Match the hero's spring-like zoom while leaving text and controls stationary. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .offer-panel:not(.offer-panel--open):hover .offer-card-cover svg { transform: scale(1.375); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .offer-card-cover svg { transition: none; }
+}
