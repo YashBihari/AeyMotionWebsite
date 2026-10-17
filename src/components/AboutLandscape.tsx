@@ -1,109 +1,111 @@
 import { useId } from 'react';
 import { motion, type MotionValue } from 'motion/react';
 
-type ScenePalette = {
-  sky: string[]; water: string[]; clouds: string; cloudEdge: string;
-  far: string; mountain: string; face: string; snow: string;
-  ridge: string; forest: string; shore: string; light: string;
+const NIGHT = {
+  sky: ['#4C1D95', '#8C4BFF', '#C084FC'], sea: ['#A855F7', '#7C3AED', '#4C1D95'],
+  cloud: '#D8B4FE', cloudShade: '#A855F7', island: '#7E22CE',
+  leaf: '#581C87', leafLight: '#9333EA', ink: '#3B0764', rock: '#6B21A8',
+  foam: '#E9D5FF', skin: '#D8B4FE'
 };
-
-const NIGHT: ScenePalette = {
-  sky: ['#382064', '#8550BC', '#DE9CDE'], water: ['#9166BD', '#65438F', '#261541'],
-  clouds: '#B58AD3', cloudEdge: '#E6B4E9', far: '#9163B1', mountain: '#67418D',
-  face: '#9F6BC3', snow: '#E6CBF6', ridge: '#54316E', forest: '#321A4D',
-  shore: '#1D102F', light: '#F0ABFC'
-};
-const DAY: ScenePalette = {
-  sky: ['#9D91E8', '#D1B9F4', '#FCE3E6'], water: ['#D7BEEB', '#B89CD9', '#6E5C99'],
-  clouds: '#F8DEED', cloudEdge: '#FFF4E8', far: '#B5A0D3', mountain: '#8973AE',
-  face: '#C5A4DB', snow: '#FFF1FA', ridge: '#78649B', forest: '#51416D',
-  shore: '#352946', light: '#FDE5C4'
+const DAY = {
+  sky: ['#C4B5FD', '#E9D5FF', '#FDF2F8'], sea: ['#C084FC', '#B37AF8', '#8C4BFF'],
+  cloud: '#FAF5FF', cloudShade: '#F5D0FE', island: '#A855F7',
+  leaf: '#7E22CE', leafLight: '#C084FC', ink: '#581C87', rock: '#B37AF8',
+  foam: '#FDF4FF', skin: '#F5D0FE'
 };
 
 function Illustration({ day }: { day: boolean }) {
   const id = useId().replace(/:/g, '');
   const p = day ? DAY : NIGHT;
   const paint = (name: string) => `url(#${id}-${name})`;
-  const trees = (count: number, base: number, min: number, spread: number) =>
-    Array.from({ length: count }, (_, i) => {
-      const x = i * 1240 / (count - 1) - 20;
-      const h = min + (Math.sin(i * 7.17) + 1) * spread / 2;
-      const y = base - Math.sin(i * .24) * 15;
-      return <path key={i} d={`M${x} ${y - h}l${-h * .27} ${h * .57}h${h * .13}l${-h * .22} ${h * .36}h${h * .3}v${h * .16}h${h * .12}v${-h * .16}h${h * .3}l${-h * .22} ${-h * .36}h${h * .13}Z`} />;
-    });
   return (
     <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" focusable="false">
       <defs>
         <linearGradient id={`${id}-sky`} x2="0" y2="1">
           {p.sky.map((color, i) => <stop key={color} offset={i / 2} stopColor={color} />)}
         </linearGradient>
-        <linearGradient id={`${id}-water`} x2="0" y2="1">
-          {p.water.map((color, i) => <stop key={color} offset={i / 2} stopColor={color} />)}
+        <linearGradient id={`${id}-sea`} x2="0" y2="1">
+          {p.sea.map((color, i) => <stop key={color} offset={i / 2} stopColor={color} />)}
         </linearGradient>
-        <linearGradient id={`${id}-reflection`} x2="0" y2="1">
-          <stop stopColor="white" stopOpacity=".44" /><stop offset="1" stopColor="white" stopOpacity="0" />
-        </linearGradient>
-        <mask id={`${id}-mirror`}>
-          <rect y="354" width="1200" height="246" fill={paint('reflection')} />
-        </mask>
-        <linearGradient id={`${id}-horizon`}>
-          <stop stopColor={p.light} stopOpacity="0" /><stop offset=".65" stopColor={p.light} /><stop offset="1" stopColor={p.light} stopOpacity=".2" />
-        </linearGradient>
+        <g id={`${id}-leaf`}>
+          <path d="M0 0C26 -42 97 -57 148 -27L125 -22L135 -8L110 -11L115 3L89 -2L88 12L64 7L54 21L36 10L22 20Z" fill={p.leafLight} stroke={p.ink} strokeWidth="2" />
+          <path d="M0 0Q72 -24 137 -26" fill="none" stroke={p.leaf} strokeWidth="2" />
+        </g>
+        <g id={`${id}-plant`} fill={p.leafLight} stroke={p.ink} strokeWidth="2" strokeLinejoin="round">
+          <path d="M0 0C-51 -64 -64 -57 -29 -22C-94 -38 -92 -13 -33 -9C-77 12 -58 26 -15 4C-19 65 4 67 5 10C49 40 72 27 23 -1C88 -13 70 -35 15 -11C51 -67 21 -69 3 -18Z" />
+          <path d="M-5 8L14 43" fill="none" />
+        </g>
       </defs>
       <rect width="1200" height="600" fill={paint('sky')} />
       {!day && (
-        <g fill="#FFF2FF">
-          {Array.from({ length: 55 }, (_, i) => {
-            const x = (i * 131.7 + 33) % 1200;
-            const y = (i * 43.3 + 13) % 210;
-            return <circle key={i} cx={x} cy={y} r={i % 6 === 0 ? 1.5 : .7} opacity={.35 + (i % 4) * .16} />;
-          })}
-          <path d="M958 47A31 31 0 1 0 982 92A26 26 0 0 1 958 47Z" fill="#FAE9FF" />
-          <path d="M720 30V42M714 36H726M1065 112V120M1061 116H1069" stroke="#FFF0FF" strokeWidth="1.5" />
-          <path d="M410 88L590 18M730 81L883 15" stroke="#E9D5FF" strokeWidth=".6" opacity=".45" />
+        <g fill="#FAF5FF">
+          {Array.from({ length: 48 }, (_, i) => <circle key={i} cx={(i * 139.7 + 35) % 1200} cy={(i * 37.1 + 11) % 220} r={i % 5 ? .8 : 1.5} opacity={.4 + i % 4 * .15} />)}
+          <path d="M1056 36A29 29 0 1 0 1079 78A24 24 0 0 1 1056 36Z" fill="#F3E8FF" />
         </g>
       )}
       {day && (
-        <g>
-          <circle cx="965" cy="72" r="54" fill="#FFF0D4" opacity=".13" />
-          <circle cx="965" cy="72" r="35" fill="#FFF2DC" opacity=".3" />
-          <circle cx="965" cy="72" r="23" fill="#FFF3DC" />
+        <g fill="#FDF4FF">
+          <circle cx="1055" cy="64" r="49" opacity=".2" />
+          <circle cx="1055" cy="64" r="28" opacity=".8" />
         </g>
       )}
-      <g fill={p.clouds} opacity=".8">
-        <path d="M571 189C569 169 588 156 609 162C616 126 666 120 682 155C710 140 733 155 735 177H768L777 195H556Z" />
-        <path d="M941 149C943 122 969 110 991 117C985 83 1021 59 1049 77C1060 83 1068 95 1068 109C1093 95 1120 111 1120 132H1164L1178 151Z" />
-        <path d="M154 180C158 159 178 150 198 156C204 129 240 127 256 150C278 140 300 156 302 177Z" />
+      <g fill={p.cloudShade} opacity=".65">
+        <path d="M405 323C381 300 394 264 429 263C415 238 439 206 467 211C455 181 478 153 510 156C495 128 522 105 544 111C537 77 580 64 598 91C621 67 651 91 649 113C677 102 702 127 694 153C729 142 750 172 732 197C768 183 796 207 788 233C822 237 821 273 794 280L803 324Z" />
       </g>
-      <g fill="none" stroke={p.cloudEdge} strokeWidth="4" opacity=".5">
-        <path d="M603 164C616 131 658 129 674 153M995 117C994 85 1022 72 1042 81" />
+      <g fill={p.cloud} stroke={p.cloudShade} strokeWidth="2">
+        <path d="M391 308C368 288 380 260 410 257C397 231 419 207 447 210C432 178 456 151 487 157C474 130 496 106 523 111C514 78 555 65 575 87C595 64 625 83 625 105C653 95 679 118 672 144C700 135 726 158 713 185C745 174 770 199 756 223C791 221 812 250 788 273C824 266 853 286 847 310Z" />
+        <path d="M38 329C47 307 70 299 89 313C79 282 109 264 131 283C144 247 179 252 188 280C216 266 242 291 230 314C269 292 299 311 300 329Z" />
+        <path d="M904 328C908 296 944 283 967 304C961 276 993 252 1015 268C1027 238 1066 238 1074 270C1106 258 1127 285 1117 306C1151 281 1186 299 1208 328Z" />
       </g>
-      <g id={`${id}-land`}>
-        <path d="M0 295L89 226L150 263L267 174L345 248L423 213L495 260L619 157L706 216L815 137L897 205L1026 142L1128 226L1200 188V356H0Z" fill={p.far} />
-        <path d="M515 340L643 228L718 162L754 207L881 72L1008 243L1105 284L1170 356Z" fill={p.mountain} />
-        <path d="M881 72L839 188L855 238L754 207L780 263L643 228L515 340L770 303L925 326L945 217Z" fill={p.face} />
-        <path d="M881 72L839 188L860 173L874 199L883 149L908 175L898 132L932 153Z" fill={p.snow} />
-        <path d="M718 162L683 216L712 204L727 222L729 189L754 207Z" fill={p.snow} opacity=".7" />
-        <path d="M0 313L160 278L230 298L345 250L472 293L573 263L690 299L811 254L903 281L1058 217L1200 249V356H0Z" fill={p.ridge} />
-        <g fill={p.ridge}>{trees(78, 311, 18, 24)}</g>
-        <path d="M0 302C140 322 192 340 300 318S480 319 554 331S720 337 813 318S957 267 1035 282S1135 296 1200 265V357H0Z" fill={p.forest} />
-        <g fill={p.forest}>{trees(99, 347, 20, 39)}</g>
+      <rect y="329" width="1200" height="271" fill={paint('sea')} />
+      <path d="M0 329H1200M353 371H665M470 391H704M623 449H835M274 480H503M741 545H1011" stroke={p.foam} strokeWidth="1.5" opacity=".65" />
+      <path d="M1110 322C1136 293 1160 299 1175 281L1200 287V349L1044 363L978 360L1002 342Z" fill={p.island} stroke={p.ink} strokeWidth="2" />
+      <path d="M1200 349L1095 358L1044 371L976 368" fill="none" stroke={p.foam} strokeWidth="4" opacity=".9" />
+      <g fill="none" stroke={day ? p.ink : p.foam} strokeWidth="2.5" strokeLinecap="round" opacity=".8">
+        <path d="M814 177Q827 170 840 181Q847 169 860 172M946 137Q955 132 964 140Q970 131 981 134M757 219Q768 213 779 221Q785 214 795 216" />
       </g>
-      <rect y="355" width="1200" height="245" fill={paint('water')} />
-      <g mask={paint('mirror')}>
-        <use href={`#${id}-land`} transform="translate(0 710) scale(1 -1)" />
+
+      {/* A palm canopy and hand-drawn foliage frame the coast. */}
+      <g stroke={p.ink} strokeWidth="3">
+        <path d="M-28 511C18 353 68 199 159 57L176 67C100 230 66 373 39 527Z" fill={p.rock} />
+        <path d="M30 397L64 405M52 331L87 343M77 266L109 280M110 192L136 207" fill="none" opacity=".6" />
       </g>
-      <path d="M0 356H1200" stroke={paint('horizon')} strokeWidth="4" />
-      <path d="M470 365H1090M624 384H1020M501 405H696M754 432H1121M611 459H867M780 482H1003M297 512H559M878 540H1151"
-        stroke={p.light} strokeWidth="1" opacity=".35" />
-      <g transform="translate(796 345)">
-        <path d="M0 -42L-22 0H0ZM4 -31L23 -1H4Z" fill={day ? '#FFFAF0' : '#FFF0FC'} />
-        <path d="M-25 5H27L15 12H-15Z" fill={p.light} />
-        <path d="M1 -47V7" stroke="#FFECFF" strokeWidth="1.3" />
-        <path d="M-22 20L0 56V20ZM4 20V46L23 20Z" fill={p.light} opacity=".22" />
+      <g transform="translate(160 61)">
+        {[0, 43, 85, 126, 171, 218, 264].map(angle => <use key={angle} href={`#${id}-leaf`} transform={`rotate(${angle}) scale(1.12)`} />)}
+        <circle r="13" fill={p.leaf} />
       </g>
-      <path d="M0 548L83 532L139 545L187 538L224 563L310 572L353 600H0ZM900 600L973 564L1012 570L1080 534L1127 541L1200 505V600Z" fill={p.shore} />
-      <path d="M1034 576L1043 539M1051 568L1061 513M1067 561L1087 530M58 548L48 510M76 549L86 518" stroke={p.shore} strokeWidth="3" />
+      <g fill={p.leaf}>
+        <path d="M0 368C85 388 116 444 169 467S291 513 384 547L494 600H0Z" />
+        <path d="M1200 454C1151 472 1102 510 1064 518L1007 574L965 600H1200Z" />
+      </g>
+      <g>
+        <use href={`#${id}-plant`} transform="translate(67 389) scale(1.4)" />
+        <use href={`#${id}-plant`} transform="translate(186 473) rotate(27) scale(1.5)" />
+        <use href={`#${id}-plant`} transform="translate(306 553) rotate(-23) scale(1.4)" />
+        <use href={`#${id}-plant`} transform="translate(1147 519) rotate(-27) scale(1.6)" />
+        <use href={`#${id}-plant`} transform="translate(1077 583) rotate(22) scale(1.1)" />
+      </g>
+      <path d="M810 600L858 535L928 509L1014 539L1061 600Z" fill={p.rock} stroke={p.ink} strokeWidth="3" />
+      <path d="M858 535L909 552L928 509M909 552L898 600M946 555L1014 539" fill="none" stroke={p.ink} strokeWidth="2" opacity=".6" />
+
+      {/* A small traveler looking out to sea, echoing the reference composition. */}
+      <g transform="translate(928 527)" stroke={p.ink} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M-20 -94L-27 -13L-37 4L-11 7L-7 -9L5 -80M13 -83L20 -17L16 5L43 7L36 -8L37 -97" fill={p.skin} />
+        <path d="M-29 -159L-35 -89L-8 -80L5 -104L12 -78L42 -86L32 -161Z" fill={p.leaf} />
+        <path d="M-30 -87L-8 -80M12 -78L40 -86" stroke="#E9D5FF" strokeWidth="5" />
+        <path d="M-30 -232Q0 -245 27 -223L36 -161Q9 -143 -32 -158L-44 -181Z" fill="#A855F7" />
+        <path d="M21 -221Q39 -211 40 -191L29 -156L18 -149L9 -157L19 -172L22 -200" fill={p.skin} />
+        <path d="M-11 -232L-12 -248L8 -253L11 -230" fill={p.skin} />
+        <path d="M-29 -266Q-30 -297 0 -299Q26 -296 26 -272L34 -261L26 -258Q24 -236 1 -238L-17 -247Z" fill={p.skin} />
+        <path d="M-29 -266L-24 -244L-12 -255L-6 -269L2 -265L9 -279L25 -272L20 -294L-17 -299Z" fill={p.ink} />
+        <path d="M-40 -289Q-29 -332 -1 -328Q24 -323 30 -293Z" fill="#F5D0FE" />
+        <path d="M-40 -289Q-4 -304 32 -292L41 -281Q2 -292 -39 -277Z" fill="#C084FC" />
+        <ellipse cx="-2" cy="-282" rx="57" ry="13" transform="rotate(-9 -2 -282)" fill="#F5D0FE" />
+        <path d="M-35 -290Q-9 -306 30 -299" fill="none" stroke="#D8B4FE" />
+        <ellipse cx="-33" cy="-200" rx="25" ry="33" fill="#E9D5FF" />
+        <path d="M-28 -234Q-7 -226 -12 -193M-37 -226Q-15 -224 -16 -201" fill="none" stroke="#C084FC" strokeWidth="4" />
+        <path d="M-37 4L-11 7M16 5L43 7" stroke={p.ink} strokeWidth="5" />
+      </g>
     </svg>
   );
 }
@@ -113,7 +115,7 @@ export default function AboutLandscape({ daylight }: { daylight: MotionValue<num
     <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0 }}><Illustration day={false} /></div>
       <motion.div style={{ position: 'absolute', inset: 0, opacity: daylight }}><Illustration day /></motion.div>
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(23,10,43,.88) 0%, rgba(28,12,51,.74) 52%, rgba(32,14,56,.58) 100%), linear-gradient(0deg, rgba(20,9,38,.55), transparent 70%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(46,16,101,.88) 0%, rgba(59,7,100,.76) 52%, rgba(59,7,100,.60) 100%), linear-gradient(0deg, rgba(46,16,101,.45), transparent 70%)' }} />
     </div>
   );
 }
