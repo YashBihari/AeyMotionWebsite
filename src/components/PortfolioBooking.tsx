@@ -23,8 +23,8 @@ export default function PortfolioBooking() {
       aria-labelledby="portfolio-booking-title"
       className="scroll-mt-24 mt-16 md:mt-24 rounded-[28px] md:rounded-[32px] border border-white/90 bg-white/65 p-5 md:p-8 lg:p-10 shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
     >
-      <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(720px,2.8fr)] gap-8 items-start">
-        <div className="lg:py-4">
+      <div className="grid grid-cols-1 gap-8 md:gap-10 items-start">
+        <div className="lg:pt-4">
           <h2
             id="portfolio-booking-title"
             className="text-4xl md:text-5xl font-black tracking-tight text-neutral-900 leading-[1.05]"
