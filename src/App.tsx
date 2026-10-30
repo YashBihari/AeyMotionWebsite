@@ -5,7 +5,7 @@ import PortfolioGrid from './components/PortfolioGrid';
 import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
 import FAQSection from './components/FAQSection';
-import AboutSection from './components/AboutSection';
+import PortfolioBooking from './components/PortfolioBooking';
 import Footer from './components/Footer';
 import CalendlyModal from './components/CalendlyModal';
 
@@ -47,7 +47,9 @@ export default function App() {
             <ProcessSection />
             <ServicesSection onBookCall={handleOpenCalendly} />
             <FAQSection />
-            <AboutSection onBookCall={handleOpenCalendly} />
+            <div id="about" className="max-w-7xl mx-auto px-6 md:px-12 pb-14 md:pb-20 scroll-mt-24">
+              <PortfolioBooking />
+            </div>
           </>
         )}
       </main>

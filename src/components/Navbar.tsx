@@ -22,7 +22,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
     { label: 'Portfolio', href: '#work' },
     { label: 'Approach', href: '#process' },
     { label: 'Offers', href: '#services' },
-    { label: 'About', href: '#about' }
+    { label: 'Book a call', href: '#booking' }
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

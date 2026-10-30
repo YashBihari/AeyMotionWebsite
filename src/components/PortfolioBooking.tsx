@@ -19,8 +19,9 @@ const discussionPoints = [
 export default function PortfolioBooking() {
   return (
     <section
+      id="booking"
       aria-labelledby="portfolio-booking-title"
-      className="mt-16 md:mt-24 rounded-[28px] md:rounded-[32px] border border-white/90 bg-white/65 p-5 md:p-8 lg:p-10 shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
+      className="scroll-mt-24 mt-16 md:mt-24 rounded-[28px] md:rounded-[32px] border border-white/90 bg-white/65 p-5 md:p-8 lg:p-10 shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
     >
       <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12 items-start">
         <div className="lg:py-4">
