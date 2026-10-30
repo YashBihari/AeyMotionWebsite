@@ -19,7 +19,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { label: 'Work', href: '#work' },
+    { label: 'Portfolio', href: '#work' },
     { label: 'Approach', href: '#process' },
     { label: 'Offers', href: '#services' },
     { label: 'About', href: '#about' }
