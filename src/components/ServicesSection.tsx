@@ -138,7 +138,7 @@ export default function ServicesSection(_props: ServicesSectionProps) {
   return (
     <section 
       id="services" 
-      className="pt-10 md:pt-14 pb-12 md:pb-16 bg-transparent font-sans relative"
+      className="scroll-mt-24 pt-10 md:pt-14 pb-12 md:pb-16 bg-transparent font-sans relative"
     >
       <AeymotionBackground variant="services" />
       

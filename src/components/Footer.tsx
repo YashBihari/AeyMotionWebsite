@@ -9,6 +9,7 @@ interface FooterProps {
 
 export default function Footer({ onBookCall }: FooterProps) {
   const handleScrollNav = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
@@ -55,8 +56,8 @@ export default function Footer({ onBookCall }: FooterProps) {
         <div className="flex flex-col gap-2.5 text-xs font-mono uppercase tracking-wider text-neutral-400">
           <span className="text-[10px] font-bold text-[#8C4BFF] mb-1">NAVIGATION</span>
           <a href="#work" onClick={(e) => handleScrollNav(e, 'work')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Work</a>
-          <a href="#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Offers</a>
-          <a href="#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Approach</a>
+          <a href="/#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Offers</a>
+          <a href="/#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Approach</a>
           <a href="#booking" onClick={(e) => handleScrollNav(e, 'booking')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Book a call</a>
           <button onClick={onBookCall} className="text-left hover:text-white transition-colors uppercase cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Plan your launch</button>
         </div>

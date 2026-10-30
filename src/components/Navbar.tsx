@@ -20,21 +20,20 @@ export default function Navbar({ onBookCall }: NavbarProps) {
 
   const navLinks = [
     { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Approach', href: '#process' },
-    { label: 'Offers', href: '#services' }
+    { label: 'Approach', href: '/#process' },
+    { label: 'Offers', href: '/#services' }
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     setMobileMenuOpen(false);
-    if (!href.startsWith('#')) return;
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
+    const destination = new URL(href, window.location.href);
+    // Allow normal navigation to another page, including its section hash.
+    if (destination.pathname !== window.location.pathname || !destination.hash) return;
+    const element = document.getElementById(destination.hash.slice(1));
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.assign(`/${href}`);
+      e.preventDefault();
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -52,8 +51,8 @@ export default function Navbar({ onBookCall }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
         <a 
-          href="#hero" 
-          onClick={(e) => handleNavClick(e, '#hero')}
+          href="/#hero" 
+          onClick={(e) => handleNavClick(e, '/#hero')}
           className="flex items-center gap-3 group focus:outline-none"
         >
           <div className="relative w-8 h-8 flex items-center justify-center shrink-0">

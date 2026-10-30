@@ -16,6 +16,34 @@ export default function App() {
     if (isPortfolioPage) document.title = 'Portfolio | Aeymotion';
   }, [isPortfolioPage]);
 
+  useEffect(() => {
+    let active = true;
+    let frame: number | undefined;
+
+    const scrollToHash = () => {
+      if (!active) return;
+      const targetId = window.location.hash.slice(1);
+      if (!targetId) return;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      if (frame !== undefined) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        if (active) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      });
+    };
+
+    // React mounts the sections after the browser initially processes the URL.
+    scrollToHash();
+    // Font loading can change the height of the sections above the target.
+    document.fonts.ready.then(scrollToHash);
+    window.addEventListener('hashchange', scrollToHash);
+    return () => {
+      active = false;
+      if (frame !== undefined) cancelAnimationFrame(frame);
+      window.removeEventListener('hashchange', scrollToHash);
+    };
+  }, []);
+
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   const handleOpenCalendly = () => {

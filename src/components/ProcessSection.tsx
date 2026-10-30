@@ -104,7 +104,7 @@ export default function ProcessSection() {
   };
 
   return (
-    <section id="process" className="py-12 md:py-16 lg:py-20 bg-transparent font-sans relative overflow-hidden">
+    <section id="process" className="scroll-mt-24 py-12 md:py-16 lg:py-20 bg-transparent font-sans relative overflow-hidden">
       <AeymotionBackground variant="process" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
