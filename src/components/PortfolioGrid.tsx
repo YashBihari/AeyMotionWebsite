@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Play, X, ArrowUpRight, ArrowLeft } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import { PROJECTS, Project } from '../data/projects';
-import { CALENDLY_URL } from '../data/config';
+import PortfolioBooking from './PortfolioBooking';
 
 interface PortfolioGridProps {
   limit?: number;
@@ -108,18 +108,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
           ))}
         </div>
 
-        {fullPage && (
-          <div className="flex justify-center mt-10 md:mt-14">
-            <a
-              href={CALENDLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-white/70 hover:bg-[#F1E7FF] text-[#6F2BFF] border border-[#8C4BFF]/25 hover:border-[#8C4BFF]/50 backdrop-blur-sm text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
-            >
-              Book a call <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-            </a>
-          </div>
-        )}
+        {fullPage && <PortfolioBooking />}
 
         {limit !== undefined && PROJECTS.length > limit && (
           <div className="flex justify-center mt-10 md:mt-14">
