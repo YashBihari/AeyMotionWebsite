@@ -5,20 +5,20 @@ export default function PortfolioBooking() {
     <section
       id="booking"
       aria-labelledby="booking-title"
-      className="scroll-mt-24 w-full max-w-[1032px] mx-auto mt-16 md:mt-24"
+      className="scroll-mt-24 w-full mt-16 md:mt-24 font-sans"
     >
-      <div className="relative z-20 w-full max-w-[800px] mx-auto px-[15px] min-[928px]:px-0 mb-6">
+      <div className="relative z-20 mb-8 md:mb-12">
         <h2
           id="booking-title"
-          className="text-2xl md:text-3xl font-black tracking-tight text-neutral-900 leading-[1.05]"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]"
         >
           Book a call
         </h2>
-        <p className="mt-3 text-sm md:text-base text-neutral-600 leading-relaxed">
+        <p className="text-neutral-600 font-normal text-sm md:text-base max-w-xl mt-2 leading-relaxed">
           Tell me what you’re building. Let’s find the right video for your product.
         </p>
       </div>
-      <div className="relative p-[15px]">
+      <div className="relative w-full max-w-[1032px] mx-auto p-[15px]">
       {/* Match the background to Calendly's visible 800px panel, plus 15px on each side.
           Keep the iframe wider so its calendar retains the horizontal layout. */}
       <div
