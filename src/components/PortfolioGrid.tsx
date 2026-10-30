@@ -26,6 +26,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
   }, []);
 
   return (
+    <>
     <section id="work" className={`${fullPage ? 'pt-28 md:pt-36 pb-14 md:pb-20' : 'py-10 md:py-14'} bg-transparent font-sans relative overflow-hidden`}>
       {/* Background system */}
       <AeymotionBackground variant="work" />
@@ -108,8 +109,6 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
           ))}
         </div>
 
-        {fullPage && <PortfolioBooking />}
-
         {limit !== undefined && PROJECTS.length > limit && (
           <div className="flex justify-center mt-10 md:mt-14">
             <a
@@ -182,5 +181,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
         )}
       </AnimatePresence>
     </section>
+    {fullPage && <PortfolioBooking />}
+    </>
   );
 }

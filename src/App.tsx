@@ -46,7 +46,7 @@ export default function App() {
             <PortfolioGrid limit={4} />
             <ProcessSection />
             <ServicesSection onBookCall={handleOpenCalendly} />
-            <div id="about" className="max-w-7xl mx-auto px-6 md:px-12 pb-14 md:pb-20 scroll-mt-24">
+            <div id="about" className="scroll-mt-24">
               <PortfolioBooking />
             </div>
             <FAQSection />

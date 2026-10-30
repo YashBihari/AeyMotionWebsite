@@ -10,11 +10,12 @@ export default function PortfolioBooking() {
     <section
       id="booking"
       aria-labelledby="booking-title"
-      className="relative isolate scroll-mt-24 w-full mt-16 md:mt-24 font-sans"
+      className="relative isolate scroll-mt-24 w-full py-12 md:py-16 lg:py-20 overflow-hidden font-sans"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute -inset-x-6 md:-inset-x-12 -inset-y-12 z-0">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <AeymotionBackground variant="booking" />
       </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
       <div className="relative z-20 mb-8 md:mb-12">
         <h2
           id="booking-title"
@@ -70,6 +71,7 @@ export default function PortfolioBooking() {
             />
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
