@@ -151,7 +151,7 @@ export default function Hero({ onBookCall }: HeroProps) {
               onClick={onBookCall}
               className="px-7 py-4 bg-[#8C4BFF] hover:bg-[#7828E8] text-white text-xs font-sans font-bold uppercase tracking-wider transition-all duration-300 rounded-xl inline-flex items-center gap-2 shadow-[0_6px_20px_rgba(140,75,255,0.35)] hover:shadow-[0_8px_25px_rgba(140,75,255,0.45)] hover:scale-[1.02] cursor-pointer"
             >
-              Plan your launch
+              Book a call
               <ArrowUpRight className="w-4 h-4" />
             </button>
 

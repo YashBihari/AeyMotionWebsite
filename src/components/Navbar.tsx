@@ -19,15 +19,16 @@ export default function Navbar({ onBookCall }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { label: 'Portfolio', href: '#work' },
+    { label: 'Portfolio', href: '/portfolio' },
     { label: 'Approach', href: '#process' },
-    { label: 'Offers', href: '#services' },
-    { label: 'Book a call', href: '#booking' }
+    { label: 'Offers', href: '#services' }
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     setMobileMenuOpen(false);
+    if (!href.startsWith('#')) return;
+    e.preventDefault();
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
@@ -88,7 +89,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
             onClick={onBookCall}
             className="px-5 py-2.5 bg-[#8C4BFF] hover:bg-[#6F2BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm hover:shadow-md transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
           >
-            Plan your launch
+            Book a call
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -99,7 +100,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
             onClick={onBookCall}
             className="px-3.5 py-1.5 bg-[#8C4BFF] text-white text-[10px] font-bold uppercase tracking-wider rounded-lg"
           >
-            Plan your launch
+            Book a call
           </button>
 
           <button 
@@ -141,7 +142,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
                   }}
                   className="w-full py-3 bg-[#8C4BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2"
                 >
-                  Plan your launch
+                  Book a call
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </div>
