@@ -6,7 +6,7 @@ export default function PortfolioBooking() {
     <section
       id="booking"
       aria-labelledby="portfolio-booking-title"
-      className="scroll-mt-24 mt-16 md:mt-24 rounded-[28px] md:rounded-[32px] border border-white/90 bg-white/65 p-5 md:p-8 lg:p-10 shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
+      className="scroll-mt-24 max-w-[920px] mx-auto mt-16 md:mt-24 rounded-[28px] md:rounded-[32px] border border-white/90 bg-white/65 p-5 md:p-8 lg:p-10 shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
     >
       <div className="grid grid-cols-1 gap-8 md:gap-10 items-start">
         <div className="lg:pt-4">
@@ -26,12 +26,12 @@ export default function PortfolioBooking() {
         <div className="min-w-0">
           <div className="overflow-hidden rounded-2xl border border-[#8C4BFF]/10 bg-white">
             <iframe
-              src={`${CALENDLY_URL}?embed_type=Inline&background_color=ffffff&text_color=171717&primary_color=8c4bff`}
+              src={`${CALENDLY_URL}?embed_domain=${encodeURIComponent(window.location.host)}&embed_type=Inline&background_color=ffffff&text_color=171717&primary_color=8c4bff`}
               title="Book a call with Aeymotion on Calendly"
               width="100%"
-              height="780"
+              height="720"
               loading="lazy"
-              className="block w-full h-[780px] border-0"
+              className="block w-full h-[780px] md:h-[720px] border-0"
             />
           </div>
           <a
