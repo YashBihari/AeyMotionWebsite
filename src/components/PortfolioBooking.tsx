@@ -1,4 +1,5 @@
 import { CALENDLY_URL } from '../data/config';
+import BookingArtwork from './BookingArtwork';
 
 export default function PortfolioBooking() {
   return (
@@ -18,22 +19,22 @@ export default function PortfolioBooking() {
           Tell me what you’re building. Let’s find the right video for your product.
         </p>
       </div>
-      <div className="relative w-full max-w-[1032px] mx-auto p-[15px]">
-      {/* Match the background to Calendly's visible 800px panel, plus 15px on each side.
-          Keep the iframe wider so its calendar retains the horizontal layout. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-1/2 w-full max-w-[832px] -translate-x-1/2 rounded-[24px] border border-white/90 bg-white/65 shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
-      />
-      {/* Offset Calendly's transparent desktop margins without clipping the booking flow. */}
-      <iframe
-        src={`${CALENDLY_URL}?embed_domain=${encodeURIComponent(window.location.host)}&embed_type=Inline&background_color=ffffff&text_color=171717&primary_color=8c4bff`}
-        title="Book a call with Aeymotion on Calendly"
-        width="100%"
-        height="700"
-        loading="lazy"
-        className="relative z-10 block w-full h-[780px] md:h-[700px] min-[928px]:-mt-[66px] min-[928px]:-mb-[30px] border-0"
-      />
+      <div className="relative w-full overflow-hidden rounded-[28px] md:rounded-[32px] border border-white/90 bg-white/65 p-[15px] shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md">
+        <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_800px] gap-5 items-center">
+          <BookingArtwork />
+          <div className="relative min-w-0 w-full">
+            {/* Keep Calendly's viewport wide enough for its horizontal layout.
+                Its visible 800px panel aligns with the right-hand column. */}
+            <iframe
+              src={`${CALENDLY_URL}?embed_domain=${encodeURIComponent(window.location.host)}&embed_type=Inline&background_color=ffffff&text_color=171717&primary_color=8c4bff`}
+              title="Book a call with Aeymotion on Calendly"
+              width="100%"
+              height="700"
+              loading="lazy"
+              className="relative block w-full h-[780px] md:h-[700px] min-[928px]:-mt-[66px] min-[928px]:-mb-[30px] xl:w-[1000px] xl:max-w-none xl:-ml-[100px] border-0"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
