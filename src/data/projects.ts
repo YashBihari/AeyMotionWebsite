@@ -157,5 +157,17 @@ export const PROJECTS: Project[] = [
       execution: "Kinetic typography, rapid UI zoom cuts, vibrant color accents, and upbeat percussive pacing.",
       result: "Delivered modular campaign cuts optimized for organic founder posts and targeted ad creative."
     }
+  },
+  {
+    id: "essenite",
+    name: "Essenite",
+    category: "Brand Launch Film",
+    description: "A motion-led brand launch film introducing Essenite.",
+    previewVideo: "/Assets/Essenite-Thumbnail.mp4",
+    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/od_ZAb368RE?rel=0&autoplay=1",
+    dribbbleUrl: "https://dribbble.com/aeymotion",
+    serviceType: "Brand Launch Film",
+    timecode: "",
+    frameRate: ""
   }
 ];
