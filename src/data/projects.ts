@@ -169,5 +169,17 @@ export const PROJECTS: Project[] = [
     serviceType: "Brand Launch Film",
     timecode: "",
     frameRate: ""
+  },
+  {
+    id: "melaya",
+    name: "Melaya",
+    category: "Product Launch Film",
+    description: "A product launch video showing Melaya’s AI agents in action.",
+    previewVideo: "/Assets/Melaya-Thumbnail.mp4",
+    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/WMXNCI89Ehw?rel=0&autoplay=1",
+    dribbbleUrl: "https://dribbble.com/aeymotion",
+    serviceType: "Product Launch Film",
+    timecode: "",
+    frameRate: ""
   }
 ];
