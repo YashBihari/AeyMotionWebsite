@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
@@ -10,6 +10,12 @@ import Footer from './components/Footer';
 import CalendlyModal from './components/CalendlyModal';
 
 export default function App() {
+  const isPortfolioPage = window.location.pathname.replace(/\/$/, '') === '/portfolio';
+
+  useEffect(() => {
+    if (isPortfolioPage) document.title = 'Portfolio | Aeymotion';
+  }, [isPortfolioPage]);
+
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   const handleOpenCalendly = () => {
@@ -32,12 +38,18 @@ export default function App() {
 
       {/* Main Single Page Sections */}
       <main className="w-full flex-grow">
-        <Hero onBookCall={handleOpenCalendly} />
-        <PortfolioGrid />
-        <ProcessSection />
-        <ServicesSection onBookCall={handleOpenCalendly} />
-        <FAQSection />
-        <AboutSection onBookCall={handleOpenCalendly} />
+        {isPortfolioPage ? (
+          <PortfolioGrid fullPage />
+        ) : (
+          <>
+            <Hero onBookCall={handleOpenCalendly} />
+            <PortfolioGrid limit={4} />
+            <ProcessSection />
+            <ServicesSection onBookCall={handleOpenCalendly} />
+            <FAQSection />
+            <AboutSection onBookCall={handleOpenCalendly} />
+          </>
+        )}
       </main>
 
       {/* Footer */}

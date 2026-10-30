@@ -1,10 +1,16 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
-import { Play, X } from 'lucide-react';
+import { Play, X, ArrowUpRight, ArrowLeft } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import { PROJECTS, Project } from '../data/projects';
 
-export default function PortfolioGrid() {
+interface PortfolioGridProps {
+  limit?: number;
+  fullPage?: boolean;
+}
+
+export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGridProps) {
+  const visibleProjects = limit === undefined ? PROJECTS : PROJECTS.slice(0, limit);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Close modal on Escape key press
@@ -19,7 +25,7 @@ export default function PortfolioGrid() {
   }, []);
 
   return (
-    <section id="work" className="py-10 md:py-14 bg-transparent font-sans relative overflow-hidden">
+    <section id="work" className={`${fullPage ? 'pt-28 md:pt-36 pb-14 md:pb-20' : 'py-10 md:py-14'} bg-transparent font-sans relative overflow-hidden`}>
       {/* Background system */}
       <AeymotionBackground variant="work" />
 
@@ -27,17 +33,28 @@ export default function PortfolioGrid() {
         
         {/* Section Header */}
         <div className="mb-6 md:mb-8">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
-            Selected Work
-          </h2>
+          {fullPage && (
+            <a href="/#work" className="inline-flex items-center gap-2 text-sm font-semibold text-[#8C4BFF] hover:text-[#6F2BFF] mb-6">
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back to home
+            </a>
+          )}
+          {fullPage ? (
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
+              Our portfolio
+            </h1>
+          ) : (
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
+              Selected Work
+            </h2>
+          )}
           <p className="text-neutral-600 font-normal text-sm md:text-base max-w-xl mt-2 leading-relaxed">
             Selected launch films, product storytelling and motion work for AI and SaaS products.
           </p>
         </div>
 
-        {/* 2-column x 3-row Desktop Grid (6 Projects total) */}
+        {/* Homepage selection or complete portfolio, sharing the same video player. */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-          {PROJECTS.map((project, idx) => (
+          {visibleProjects.map((project, idx) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -89,6 +106,17 @@ export default function PortfolioGrid() {
             </motion.div>
           ))}
         </div>
+
+        {limit !== undefined && PROJECTS.length > limit && (
+          <div className="flex justify-center mt-10 md:mt-14">
+            <a
+              href="/portfolio"
+              className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-[#171717] hover:bg-[#6F2BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+            >
+              View portfolio <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
+        )}
 
       </div>
 

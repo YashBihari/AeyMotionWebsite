@@ -32,6 +32,8 @@ export default function Navbar({ onBookCall }: NavbarProps) {
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.assign(`/${href}`);
     }
   };
 
