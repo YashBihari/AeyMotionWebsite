@@ -26,6 +26,13 @@ export default function App() {
     setIsCalendlyOpen(false);
   };
 
+  const handleScrollToBooking = () => {
+    document.getElementById('booking')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
+
   return (
     <div 
       className="relative min-h-screen text-[#171717] font-sans selection:bg-[#8C4BFF] selection:text-white flex flex-col justify-between"
@@ -34,7 +41,7 @@ export default function App() {
       }}
     >
       {/* Fixed Navigation */}
-      <Navbar onBookCall={handleOpenCalendly} />
+      <Navbar onBookCall={handleScrollToBooking} />
 
       {/* Main Single Page Sections */}
       <main className="w-full flex-grow">
@@ -42,7 +49,7 @@ export default function App() {
           <PortfolioGrid fullPage />
         ) : (
           <>
-            <Hero onBookCall={handleOpenCalendly} />
+            <Hero onBookCall={handleScrollToBooking} />
             <PortfolioGrid limit={4} />
             <ProcessSection />
             <ServicesSection onBookCall={handleOpenCalendly} />
