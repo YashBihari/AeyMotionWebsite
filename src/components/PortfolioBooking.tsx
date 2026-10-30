@@ -24,14 +24,6 @@ export default function PortfolioBooking() {
     >
       <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12 items-start">
         <div className="lg:py-4">
-          <img
-            src="/Assets/aeymotion-portrait.jpg"
-            alt="Your creative partner at Aeymotion"
-            width={480}
-            height={480}
-            loading="lazy"
-            className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-4 border-white shadow-[0_8px_30px_rgba(140,75,255,0.12)] mb-7"
-          />
           <h2
             id="portfolio-booking-title"
             className="text-4xl md:text-5xl font-black tracking-tight text-neutral-900 leading-[1.05]"
