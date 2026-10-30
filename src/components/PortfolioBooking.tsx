@@ -1,20 +1,5 @@
-import { ArrowUpRight, Check } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { CALENDLY_URL } from '../data/config';
-
-const discussionPoints = [
-  {
-    title: 'Your product and audience',
-    description: 'What you’re building, who it’s for, and the value you want people to understand.',
-  },
-  {
-    title: 'Your video and launch goals',
-    description: 'The story, style, and deliverables that fit your website, launch, or social channels.',
-  },
-  {
-    title: 'Scope, timeline, and next steps',
-    description: 'Your priorities, budget, and target date, so we can agree on the right approach.',
-  },
-];
 
 export default function PortfolioBooking() {
   return (
@@ -35,22 +20,7 @@ export default function PortfolioBooking() {
             Tell me what you’re building. Let’s explore how video can bring your product’s story to life.
           </p>
 
-          <h3 className="mt-8 text-lg font-bold tracking-tight text-neutral-900">
-            What we’ll discuss
-          </h3>
-          <ul className="mt-5 space-y-5">
-            {discussionPoints.map((point) => (
-              <li key={point.title} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#8C4BFF]/10 text-[#8C4BFF]">
-                  <Check className="h-3.5 w-3.5" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-neutral-900">{point.title}</p>
-                  <p className="mt-1 text-sm text-neutral-600 leading-relaxed">{point.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+
         </div>
 
         <div className="min-w-0">
