@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface AeymotionBackgroundProps {
-  variant?: 'hero' | 'work' | 'services' | 'problems' | 'process' | 'why' | 'about' | 'cta' | 'faq';
+  variant?: 'hero' | 'work' | 'services' | 'problems' | 'process' | 'why' | 'about' | 'cta' | 'faq' | 'booking';
   isHovered?: boolean;
 }
 
@@ -39,7 +39,7 @@ export default function AeymotionBackground({ variant = 'hero', isHovered = fals
         </>
       )}
 
-      {variant === 'services' && (
+      {(variant === 'services' || variant === 'booking') && (
         <>
           <div className="absolute top-[10%] right-[-5%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full bg-gradient-to-bl from-[#C084FC]/22 via-[#8C4BFF]/18 to-[#F472B6]/15 blur-[120px]" />
           <div className="absolute bottom-[5%] left-[-5%] w-[50vw] max-w-[550px] h-[50vw] max-h-[550px] rounded-full bg-gradient-to-tr from-[#8C4BFF]/20 via-[#F472B6]/15 to-transparent blur-[110px]" />

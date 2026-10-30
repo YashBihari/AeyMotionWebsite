@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import { CALENDLY_URL } from '../data/config';
 import BookingArtwork from './BookingArtwork';
+import AeymotionBackground from './AeymotionBackground';
 
 export default function PortfolioBooking() {
   const waveId = useId().replace(/:/g, '');
@@ -9,8 +10,11 @@ export default function PortfolioBooking() {
     <section
       id="booking"
       aria-labelledby="booking-title"
-      className="scroll-mt-24 w-full mt-16 md:mt-24 font-sans"
+      className="relative isolate scroll-mt-24 w-full mt-16 md:mt-24 font-sans"
     >
+      <div aria-hidden="true" className="pointer-events-none absolute -inset-x-6 md:-inset-x-12 -inset-y-12 z-0">
+        <AeymotionBackground variant="booking" />
+      </div>
       <div className="relative z-20 mb-8 md:mb-12">
         <h2
           id="booking-title"
@@ -23,7 +27,7 @@ export default function PortfolioBooking() {
         </p>
       </div>
       <div
-        className="relative w-full overflow-hidden rounded-[28px] md:rounded-[32px] border border-white/90 p-[15px] shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
+        className="relative z-10 w-full overflow-hidden rounded-[28px] md:rounded-[32px] border border-white/90 p-[15px] shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
         style={{ background: 'linear-gradient(135deg, #FFFFFFBF, #F5EBFF8C 50%, #FDF2F88C)' }}
       >
         <div
