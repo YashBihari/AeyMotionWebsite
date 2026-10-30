@@ -111,7 +111,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
           <div className="flex justify-center mt-10 md:mt-14">
             <a
               href="/portfolio"
-              className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-[#171717] hover:bg-[#6F2BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+              className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-white/70 hover:bg-[#F1E7FF] text-[#6F2BFF] border border-[#8C4BFF]/25 hover:border-[#8C4BFF]/50 backdrop-blur-sm text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
             >
               View portfolio <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
             </a>
