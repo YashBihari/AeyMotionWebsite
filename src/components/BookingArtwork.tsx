@@ -8,8 +8,8 @@ export default function BookingArtwork() {
   const float = (distance: number) => reducedMotion ? undefined : { y: [0, -distance, 0] };
 
   return (
-    <div aria-hidden="true" className="pointer-events-none h-[320px] sm:h-[380px] xl:h-[604px] w-full max-w-[440px] mr-auto xl:-translate-x-[15px] xl:translate-y-[15px] select-none">
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMinYMax meet" fill="none" focusable="false" className="w-full h-full overflow-visible">
+    <div aria-hidden="true" className="pointer-events-none h-[320px] sm:h-[380px] xl:h-[604px] w-full max-w-[440px] mx-auto select-none">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet" fill="none" focusable="false" className="w-full h-full overflow-visible">
         <defs>
           <linearGradient id={`${id}-glass`} x1="0" y1="0" x2="1" y2="1">
             <stop stopColor="#FFFFFF" stopOpacity=".98" />
@@ -33,11 +33,11 @@ export default function BookingArtwork() {
           </filter>
         </defs>
 
-        <ellipse cx="165" cy="355" rx="220" ry="190" fill={paint('glow')} />
+        <ellipse cx="200" cy="265" rx="205" ry="215" fill={paint('glow')} />
 
         {/* A floating conversation tile. */}
         <motion.g animate={float(9)} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-          <g transform="translate(166 120) rotate(9 88 53)" filter={paint('shadow')}>
+          <g transform="translate(166 64) rotate(9 88 53)" filter={paint('shadow')}>
             <rect x="2" y="5" width="176" height="106" rx="24" fill="#C084FC" fillOpacity=".3" />
             <rect width="176" height="106" rx="24" fill={paint('glass')} stroke="white" strokeWidth="2" />
             <path d="M124 105L134 119L148 104" fill="#F3E8FF" stroke="white" strokeWidth="1.5" />
@@ -49,7 +49,7 @@ export default function BookingArtwork() {
 
         {/* Glass video-call window with sculpted avatars and controls. */}
         <motion.g animate={float(7)} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: .6 }}>
-          <g transform="translate(-10 255) rotate(-7 145 110)" filter={paint('shadow')}>
+          <g transform="translate(37 225) rotate(-7 145 110)" filter={paint('shadow')}>
             <rect x="3" y="8" width="292" height="224" rx="29" fill="#B58AE5" fillOpacity=".32" />
             <rect width="292" height="224" rx="29" fill={paint('glass')} stroke="white" strokeWidth="2" />
             <path d="M20 17H268" stroke="white" strokeWidth="2" strokeLinecap="round" opacity=".85" />
@@ -78,7 +78,7 @@ export default function BookingArtwork() {
 
         {/* Customer avatars and a small connection badge. */}
         <motion.g animate={float(11)} transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}>
-          <g transform="translate(11 210) rotate(-12 65 34)" filter={paint('shadow')}>
+          <g transform="translate(11 145) rotate(-12 65 34)" filter={paint('shadow')}>
             <rect width="132" height="68" rx="22" fill={paint('glass')} stroke="white" strokeWidth="2" />
             {[0, 1, 2].map((person) => (
               <g key={person} transform={`translate(${19 + person * 31} 18)`}>
@@ -90,7 +90,7 @@ export default function BookingArtwork() {
           </g>
         </motion.g>
 
-        <circle cx="351" cy="275" r="13" fill={paint('pearl')} />
+        <circle cx="351" cy="190" r="13" fill={paint('pearl')} />
         <circle cx="44" cy="460" r="10" fill={paint('pearl')} />
         <path d="M328 418V434M320 426H336" stroke="#D8B4FE" strokeWidth="3" strokeLinecap="round" />
       </svg>
