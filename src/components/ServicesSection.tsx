@@ -81,7 +81,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
 ];
 
 export default function ServicesSection(_props: ServicesSectionProps) {
-  const [activeOfferId, setActiveOfferId] = useState<string | null>('product-explainer');
+  const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
   const [offerHeight, setOfferHeight] = useState<number>();
 
   useEffect(() => {
