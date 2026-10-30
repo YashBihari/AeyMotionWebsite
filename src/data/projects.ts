@@ -48,26 +48,16 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "yc-safe",
-    name: "YC SAFE",
-    category: "Product Storytelling",
-    tagline: "Simplifying startup investment and SAFE agreements into clear visual storytelling.",
-    description: "Turning YC’s SAFE workflow into a clear, fast-paced feature spotlight. [Independent Concept]",
-    previewVideo: "/Assets/SAFE%20Thumbnail%20Web.mp4",
-    fullVideoEmbed: "https://www.youtube.com/embed/Tb2vtFCHJ80?si=mdfUmy7jcMv6UTAF&autoplay=1&rel=0&modestbranding=1",
+    id: "essenite",
+    name: "Essenite",
+    category: "Brand Launch Film",
+    description: "A motion-led brand launch film introducing Essenite.",
+    previewVideo: "/Assets/Essenite-Thumbnail.mp4",
+    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/od_ZAb368RE?rel=0&autoplay=1",
     dribbbleUrl: "https://dribbble.com/aeymotion",
-    serviceType: "Launch Story System",
-    timecode: "00:01:00:00",
-    frameRate: "30 FPS",
-    caseStudy: {
-      context: "YC Safe financing framework explains how modern startup founders manage early-stage investment.",
-      challenge: "Making complex financial instruments like valuation caps, conversion mechanics, and option pools immediately intuitive and engaging.",
-      audience: "Startup founders, angel investors, and venture capital operators.",
-      communicationProblem: "SAFEs can seem confusing and intimidating with dense legal text and spreadsheets.",
-      strategicDecision: "Used clear, high-fidelity UI animation and visual simplicity to break down the SAFE creation process.",
-      execution: "Clean typography, fluid interface animations, and dynamic motion design explaining terms step-by-step.",
-      result: "Engaging educational and product storytelling film simplifying startup investment."
-    }
+    serviceType: "Brand Launch Film",
+    timecode: "",
+    frameRate: ""
   },
   {
     id: "seorce-ai",
@@ -93,26 +83,16 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "aura-design",
-    name: "Sena AI",
-    category: "AI Launch Film",
-    tagline: "Translating conversational intelligence into an engaging launch narrative.",
-    description: "An animated walkthrough of Sena AI’s features and everyday workflow benefits. [Independent Concept]",
-    previewVideo: "/Assets/Sena%20AI%20Thumbnail.mp4",
-    fullVideoEmbed: "https://www.youtube.com/embed/kHo5V7wBIJU?si=7So9bhQp-APbIAFD&autoplay=1&rel=0&modestbranding=1",
+    id: "melaya",
+    name: "Melaya",
+    category: "Product Launch Film",
+    description: "A product launch video showing Melaya’s AI agents in action.",
+    previewVideo: "/Assets/Melaya-Thumbnail.mp4",
+    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/WMXNCI89Ehw?rel=0&autoplay=1",
     dribbbleUrl: "https://dribbble.com/aeymotion",
-    serviceType: "Launch Story System",
-    timecode: "00:01:12:00",
-    frameRate: "24 FPS",
-    caseStudy: {
-      context: "Sena AI builds conversational intelligence tools for next-generation digital customer interactions.",
-      challenge: "Communicating the speed, natural conversational cadence, and underlying intelligence without technical friction.",
-      audience: "Product leads, CX executives, and technology founders.",
-      communicationProblem: "Standard conversational demos fail to convey real-time speed and emotional resonance.",
-      strategicDecision: "Centered the launch film around fluid real-time responses and an elevated, human-centric design language.",
-      execution: "Kinetic typography, seamless interface transitions, warm visual palette, and tailored sound design.",
-      result: "Launch film deployed across primary marketing channels and product launch announcements."
-    }
+    serviceType: "Product Launch Film",
+    timecode: "",
+    frameRate: ""
   },
   {
     id: "kinetic-ai",
@@ -159,27 +139,47 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "essenite",
-    name: "Essenite",
-    category: "Brand Launch Film",
-    description: "A motion-led brand launch film introducing Essenite.",
-    previewVideo: "/Assets/Essenite-Thumbnail.mp4",
-    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/od_ZAb368RE?rel=0&autoplay=1",
+    id: "yc-safe",
+    name: "YC SAFE",
+    category: "Product Storytelling",
+    tagline: "Simplifying startup investment and SAFE agreements into clear visual storytelling.",
+    description: "Turning YC’s SAFE workflow into a clear, fast-paced feature spotlight. [Independent Concept]",
+    previewVideo: "/Assets/SAFE%20Thumbnail%20Web.mp4",
+    fullVideoEmbed: "https://www.youtube.com/embed/Tb2vtFCHJ80?si=mdfUmy7jcMv6UTAF&autoplay=1&rel=0&modestbranding=1",
     dribbbleUrl: "https://dribbble.com/aeymotion",
-    serviceType: "Brand Launch Film",
-    timecode: "",
-    frameRate: ""
+    serviceType: "Launch Story System",
+    timecode: "00:01:00:00",
+    frameRate: "30 FPS",
+    caseStudy: {
+      context: "YC Safe financing framework explains how modern startup founders manage early-stage investment.",
+      challenge: "Making complex financial instruments like valuation caps, conversion mechanics, and option pools immediately intuitive and engaging.",
+      audience: "Startup founders, angel investors, and venture capital operators.",
+      communicationProblem: "SAFEs can seem confusing and intimidating with dense legal text and spreadsheets.",
+      strategicDecision: "Used clear, high-fidelity UI animation and visual simplicity to break down the SAFE creation process.",
+      execution: "Clean typography, fluid interface animations, and dynamic motion design explaining terms step-by-step.",
+      result: "Engaging educational and product storytelling film simplifying startup investment."
+    }
   },
   {
-    id: "melaya",
-    name: "Melaya",
-    category: "Product Launch Film",
-    description: "A product launch video showing Melaya’s AI agents in action.",
-    previewVideo: "/Assets/Melaya-Thumbnail.mp4",
-    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/WMXNCI89Ehw?rel=0&autoplay=1",
+    id: "aura-design",
+    name: "Sena AI",
+    category: "AI Launch Film",
+    tagline: "Translating conversational intelligence into an engaging launch narrative.",
+    description: "An animated walkthrough of Sena AI’s features and everyday workflow benefits. [Independent Concept]",
+    previewVideo: "/Assets/Sena%20AI%20Thumbnail.mp4",
+    fullVideoEmbed: "https://www.youtube.com/embed/kHo5V7wBIJU?si=7So9bhQp-APbIAFD&autoplay=1&rel=0&modestbranding=1",
     dribbbleUrl: "https://dribbble.com/aeymotion",
-    serviceType: "Product Launch Film",
-    timecode: "",
-    frameRate: ""
+    serviceType: "Launch Story System",
+    timecode: "00:01:12:00",
+    frameRate: "24 FPS",
+    caseStudy: {
+      context: "Sena AI builds conversational intelligence tools for next-generation digital customer interactions.",
+      challenge: "Communicating the speed, natural conversational cadence, and underlying intelligence without technical friction.",
+      audience: "Product leads, CX executives, and technology founders.",
+      communicationProblem: "Standard conversational demos fail to convey real-time speed and emotional resonance.",
+      strategicDecision: "Centered the launch film around fluid real-time responses and an elevated, human-centric design language.",
+      execution: "Kinetic typography, seamless interface transitions, warm visual palette, and tailored sound design.",
+      result: "Launch film deployed across primary marketing channels and product launch announcements."
+    }
   }
 ];
