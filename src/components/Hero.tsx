@@ -6,53 +6,13 @@ interface HeroProps {
 
 function HeroBackdrop() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-      <svg
-        viewBox="0 0 1440 850"
-        preserveAspectRatio="xMidYMid slice"
-        className="absolute inset-0 h-full w-full"
-        focusable="false"
-      >
-        <defs>
-          <linearGradient id="hero-pearl" x2="1" y2="1">
-            <stop stopColor="#FAF9FC" />
-            <stop offset=".54" stopColor="#F5F3F8" />
-            <stop offset="1" stopColor="#FCFAFE" />
-          </linearGradient>
-          <linearGradient id="hero-plate" x2=".3" y2="1">
-            <stop stopColor="#FFFFFF" />
-            <stop offset="1" stopColor="#FDFBFF" />
-          </linearGradient>
-          <linearGradient id="hero-bevel" x1="0" y1=".65" x2="1" y2=".15">
-            <stop stopColor="#B8B4C1" />
-            <stop offset=".22" stopColor="#D8D3E0" />
-            <stop offset=".4" stopColor="#FFFFFF" />
-            <stop offset=".66" stopColor="#EAE5F1" />
-            <stop offset=".83" stopColor="#B8AFC7" />
-            <stop offset="1" stopColor="#F6F3FA" />
-          </linearGradient>
-          <filter id="hero-plate-shadow" x="-15%" y="-20%" width="130%" height="150%">
-            <feDropShadow dx="0" dy="12" stdDeviation="9" floodColor="#2E2340" floodOpacity=".10" />
-          </filter>
-          <path id="hero-top-plate" d="M302-90H1540V580C1410 340 1242 198 933 198H365C330 198 302 173 302 136Z" />
-          <path id="hero-left-plate" d="M-130 180L263 570C291 598 274 624 242 624H-130Z" />
-          <path id="hero-bottom-plate" d="M302 950V682C302 647 328 622 365 622H892C1059 622 1138 728 1138 863V950Z" />
-        </defs>
-        <rect width="1440" height="850" fill="url(#hero-pearl)" />
-        <g fill="url(#hero-plate)" stroke="url(#hero-bevel)" strokeWidth="15" strokeLinejoin="round" filter="url(#hero-plate-shadow)">
-          <use href="#hero-top-plate" />
-          <use href="#hero-left-plate" />
-          <use href="#hero-bottom-plate" />
-        </g>
-        <g fill="url(#hero-plate)" stroke="#FFFFFF" strokeWidth="1.5" strokeLinejoin="round" transform="translate(0 -5)">
-          <use href="#hero-top-plate" />
-          <use href="#hero-left-plate" />
-          <use href="#hero-bottom-plate" />
-        </g>
-      </svg>
-      <div className="absolute inset-0 bg-white/35 sm:bg-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#FBF8FF] to-transparent" />
-    </div>
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0"
+      style={{
+        background: 'radial-gradient(ellipse at 18% 22%, #eee8f6 0%, transparent 56%), radial-gradient(ellipse at 86% 74%, #f3e9f6 0%, transparent 52%), linear-gradient(180deg, #fcfbfe, #fbf8ff)',
+      }}
+    />
   );
 }
 
