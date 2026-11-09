@@ -143,7 +143,7 @@
 }
 
 
-/* Keep the logo palette in the gutters, leaving the reading surface clear. */
+/* Keep decorative dots and lines in the gutters. */
 .aey-edge-mask {
   --edge-fade: clamp(20px, calc((100vw - 70rem) / 2), 12vw);
   mask-image: linear-gradient(
@@ -155,7 +155,3 @@
   );
 }
 
-.aey-page-gradient {
-  background: linear-gradient(135deg, #FFD5A0, #F5A459 23%, #D68A98 48%, #A35DCD 73%, #7027F1);
-  opacity: .42;
-}

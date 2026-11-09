@@ -65,8 +65,6 @@ export default function App() {
     <div 
       className="relative isolate min-h-screen bg-[#FBF8FF] text-[#171717] font-sans selection:bg-[#8C4BFF] selection:text-white flex flex-col justify-between"
     >
-      <div aria-hidden="true" className="aey-edge-mask aey-page-gradient pointer-events-none fixed inset-0 -z-10" />
-
       {/* Fixed Navigation */}
       <Navbar onBookCall={handleScrollToBooking} />
 
