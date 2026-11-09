@@ -155,3 +155,21 @@
   );
 }
 
+
+
+/* The logo palette as a light, continuous reading surface. */
+.aey-site-surface {
+  background-color: #fbf8ff;
+}
+
+.aey-site-surface::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, .70), rgba(255, 255, 255, .70)),
+    radial-gradient(ellipse at 18% 18%, #FFD5A0 0%, transparent 57%),
+    linear-gradient(135deg, #FFD5A0, #F5A459 23%, #D68A98 48%, #A35DCD 73%, #7027F1);
+}

@@ -63,7 +63,7 @@ export default function App() {
 
   return (
     <div 
-      className="relative isolate min-h-screen bg-[#FBF8FF] text-[#171717] font-sans selection:bg-[#8C4BFF] selection:text-white flex flex-col justify-between"
+      className="aey-site-surface relative isolate min-h-screen text-[#171717] font-sans selection:bg-[#8C4BFF] selection:text-white flex flex-col justify-between"
     >
       {/* Fixed Navigation */}
       <Navbar onBookCall={handleScrollToBooking} />
