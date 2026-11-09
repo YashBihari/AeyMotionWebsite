@@ -17,7 +17,7 @@ export default function BookingArtwork() {
             <stop offset="1" stopColor="#E9D5FF" stopOpacity=".68" />
           </linearGradient>
           <linearGradient id={`${id}-violet`} x1="0" y1="0" x2="1" y2="1">
-            <stop stopColor="#C084FC" /><stop offset=".45" stopColor="#8C4BFF" /><stop offset="1" stopColor="#6423BF" />
+            <stop stopColor="#FFD5A0" /><stop offset=".25" stopColor="#F5A459" /><stop offset=".48" stopColor="#D68A98" /><stop offset=".73" stopColor="#A35DCD" /><stop offset="1" stopColor="#7027F1" />
           </linearGradient>
           <linearGradient id={`${id}-pink`} x1="0" y1="0" x2="1" y2="1">
             <stop stopColor="#F9DAFF" /><stop offset=".55" stopColor="#D8A2F5" /><stop offset="1" stopColor="#E46BC5" />

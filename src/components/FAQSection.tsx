@@ -90,7 +90,7 @@ export default function FAQSection() {
                     <div 
                       className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-200 ${
                         isOpen 
-                          ? 'bg-[#8C4BFF] text-white shadow-xs scale-105' 
+                          ? 'aey-gradient-action text-[#17151B] shadow-xs scale-105' 
                           : 'bg-white/90 border border-purple-100/90 text-neutral-600 group-hover:border-[#8C4BFF]/40 group-hover:text-[#8C4BFF] group-hover:scale-105 shadow-2xs'
                       }`}
                       aria-hidden="true"

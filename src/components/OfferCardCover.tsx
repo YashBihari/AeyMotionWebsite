@@ -9,18 +9,18 @@ export default function OfferCardCover({ index }: { index: number }) {
       <svg viewBox="0 0 300 250" fill="none" focusable="false" preserveAspectRatio="xMidYMax meet">
         <defs>
           <linearGradient id={`${id}-ceramic`} x1="-65" y1="-80" x2="65" y2="85" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#FDF4FF" /><stop offset=".28" stopColor="#E9D5FF" />
-            <stop offset=".58" stopColor="#C084FC" /><stop offset="1" stopColor="#7E22CE" />
+            <stop stopColor="#FFD5A0" /><stop offset=".28" stopColor="#F5A459" />
+            <stop offset=".58" stopColor="#D68A98" /><stop offset=".8" stopColor="#A35DCD" /><stop offset="1" stopColor="#7027F1" />
           </linearGradient>
           <linearGradient id={`${id}-violet`} x1="35" y1="15" x2="185" y2="205" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#F3E8FF" /><stop offset=".3" stopColor="#C084FC" />
-            <stop offset=".64" stopColor="#8C4BFF" /><stop offset="1" stopColor="#7E22CE" />
+            <stop stopColor="#FFD5A0" /><stop offset=".3" stopColor="#F5A459" />
+            <stop offset=".54" stopColor="#D68A98" /><stop offset=".76" stopColor="#A35DCD" /><stop offset="1" stopColor="#7027F1" />
           </linearGradient>
           <linearGradient id={`${id}-blush`} x1="0" y1="0" x2="1" y2="1">
             <stop stopColor="#FDF4FF" /><stop offset=".4" stopColor="#F5D0FE" /><stop offset="1" stopColor="#C084FC" />
           </linearGradient>
           <linearGradient id={`${id}-edge`} x1="0" y1="0" x2="1" y2="1">
-            <stop stopColor="#C084FC" /><stop offset=".6" stopColor="#9333EA" /><stop offset="1" stopColor="#6B21A8" />
+            <stop stopColor="#C37B86" /><stop offset=".6" stopColor="#8B48BB" /><stop offset="1" stopColor="#5820B8" />
           </linearGradient>
           <linearGradient id={`${id}-ribbon`} x1="30" y1="120" x2="280" y2="240" gradientUnits="userSpaceOnUse">
             <stop stopColor="#C084FC" stopOpacity=".16" /><stop offset=".5" stopColor="#E879F9" stopOpacity=".3" />

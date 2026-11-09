@@ -56,17 +56,17 @@
   }
   
   .aey-gradient-text {
-    background: linear-gradient(135deg, #8C4BFF 0%, #B98FD4 45%, #F2A979 100%);
+    background: var(--aey-logo-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   .aey-gradient-bg {
-    background: linear-gradient(135deg, #8C4BFF 0%, #6F2BFF 100%);
+    background: var(--aey-logo-gradient);
   }
 
   .aey-gradient-border {
-    border-image: linear-gradient(135deg, #8C4BFF, #F2A979) 1;
+    border-image: var(--aey-logo-gradient) 1;
   }
 }
 
@@ -82,7 +82,7 @@
 .offer-panel--open .offer-title { font-size: clamp(25px, 2.4vw, 36px); }
 .offer-summary { color: #716480; font-size: 13px; line-height: 1.5; }
 .offer-toggle { width: 40px; height: 40px; border-radius: 50%; background: #FFFFFFDF; border: 1px solid #E9DCFF; color: #8C4BFF; display: grid; place-items: center; isolation: isolate; }
-.offer-panel--open .offer-toggle { position: absolute; top: 25px; right: 20px; background: #8C4BFF; color: white; border-color: transparent; }
+.offer-panel--open .offer-toggle { position: absolute; top: 25px; right: 20px; background: var(--aey-logo-gradient-soft); color: #17151B; border-color: transparent; }
 .offer-trigger:focus-visible { outline: 3px solid #8C4BFF; outline-offset: -5px; border-radius: 24px; }
 .offer-details { padding: 0 24px 24px; position: relative; z-index: 2; }
 .offer-details[hidden] { display: none; }
@@ -155,3 +155,18 @@
   );
 }
 
+
+
+/* Logo colors are reserved for accents, with a lighter blend for dark labels. */
+:root {
+  --aey-logo-gradient: linear-gradient(135deg, #FFD5A0 0%, #F5A459 23%, #D68A98 48%, #A35DCD 73%, #7027F1 100%);
+  --aey-logo-gradient-soft: linear-gradient(#FFFFFF59, #FFFFFF59), var(--aey-logo-gradient);
+}
+
+.aey-gradient-action {
+  background: var(--aey-logo-gradient-soft);
+}
+
+.aey-gradient-action:hover {
+  filter: brightness(.96);
+}
