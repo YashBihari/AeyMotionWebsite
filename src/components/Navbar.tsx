@@ -77,7 +77,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
               className="text-xs font-semibold uppercase tracking-wider text-neutral-600 hover:text-neutral-900 transition-colors duration-200 py-1 relative group"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] aey-gradient-bg group-hover:w-full transition-all duration-300" />
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#8C4BFF] group-hover:w-full transition-all duration-300" />
             </a>
           ))}
         </nav>
@@ -86,7 +86,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={onBookCall}
-            className="px-5 py-2.5 aey-gradient-action text-[#17151B] text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm hover:shadow-md transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
+            className="px-5 py-2.5 bg-[#8C4BFF] hover:bg-[#6F2BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm hover:shadow-md transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
           >
             Book a call
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={onBookCall}
-            className="px-3.5 py-1.5 aey-gradient-action text-[#17151B] text-[10px] font-bold uppercase tracking-wider rounded-lg"
+            className="px-3.5 py-1.5 bg-[#8C4BFF] text-white text-[10px] font-bold uppercase tracking-wider rounded-lg"
           >
             Book a call
           </button>
@@ -139,7 +139,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onBookCall();
                   }}
-                  className="w-full py-3 aey-gradient-action text-[#17151B] text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-[#8C4BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2"
                 >
                   Book a call
                   <ArrowUpRight className="w-4 h-4" />

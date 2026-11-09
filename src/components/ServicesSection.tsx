@@ -225,7 +225,7 @@ export default function ServicesSection(_props: ServicesSectionProps) {
           }}
         >
           <h4 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#171717] mb-5 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full aey-gradient-bg" />
+            <span className="w-2 h-2 rounded-full bg-[#8C4BFF]" />
             Included with every package:
           </h4>
           
