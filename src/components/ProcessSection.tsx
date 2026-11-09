@@ -111,7 +111,7 @@ export default function ProcessSection() {
         
         {/* Section Heading */}
         <div className="mb-8 md:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
             {PROCESS_SECTION.title}
           </h2>
         </div>
@@ -160,7 +160,7 @@ export default function ProcessSection() {
                       —
                     </span>
                     <span 
-                      className={`text-lg sm:text-xl md:text-2xl font-black uppercase tracking-tight transition-colors ${
+                      className={`text-lg sm:text-xl md:text-2xl aey-heading transition-colors ${
                         isOpen ? 'text-[#8C4BFF]' : 'text-neutral-900 group-hover:text-[#8C4BFF]'
                       }`}
                     >

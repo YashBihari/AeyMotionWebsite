@@ -1,5 +1,5 @@
 export const PROBLEMS_SECTION = {
-  title: "YOUR PRODUCT MAY NOT BE HARD TO SELL. IT MAY BE HARD TO UNDERSTAND.",
+  title: "Your product may not be hard to sell. It may be hard to understand.",
   subtitle: "Many AI and technical products are valuable, but their differentiated value gets buried under features, terminology and complexity.",
   problems: [
     {
@@ -72,7 +72,7 @@ export const PROCESS_SECTION = {
 };
 
 export const WHY_AEYMOTION_SECTION = {
-  title: "WHY B2B AI COMPANIES WORK WITH AEYMOTION.",
+  title: "Why B2B AI companies work with Aeymotion.",
   subtitle: "Strategy, storytelling, and premium creative for teams launching complex technology.",
   highlights: [
     {
@@ -163,7 +163,7 @@ export const FAQ_SECTION = {
 };
 
 export const ABOUT_SECTION = {
-  title: "FROM MOTION DESIGN TO PRODUCT LAUNCH STORYTELLING",
+  title: "From motion design to product launch storytelling",
   copy: "Aeymotion started through motion design. Working with AI and SaaS companies revealed a bigger problem: complex products often do not need more animation. They need a clearer way to communicate why they matter. Today, Aeymotion combines positioning, product storytelling, creative strategy and premium visual execution to help technology companies launch with clarity.",
   founder: {
     name: "Yash",

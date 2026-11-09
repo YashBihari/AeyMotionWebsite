@@ -74,7 +74,7 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#F2A979]/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-4 md:space-y-5 relative z-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3.5xl font-black uppercase tracking-tight text-white leading-snug">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3.5xl aey-heading text-white">
               {ABOUT_SECTION.title}
             </h2>
 
@@ -90,7 +90,7 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
                   <span className="font-mono text-[9px] sm:text-[10px] text-white/70 font-bold uppercase tracking-widest block">
                     FOUNDER-LED STRATEGY & CREATIVE DIRECTION
                   </span>
-                  <span className="text-base sm:text-lg font-black uppercase text-white tracking-wide block">
+                  <span className="text-base sm:text-lg aey-heading text-white block">
                     {ABOUT_SECTION.founder.name}
                   </span>
                   <span className="text-xs text-white/80 font-mono block">

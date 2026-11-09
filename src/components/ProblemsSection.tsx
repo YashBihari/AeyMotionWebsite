@@ -14,7 +14,7 @@ export default function ProblemsSection() {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-6 md:mb-8">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl aey-heading text-neutral-900">
             {PROBLEMS_SECTION.title}
           </h2>
           <p className="text-neutral-600 font-normal text-sm md:text-base mt-2 leading-relaxed">

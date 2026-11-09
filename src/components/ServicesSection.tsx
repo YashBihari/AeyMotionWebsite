@@ -22,7 +22,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
   {
     id: 'feature-spotlight',
     tag: '01 / FEATURE',
-    title: 'FEATURE SPOTLIGHT',
+    title: 'Feature spotlight',
     description: 'Put features in the spotlight.',
     duration: 'Up to 15 seconds',
     timeline: '3–5 business days',
@@ -41,7 +41,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
   {
     id: 'product-launch-video',
     tag: '02 / LAUNCH',
-    title: 'PRODUCT LAUNCH',
+    title: 'Product launch',
     description: 'Introduce your product. Give people a reason to care.',
     duration: 'Up to 45 seconds',
     timeline: '5–7 business days',
@@ -61,7 +61,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
   {
     id: 'product-explainer',
     tag: '03 / EXPLAIN',
-    title: 'PRODUCT EXPLAINER',
+    title: 'Product explainer',
     description: 'Make your product easy to understand.',
     duration: '60–90 seconds',
     timeline: '7–10 business days',
@@ -146,8 +146,8 @@ export default function ServicesSection(_props: ServicesSectionProps) {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-8 md:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[1.02]">
-            THE RIGHT VIDEO FOR YOUR NEXT STEP.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
+            The right video for your next step.
           </h2>
 
           <p className="text-neutral-600 font-normal text-sm md:text-base mt-3 leading-relaxed max-w-2xl">
@@ -172,7 +172,7 @@ export default function ServicesSection(_props: ServicesSectionProps) {
                   onClick={event => toggleOffer(pkg.id, event)}
                 >
                   <span className="offer-tag">{pkg.tag}</span>
-                  <span className="offer-title">{pkg.title}</span>
+                  <span className="offer-title aey-heading">{pkg.title}</span>
                   {!isOpen && <span className="offer-summary">{pkg.duration}</span>}
                   {!isOpen && <OfferCardCover index={idx} />}
                   <span className="offer-toggle" aria-hidden="true">

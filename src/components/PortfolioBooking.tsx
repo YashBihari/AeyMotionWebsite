@@ -19,7 +19,7 @@ export default function PortfolioBooking() {
       <div className="relative z-20 mb-8 md:mb-12">
         <h2
           id="booking-title"
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-neutral-900 leading-[0.98]"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900"
         >
           Book a call
         </h2>

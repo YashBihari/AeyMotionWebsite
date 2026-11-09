@@ -35,7 +35,7 @@ export default function Footer({ onBookCall }: FooterProps) {
               className="w-7 h-7 rounded-full border-none" 
               alt="Aeymotion Logo" 
             />
-            <span className="text-xl font-black tracking-tight uppercase text-white">
+            <span className="text-xl aey-heading text-white">
               Aeymotion
             </span>
           </div>

@@ -156,7 +156,7 @@ export default function Hero({ onBookCall }: HeroProps) {
           <span aria-hidden="true" className="size-1.5 rounded-full bg-[#00BD8B] shadow-[0_0_6px_1px_rgba(0,189,139,0.36)]" />
           Available for work
         </p>
-        <h1 id="hero-title" className="mt-5 max-w-5xl text-balance text-[clamp(2.125rem,4.3vw,4rem)] font-semibold leading-[1.07] tracking-[-0.055em] text-[#17151B]">
+        <h1 id="hero-title" className="mt-5 max-w-5xl text-balance text-[clamp(2.125rem,4.3vw,4rem)] aey-heading text-[#17151B]">
           Creative video partner for tech brands
         </h1>
         <p className="mt-5 max-w-lg text-pretty text-sm leading-relaxed text-[#514B58] sm:text-base">
