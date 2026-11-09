@@ -1,10 +1,135 @@
+import { useEffect, useRef } from 'react';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 
 interface HeroProps {
   onBookCall: () => void;
 }
 
+const TILE_SIZE = 15;
+const REVEAL_RADIUS = 96;
+const HOLD_MS = 95;
+const FADE_MS = 330;
+
+type RevealTile = {
+  column: number;
+  row: number;
+  openedAt: number;
+  touchedAt: number;
+  strength: number;
+};
+
 function HeroBackdrop() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const hero = canvas?.closest('section');
+    const context = canvas?.getContext('2d');
+    if (!canvas || !hero || !context) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const tiles = new Map<string, RevealTile>();
+    let width = 0;
+    let height = 0;
+    let gradient: CanvasGradient | undefined;
+    let frame = 0;
+    let previous: { x: number; y: number; time: number } | undefined;
+
+    const clear = () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      previous = undefined;
+      tiles.clear();
+      context.clearRect(0, 0, width, height);
+    };
+
+    const resize = () => {
+      clear();
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      if (!width || !height) return;
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.ceil(width * ratio);
+      canvas.height = Math.ceil(height * ratio);
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      // Match the supplied logo's colors without putting the wordmark in the effect.
+      gradient = context.createLinearGradient(0, 0, width * .83, height);
+      gradient.addColorStop(0, '#FFD5A0');
+      gradient.addColorStop(.23, '#F5A459');
+      gradient.addColorStop(.48, '#D68A98');
+      gradient.addColorStop(.73, '#A35DCD');
+      gradient.addColorStop(1, '#7027F1');
+    };
+
+    const draw = (now: number) => {
+      frame = 0;
+      context.clearRect(0, 0, width, height);
+      if (!gradient) return;
+      context.fillStyle = gradient;
+      for (const [key, tile] of tiles) {
+        const fade = Math.min(1, Math.max(0, (now - tile.touchedAt - HOLD_MS) / FADE_MS));
+        if (fade === 1) {
+          tiles.delete(key);
+          continue;
+        }
+        const open = Math.min(1, Math.max(0, (now - tile.openedAt) / 65));
+        const size = (TILE_SIZE - 1) * (.42 + .58 * open) * (1 - .22 * fade);
+        const inset = (TILE_SIZE - size) / 2;
+        context.globalAlpha = tile.strength * (.4 + .6 * open) * (1 - fade) ** 1.6;
+        context.fillRect(tile.column * TILE_SIZE + inset, tile.row * TILE_SIZE + inset, size, size);
+      }
+      context.globalAlpha = 1;
+      if (tiles.size) frame = requestAnimationFrame(draw);
+    };
+
+    const stamp = (x: number, y: number, time: number) => {
+      for (let row = Math.max(0, Math.floor((y - REVEAL_RADIUS) / TILE_SIZE)); row < Math.min(Math.ceil(height / TILE_SIZE), (y + REVEAL_RADIUS) / TILE_SIZE); row++) {
+        for (let column = Math.max(0, Math.floor((x - REVEAL_RADIUS) / TILE_SIZE)); column < Math.min(Math.ceil(width / TILE_SIZE), (x + REVEAL_RADIUS) / TILE_SIZE); column++) {
+          const distance = Math.hypot((column + .5) * TILE_SIZE - x, (row + .5) * TILE_SIZE - y);
+          const edge = REVEAL_RADIUS - ((column * 31 + row * 17) % 23);
+          if (distance >= edge) continue;
+          const key = `${column}:${row}`;
+          const tile = tiles.get(key);
+          const strength = .23 + .53 * (1 - distance / edge);
+          tiles.set(key, { column, row, openedAt: tile?.openedAt ?? time, touchedAt: time, strength });
+        }
+      }
+    };
+
+    const move = (event: PointerEvent) => {
+      if (event.pointerType === 'touch' || reducedMotion.matches || !gradient) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const time = performance.now();
+      if (previous && time - previous.time < 100) {
+        const steps = Math.min(12, Math.ceil(Math.hypot(x - previous.x, y - previous.y) / TILE_SIZE));
+        for (let step = 1; step < steps; step++) {
+          const progress = step / steps;
+          stamp(previous.x + (x - previous.x) * progress, previous.y + (y - previous.y) * progress, time);
+        }
+      }
+      stamp(x, y, time);
+      previous = { x, y, time };
+      if (!frame && tiles.size) frame = requestAnimationFrame(draw);
+    };
+
+    const leave = () => { previous = undefined; };
+    const observer = new ResizeObserver(resize);
+    resize();
+    observer.observe(canvas);
+    hero.addEventListener('pointermove', move, { passive: true });
+    hero.addEventListener('pointerleave', leave);
+    reducedMotion.addEventListener('change', clear);
+    return () => {
+      observer.disconnect();
+      hero.removeEventListener('pointermove', move);
+      hero.removeEventListener('pointerleave', leave);
+      reducedMotion.removeEventListener('change', clear);
+      clear();
+    };
+  }, []);
+
   return (
     <div
       aria-hidden="true"
@@ -12,7 +137,9 @@ function HeroBackdrop() {
       style={{
         background: 'radial-gradient(ellipse at 18% 22%, #eee8f6 0%, transparent 56%), radial-gradient(ellipse at 86% 74%, #f3e9f6 0%, transparent 52%), linear-gradient(180deg, #fcfbfe, #fbf8ff)',
       }}
-    />
+    >
+      <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" />
+    </div>
   );
 }
 
