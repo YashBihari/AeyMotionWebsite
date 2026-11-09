@@ -134,6 +134,9 @@ function HeroBackdrop() {
     <div
       aria-hidden="true"
       className="pointer-events-none absolute inset-0"
+      style={{
+        background: 'radial-gradient(ellipse at 18% 22%, #eee8f6 0%, transparent 56%), radial-gradient(ellipse at 86% 74%, #f3e9f6 0%, transparent 52%), linear-gradient(180deg, #fcfbfe, #fbf8ff)',
+      }}
     >
       <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" />
     </div>
@@ -145,7 +148,7 @@ export default function Hero({ onBookCall }: HeroProps) {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative isolate flex min-h-svh items-center justify-center overflow-hidden px-6 pb-24 pt-28 text-center sm:px-10"
+      className="relative isolate flex min-h-svh items-center justify-center overflow-hidden bg-[#F8F6FB] px-6 pb-24 pt-28 text-center sm:px-10"
     >
       <HeroBackdrop />
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
