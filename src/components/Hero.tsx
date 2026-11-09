@@ -153,11 +153,11 @@ export default function Hero({ onBookCall }: HeroProps) {
       <HeroBackdrop />
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
         <p className="inline-flex items-center gap-2 rounded-full border border-[#DDD6E5] bg-white/75 px-3.5 py-2 text-xs font-medium text-[#51465E] shadow-xs">
-          <span aria-hidden="true" className="size-1.5 rounded-full bg-[#168A53]" />
+          <span aria-hidden="true" className="size-1.5 rounded-full bg-[#168A53] shadow-[0_0_8px_2px_rgba(22,138,83,0.45)]" />
           Available for work
         </p>
         <h1 id="hero-title" className="mt-5 max-w-5xl text-balance text-[clamp(2.125rem,4.3vw,4rem)] font-semibold leading-[1.07] tracking-[-0.055em] text-[#17151B]">
-          Your creative video partner for tech brands.
+          Creative video partner for tech brands
         </h1>
         <p className="mt-5 max-w-lg text-pretty text-sm leading-relaxed text-[#514B58] sm:text-base">
           We create launch videos and explainers that make complex products easy to understand and give people a reason to care.
