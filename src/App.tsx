@@ -63,11 +63,10 @@ export default function App() {
 
   return (
     <div 
-      className="relative min-h-screen text-[#171717] font-sans selection:bg-[#8C4BFF] selection:text-white flex flex-col justify-between"
-      style={{
-        background: 'linear-gradient(180deg, #FBF8FF 0%, #F5ECFD 16%, #FBF2FB 32%, #F5ECFD 48%, #F9F1FC 64%, #F5ECFD 80%, #FBF8FF 92%, #F5ECFD 100%)'
-      }}
+      className="relative isolate min-h-screen bg-[#FBF8FF] text-[#171717] font-sans selection:bg-[#8C4BFF] selection:text-white flex flex-col justify-between"
     >
+      <div aria-hidden="true" className="aey-edge-mask aey-page-gradient pointer-events-none fixed inset-0 -z-10" />
+
       {/* Fixed Navigation */}
       <Navbar onBookCall={handleScrollToBooking} />
 
