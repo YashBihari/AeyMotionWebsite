@@ -179,11 +179,14 @@ export default function Hero({ onBookCall }: HeroProps) {
           id="hero-title"
           className="mt-5 max-w-5xl text-balance text-[clamp(1.625rem,4.8vw,3.75rem)] aey-heading text-neutral-900"
         >
-          <span className="block">Creative video partner for tech brands</span>
+          <span className="block">Creative video partner</span>
+          <span className="block">for tech brands</span>
           <span className="block">ready to launch and scale</span>
         </h1>
-        <p className="mt-5 max-w-lg text-pretty font-['Inter',Arial,sans-serif] text-sm leading-relaxed text-neutral-600 sm:text-base">
-          We create launch videos and explainers that make complex products easy to understand and give people a reason to care.
+        <p className="mt-5 max-w-lg text-pretty font-['Inter',Arial,sans-serif] text-[clamp(.75rem,3.3vw,.875rem)] leading-relaxed text-neutral-600 sm:text-base">
+          <span className="block">We create launch videos and explainers</span>
+          <span className="block">that make complex products easy to understand</span>
+          <span className="block">and give people a reason to care.</span>
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <button
