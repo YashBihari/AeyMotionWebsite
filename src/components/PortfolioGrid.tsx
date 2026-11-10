@@ -34,7 +34,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="border border-b-0 border-[#C4BACB] px-6 py-7 md:px-8 md:py-9">
+        <div className="mb-6 md:mb-8">
           {fullPage && (
             <a href="/#work" className="inline-flex items-center gap-2 text-sm font-semibold text-[#8C4BFF] hover:text-[#6F2BFF] mb-6">
               <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back to home

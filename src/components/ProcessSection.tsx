@@ -14,12 +14,11 @@ export default function ProcessSection() {
       <AeymotionBackground variant="process" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-        <div className="border-l border-t border-[#C4BACB]">
-          <h2 id="process-title" className="aey-heading border-b border-r border-[#C4BACB] px-6 py-7 text-3xl text-neutral-900 sm:text-4xl md:px-8 md:py-9 md:text-5xl lg:text-6xl">
+          <h2 id="process-title" className="aey-heading mb-6 text-3xl text-neutral-900 sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
             {PROCESS_SECTION.title}
           </h2>
 
-          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="grid grid-cols-1 border-l border-t border-[#C4BACB] sm:grid-cols-2 lg:grid-cols-3">
             {PROCESS_SECTION.steps.map((step, index) => {
               const Icon = stepIcons[index] ?? FileText;
 
@@ -39,7 +38,6 @@ export default function ProcessSection() {
               );
             })}
           </ol>
-        </div>
       </div>
     </section>
   );
