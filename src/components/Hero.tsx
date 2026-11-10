@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface HeroProps {
   onBookCall: () => void;
@@ -201,13 +201,6 @@ export default function Hero({ onBookCall }: HeroProps) {
           </a>
         </div>
       </div>
-      <a
-        href="#work"
-        aria-label="Scroll to selected work"
-        className="absolute bottom-5 left-1/2 z-10 flex size-11 -translate-x-1/2 items-center justify-center rounded-full text-[#766584] transition-colors hover:bg-white/80 hover:text-[#43266B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8C4BFF]"
-      >
-        <ChevronDown className="size-5" aria-hidden="true" />
-      </a>
     </section>
     <section aria-label="Worked with" className="overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
