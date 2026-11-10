@@ -86,7 +86,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={onBookCall}
-            className="px-5 py-2.5 bg-[#8C4BFF] hover:bg-[#6F2BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm hover:shadow-md transition-all duration-300 inline-flex items-center gap-2 cursor-pointer"
+            className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#43266B] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
             Book a call
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -97,7 +97,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={onBookCall}
-            className="px-3.5 py-1.5 bg-[#8C4BFF] text-white text-[10px] font-bold uppercase tracking-wider rounded-lg"
+            className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-3 py-2 text-xs font-semibold text-white shadow-md transition-colors hover:bg-[#43266B] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
             Book a call
           </button>
@@ -139,7 +139,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onBookCall();
                   }}
-                  className="w-full py-3 bg-[#8C4BFF] text-white text-xs font-bold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2"
+                  className="w-full inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#43266B] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
                 >
                   Book a call
                   <ArrowUpRight className="w-4 h-4" />
