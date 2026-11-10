@@ -180,7 +180,7 @@ export default function Hero({ onBookCall }: HeroProps) {
         </p>
         <h1
           id="hero-title"
-          className="mt-5 max-w-5xl font-['Inter',Arial,sans-serif] text-[clamp(1.625rem,6vw,4.25rem)] font-bold leading-[1.08] tracking-[-0.045em] text-[#17151B]"
+          className="mt-5 max-w-5xl text-balance text-[clamp(1.625rem,6vw,4rem)] aey-heading text-[#17151B]"
         >
           <span className="block">Creative video partner</span>
           <span className="block">for tech brands</span>
