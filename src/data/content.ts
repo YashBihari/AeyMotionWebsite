@@ -41,32 +41,32 @@ export const PROCESS_SECTION = {
     {
       number: "{ 1 }",
       title: "Discovery call",
-      description: "We start with a conversation about your product, who it’s for, and what you want the video to achieve. You walk us through the key features and share your brand assets, product screens, and any references you like. Together, we agree on the main message, project scope, price, and timeline before production begins."
+      description: "We discuss your product, audience, and goals, then agree on scope, price, and timeline."
     },
     {
       number: "{ 2 }",
       title: "Script",
-      description: "We turn your product’s value into a clear story, from the opening hook to the final call to action. The script outlines what viewers will read or hear and which product moments we’ll highlight. You review the wording and product details, and we refine the script with your feedback before moving into visuals."
+      description: "We write the story and refine it with your feedback."
     },
     {
       number: "{ 3 }",
       title: "Storyboard",
-      description: "We map the approved script into a sequence of still scenes, showing how your product screens, text, and supporting graphics will work together. This gives you a clear picture of the visual direction and story flow before animation begins. You review and approve the scenes so we’re aligned on what we’re bringing to life."
+      description: "You review the scenes and approve the visual direction before animation."
     },
     {
       number: "{ 4 }",
       title: "Animation",
-      description: "We bring the approved scenes to life with product UI animation, motion graphics, and transitions that guide attention to what matters. Music and sound effects help set the pace, with AI narration added if it’s part of your agreed scope. We then assemble everything into a first cut for you to review."
+      description: "We animate your product and add sound to create the first cut."
     },
     {
       number: "{ 5 }",
       title: "Review & revisions",
-      description: "You watch the first cut and share one combined list of feedback from your team, ideally with timestamps so we know exactly what to adjust. We refine the video within your package’s included feedback rounds and agreed scope. If a request changes an approved script or storyboard, we discuss any additional cost or timing with you before proceeding."
+      description: "You share one set of notes, and we revise the cut within your included rounds."
     },
     {
       number: "{ 6 }",
       title: "Final delivery",
-      description: "Once you approve the finished video, we check the visuals, audio, and export quality, then deliver the final files in the format and aspect ratio agreed at the start. You receive a download link with your files clearly organized and ready to publish on the channels we planned for."
+      description: "You get the approved video in the agreed formats, ready to publish."
     }
   ]
 };
