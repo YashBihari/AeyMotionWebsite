@@ -106,12 +106,6 @@ export const FAQ_SECTION = {
   title: "Frequently asked questions",
   items: [
     {
-      id: "01",
-      number: "{ 1 }",
-      question: "Which package is right for me?",
-      answer: "Choose Feature Spotlight for one feature or product update, Product Launch Video to introduce your product, or Product Explainer to explain a broader workflow and its benefits. If you’re unsure, share your goal and we’ll help you choose."
-    },
-    {
       id: "02",
       number: "{ 2 }",
       question: "What do you need from me to get started?",
