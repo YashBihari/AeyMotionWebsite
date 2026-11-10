@@ -62,7 +62,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
               alt="Aeymotion Logo" 
             />
           </div>
-          <span className="font-sans text-xl aey-heading text-neutral-900 group-hover:text-[#8C4BFF] transition-colors duration-300">
+          <span className="font-sans text-xl aey-heading text-neutral-900 group-hover:text-neutral-600 transition-colors duration-300">
             Aeymotion
           </span>
         </a>
@@ -128,7 +128,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-bold uppercase tracking-wider text-neutral-800 hover:text-[#8C4BFF] transition-colors"
+                  className="text-sm font-bold uppercase tracking-wider text-neutral-800 hover:text-neutral-950 transition-colors"
                 >
                   {link.label}
                 </a>

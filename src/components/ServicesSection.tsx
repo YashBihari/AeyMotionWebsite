@@ -199,7 +199,7 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
                         {pkg.includes.map(item => <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>)}
                       </ul>
                     </details>
-                    <button type="button" onClick={onBookCall} className="mt-1 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-[#7138BB] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7138BB]">
+                    <button type="button" onClick={onBookCall} className="mt-1 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7138BB]">
                       <ArrowUpRight size={16} aria-hidden="true" /> Book a call
                     </button>
                   </div>
@@ -241,7 +241,7 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
               <span className="w-5 h-5 rounded-full bg-purple-50 border border-purple-200/80 flex items-center justify-center text-[#8C4BFF] shrink-0 mt-0.5">
                 <Check className="w-3 h-3 stroke-[2.5]" />
               </span>
-              <p className="text-xs sm:text-sm text-[#64606B] leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
                 <strong className="font-bold text-[#171717] block sm:inline sm:mr-1">Structured feedback:</strong>
                 Two rounds for Feature Spotlight—before animation and on the first cut. Three rounds for Product Launch Video and Product Explainer—script, storyboard, and first cut.
               </p>
@@ -251,7 +251,7 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
               <span className="w-5 h-5 rounded-full bg-purple-50 border border-purple-200/80 flex items-center justify-center text-[#8C4BFF] shrink-0 mt-0.5">
                 <Check className="w-3 h-3 stroke-[2.5]" />
               </span>
-              <p className="text-xs sm:text-sm text-[#64606B] leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
                 <strong className="font-bold text-[#171717] block sm:inline sm:mr-1">Agreed pricing and delivery:</strong>
                 A fixed project price and delivery schedule confirmed before production. Scope changes or delayed feedback may affect both.
               </p>
@@ -261,7 +261,7 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
               <span className="w-5 h-5 rounded-full bg-purple-50 border border-purple-200/80 flex items-center justify-center text-[#8C4BFF] shrink-0 mt-0.5">
                 <Check className="w-3 h-3 stroke-[2.5]" />
               </span>
-              <p className="text-xs sm:text-sm text-[#64606B] leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
                 <strong className="font-bold text-[#171717] block sm:inline sm:mr-1">Your finished video:</strong>
                 Ownership of the final video after full payment, with no ongoing fees from Aeymotion. Any third-party asset licensing restrictions are disclosed upfront.
               </p>
@@ -271,7 +271,7 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
               <span className="w-5 h-5 rounded-full bg-purple-50 border border-purple-200/80 flex items-center justify-center text-[#8C4BFF] shrink-0 mt-0.5">
                 <Check className="w-3 h-3 stroke-[2.5]" />
               </span>
-              <p className="text-xs sm:text-sm text-[#64606B] leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
                 <strong className="font-bold text-[#171717] block sm:inline sm:mr-1">Direct collaboration:</strong>
                 Work directly with Yash throughout the project—no account manager in between.
               </p>

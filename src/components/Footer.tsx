@@ -45,7 +45,7 @@ export default function Footer({ onBookCall }: FooterProps) {
           <div className="pt-2">
             <a
               href={`mailto:${BRAND_LINKS.email}`}
-              className="inline-block text-xs font-mono font-bold text-[#E46BC5] hover:text-white border-b border-[#E46BC5] hover:border-white transition-colors duration-200 pb-0.5 focus:outline-none focus:ring-2 focus:ring-[#8C4BFF] rounded-xs"
+              className="inline-block text-xs font-mono font-bold text-neutral-300 hover:text-white border-b border-neutral-400 hover:border-white transition-colors duration-200 pb-0.5 focus:outline-none focus:ring-2 focus:ring-[#8C4BFF] rounded-xs"
             >
               {BRAND_LINKS.email}
             </a>
@@ -54,7 +54,7 @@ export default function Footer({ onBookCall }: FooterProps) {
 
         {/* Center column: Section Navigation Links */}
         <div className="flex flex-col gap-2.5 text-xs font-mono uppercase tracking-wider text-neutral-400">
-          <span className="text-[10px] font-bold text-[#8C4BFF] mb-1">NAVIGATION</span>
+          <span className="text-[10px] font-bold text-white mb-1">NAVIGATION</span>
           <a href="#work" onClick={(e) => handleScrollNav(e, 'work')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Work</a>
           <a href="/#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Offers</a>
           <a href="/#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Approach</a>
@@ -64,7 +64,7 @@ export default function Footer({ onBookCall }: FooterProps) {
 
         {/* Right column: Social links & Copyright */}
         <div className="flex flex-col gap-4 items-start md:items-end md:text-right">
-          <span className="text-[10px] font-mono font-bold text-[#8C4BFF] uppercase tracking-wider">CONNECT</span>
+          <span className="text-[10px] font-mono font-bold text-white uppercase tracking-wider">CONNECT</span>
           <div className="flex flex-wrap gap-4 text-xs font-mono uppercase tracking-wider text-neutral-400">
             <a href={BRAND_LINKS.dribbble} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">Dribbble</a>
             <a href={BRAND_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">LinkedIn</a>

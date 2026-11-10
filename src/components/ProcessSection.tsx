@@ -26,7 +26,7 @@ export default function ProcessSection() {
                 <li key={step.number} className="min-w-0 border-b border-r border-[#C4BACB] px-6 py-5 lg:px-8">
                   <div className="flex items-center gap-3">
                     <Icon size={20} strokeWidth={1.7} aria-hidden="true" className="shrink-0 text-[#7138BB]" />
-                    <h3 className="aey-heading min-w-0 text-2xl text-[#7138BB]">{step.title}</h3>
+                    <h3 className="aey-heading min-w-0 text-2xl text-neutral-900">{step.title}</h3>
                     <span aria-hidden="true" className="ml-auto shrink-0 font-mono text-xs text-neutral-500">{step.number}</span>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-700 md:text-base">{step.description}</p>

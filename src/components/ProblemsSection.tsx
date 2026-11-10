@@ -42,7 +42,7 @@ export default function ProblemsSection() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-[10px] font-bold text-[#8C4BFF] uppercase tracking-wider">
+                    <span className="font-mono text-[10px] font-bold text-neutral-700 uppercase tracking-wider">
                       PROBLEM // {prob.id}
                     </span>
                     <div className="w-7 h-7 rounded-lg bg-neutral-100 group-hover:bg-[#8C4BFF]/15 text-neutral-400 group-hover:text-[#8C4BFF] group-hover:scale-110 flex items-center justify-center transition-all duration-300">
@@ -50,7 +50,7 @@ export default function ProblemsSection() {
                     </div>
                   </div>
 
-                  <h3 className="text-base font-bold uppercase text-neutral-900 mb-2 group-hover:text-[#8C4BFF] transition-colors duration-200">
+                  <h3 className="text-base font-bold uppercase text-neutral-900 mb-2 group-hover:text-neutral-600 transition-colors duration-200">
                     {prob.title}
                   </h3>
 

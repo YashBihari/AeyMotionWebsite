@@ -171,18 +171,18 @@ export default function Hero({ onBookCall }: HeroProps) {
     >
       <HeroBackdrop />
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
-        <p className="inline-flex items-center gap-2 rounded-full border border-[#DDD6E5] bg-white/75 px-3.5 py-2 text-xs font-medium text-[#17151B] shadow-xs">
+        <p className="inline-flex items-center gap-2 rounded-full border border-[#DDD6E5] bg-white/75 px-3.5 py-2 text-xs font-medium text-neutral-900 shadow-xs">
           <span aria-hidden="true" className="size-1.5 rounded-full bg-[#00BD8B] shadow-[0_0_6px_1px_rgba(0,189,139,0.36)]" />
           Available for work
         </p>
         <h1
           id="hero-title"
-          className="mt-5 max-w-5xl text-balance text-[clamp(1.625rem,6vw,4rem)] aey-heading text-[#17151B]"
+          className="mt-5 max-w-5xl text-balance text-[clamp(1.625rem,6vw,4rem)] aey-heading text-neutral-900"
         >
           <span className="block">Creative video partner</span>
           <span className="block">for tech brands</span>
         </h1>
-        <p className="mt-5 max-w-lg text-pretty font-['Inter',Arial,sans-serif] text-sm leading-relaxed text-[#514B58] sm:text-base">
+        <p className="mt-5 max-w-lg text-pretty font-['Inter',Arial,sans-serif] text-sm leading-relaxed text-neutral-600 sm:text-base">
           We create launch videos and explainers that make complex products easy to understand and give people a reason to care.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -195,7 +195,7 @@ export default function Hero({ onBookCall }: HeroProps) {
           </button>
           <a
             href="#work"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#DDD6E5] bg-white/70 px-5 py-2.5 text-sm font-semibold text-[#322A3A] transition-colors hover:border-[#A98BD5] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#DDD6E5] bg-white/70 px-5 py-2.5 text-sm font-semibold text-neutral-800 transition-colors hover:border-[#A98BD5] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
             See our work
           </a>

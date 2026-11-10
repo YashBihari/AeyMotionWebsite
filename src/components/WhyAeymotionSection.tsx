@@ -45,7 +45,7 @@ export default function WhyAeymotionSection() {
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold uppercase text-neutral-900 group-hover:text-[#8C4BFF] mb-1.5 transition-colors duration-200">
+                  <h3 className="text-base font-bold uppercase text-neutral-900 group-hover:text-neutral-600 mb-1.5 transition-colors duration-200">
                     {item.title}
                   </h3>
                   <p className="text-xs text-neutral-600 leading-relaxed font-normal">
