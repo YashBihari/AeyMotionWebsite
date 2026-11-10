@@ -1,8 +1,8 @@
-import { MessagesSquare, FileText, PanelsTopLeft, Clapperboard, MessageSquareCheck, PackageCheck } from 'lucide-react';
+import { MessageCircle, FileText, LayoutGrid, Play, Check, Download } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import { PROCESS_SECTION } from '../data/content';
 
-const stepIcons = [MessagesSquare, FileText, PanelsTopLeft, Clapperboard, MessageSquareCheck, PackageCheck];
+const stepIcons = [MessageCircle, FileText, LayoutGrid, Play, Check, Download];
 
 export default function ProcessSection() {
   return (
