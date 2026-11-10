@@ -116,7 +116,10 @@ export default function ServicesSection() {
     <section 
       id="services"
       aria-labelledby="services-title"
-      className="scroll-mt-24 pt-[88px] md:pt-[120px] pb-12 md:pb-16 bg-hero-surface font-sans relative"
+      className="scroll-mt-24 pt-[88px] md:pt-[120px] pb-12 md:pb-16 font-sans relative"
+      style={{
+        background: 'linear-gradient(to bottom, var(--color-page-surface) 0, var(--color-hero-surface) 88px, var(--color-hero-surface) calc(100% - 48px), var(--color-page-surface) 100%)',
+      }}
     >
       <AeymotionBackground variant="services" />
       
