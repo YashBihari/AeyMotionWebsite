@@ -8,7 +8,7 @@ export default function FAQSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="scroll-mt-24 bg-[#F1EFF3] px-5 py-14 font-sans sm:px-8 md:py-20">
+    <section id="faq" aria-labelledby="faq-title" className="scroll-mt-24 bg-page-surface px-5 py-14 font-sans sm:px-8 md:py-20">
       <div className="mx-auto max-w-[740px]">
         <h2 id="faq-title" className="aey-heading mb-8 text-center text-4xl text-neutral-900 md:mb-12 md:text-5xl">
           FAQs

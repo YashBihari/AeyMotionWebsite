@@ -44,7 +44,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled 
-          ? "bg-[#FBF8FF]/85 backdrop-blur-md border-b border-purple-200/60 py-3 shadow-xs" 
+          ? "bg-page-surface/85 backdrop-blur-md border-b border-purple-200/60 py-3 shadow-xs" 
           : "bg-transparent py-5"
       }`}
     >

@@ -27,6 +27,7 @@
   --color-aey-purple: #6F2BFF;
 
   /* Refined Light Editorial theme colors */
+  --color-page-surface: #EFEFEF;
   --color-bg-main: #FAF9F5;
   --color-bg-secondary: #F4F3EE;
   --color-bg-card: #FFFFFF;
@@ -44,7 +45,7 @@
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #FBF8FF;
+    background-color: var(--color-page-surface);
     color: #171717;
     font-family: var(--font-sans);
   }
