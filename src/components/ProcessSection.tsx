@@ -24,13 +24,11 @@ export default function ProcessSection() {
 
               return (
                 <li key={step.number} className="min-w-0 border-b border-r border-[#C4BACB] px-6 py-5 lg:px-8">
-                  <div className="mb-4 flex items-center justify-between gap-4">
-                    <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center border border-[#C4BACB] text-[#7138BB]">
-                      <Icon size={17} strokeWidth={1.7} />
-                    </span>
-                    <span aria-hidden="true" className="font-mono text-xs text-neutral-500">{step.number}</span>
+                  <div className="flex items-center gap-3">
+                    <Icon size={20} strokeWidth={1.7} aria-hidden="true" className="shrink-0 text-[#7138BB]" />
+                    <h3 className="aey-heading min-w-0 text-2xl text-[#7138BB]">{step.title}</h3>
+                    <span aria-hidden="true" className="ml-auto shrink-0 font-mono text-xs text-neutral-500">{step.number}</span>
                   </div>
-                  <h3 className="aey-heading text-2xl text-[#7138BB]">{step.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-700 md:text-base">{step.description}</p>
                 </li>
               );
