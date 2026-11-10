@@ -167,7 +167,7 @@ export default function Hero({ onBookCall }: HeroProps) {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative isolate flex min-h-svh flex-col items-center gap-10 overflow-hidden bg-white px-6 pb-8 pt-24 text-center sm:gap-14 sm:px-10"
+      className="relative isolate flex min-h-svh flex-col items-center gap-10 overflow-hidden bg-page-surface px-6 pb-8 pt-24 text-center sm:gap-14 sm:px-10"
     >
       <HeroBackdrop />
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center pb-8 sm:pb-10">

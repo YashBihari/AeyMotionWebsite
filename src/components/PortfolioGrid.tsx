@@ -27,7 +27,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
 
   return (
     <>
-    <section id="work" className={`${fullPage ? 'pt-28 md:pt-36 pb-14 md:pb-20 bg-transparent' : 'py-10 md:py-14 bg-white'} font-sans relative overflow-hidden`}>
+    <section id="work" className={`${fullPage ? 'pt-28 md:pt-36 pb-14 md:pb-20 bg-transparent' : 'py-10 md:py-14 bg-page-surface'} font-sans relative overflow-hidden`}>
       {/* Background system */}
       <AeymotionBackground variant="work" />
 
