@@ -41,7 +41,7 @@ export const PROCESS_SECTION = {
     {
       number: "{ 1 }",
       title: "Discovery call",
-      description: "We discuss your product, audience, and goals, then agree on scope, price, and timeline."
+      description: "We agree on your goals, scope, price, and timeline."
     },
     {
       number: "{ 2 }",
