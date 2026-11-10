@@ -111,7 +111,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
         </div>
 
         {limit !== undefined && PROJECTS.length > limit && (
-          <div className="mx-auto flex justify-center border border-t-0 border-[#C4BACB] px-6 py-5 md:w-4/5">
+          <div className="mx-auto flex justify-center px-6 py-5 md:w-4/5">
             <a
               href="/portfolio"
               className="group/roll inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#DDD6E5] bg-white/70 px-5 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
