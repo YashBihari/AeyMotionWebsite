@@ -9,25 +9,23 @@ function ProcessCell({ step }: { step: ProcessStep }) {
   const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const size = useMotionValue(1);
   const rotateX = useSpring(x, { stiffness: 230, damping: 24 });
   const rotateY = useSpring(y, { stiffness: 230, damping: 24 });
-  const scale = useSpring(size, { stiffness: 260, damping: 26 });
 
   const tilt = (event: PointerEvent<HTMLLIElement>) => {
     if (reduceMotion || event.pointerType !== 'mouse') return;
     const rect = event.currentTarget.getBoundingClientRect();
     const horizontal = Math.max(-1, Math.min(1, ((event.clientX - rect.left) / rect.width - .5) * 2));
     const vertical = Math.max(-1, Math.min(1, ((event.clientY - rect.top) / rect.height - .5) * 2));
-    x.set(-vertical * 9);
-    y.set(horizontal * 9);
-    size.set(.95);
+    const distance = Math.hypot(horizontal, vertical);
+    const tiltWeight = Math.min(1, Math.max(0, (distance - .15) / .85));
+    x.set(-vertical * 9 * tiltWeight);
+    y.set(horizontal * 9 * tiltWeight);
   };
 
   const reset = () => {
     x.set(0);
     y.set(0);
-    size.set(1);
   };
 
   return (
@@ -42,7 +40,7 @@ function ProcessCell({ step }: { step: ProcessStep }) {
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,#FFD5A0,#F5A459_23%,#D68A98_48%,#A35DCD_73%,#7027F1)] opacity-0 motion-safe:transition-opacity motion-safe:duration-300 motion-safe:group-hover:opacity-100"
       />
       <motion.div
-        style={reduceMotion ? undefined : { rotateX, rotateY, scale, transformPerspective: 700 }}
+        style={reduceMotion ? undefined : { rotateX, rotateY, transformPerspective: 700 }}
         className="relative h-full bg-page-surface px-6 py-5 motion-safe:transition-shadow motion-safe:duration-300 motion-safe:group-hover:shadow-[0_6px_20px_#25143726] lg:px-8"
       >
         <div className="flex items-center gap-3">
@@ -69,7 +67,7 @@ export default function ProcessSection() {
           {PROCESS_SECTION.title}
         </h2>
 
-        <ol className="grid grid-cols-1 border-l border-t border-[#C4BACB] sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="relative grid grid-cols-1 border-l border-t border-[#C4BACB] after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-20 after:h-px after:bg-[#C4BACB] sm:grid-cols-2 lg:grid-cols-3">
           {PROCESS_SECTION.steps.map(step => <ProcessCell key={step.number} step={step} />)}
         </ol>
       </div>
