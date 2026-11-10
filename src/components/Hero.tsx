@@ -210,7 +210,7 @@ export default function Hero({ onBookCall }: HeroProps) {
         Trusted by scaling brands
       </p>
     </section>
-    <section aria-labelledby="trusted-brands" className="relative overflow-hidden">
+    <section aria-labelledby="trusted-brands" className="relative overflow-hidden border-b border-[#C4BACB]">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 md:px-12">
         <div className="aey-client-marquee flex w-full" data-paused={logosPaused}>
           {[false, true].map(copy => (
