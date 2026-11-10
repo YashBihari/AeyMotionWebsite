@@ -177,7 +177,7 @@ export default function Hero({ onBookCall }: HeroProps) {
         </p>
         <h1
           id="hero-title"
-          className="mt-5 max-w-5xl text-balance text-[clamp(1.21875rem,3.6vw,2.8125rem)] aey-hero-heading text-neutral-900"
+          className="mt-5 max-w-5xl text-balance text-[clamp(1.625rem,4.8vw,3.75rem)] aey-hero-heading text-neutral-900"
         >
           <span className="block">Creative video partner</span>
           <span className="block">for tech brands ready to</span>
