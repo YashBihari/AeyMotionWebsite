@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import OfferCardCover from './OfferCardCover';
@@ -69,18 +69,11 @@ const PACKAGES_DATA: PackageOfferData[] = [
       '2 revision rounds',
       'Final exports for web & social'
     ]
-  },
-  {
-    id: 'logo-animation',
-    title: 'Logo animation',
-    description: 'Bring your logo to life with a custom motion reveal for videos, social posts, and presentations.',
-    includes: ['Logo motion concept', 'Animation using your existing logo', 'Final video export']
   }
 ];
 
 export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const reduceMotion = useReducedMotion();
   const activeService = PACKAGES_DATA[activeIndex];
 
   const rawPanelRotateX = useMotionValue(0);
@@ -136,11 +129,11 @@ export default function ServicesSection() {
           </h2>
 
           <p className="text-neutral-600 font-normal text-sm md:text-base mx-auto mt-3 leading-relaxed max-w-2xl">
-            Launch a product, explain a feature, or bring your logo to life.
+            Spotlight a feature, launch your product, or explain how it works.
           </p>
         </div>
 
-        <div className="grid items-start gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
+        <div className="grid items-stretch gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
           <div aria-label="Video services" className="min-w-0">
             {PACKAGES_DATA.map((pkg, index) => {
               const active = index === activeIndex;
@@ -186,19 +179,8 @@ export default function ServicesSection() {
             })}
           </div>
 
-          <div aria-hidden="true" className="relative grid aspect-[5/4] place-items-center overflow-hidden rounded-xl border border-neutral-300/70 bg-[#F6F6F9]">
-            {activeService.id === 'logo-animation' ? (
-              <motion.img
-                src="/logo.svg"
-                alt=""
-                className="h-auto w-[22%] max-w-28"
-                initial={reduceMotion ? false : { opacity: 0, scale: .65, rotate: -18 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: reduceMotion ? 0 : .5, ease: 'easeOut' }}
-              />
-            ) : (
-              <OfferCardCover key={activeService.id} index={activeIndex} standalone />
-            )}
+          <div aria-hidden="true" className="relative aspect-[5/4] min-w-0 overflow-hidden rounded-xl border border-neutral-300/70 bg-[#F6F6F9] md:aspect-auto">
+            <OfferCardCover key={activeService.id} index={activeIndex} standalone />
           </div>
         </div>
 
