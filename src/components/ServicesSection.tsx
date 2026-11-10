@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
 import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
-import OfferCardCover from './OfferCardCover';
+import { PROJECTS } from '../data/projects';
 
 interface PackageOfferData {
   id: string;
   title: string;
+  previewProjectId: string;
   description: string;
   duration?: string;
   timeline?: string;
@@ -17,6 +18,7 @@ interface PackageOfferData {
 const PACKAGES_DATA: PackageOfferData[] = [
   {
     id: 'feature-spotlight',
+    previewProjectId: 'yc-safe',
     title: 'Feature spotlight',
     description: 'Put features in the spotlight.',
     duration: 'Up to 15 seconds',
@@ -35,6 +37,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
   },
   {
     id: 'product-launch-video',
+    previewProjectId: 'kinetic-ai',
     title: 'Product launch',
     description: 'Introduce your product. Give people a reason to care.',
     duration: 'Up to 45 seconds',
@@ -54,6 +57,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
   },
   {
     id: 'product-explainer',
+    previewProjectId: 'aura-design',
     title: 'Product explainer',
     description: 'Make your product easy to understand.',
     duration: '60–90 seconds',
@@ -79,6 +83,7 @@ export default function ServicesSection() {
   const reduceMotion = useReducedMotion();
   const disclosureTransition = { duration: reduceMotion ? 0 : .3, ease: 'easeInOut' as const };
   const activeService = PACKAGES_DATA[activeIndex];
+  const preview = PROJECTS.find(project => project.id === activeService.previewProjectId);
 
   const rawPanelRotateX = useMotionValue(0);
   const rawPanelRotateY = useMotionValue(0);
@@ -212,8 +217,19 @@ export default function ServicesSection() {
             })}
           </div>
 
-          <div aria-hidden="true" className="relative aspect-[5/4] min-w-0 overflow-hidden rounded-xl border border-neutral-300/70 bg-[#F6F6F9] md:aspect-auto">
-            <OfferCardCover key={activeService.id} index={activeIndex} standalone />
+          <div aria-hidden="true" className="relative aspect-[5/4] min-w-0 overflow-hidden rounded-xl border border-neutral-300/70 bg-neutral-950 md:aspect-auto">
+            {preview && (
+              <video
+                key={preview.id}
+                src={preview.previewVideo}
+                autoPlay={!reduceMotion}
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 h-full w-full object-contain"
+              />
+            )}
           </div>
         </div>
 
