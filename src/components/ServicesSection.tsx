@@ -141,21 +141,6 @@ export default function ServicesSection() {
         </div>
 
         <div className="grid items-start gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
-          <div aria-hidden="true" className="relative grid aspect-[5/4] place-items-center overflow-hidden rounded-xl border border-neutral-300/70 bg-[#F6F6F9]">
-            {activeService.id === 'logo-animation' ? (
-              <motion.img
-                src="/logo.svg"
-                alt=""
-                className="h-auto w-[22%] max-w-28"
-                initial={reduceMotion ? false : { opacity: 0, scale: .65, rotate: -18 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: reduceMotion ? 0 : .5, ease: 'easeOut' }}
-              />
-            ) : (
-              <OfferCardCover key={activeService.id} index={activeIndex} standalone />
-            )}
-          </div>
-
           <div aria-label="Video services" className="min-w-0">
             {PACKAGES_DATA.map((pkg, index) => {
               const active = index === activeIndex;
@@ -199,6 +184,21 @@ export default function ServicesSection() {
                 </div>
               );
             })}
+          </div>
+
+          <div aria-hidden="true" className="relative grid aspect-[5/4] place-items-center overflow-hidden rounded-xl border border-neutral-300/70 bg-[#F6F6F9]">
+            {activeService.id === 'logo-animation' ? (
+              <motion.img
+                src="/logo.svg"
+                alt=""
+                className="h-auto w-[22%] max-w-28"
+                initial={reduceMotion ? false : { opacity: 0, scale: .65, rotate: -18 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: reduceMotion ? 0 : .5, ease: 'easeOut' }}
+              />
+            ) : (
+              <OfferCardCover key={activeService.id} index={activeIndex} standalone />
+            )}
           </div>
         </div>
 
