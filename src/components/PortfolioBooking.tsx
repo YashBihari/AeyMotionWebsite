@@ -2,8 +2,8 @@ import { Fragment, useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import RollingLabel from './RollingLabel';
 
-const before = 'You’ve built something worth showing. The next challenge is helping people see what makes it useful. We work with tech teams to find the clearest story in their product, then turn that story into a video. A focused feature spotlight can make a new release click. A launch film can give people a reason to stop and watch. An explainer can make a complex workflow';
-const after = 'you’re building, who it’s for, and what you want people to do next. We’ll talk through the idea, the right format, and what it takes to get it ready for launch. You’ll work directly with us from the first conversation to the final cut.';
+const before = 'You’ve built something worth showing. We help tech teams find the story that makes their product click, then bring it to life with video. A feature spotlight shows what’s new. A launch film gives people a reason to watch. A product explainer makes a complex workflow feel simple.';
+const after = 'Tell us what you’re building, who it’s for, and what you want people to do next. We’ll talk through the message, the right format, and what it takes to get ready for launch. From the first conversation to the final cut, you’ll work directly with us.';
 
 const palette = [[169, 76, 18], [163, 65, 112], [112, 39, 241]];
 
@@ -122,10 +122,10 @@ export default function PortfolioBooking() {
     <section id="booking" aria-labelledby="booking-title" className="scroll-mt-24 bg-page-surface px-6 py-14 md:px-12 md:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <p ref={textRef} className="relative text-pretty text-lg leading-[1.5] tracking-[-.025em] text-neutral-500 sm:text-xl md:text-[clamp(1.375rem,2.35vw,2rem)]">
-          <ReactiveWords text={before} />{' '}
-          <span className="lg:my-2 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-3">
-            <span className="lg:text-right"><ReactiveWords text="feel simple." /></span>{' '}
-            <span className="my-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center lg:my-0">
+          <span className="block text-balance"><ReactiveWords text={before} /></span>
+          <span className="my-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+            <span className="hidden text-right lg:block"><ReactiveWords text="Give your story motion." /></span>{' '}
+            <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center">
               <mark id="booking-title" className="box-decoration-clone bg-[#E8DBFF] px-1 font-semibold text-neutral-950">
                 Your next launch starts here.
               </mark>
@@ -133,9 +133,9 @@ export default function PortfolioBooking() {
                 <RollingLabel text="Book a call" /> <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             </span>{' '}
-            <span><ReactiveWords text="Show us what" /></span>
+            <span className="hidden lg:block"><ReactiveWords text="Tell us what’s next." /></span>
           </span>{' '}
-          <ReactiveWords text={after} />
+          <span className="block text-balance"><ReactiveWords text={after} /></span>
         </p>
       </div>
     </section>
