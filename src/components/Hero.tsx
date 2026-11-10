@@ -145,6 +145,7 @@ function HeroBackdrop() {
 
 export default function Hero({ onBookCall }: HeroProps) {
   return (
+    <>
     <section
       id="hero"
       aria-labelledby="hero-title"
@@ -177,12 +178,6 @@ export default function Hero({ onBookCall }: HeroProps) {
             See our work
           </a>
         </div>
-        <p className="mt-9 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[#5E5668]">
-          <span>Worked with:</span>
-          <span className="font-semibold">Seorce</span>
-          <span className="font-semibold">Essenite</span>
-          <span className="font-semibold">Melaya</span>
-        </p>
       </div>
       <a
         href="#work"
@@ -192,5 +187,20 @@ export default function Hero({ onBookCall }: HeroProps) {
         <ChevronDown className="size-5" aria-hidden="true" />
       </a>
     </section>
+    <section aria-label="Worked with" className="overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="aey-rule-top aey-rule-bottom grid grid-cols-2 border-y border-l border-[#C4BACB] sm:grid-cols-4">
+          <p className="flex items-center justify-center border-r border-[#C4BACB] px-3 py-5 text-center text-sm text-neutral-600">
+            Worked with:
+          </p>
+          {['Seorce', 'Essenite', 'Melaya'].map((name, index) => (
+            <p key={name} className={`aey-heading flex items-center justify-center border-r border-[#C4BACB] px-3 py-5 text-center text-lg text-neutral-900 sm:text-xl ${index > 0 ? 'border-t sm:border-t-0' : ''}`}>
+              {name}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+    </>
   );
 }
