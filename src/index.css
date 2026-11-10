@@ -171,3 +171,12 @@
   line-height: 1.07;
   letter-spacing: -.055em;
 }
+
+@keyframes aey-client-scroll {
+  to { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aey-client-marquee { animation: aey-client-scroll 24s linear infinite; }
+  .aey-client-marquee[data-paused="true"] { animation-play-state: paused; }
+}

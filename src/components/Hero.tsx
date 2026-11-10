@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Pause, Play } from 'lucide-react';
 
 interface HeroProps {
   onBookCall: () => void;
@@ -162,6 +162,8 @@ function HeroBackdrop() {
 }
 
 export default function Hero({ onBookCall }: HeroProps) {
+  const [logosPaused, setLogosPaused] = useState(false);
+
   return (
     <>
     <section
@@ -208,16 +210,28 @@ export default function Hero({ onBookCall }: HeroProps) {
         Trusted by scaling brands
       </p>
     </section>
-    <section aria-labelledby="trusted-brands" className="overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="relative after:pointer-events-none after:absolute after:-inset-x-[100vw] after:-bottom-px after:h-px after:bg-[#C4BACB] before:pointer-events-none before:absolute before:-inset-x-[100vw] before:-top-px before:h-px before:bg-[#C4BACB] grid grid-cols-3 border-y border-l border-[#C4BACB]">
-          {clientLogos.map(({ name, src, width, height }) => (
-            <div key={name} className="flex h-[192px] min-w-0 items-center justify-center border-r border-[#C4BACB] px-3 sm:h-[228px] sm:px-6">
-              <img src={src} alt={name} width={width} height={height} className="h-6 w-auto max-w-full object-contain invert-[.40] sm:h-9" />
+    <section aria-labelledby="trusted-brands" className="relative overflow-hidden">
+      <div className="mx-auto max-w-7xl overflow-hidden px-6 md:px-12">
+        <div className="aey-client-marquee flex w-full" data-paused={logosPaused}>
+          {[false, true].map(copy => (
+            <div key={String(copy)} aria-hidden={copy || undefined} className={`flex w-full shrink-0 ${copy ? 'motion-reduce:hidden' : ''}`}>
+              {clientLogos.map(({ name, src, width, height }) => (
+                <div key={name} className="flex h-[192px] min-w-0 flex-1 items-center justify-center px-3 sm:h-[228px] sm:px-6">
+                  <img src={src} alt={copy ? '' : name} width={width} height={height} className="h-6 w-auto max-w-full object-contain invert-[.40] sm:h-9" />
+                </div>
+              ))}
             </div>
           ))}
         </div>
       </div>
+      <button
+        type="button"
+        aria-label={logosPaused ? 'Resume client logo scrolling' : 'Pause client logo scrolling'}
+        onClick={() => setLogosPaused(paused => !paused)}
+        className="absolute bottom-3 right-6 grid size-8 cursor-pointer place-items-center rounded-full text-neutral-500 hover:bg-white/70 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:hidden md:right-12"
+      >
+        {logosPaused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+      </button>
     </section>
     </>
   );
