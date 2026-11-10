@@ -27,14 +27,14 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
 
   return (
     <>
-    <section id="work" className={`${fullPage ? 'pt-28 md:pt-36 pb-14 md:pb-20' : 'pt-10 md:pt-14'} bg-transparent font-sans relative overflow-hidden scroll-mt-24`}>
+    <section id="work" className={`${fullPage ? 'pt-28 md:pt-36 pb-14 md:pb-20' : 'py-10 md:py-14'} bg-transparent font-sans relative overflow-hidden`}>
       {/* Background system */}
       <AeymotionBackground variant="work" />
 
-      <div className="relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="border border-b-0 border-[#C4BACB] px-6 py-7 md:px-8 md:py-9">
+        <div className="aey-rule-top border border-b-0 border-[#C4BACB] px-6 py-7 md:px-8 md:py-9">
           {fullPage && (
             <a href="/#work" className="inline-flex items-center gap-2 text-sm font-semibold text-[#8C4BFF] hover:text-[#6F2BFF] mb-6">
               <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back to home
@@ -55,7 +55,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
         </div>
 
         {/* Homepage selection or complete portfolio, sharing the same video player. */}
-        <div className="grid grid-cols-1 border-l border-t border-[#C4BACB] md:grid-cols-2">
+        <div className="aey-work-rules aey-rule-top grid grid-cols-1 border-l border-t border-[#C4BACB] md:grid-cols-2">
           {visibleProjects.map((project, idx) => (
             <motion.div
               key={project.id}
@@ -64,7 +64,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
               onClick={() => setSelectedProject(project)}
-              className="group flex min-w-0 cursor-pointer flex-col border-b border-r border-[#C4BACB]"
+              className="aey-rule-cell group flex min-w-0 cursor-pointer flex-col border-b border-r border-[#C4BACB]"
             >
               {/* Media Container with muted looping video */}
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-900">
@@ -97,7 +97,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
               </div>
 
               {/* Title & Description just below each video */}
-              <div className="flex-1 border-t border-[#C4BACB] px-6 py-5 md:px-8">
+              <div className="aey-cell-top flex-1 border-t border-[#C4BACB] px-6 py-5 md:px-8">
                 <h3 className="text-lg md:text-xl font-bold text-neutral-900 tracking-tight group-hover:text-[#8C4BFF] transition-colors duration-200">
                   {project.name}
                 </h3>
@@ -110,7 +110,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
         </div>
 
         {limit !== undefined && PROJECTS.length > limit && (
-          <div className="flex justify-center border border-t-0 border-[#C4BACB] px-6 py-5">
+          <div className="aey-rule-bottom flex justify-center border border-t-0 border-[#C4BACB] px-6 py-5">
             <a
               href="/portfolio"
               className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-white/70 hover:bg-[#F1E7FF] text-[#6F2BFF] border border-[#8C4BFF]/25 hover:border-[#8C4BFF]/50 backdrop-blur-sm text-xs font-bold uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"

@@ -164,3 +164,42 @@
   line-height: 1.07;
   letter-spacing: -.055em;
 }
+
+
+/* Draw only the horizontal rules into the gutters; section content stays inset. */
+.aey-rule-top, .aey-rule-bottom, .aey-rule-cell, .aey-cell-top, .aey-cell-bottom {
+  position: relative;
+}
+
+.aey-rule-top::before, .aey-rule-bottom::after, .aey-rule-cell::after,
+.aey-cell-top::before, .aey-cell-bottom::after {
+  content: '';
+  position: absolute;
+  inset-inline: var(--rule-start, 0) var(--rule-end, 0);
+  height: 1px;
+  background: #C4BACB;
+  pointer-events: none;
+}
+
+.aey-rule-top::before, .aey-cell-top::before { top: -1px; }
+.aey-rule-bottom::after, .aey-rule-cell::after, .aey-cell-bottom::after { bottom: -1px; }
+.aey-rule-top::before, .aey-rule-bottom::after { inset-inline: -100vw; }
+
+@media (width < 768px) {
+  .aey-work-rules > .aey-rule-cell { --rule-start: -100vw; --rule-end: -100vw; }
+}
+@media (width >= 768px) {
+  .aey-work-rules > .aey-rule-cell:nth-child(2n + 1) { --rule-start: -100vw; }
+  .aey-work-rules > .aey-rule-cell:nth-child(2n) { --rule-end: -100vw; }
+}
+@media (width < 640px) {
+  .aey-process-rules > .aey-rule-cell { --rule-start: -100vw; --rule-end: -100vw; }
+}
+@media (640px <= width < 1024px) {
+  .aey-process-rules > .aey-rule-cell:nth-child(2n + 1) { --rule-start: -100vw; }
+  .aey-process-rules > .aey-rule-cell:nth-child(2n) { --rule-end: -100vw; }
+}
+@media (width >= 1024px) {
+  .aey-process-rules > .aey-rule-cell:nth-child(3n + 1) { --rule-start: -100vw; }
+  .aey-process-rules > .aey-rule-cell:nth-child(3n) { --rule-end: -100vw; }
+}
