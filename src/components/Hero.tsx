@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Pause, Play } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface HeroProps {
   onBookCall: () => void;
@@ -162,8 +162,6 @@ function HeroBackdrop() {
 }
 
 export default function Hero({ onBookCall }: HeroProps) {
-  const [logosPaused, setLogosPaused] = useState(false);
-
   return (
     <>
     <section
@@ -212,7 +210,7 @@ export default function Hero({ onBookCall }: HeroProps) {
     </section>
     <section aria-labelledby="trusted-brands" className="relative overflow-hidden border-b border-[#C4BACB]">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 md:px-12">
-        <div className="aey-client-marquee flex w-full" data-paused={logosPaused}>
+        <div className="aey-client-marquee flex w-full">
           {[false, true].map(copy => (
             <div key={String(copy)} aria-hidden={copy || undefined} className={`flex w-full shrink-0 ${copy ? 'motion-reduce:hidden' : ''}`}>
               {clientLogos.map(({ name, src, width, height }) => (
@@ -224,14 +222,6 @@ export default function Hero({ onBookCall }: HeroProps) {
           ))}
         </div>
       </div>
-      <button
-        type="button"
-        aria-label={logosPaused ? 'Resume client logo scrolling' : 'Pause client logo scrolling'}
-        onClick={() => setLogosPaused(paused => !paused)}
-        className="absolute bottom-3 right-6 grid size-8 cursor-pointer place-items-center rounded-full text-neutral-500 hover:bg-white/70 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:hidden md:right-12"
-      >
-        {logosPaused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
-      </button>
     </section>
     </>
   );
