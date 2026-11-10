@@ -30,7 +30,7 @@ function ProcessCell({ step, shaded }: { step: ProcessStep; shaded: boolean }) {
 
   return (
     <li
-      className="group relative isolate min-w-0"
+      className={`group relative isolate min-w-0 ${shaded ? '' : 'after:pointer-events-none after:absolute after:inset-0 after:border after:border-hero-surface'}`}
       onPointerMove={tilt}
       onPointerLeave={reset}
       onPointerCancel={reset}
@@ -67,7 +67,7 @@ export default function ProcessSection() {
           {PROCESS_SECTION.title}
         </h2>
 
-        <ol className="relative grid grid-cols-1 border border-[#C4BACB] sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {PROCESS_SECTION.steps.map((step, index) => <ProcessCell key={step.number} step={step} shaded={index % 2 === 1} />)}
         </ol>
       </div>
