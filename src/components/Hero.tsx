@@ -5,6 +5,27 @@ interface HeroProps {
   onBookCall: () => void;
 }
 
+const clientLogos = [
+  {
+    "name": "Seorce",
+    "src": "/Assets/seorce-logo-bw.png",
+    "width": 587,
+    "height": 140
+  },
+  {
+    "name": "Essenite",
+    "src": "/Assets/essenite-logo-bw.png",
+    "width": 772,
+    "height": 145
+  },
+  {
+    "name": "Melaya",
+    "src": "/Assets/melaya-logo-bw.png",
+    "width": 551,
+    "height": 133
+  }
+];
+
 const TILE_SIZE = 15;
 const REVEAL_RADIUS = 96;
 const HOLD_MS = 95;
@@ -191,10 +212,10 @@ export default function Hero({ onBookCall }: HeroProps) {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <p className="px-3 py-3 text-center text-sm text-neutral-600">Worked with:</p>
         <div className="relative after:pointer-events-none after:absolute after:-inset-x-[100vw] after:-bottom-px after:h-px after:bg-[#C4BACB] before:pointer-events-none before:absolute before:-inset-x-[100vw] before:-top-px before:h-px before:bg-[#C4BACB] grid grid-cols-3 border-y border-l border-[#C4BACB]">
-          {['Seorce', 'Essenite', 'Melaya'].map((name) => (
-            <p key={name} className="aey-heading flex items-center justify-center border-r border-[#C4BACB] px-2 py-5 text-center text-base text-neutral-900 sm:text-xl">
-              {name}
-            </p>
+          {clientLogos.map(({ name, src, width, height }) => (
+            <div key={name} className="flex min-w-0 items-center justify-center border-r border-[#C4BACB] px-3 py-5 sm:px-6">
+              <img src={src} alt={name} width={width} height={height} className="h-6 w-auto max-w-full object-contain sm:h-9" />
+            </div>
           ))}
         </div>
       </div>
