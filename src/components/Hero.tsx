@@ -204,7 +204,7 @@ export default function Hero({ onBookCall }: HeroProps) {
           </a>
         </div>
       </div>
-      <p id="trusted-brands" className="relative z-10 text-sm font-semibold text-neutral-900 sm:text-base">
+      <p id="trusted-brands" className="relative -top-3 z-10 text-sm font-bold text-neutral-900 sm:text-base">
         Trusted by scaling brands
       </p>
     </section>
