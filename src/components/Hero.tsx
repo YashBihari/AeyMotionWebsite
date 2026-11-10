@@ -156,13 +156,6 @@ function HeroBackdrop() {
       aria-hidden="true"
       className="pointer-events-none absolute inset-0"
     >
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(ellipse 47% 64% at -5% 29%, #F5A45938, transparent 78%), radial-gradient(ellipse 51% 61% at 105% 42%, #7027F13D, transparent 77%), radial-gradient(ellipse 62% 48% at 29% 104%, #A35DCD3B, transparent 76%), radial-gradient(ellipse 42% 43% at 71% 103%, #D68A9833, transparent 76%)',
-          maskImage: 'linear-gradient(to bottom, #000 90%, transparent)',
-        }}
-      />
       <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" />
     </div>
   );
