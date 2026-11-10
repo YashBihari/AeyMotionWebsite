@@ -64,7 +64,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
               onClick={() => setSelectedProject(project)}
-              className="group relative isolate flex min-w-0 cursor-pointer flex-col border-b border-r border-[#C4BACB] p-4 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-[linear-gradient(135deg,#FFD5A0,#F5A459_23%,#D68A98_48%,#A35DCD_73%,#7027F1)] before:opacity-0 hover:before:opacity-60 motion-safe:before:transition-opacity motion-safe:before:duration-300 sm:p-5 lg:p-6"
+              className="group relative isolate flex min-w-0 cursor-pointer flex-col border-b border-r border-[#C4BACB] p-4 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-white before:opacity-0 hover:before:opacity-100 motion-safe:before:transition-opacity motion-safe:before:duration-300 sm:p-5 lg:p-6"
             >
               {/* Media Container with muted looping video */}
               <div className="relative aspect-video w-full overflow-hidden bg-neutral-900">
