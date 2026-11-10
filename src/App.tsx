@@ -78,10 +78,10 @@ export default function App() {
             <PortfolioGrid limit={4} />
             <ServicesSection />
             <ProcessSection />
+            <FAQSection />
             <div id="about" className="scroll-mt-24">
               <PortfolioBooking />
             </div>
-            <FAQSection />
           </>
         )}
       </main>
