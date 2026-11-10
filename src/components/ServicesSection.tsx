@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
 import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import OfferCardCover from './OfferCardCover';
@@ -10,18 +10,16 @@ interface ServicesSectionProps {
 
 interface PackageOfferData {
   id: string;
-  tag: string;
   title: string;
   description: string;
-  duration: string;
-  timeline: string;
+  duration?: string;
+  timeline?: string;
   includes: string[];
 }
 
 const PACKAGES_DATA: PackageOfferData[] = [
   {
     id: 'feature-spotlight',
-    tag: '01 / FEATURE',
     title: 'Feature spotlight',
     description: 'Put features in the spotlight.',
     duration: 'Up to 15 seconds',
@@ -40,7 +38,6 @@ const PACKAGES_DATA: PackageOfferData[] = [
   },
   {
     id: 'product-launch-video',
-    tag: '02 / LAUNCH',
     title: 'Product launch',
     description: 'Introduce your product. Give people a reason to care.',
     duration: 'Up to 45 seconds',
@@ -60,7 +57,6 @@ const PACKAGES_DATA: PackageOfferData[] = [
   },
   {
     id: 'product-explainer',
-    tag: '03 / EXPLAIN',
     title: 'Product explainer',
     description: 'Make your product easy to understand.',
     duration: '60–90 seconds',
@@ -77,32 +73,19 @@ const PACKAGES_DATA: PackageOfferData[] = [
       '2 revision rounds',
       'Final exports for web & social'
     ]
+  },
+  {
+    id: 'logo-animation',
+    title: 'Logo animation',
+    description: 'Bring your logo to life with a custom motion reveal for videos, social posts, and presentations.',
+    includes: ['Logo motion concept', 'Animation using your existing logo', 'Final video export']
   }
-];
-
-const previewBackgrounds = [
-  'radial-gradient(ellipse at 20% 20%, #fff4ed, transparent 65%), linear-gradient(145deg, #f3e7fb, #d9b9fc)',
-  'radial-gradient(ellipse at 75% 20%, #f9e7ff, transparent 62%), linear-gradient(145deg, #eee3ff, #cdb9f4)',
-  'radial-gradient(ellipse at 25% 25%, #fff0f6, transparent 62%), linear-gradient(145deg, #f5e1fa, #dec5f8)',
 ];
 
 export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleTabKey = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
-    const last = PACKAGES_DATA.length - 1;
-    let next: number;
-    switch (event.key) {
-      case 'ArrowDown': next = index === last ? 0 : index + 1; break;
-      case 'ArrowUp': next = index === 0 ? last : index - 1; break;
-      case 'Home': next = 0; break;
-      case 'End': next = last; break;
-      default: return;
-    }
-    event.preventDefault();
-    setActiveIndex(next);
-    document.getElementById(`service-tab-${PACKAGES_DATA[next].id}`)?.focus();
-  };
+  const reduceMotion = useReducedMotion();
+  const activeService = PACKAGES_DATA[activeIndex];
 
   const rawPanelRotateX = useMotionValue(0);
   const rawPanelRotateY = useMotionValue(0);
@@ -157,65 +140,72 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
           </h2>
 
           <p className="text-neutral-600 font-normal text-sm md:text-base mt-3 leading-relaxed max-w-2xl">
-            Spotlight a feature, launch your product, or explain how it works.
+            Launch a product, explain a feature, or bring your logo to life.
           </p>
         </div>
 
-        <div className="grid items-start gap-7 md:grid-cols-[1fr_1fr] md:gap-10 lg:grid-cols-[1.08fr_1fr] lg:gap-16">
-          <div role="tablist" aria-label="Video services" aria-orientation="vertical" className="grid gap-2 sm:gap-3">
-            {PACKAGES_DATA.map((pkg, index) => {
-              const active = index === activeIndex;
-              return (
-                <button
-                  key={pkg.id}
-                  type="button"
-                  role="tab"
-                  id={`service-tab-${pkg.id}`}
-                  aria-selected={active}
-                  aria-controls={`service-panel-${pkg.id}`}
-                  tabIndex={active ? 0 : -1}
-                  onClick={() => setActiveIndex(index)}
-                  onKeyDown={event => handleTabKey(event, index)}
-                  className={`flex w-full cursor-pointer items-baseline gap-3 rounded-2xl px-4 py-4 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7138BB] sm:gap-4 sm:px-6 md:py-6 ${active ? 'bg-white/85 text-neutral-950' : 'text-neutral-600 hover:bg-white/50 hover:text-neutral-900'}`}
-                >
-                  <span aria-hidden="true" className="font-mono text-xs sm:text-sm">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="aey-heading text-2xl sm:text-3xl lg:text-[clamp(2rem,3.65vw,3.5rem)]">{pkg.title}</span>
-                </button>
-              );
-            })}
+        <div className="grid items-start gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
+          <div aria-hidden="true" className="relative grid aspect-[5/4] place-items-center overflow-hidden rounded-xl border border-neutral-300/70 bg-[#F6F6F9]">
+            {activeService.id === 'logo-animation' ? (
+              <motion.img
+                src="/logo.svg"
+                alt=""
+                className="h-auto w-[22%] max-w-28"
+                initial={reduceMotion ? false : { opacity: 0, scale: .65, rotate: -18 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: reduceMotion ? 0 : .5, ease: 'easeOut' }}
+              />
+            ) : (
+              <OfferCardCover key={activeService.id} index={activeIndex} standalone />
+            )}
           </div>
 
-          <div className="min-w-0">
-            {PACKAGES_DATA.map((pkg, index) => (
-              <div
-                key={pkg.id}
-                role="tabpanel"
-                id={`service-panel-${pkg.id}`}
-                aria-labelledby={`service-tab-${pkg.id}`}
-                hidden={index !== activeIndex}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl" style={{ background: previewBackgrounds[index] }}>
-                  {index === activeIndex && <OfferCardCover index={index} standalone />}
+          <div aria-label="Video services" className="min-w-0">
+            {PACKAGES_DATA.map((pkg, index) => {
+              const active = index === activeIndex;
+              const triggerId = `service-trigger-${pkg.id}`;
+              const panelId = `service-panel-${pkg.id}`;
+              return (
+                <div key={pkg.id} className="border-b border-neutral-300/80">
+                  <h3>
+                    <button
+                      type="button"
+                      id={triggerId}
+                      aria-expanded={active}
+                      aria-controls={panelId}
+                      onClick={() => setActiveIndex(index)}
+                      className="group flex w-full cursor-pointer items-end justify-between gap-4 py-5 text-left text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7138BB]"
+                    >
+                      <span className="min-w-0">
+                        <span aria-hidden="true" className="mb-1.5 block font-mono text-xs text-neutral-500">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="aey-heading block text-2xl sm:text-[1.7rem]">{pkg.title}</span>
+                      </span>
+                      <ArrowUpRight size={18} aria-hidden="true" className={`mb-0.5 shrink-0 transition-colors ${active ? 'text-neutral-800' : 'text-neutral-400 group-hover:text-neutral-800'}`} />
+                    </button>
+                  </h3>
+                  <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!active} className="pb-4">
+                    <p className="text-sm leading-relaxed text-neutral-600">{pkg.description}</p>
+                    {pkg.duration && pkg.timeline && (
+                      <dl className="mt-3 grid grid-cols-2 gap-4 text-sm">
+                        <div><dt className="text-xs text-neutral-600">Video duration</dt><dd className="mt-1 font-semibold">{pkg.duration}</dd></div>
+                        <div><dt className="text-xs text-neutral-600">Timeline</dt><dd className="mt-1 font-semibold">{pkg.timeline}</dd></div>
+                      </dl>
+                    )}
+                    <details className="group mt-2">
+                      <summary className="flex cursor-pointer list-none items-center gap-2 py-2 text-sm font-semibold text-neutral-700 [&::-webkit-details-marker]:hidden">
+                        What’s included <ChevronDown size={15} aria-hidden="true" className="group-open:rotate-180" />
+                      </summary>
+                      <ul className="offer-includes mt-2">
+                        {pkg.includes.map(item => <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>)}
+                      </ul>
+                    </details>
+                    <button type="button" onClick={onBookCall} className="mt-1 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-[#7138BB] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7138BB]">
+                      <ArrowUpRight size={16} aria-hidden="true" /> Book a call
+                    </button>
+                  </div>
                 </div>
-                <h3 className="aey-heading mt-5 text-2xl text-neutral-900">{pkg.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600 sm:text-base">{pkg.description}</p>
-                <dl className="mt-4 grid grid-cols-2 gap-4 border-b border-neutral-300/80 pb-4 text-sm">
-                  <div><dt className="text-xs text-neutral-600">Video duration</dt><dd className="mt-1 font-semibold">{pkg.duration}</dd></div>
-                  <div><dt className="text-xs text-neutral-600">Timeline</dt><dd className="mt-1 font-semibold">{pkg.timeline}</dd></div>
-                </dl>
-                <details className="group mt-3">
-                  <summary className="flex cursor-pointer list-none items-center gap-2 py-2 text-sm font-semibold text-neutral-700 [&::-webkit-details-marker]:hidden">
-                    What’s included <ChevronDown size={15} aria-hidden="true" className="group-open:rotate-180" />
-                  </summary>
-                  <ul className="offer-includes mt-2">
-                    {pkg.includes.map(item => <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>)}
-                  </ul>
-                </details>
-                <button type="button" onClick={onBookCall} className="mt-4 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-[#7138BB] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7138BB]">
-                  <ArrowUpRight size={17} aria-hidden="true" /> Book a call
-                </button>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
