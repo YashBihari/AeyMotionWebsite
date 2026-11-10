@@ -31,14 +31,14 @@ export default function PortfolioBooking() {
     if (!paragraph) return;
     const words = Array.from(paragraph.querySelectorAll<HTMLElement>('[data-reactive-word]'));
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const affected = new Set<HTMLElement>();
+    const affected = new Map<HTMLElement, Animation | null>();
     let frame = 0;
     let pointerX = 0;
     let pointerY = 0;
 
     const clearWord = (word: HTMLElement) => {
       word.style.removeProperty('color');
-      word.style.removeProperty('transform');
+      affected.get(word)?.cancel();
     };
 
     const update = () => {
@@ -47,7 +47,7 @@ export default function PortfolioBooking() {
       const localX = pointerX - bounds.left;
       const localY = pointerY - bounds.top;
       const radius = 108;
-      const next = new Map<HTMLElement, { color: string; transform: string }>();
+      const next = new Map<HTMLElement, { color: string; strength: number; index: number }>();
 
       words.forEach((word, index) => {
         const dx = word.offsetLeft + word.offsetWidth / 2 - localX;
@@ -55,14 +55,14 @@ export default function PortfolioBooking() {
         const distance = Math.hypot(dx, dy);
         if (distance >= radius) return;
         const strength = 1 - distance / radius;
-        const phase = index * 1.8 + pointerX * .04 + pointerY * .035;
         next.set(word, {
           color: wordColor((localX / Math.max(1, bounds.width)) * .65 + (dx / radius + 1) * .175),
-          transform: reducedMotion.matches ? '' : `translate(${Math.sin(phase) * strength * 4}px, ${Math.cos(phase) * strength * 5}px) rotate(${Math.sin(phase) * strength * 2.5}deg)`,
+          strength,
+          index,
         });
       });
 
-      for (const word of affected) {
+      for (const word of affected.keys()) {
         if (!next.has(word)) {
           clearWord(word);
           affected.delete(word);
@@ -70,8 +70,24 @@ export default function PortfolioBooking() {
       }
       for (const [word, style] of next) {
         word.style.color = style.color;
-        word.style.transform = style.transform;
-        affected.add(word);
+        const amount = style.strength;
+        const direction = style.index % 2 === 0 ? 1 : -1;
+        const keyframes = [
+          { transform: 'translate(0, 0) rotate(0deg)' },
+          { transform: `translate(${direction * amount * 3}px, ${-amount * 4}px) rotate(${direction * amount * 2}deg)` },
+          { transform: `translate(${-direction * amount * 2}px, ${amount * 2}px) rotate(${-direction * amount * 1.5}deg)` },
+          { transform: 'translate(0, 0) rotate(0deg)' },
+        ];
+        if (affected.has(word)) {
+          const effect = affected.get(word)?.effect;
+          if (effect instanceof KeyframeEffect) effect.setKeyframes(keyframes);
+        } else {
+          affected.set(word, reducedMotion.matches ? null : word.animate(keyframes, {
+            duration: 380 + (style.index % 5) * 55,
+            easing: 'ease-in-out',
+            iterations: Infinity,
+          }));
+        }
       }
     };
 
@@ -85,7 +101,7 @@ export default function PortfolioBooking() {
     const reset = () => {
       if (frame) cancelAnimationFrame(frame);
       frame = 0;
-      affected.forEach(clearWord);
+      for (const word of affected.keys()) clearWord(word);
       affected.clear();
     };
 
