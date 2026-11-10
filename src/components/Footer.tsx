@@ -20,7 +20,7 @@ export default function Footer({ onBookCall }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#171717] text-white pt-14 md:pt-20 pb-0 px-6 sm:px-8 md:px-12 relative overflow-hidden font-sans flex flex-col justify-between min-h-[640px] md:min-h-[700px]">
+    <footer className="bg-page-surface text-neutral-900 pt-14 md:pt-20 pb-0 px-6 sm:px-8 md:px-12 relative overflow-hidden font-sans flex flex-col justify-between min-h-[640px] md:min-h-[700px]">
       {/* Subtle Underwater Atmospheric Backdrop */}
       <UnderwaterEnvironment />
 
@@ -35,17 +35,17 @@ export default function Footer({ onBookCall }: FooterProps) {
               className="w-7 h-7 rounded-full border-none" 
               alt="Aeymotion Logo" 
             />
-            <span className="text-xl aey-heading text-white">
+            <span className="text-xl aey-heading text-neutral-900">
               Aeymotion
             </span>
           </div>
-          <p className="text-xs text-neutral-400 font-normal leading-relaxed max-w-sm">
+          <p className="text-xs text-neutral-600 font-normal leading-relaxed max-w-sm">
             Product storytelling and launch creative for B2B AI and technical SaaS companies.
           </p>
           <div className="pt-2">
             <a
               href={`mailto:${BRAND_LINKS.email}`}
-              className="inline-block text-xs font-mono font-bold text-neutral-300 hover:text-white border-b border-neutral-400 hover:border-white transition-colors duration-200 pb-0.5 focus:outline-none focus:ring-2 focus:ring-[#8C4BFF] rounded-xs"
+              className="inline-block text-xs font-mono font-bold text-neutral-700 hover:text-neutral-900 border-b border-neutral-400 hover:border-neutral-900 transition-colors duration-200 pb-0.5 focus:outline-none focus:ring-2 focus:ring-[#8C4BFF] rounded-xs"
             >
               {BRAND_LINKS.email}
             </a>
@@ -53,22 +53,22 @@ export default function Footer({ onBookCall }: FooterProps) {
         </div>
 
         {/* Center column: Section Navigation Links */}
-        <div className="flex flex-col gap-2.5 text-xs font-mono uppercase tracking-wider text-neutral-400">
-          <span className="text-[10px] font-bold text-white mb-1">NAVIGATION</span>
-          <a href="#work" onClick={(e) => handleScrollNav(e, 'work')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Work</a>
-          <a href="/#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Offers</a>
-          <a href="/#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Approach</a>
-          <a href="#booking" onClick={(e) => handleScrollNav(e, 'booking')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Book a call</a>
-          <button onClick={onBookCall} className="text-left hover:text-white transition-colors uppercase cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Plan your launch</button>
+        <div className="flex flex-col gap-2.5 text-xs font-mono uppercase tracking-wider text-neutral-600">
+          <span className="text-[10px] font-bold text-neutral-900 mb-1">NAVIGATION</span>
+          <a href="#work" onClick={(e) => handleScrollNav(e, 'work')} className="hover:text-neutral-900 transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Work</a>
+          <a href="/#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-neutral-900 transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Offers</a>
+          <a href="/#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-neutral-900 transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Approach</a>
+          <a href="#booking" onClick={(e) => handleScrollNav(e, 'booking')} className="hover:text-neutral-900 transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Book a call</a>
+          <button onClick={onBookCall} className="text-left hover:text-neutral-900 transition-colors uppercase cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Plan your launch</button>
         </div>
 
         {/* Right column: Social links & Copyright */}
         <div className="flex flex-col gap-4 items-start md:items-end md:text-right">
-          <span className="text-[10px] font-mono font-bold text-white uppercase tracking-wider">CONNECT</span>
-          <div className="flex flex-wrap gap-4 text-xs font-mono uppercase tracking-wider text-neutral-400">
-            <a href={BRAND_LINKS.dribbble} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">Dribbble</a>
-            <a href={BRAND_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">LinkedIn</a>
-            <a href={BRAND_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">Instagram</a>
+          <span className="text-[10px] font-mono font-bold text-neutral-900 uppercase tracking-wider">CONNECT</span>
+          <div className="flex flex-wrap gap-4 text-xs font-mono uppercase tracking-wider text-neutral-600">
+            <a href={BRAND_LINKS.dribbble} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-900 transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">Dribbble</a>
+            <a href={BRAND_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-900 transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">LinkedIn</a>
+            <a href={BRAND_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-900 transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">Instagram</a>
           </div>
 
           <p className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 pt-4">

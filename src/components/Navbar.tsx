@@ -120,7 +120,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#FAF9F5] border-b border-neutral-200 px-6 py-6 space-y-4 shadow-lg overflow-hidden"
+            className="md:hidden bg-page-surface border-b border-neutral-200 px-6 py-6 space-y-4 shadow-lg overflow-hidden"
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
