@@ -107,7 +107,7 @@ export default function UnderwaterEnvironment() {
 
       {/* 1. Subtle Purple & Violet Ambient Underwater Glow */}
       <div 
-        className="absolute inset-0 bg-gradient-to-t from-[#F3E9FD]/55 via-[#F7F0FC]/25 to-transparent pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-t from-[#201035]/60 via-[#180d28]/30 to-transparent pointer-events-none"
         style={{
           transform: `translate3d(${mouseOffset.x * 6}px, ${mouseOffset.y * 4}px, 0)`,
         }}
@@ -121,7 +121,7 @@ export default function UnderwaterEnvironment() {
 
       {/* 2. Seabed subtle contour shapes */}
       <svg 
-        className="absolute bottom-0 left-0 right-0 w-full h-[120px] md:h-[160px] opacity-20 text-[#D8BFEA] pointer-events-none" 
+        className="absolute bottom-0 left-0 right-0 w-full h-[120px] md:h-[160px] opacity-40 text-[#1f122e] pointer-events-none" 
         viewBox="0 0 1440 160" 
         preserveAspectRatio="none"
         style={{
@@ -134,7 +134,7 @@ export default function UnderwaterEnvironment() {
         />
         <path 
           d="M0,160 L0,130 C220,115 440,145 680,125 C920,105 1120,140 1440,128 L1440,160 Z" 
-          fill="#E9D9F6" 
+          fill="#140a1e" 
           fillOpacity="0.8"
         />
       </svg>
