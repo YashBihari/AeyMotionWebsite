@@ -1,12 +1,12 @@
 import { useId } from 'react';
 
 /** Sculptural covers share the website's violet, lavender and blush palette. */
-export default function OfferCardCover({ index }: { index: number }) {
+export default function OfferCardCover({ index, standalone = false }: { index: number; standalone?: boolean }) {
   const id = useId().replace(/:/g, '');
   const paint = (name: string) => `url(#${id}-${name})`;
   return (
-    <span className="offer-card-cover" aria-hidden="true">
-      <svg viewBox="0 0 300 250" fill="none" focusable="false" preserveAspectRatio="xMidYMax meet">
+    <span className={standalone ? "pointer-events-none absolute inset-0 block [&>svg]:block [&>svg]:h-full [&>svg]:w-full" : "offer-card-cover"} aria-hidden="true">
+      <svg viewBox="0 0 300 250" fill="none" focusable="false" preserveAspectRatio={standalone ? "xMidYMid meet" : "xMidYMax meet"}>
         <defs>
           <linearGradient id={`${id}-ceramic`} x1="-65" y1="-80" x2="65" y2="85" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FDF4FF" /><stop offset=".28" stopColor="#E9D5FF" />

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
-import { Check, Plus, Minus } from 'lucide-react';
+import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import OfferCardCover from './OfferCardCover';
 
@@ -80,23 +80,28 @@ const PACKAGES_DATA: PackageOfferData[] = [
   }
 ];
 
-export default function ServicesSection(_props: ServicesSectionProps) {
-  const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
-  const [offerHeight, setOfferHeight] = useState<number>();
+const previewBackgrounds = [
+  'radial-gradient(ellipse at 20% 20%, #fff4ed, transparent 65%), linear-gradient(145deg, #f3e7fb, #d9b9fc)',
+  'radial-gradient(ellipse at 75% 20%, #f9e7ff, transparent 62%), linear-gradient(145deg, #eee3ff, #cdb9f4)',
+  'radial-gradient(ellipse at 25% 25%, #fff0f6, transparent 62%), linear-gradient(145deg, #f5e1fa, #dec5f8)',
+];
 
-  useEffect(() => {
-    const resetOfferHeight = () => setOfferHeight(undefined);
-    window.addEventListener('resize', resetOfferHeight);
-    return () => window.removeEventListener('resize', resetOfferHeight);
-  }, []);
+export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const toggleOffer = (id: string, event: React.MouseEvent<HTMLButtonElement>) => {
-    const accordion = event.currentTarget.closest('.offer-accordion');
-    if (accordion) {
-      const height = accordion.getBoundingClientRect().height;
-      setOfferHeight(previous => Math.max(previous ?? 0, height));
+  const handleTabKey = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const last = PACKAGES_DATA.length - 1;
+    let next: number;
+    switch (event.key) {
+      case 'ArrowDown': next = index === last ? 0 : index + 1; break;
+      case 'ArrowUp': next = index === 0 ? last : index - 1; break;
+      case 'Home': next = 0; break;
+      case 'End': next = last; break;
+      default: return;
     }
-    setActiveOfferId(current => current === id ? null : id);
+    event.preventDefault();
+    setActiveIndex(next);
+    document.getElementById(`service-tab-${PACKAGES_DATA[next].id}`)?.focus();
   };
 
   const rawPanelRotateX = useMotionValue(0);
@@ -137,7 +142,8 @@ export default function ServicesSection(_props: ServicesSectionProps) {
 
   return (
     <section 
-      id="services" 
+      id="services"
+      aria-labelledby="services-title"
       className="scroll-mt-24 pt-10 md:pt-14 pb-12 md:pb-16 bg-transparent font-sans relative"
     >
       <AeymotionBackground variant="services" />
@@ -146,8 +152,8 @@ export default function ServicesSection(_props: ServicesSectionProps) {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-8 md:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
-            The right video for your next step.
+          <h2 id="services-title" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
+            Services
           </h2>
 
           <p className="text-neutral-600 font-normal text-sm md:text-base mt-3 leading-relaxed max-w-2xl">
@@ -155,51 +161,62 @@ export default function ServicesSection(_props: ServicesSectionProps) {
           </p>
         </div>
 
-        <div className="offer-accordion" style={{ minHeight: offerHeight }} aria-label="Explore video offers">
-          {PACKAGES_DATA.map((pkg, idx) => {
-            const isOpen = activeOfferId === pkg.id;
-            const panelId = `offer-panel-${pkg.id}`;
-            const triggerId = `offer-trigger-${pkg.id}`;
-
-            return (
-              <article key={pkg.id} className={`offer-panel ${isOpen ? 'offer-panel--open' : ''}`}>
+        <div className="grid items-start gap-7 md:grid-cols-[1fr_1fr] md:gap-10 lg:grid-cols-[1.08fr_1fr] lg:gap-16">
+          <div role="tablist" aria-label="Video services" aria-orientation="vertical" className="grid gap-2 sm:gap-3">
+            {PACKAGES_DATA.map((pkg, index) => {
+              const active = index === activeIndex;
+              return (
                 <button
+                  key={pkg.id}
                   type="button"
-                  id={triggerId}
-                  className="offer-trigger"
-                  aria-expanded={isOpen}
-                  aria-controls={panelId}
-                  onClick={event => toggleOffer(pkg.id, event)}
+                  role="tab"
+                  id={`service-tab-${pkg.id}`}
+                  aria-selected={active}
+                  aria-controls={`service-panel-${pkg.id}`}
+                  tabIndex={active ? 0 : -1}
+                  onClick={() => setActiveIndex(index)}
+                  onKeyDown={event => handleTabKey(event, index)}
+                  className={`flex w-full cursor-pointer items-baseline gap-3 rounded-2xl px-4 py-4 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7138BB] sm:gap-4 sm:px-6 md:py-6 ${active ? 'bg-white/85 text-neutral-950' : 'text-neutral-600 hover:bg-white/50 hover:text-neutral-900'}`}
                 >
-                  <span className="offer-tag">{pkg.tag}</span>
-                  <span className="offer-title aey-heading">{pkg.title}</span>
-                  {!isOpen && <span className="offer-summary">{pkg.duration}</span>}
-                  {!isOpen && <OfferCardCover index={idx} />}
-                  <span className="offer-toggle" aria-hidden="true">
-                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
-                  </span>
+                  <span aria-hidden="true" className="font-mono text-xs sm:text-sm">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="aey-heading text-2xl sm:text-3xl lg:text-[clamp(2rem,3.65vw,3.5rem)]">{pkg.title}</span>
                 </button>
+              );
+            })}
+          </div>
 
-                <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!isOpen} className="offer-details">
-                  <p className="offer-description">{pkg.description}</p>
-                  <div className="offer-content">
-                    <div className="offer-specs">
-                      <dl className="offer-metadata">
-                        <div><dt>Video duration</dt><dd>{pkg.duration}</dd></div>
-                        <div><dt>Timeline</dt><dd>{pkg.timeline}</dd></div>
-                      </dl>
-                      <h4 className="offer-label">Includes</h4>
-                      <ul className="offer-includes">
-                        {pkg.includes.map((item) => (
-                          <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+          <div className="min-w-0">
+            {PACKAGES_DATA.map((pkg, index) => (
+              <div
+                key={pkg.id}
+                role="tabpanel"
+                id={`service-panel-${pkg.id}`}
+                aria-labelledby={`service-tab-${pkg.id}`}
+                hidden={index !== activeIndex}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl" style={{ background: previewBackgrounds[index] }}>
+                  {index === activeIndex && <OfferCardCover index={index} standalone />}
                 </div>
-              </article>
-            );
-          })}
+                <h3 className="aey-heading mt-5 text-2xl text-neutral-900">{pkg.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-600 sm:text-base">{pkg.description}</p>
+                <dl className="mt-4 grid grid-cols-2 gap-4 border-b border-neutral-300/80 pb-4 text-sm">
+                  <div><dt className="text-xs text-neutral-600">Video duration</dt><dd className="mt-1 font-semibold">{pkg.duration}</dd></div>
+                  <div><dt className="text-xs text-neutral-600">Timeline</dt><dd className="mt-1 font-semibold">{pkg.timeline}</dd></div>
+                </dl>
+                <details className="group mt-3">
+                  <summary className="flex cursor-pointer list-none items-center gap-2 py-2 text-sm font-semibold text-neutral-700 [&::-webkit-details-marker]:hidden">
+                    What’s included <ChevronDown size={15} aria-hidden="true" className="group-open:rotate-180" />
+                  </summary>
+                  <ul className="offer-includes mt-2">
+                    {pkg.includes.map(item => <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>)}
+                  </ul>
+                </details>
+                <button type="button" onClick={onBookCall} className="mt-4 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-[#7138BB] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7138BB]">
+                  <ArrowUpRight size={17} aria-hidden="true" /> Book a call
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Below the cards: Restrained frosted-glass panel using outer-card glass treatment with 40% reduced gravity tilt */}
