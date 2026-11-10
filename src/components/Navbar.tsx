@@ -63,8 +63,8 @@ export default function Navbar({ onBookCall }: NavbarProps) {
               alt="Aeymotion Logo" 
             />
           </div>
-          <span className="font-sans text-xl aey-heading text-neutral-900 group-hover:text-neutral-600 transition-colors duration-300">
-            Aeymotion
+          <span className="aey-header-wordmark text-neutral-900 group-hover:text-neutral-600 transition-colors duration-300">
+            aeymotion
           </span>
         </a>
 
