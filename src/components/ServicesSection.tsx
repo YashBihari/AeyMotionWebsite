@@ -227,7 +227,8 @@ export default function ServicesSection() {
                 loop
                 playsInline
                 preload="auto"
-                className="absolute inset-0 h-full w-full object-cover object-center"
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ objectPosition: preview.id === 'kinetic-ai' ? '30% center' : 'center' }}
               />
             )}
           </div>
