@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Play, X, ArrowUpRight, ArrowLeft } from 'lucide-react';
@@ -36,8 +37,8 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
         {/* Section Header */}
         <div className="mb-6 md:mb-8">
           {fullPage && (
-            <a href="/#work" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-700 hover:text-neutral-950 mb-6">
-              <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back to home
+            <a href="/#work" className="group/roll inline-flex items-center gap-2 text-sm font-semibold text-neutral-700 mb-6">
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" /> <RollingLabel text="Back to home" />
             </a>
           )}
           {fullPage ? (
@@ -113,9 +114,9 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
           <div className="mx-auto flex justify-center border border-t-0 border-[#C4BACB] px-6 py-5 md:w-4/5">
             <a
               href="/portfolio"
-              className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-white/70 hover:bg-[#F1E7FF] text-neutral-900 border border-[#8C4BFF]/25 hover:border-[#8C4BFF]/50 backdrop-blur-sm text-xs font-bold uppercase tracking-wider transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+              className="group/roll inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#DDD6E5] bg-white/70 px-5 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
             >
-              View portfolio <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+              <RollingLabel text="View portfolio" /> <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
             </a>
           </div>
         )}

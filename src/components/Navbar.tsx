@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
@@ -86,9 +87,9 @@ export default function Navbar({ onBookCall }: NavbarProps) {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={onBookCall}
-            className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#43266B] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+            className="group/roll inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
-            Book a call
+            <RollingLabel text="Book a call" />
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -97,9 +98,9 @@ export default function Navbar({ onBookCall }: NavbarProps) {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={onBookCall}
-            className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-3 py-2 text-xs font-semibold text-white shadow-md transition-colors hover:bg-[#43266B] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+            className="group/roll inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-3 py-2 text-xs font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
-            Book a call
+            <RollingLabel text="Book a call" />
           </button>
 
           <button 
@@ -139,9 +140,9 @@ export default function Navbar({ onBookCall }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onBookCall();
                   }}
-                  className="w-full inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#43266B] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+                  className="group/roll w-full inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
                 >
-                  Book a call
+                  <RollingLabel text="Book a call" />
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
               </div>

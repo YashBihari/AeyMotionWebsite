@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import React, { useState } from 'react';
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
 import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
@@ -153,13 +154,13 @@ export default function ServicesSection() {
                       aria-expanded={active}
                       aria-controls={panelId}
                       onClick={() => setActiveIndex(index)}
-                      className="group flex w-full cursor-pointer items-end justify-between gap-4 py-5 text-left text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7138BB]"
+                      className="group/roll flex w-full cursor-pointer items-end justify-between gap-4 py-5 text-left text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7138BB]"
                     >
                       <span className="min-w-0">
                         <span aria-hidden="true" className="mb-1.5 block font-mono text-xs text-neutral-500">{String(index + 1).padStart(2, '0')}</span>
-                        <span className="aey-heading block text-2xl sm:text-[1.7rem]">{pkg.title}</span>
+                        <span className="aey-heading block text-2xl sm:text-[1.7rem]"><RollingLabel text={pkg.title} /></span>
                       </span>
-                      <ArrowUpRight size={18} aria-hidden="true" className={`mb-0.5 shrink-0 transition-colors ${active ? 'text-neutral-800' : 'text-neutral-400 group-hover:text-neutral-800'}`} />
+                      <ArrowUpRight size={18} aria-hidden="true" className={`mb-0.5 shrink-0 transition-colors ${active ? 'text-neutral-800' : 'text-neutral-400'}`} />
                     </button>
                   </h3>
                   <motion.div
@@ -187,9 +188,9 @@ export default function ServicesSection() {
                         aria-expanded={includesOpen}
                         aria-controls={includesId}
                         onClick={() => setOpenIncludes(current => current === pkg.id ? null : pkg.id)}
-                        className="flex cursor-pointer items-center gap-2 py-2 text-sm font-semibold text-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2"
+                        className="group/roll flex cursor-pointer items-center gap-2 py-2 text-sm font-semibold text-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2"
                       >
-                        What’s included <ChevronDown size={15} aria-hidden="true" className={`motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out ${includesOpen ? 'rotate-180' : ''}`} />
+                        <RollingLabel text="What’s included" /> <ChevronDown size={15} aria-hidden="true" className={`motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out ${includesOpen ? 'rotate-180' : ''}`} />
                       </button>
                       <motion.div
                         id={includesId}

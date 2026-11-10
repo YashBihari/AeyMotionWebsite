@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import { useId } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -49,8 +50,8 @@ export default function PortfolioBooking() {
           <p className="mx-auto mt-4 max-w-xs md:mx-0 text-sm leading-relaxed text-neutral-600 sm:text-base">
             Tell us what you’re building. We’ll figure out the right approach together.
           </p>
-          <a href="/book-a-call" className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-4">
-            Book a call <ArrowUpRight size={16} aria-hidden="true" />
+          <a href="/book-a-call" className="group/roll mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4">
+            <RollingLabel text="Book a call" /> <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </div>
       </div>

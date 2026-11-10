@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import { useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -161,17 +162,6 @@ function HeroBackdrop() {
   );
 }
 
-function RollingLabel({ text }: { text: string }) {
-  return (
-    <span className="inline-block overflow-hidden">
-      <span className="relative block motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out motion-safe:group-hover:-translate-y-full motion-safe:group-focus-visible:-translate-y-full">
-        <span className="block">{text}</span>
-        <span aria-hidden="true" className="absolute inset-x-0 top-full block">{text}</span>
-      </span>
-    </span>
-  );
-}
-
 export default function Hero({ onBookCall }: HeroProps) {
   return (
     <>
@@ -203,13 +193,13 @@ export default function Hero({ onBookCall }: HeroProps) {
           <button
             type="button"
             onClick={onBookCall}
-            className="group inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+            className="group/roll inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
             <RollingLabel text="Book a call" /> <ArrowUpRight className="size-4" aria-hidden="true" />
           </button>
           <a
             href="#work"
-            className="group inline-flex min-h-11 items-center justify-center rounded-full border border-[#DDD6E5] bg-white/70 px-5 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
+            className="group/roll inline-flex min-h-11 items-center justify-center rounded-full border border-[#DDD6E5] bg-white/70 px-5 py-2.5 text-sm font-semibold text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
             <RollingLabel text="See our work" />
           </a>

@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Minus, Plus } from 'lucide-react';
@@ -33,9 +34,9 @@ export default function FAQSection() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpenId(current => current === item.id ? null : item.id)}
-                    className="flex min-h-[60px] w-full cursor-pointer items-center justify-between gap-4 py-4 text-left text-[15px] font-bold leading-snug text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8C4BFF] sm:text-base"
+                    className="group/roll flex min-h-[60px] w-full cursor-pointer items-center justify-between gap-4 py-4 text-left text-[15px] font-bold leading-snug text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8C4BFF] sm:text-base"
                   >
-                    {item.question}
+                    <RollingLabel text={item.question} />
                     {isOpen ? <Minus aria-hidden="true" size={17} className="shrink-0 text-neutral-600" /> : <Plus aria-hidden="true" size={17} className="shrink-0 text-neutral-500" />}
                   </button>
                 </h3>

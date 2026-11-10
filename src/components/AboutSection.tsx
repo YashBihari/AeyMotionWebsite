@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import React from 'react';
 import { Users, ArrowUpRight } from 'lucide-react';
@@ -101,9 +102,9 @@ export default function AboutSection({ onBookCall }: AboutSectionProps) {
                 <div className="space-y-2">
                   <button
                     onClick={onBookCall}
-                    className="px-5 py-2.5 bg-white text-neutral-900 hover:bg-neutral-100 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-md inline-flex items-center gap-2 cursor-pointer hover:scale-105"
+                    className="group/roll px-5 py-2.5 bg-white text-neutral-900 text-xs font-mono font-bold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-md inline-flex items-center gap-2 cursor-pointer hover:scale-105"
                   >
-                    PLAN YOUR LAUNCH
+                    <RollingLabel text="Plan your launch" />
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </button>
                   <p className="font-mono text-[11px] text-white/80 tracking-tight block">

@@ -1,3 +1,4 @@
+import RollingLabel from './RollingLabel';
 import React from 'react';
 import { BRAND_LINKS } from '../data/config';
 import OctopusInteractive from './OctopusInteractive';
@@ -58,8 +59,8 @@ export default function Footer({ onBookCall }: FooterProps) {
           <a href="#work" onClick={(e) => handleScrollNav(e, 'work')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Work</a>
           <a href="/#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Offers</a>
           <a href="/#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Approach</a>
-          <a href="#booking" onClick={(e) => handleScrollNav(e, 'booking')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Book a call</a>
-          <button onClick={onBookCall} className="text-left hover:text-white transition-colors uppercase cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Plan your launch</button>
+          <a href="#booking" onClick={(e) => handleScrollNav(e, 'booking')} className="group/roll transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit"><RollingLabel text="Book a call" /></a>
+          <button onClick={onBookCall} className="group/roll text-left uppercase cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit"><RollingLabel text="Plan your launch" /></button>
         </div>
 
         {/* Right column: Social links & Copyright */}
