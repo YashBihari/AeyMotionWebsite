@@ -180,8 +180,8 @@ export default function Hero({ onBookCall }: HeroProps) {
           className="mt-5 max-w-5xl text-balance text-[clamp(1.625rem,4.8vw,3.75rem)] aey-heading text-neutral-900"
         >
           <span className="block">Creative video partner</span>
-          <span className="block">for tech brands</span>
-          <span className="block">ready to launch and scale</span>
+          <span className="block">for tech brands ready to</span>
+          <span className="block">launch and scale</span>
         </h1>
         <p className="mt-5 max-w-lg text-pretty font-['Inter',Arial,sans-serif] text-[clamp(.75rem,3.3vw,.875rem)] leading-relaxed text-neutral-600 sm:text-base">
           <span className="block">We create launch videos and explainers</span>
