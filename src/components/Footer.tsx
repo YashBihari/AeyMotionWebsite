@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="col-span-2 sm:col-span-1">
             <a href="/" className="inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4">
               <img src="/logo.svg" alt="" width={28} height={28} className="size-7 rounded-full" />
-              <span className="aey-heading text-lg">Aeymotion</span>
+              <span className="font-serif text-lg italic">Aeymotion</span>
             </a>
             <a href={`mailto:${BRAND_LINKS.email}`} className={`mt-3 block break-all ${linkStyle}`}>
               {BRAND_LINKS.email}

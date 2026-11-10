@@ -68,7 +68,7 @@ export default function Navbar({ onBookCall }: NavbarProps) {
             alt="Aeymotion"
             width={374}
             height={83}
-            className="h-[21px] w-auto shrink-0 sm:h-6"
+            className="h-[21px] w-auto shrink-0 brightness-0 invert-[40%] sm:h-6"
           />
         </a>
 
