@@ -189,8 +189,8 @@ export default function Hero({ onBookCall }: HeroProps) {
     </section>
     <section aria-label="Worked with" className="overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <div className="grid grid-cols-3 border-y border-l border-[#C4BACB]">
-          <p className="col-span-3 border-b border-r border-[#C4BACB] px-3 py-3 text-center text-sm text-neutral-600">
+        <div className="relative after:pointer-events-none after:absolute after:-inset-x-[100vw] after:-bottom-px after:h-px after:bg-[#C4BACB] grid grid-cols-3 border-y border-l border-[#C4BACB]">
+          <p className="relative after:pointer-events-none after:absolute after:-inset-x-[100vw] after:-bottom-px after:h-px after:bg-[#C4BACB] col-span-3 border-b border-r border-[#C4BACB] px-3 py-3 text-center text-sm text-neutral-600">
             Worked with:
           </p>
           {['Seorce', 'Essenite', 'Melaya'].map((name) => (
