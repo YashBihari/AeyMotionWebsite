@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react';
 import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import OfferCardCover from './OfferCardCover';
@@ -74,6 +74,9 @@ const PACKAGES_DATA: PackageOfferData[] = [
 
 export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [openIncludes, setOpenIncludes] = useState<string | null>(null);
+  const reduceMotion = useReducedMotion();
+  const disclosureTransition = { duration: reduceMotion ? 0 : .3, ease: 'easeInOut' as const };
   const activeService = PACKAGES_DATA[activeIndex];
 
   const rawPanelRotateX = useMotionValue(0);
@@ -117,9 +120,6 @@ export default function ServicesSection() {
       id="services"
       aria-labelledby="services-title"
       className="scroll-mt-24 pt-[88px] md:pt-[120px] pb-12 md:pb-16 font-sans relative"
-      style={{
-        background: 'linear-gradient(to bottom, var(--color-page-surface) 0, var(--color-hero-surface) 88px, var(--color-hero-surface) calc(100% - 48px), var(--color-page-surface) 100%)',
-      }}
     >
       <AeymotionBackground variant="services" />
       
@@ -142,6 +142,8 @@ export default function ServicesSection() {
               const active = index === activeIndex;
               const triggerId = `service-trigger-${pkg.id}`;
               const panelId = `service-panel-${pkg.id}`;
+              const includesId = `service-includes-${pkg.id}`;
+              const includesOpen = openIncludes === pkg.id;
               return (
                 <div key={pkg.id} className="border-b border-neutral-300/80">
                   <h3>
@@ -160,7 +162,18 @@ export default function ServicesSection() {
                       <ArrowUpRight size={18} aria-hidden="true" className={`mb-0.5 shrink-0 transition-colors ${active ? 'text-neutral-800' : 'text-neutral-400 group-hover:text-neutral-800'}`} />
                     </button>
                   </h3>
-                  <div id={panelId} role="region" aria-labelledby={triggerId} hidden={!active} className="pb-4">
+                  <motion.div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={triggerId}
+                    aria-hidden={!active}
+                    inert={!active}
+                    initial={false}
+                    animate={{ height: active ? 'auto' : 0, opacity: active ? 1 : 0 }}
+                    transition={disclosureTransition}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-4">
                     <p className="text-sm leading-relaxed text-neutral-600">{pkg.description}</p>
                     {pkg.duration && pkg.timeline && (
                       <dl className="mt-3 grid grid-cols-2 gap-4 text-sm">
@@ -168,15 +181,31 @@ export default function ServicesSection() {
                         <div><dt className="text-xs text-neutral-600">Timeline</dt><dd className="mt-1 font-semibold">{pkg.timeline}</dd></div>
                       </dl>
                     )}
-                    <details className="group mt-2">
-                      <summary className="flex cursor-pointer list-none items-center gap-2 py-2 text-sm font-semibold text-neutral-700 [&::-webkit-details-marker]:hidden">
-                        What’s included <ChevronDown size={15} aria-hidden="true" className="group-open:rotate-180" />
-                      </summary>
-                      <ul className="offer-includes mt-2">
-                        {pkg.includes.map(item => <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>)}
-                      </ul>
-                    </details>
-                  </div>
+                    <div className="mt-2">
+                      <button
+                        type="button"
+                        aria-expanded={includesOpen}
+                        aria-controls={includesId}
+                        onClick={() => setOpenIncludes(current => current === pkg.id ? null : pkg.id)}
+                        className="flex cursor-pointer items-center gap-2 py-2 text-sm font-semibold text-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2"
+                      >
+                        What’s included <ChevronDown size={15} aria-hidden="true" className={`motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-in-out ${includesOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      <motion.div
+                        id={includesId}
+                        aria-hidden={!includesOpen}
+                        initial={false}
+                        animate={{ height: includesOpen ? 'auto' : 0, opacity: includesOpen ? 1 : 0 }}
+                        transition={disclosureTransition}
+                        className="overflow-hidden"
+                      >
+                        <ul className="offer-includes pt-2">
+                          {pkg.includes.map(item => <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>)}
+                        </ul>
+                      </motion.div>
+                    </div>
+                    </div>
+                  </motion.div>
                 </div>
               );
             })}
