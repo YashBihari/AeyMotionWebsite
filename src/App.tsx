@@ -77,7 +77,7 @@ export default function App() {
             <Hero onBookCall={handleScrollToBooking} />
             <PortfolioGrid limit={4} />
             <ProcessSection />
-            <ServicesSection onBookCall={handleScrollToBooking} />
+            <ServicesSection />
             <div id="about" className="scroll-mt-24">
               <PortfolioBooking />
             </div>

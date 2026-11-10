@@ -4,10 +4,6 @@ import { ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import AeymotionBackground from './AeymotionBackground';
 import OfferCardCover from './OfferCardCover';
 
-interface ServicesSectionProps {
-  onBookCall: () => void;
-}
-
 interface PackageOfferData {
   id: string;
   title: string;
@@ -82,7 +78,7 @@ const PACKAGES_DATA: PackageOfferData[] = [
   }
 ];
 
-export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
+export default function ServicesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const reduceMotion = useReducedMotion();
   const activeService = PACKAGES_DATA[activeIndex];
@@ -199,9 +195,6 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
                         {pkg.includes.map(item => <li key={item}><Check size={13} aria-hidden="true" /><span>{item}</span></li>)}
                       </ul>
                     </details>
-                    <button type="button" onClick={onBookCall} className="mt-1 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7138BB]">
-                      <ArrowUpRight size={16} aria-hidden="true" /> Book a call
-                    </button>
                   </div>
                 </div>
               );
