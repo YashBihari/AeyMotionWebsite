@@ -178,10 +178,14 @@ export default function Hero({ onBookCall }: HeroProps) {
           <span aria-hidden="true" className="size-1.5 rounded-full bg-[#00BD8B] shadow-[0_0_6px_1px_rgba(0,189,139,0.36)]" />
           Available for work
         </p>
-        <h1 id="hero-title" className="mt-5 max-w-5xl text-balance text-[clamp(2.125rem,4.3vw,4rem)] aey-heading text-[#17151B]">
-          Creative video partner for tech brands
+        <h1
+          id="hero-title"
+          className="mt-5 max-w-5xl font-['Inter',Arial,sans-serif] text-[clamp(1.625rem,6vw,4.25rem)] font-bold leading-[1.08] tracking-[-0.045em] text-[#17151B]"
+        >
+          <span className="block">Creative video partner</span>
+          <span className="block">for tech brands</span>
         </h1>
-        <p className="mt-5 max-w-lg text-pretty text-sm leading-relaxed text-[#514B58] sm:text-base">
+        <p className="mt-5 max-w-lg text-pretty font-['Inter',Arial,sans-serif] text-sm leading-relaxed text-[#514B58] sm:text-base">
           We create launch videos and explainers that make complex products easy to understand and give people a reason to care.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
