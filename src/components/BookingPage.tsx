@@ -10,13 +10,13 @@ export default function BookingPage() {
   embedUrl.searchParams.set('primary_color', '8c4bff');
 
   return (
-    <section id="booking" aria-labelledby="booking-title" className="scroll-mt-24 px-4 pb-12 pt-28 sm:px-6 md:pt-36">
-      <div className="mx-auto max-w-[1100px]">
-        <a href="/" className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-neutral-900">
+    <section id="booking" aria-labelledby="booking-title" className="scroll-mt-24 px-4 pb-12 pt-28 sm:px-6 md:pt-36 lg:px-0">
+      <div className="mx-auto max-w-7xl">
+        <a href="/" className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 lg:ml-8">
           <ArrowLeft size={16} aria-hidden="true" /> Back to home
         </a>
         <h1 id="booking-title" className="aey-heading mt-6 text-center text-3xl text-neutral-900 sm:text-4xl md:text-5xl">Book a call</h1>
-        <p className="mx-auto mt-3 max-w-lg text-center text-sm leading-relaxed text-neutral-600 sm:text-base">
+        <p className="mx-auto mt-3 max-w-lg px-4 text-center text-sm leading-relaxed text-neutral-600 sm:text-base">
           Pick a time to tell us what you’re building and talk through the right video for your launch.
         </p>
         <iframe
