@@ -1,6 +1,5 @@
-import { ArrowUp, ArrowUpRight } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { BRAND_LINKS } from '../data/config';
-import RollingLabel from './RollingLabel';
 
 const linkStyle = 'w-fit text-neutral-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4';
 
@@ -19,20 +18,7 @@ export default function Footer() {
           <span className="aey-heading text-lg">Aeymotion</span>
         </a>
 
-        <p className="mt-7 max-w-3xl text-balance text-2xl font-medium leading-tight tracking-tight sm:text-3xl md:text-4xl">
-          Creative video partner for tech brands ready to launch and scale.
-        </p>
-
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <a href="/book-a-call" className="group/roll inline-flex min-h-11 items-center gap-2 rounded-full border border-white bg-white px-5 py-2.5 text-sm font-semibold text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-4">
-            <RollingLabel text="Book a call" /> <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-          <a href={`mailto:${BRAND_LINKS.email}`} className="group/roll inline-flex min-h-11 max-w-full items-center rounded-full border border-neutral-600 px-5 py-2.5 text-sm font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-4">
-            <RollingLabel text={BRAND_LINKS.email} />
-          </a>
-        </div>
-
-        <nav aria-label="Footer" className="mt-12 grid grid-cols-2 gap-x-5 gap-y-9 text-sm md:mt-16 md:grid-cols-4 md:gap-x-8">
+        <nav aria-label="Footer" className="mt-8 grid grid-cols-2 gap-x-5 gap-y-9 text-sm md:mt-10 md:grid-cols-4 md:gap-x-8">
           <div>
             <h2 className="mb-4 font-semibold">Work</h2>
             <ul className="space-y-2.5">
