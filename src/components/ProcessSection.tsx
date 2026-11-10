@@ -5,7 +5,7 @@ import { PROCESS_SECTION } from '../data/content';
 
 type ProcessStep = (typeof PROCESS_SECTION.steps)[number];
 
-function ProcessCell({ step }: { step: ProcessStep }) {
+function ProcessCell({ step, shaded }: { step: ProcessStep; shaded: boolean }) {
   const reduceMotion = useReducedMotion();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -30,7 +30,7 @@ function ProcessCell({ step }: { step: ProcessStep }) {
 
   return (
     <li
-      className="group relative isolate min-w-0 border-b border-r border-[#C4BACB]"
+      className="group relative isolate min-w-0"
       onPointerMove={tilt}
       onPointerLeave={reset}
       onPointerCancel={reset}
@@ -41,7 +41,7 @@ function ProcessCell({ step }: { step: ProcessStep }) {
       />
       <motion.div
         style={reduceMotion ? undefined : { rotateX, rotateY, transformPerspective: 700 }}
-        className="relative h-full bg-page-surface px-6 py-5 motion-safe:transition-shadow motion-safe:duration-300 motion-safe:group-hover:shadow-[0_6px_20px_#25143726] lg:px-8"
+        className={`relative h-full px-6 py-5 motion-safe:transition-shadow motion-safe:duration-300 motion-safe:group-hover:shadow-[0_6px_20px_#25143726] lg:px-8 ${shaded ? 'bg-hero-surface' : 'bg-page-surface'}`}
       >
         <div className="flex items-center gap-3">
           <h3 className="aey-heading min-w-0 text-2xl text-neutral-900">{step.title}</h3>
@@ -67,8 +67,8 @@ export default function ProcessSection() {
           {PROCESS_SECTION.title}
         </h2>
 
-        <ol className="relative grid grid-cols-1 border-l border-t border-[#C4BACB] after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-20 after:h-px after:bg-[#C4BACB] sm:grid-cols-2 lg:grid-cols-3">
-          {PROCESS_SECTION.steps.map(step => <ProcessCell key={step.number} step={step} />)}
+        <ol className="relative grid grid-cols-1 border border-[#C4BACB] sm:grid-cols-2 lg:grid-cols-3">
+          {PROCESS_SECTION.steps.map((step, index) => <ProcessCell key={step.number} step={step} shaded={index % 2 === 1} />)}
         </ol>
       </div>
     </section>
