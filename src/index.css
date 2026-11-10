@@ -27,7 +27,8 @@
   --color-aey-purple: #6F2BFF;
 
   /* Refined Light Editorial theme colors */
-  --color-page-surface: #EFEFEF;
+  --color-page-surface: #FFFFFF;
+  --color-hero-surface: #EFEFEF;
   --color-bg-main: #FAF9F5;
   --color-bg-secondary: #F4F3EE;
   --color-bg-card: #FFFFFF;

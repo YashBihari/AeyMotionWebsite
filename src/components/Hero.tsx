@@ -167,7 +167,7 @@ export default function Hero({ onBookCall }: HeroProps) {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative isolate flex min-h-svh flex-col items-center gap-10 overflow-hidden bg-page-surface px-6 pb-8 pt-24 text-center sm:gap-14 sm:px-10"
+      className="relative isolate flex min-h-svh flex-col items-center gap-10 overflow-hidden bg-hero-surface px-6 pb-8 pt-24 text-center sm:gap-14 sm:px-10"
     >
       <HeroBackdrop />
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center pb-8 sm:pb-10">
@@ -208,7 +208,7 @@ export default function Hero({ onBookCall }: HeroProps) {
         Trusted by scaling brands
       </p>
     </section>
-    <section aria-labelledby="trusted-brands" className="relative overflow-hidden border-b border-[#C4BACB]">
+    <section aria-labelledby="trusted-brands" className="relative overflow-hidden bg-hero-surface border-b border-[#C4BACB]">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 md:px-12">
         <div className="aey-client-marquee flex w-full">
           {[false, true].map(copy => (
