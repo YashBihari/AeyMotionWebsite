@@ -216,7 +216,7 @@ export default function Hero({ onBookCall }: HeroProps) {
           {[false, true].map(copy => (
             <div key={String(copy)} aria-hidden={copy || undefined} className={`flex w-full shrink-0 ${copy ? 'motion-reduce:hidden' : ''}`}>
               {clientLogos.map(({ name, src, width, height }) => (
-                <div key={name} className="flex h-[192px] min-w-0 flex-1 items-center justify-center px-3 sm:h-[228px] sm:px-6">
+                <div key={name} className="flex h-24 min-w-0 flex-1 items-center justify-center px-3 sm:h-28 sm:px-6">
                   <img src={src} alt={copy ? '' : name} width={width} height={height} className="h-6 w-auto max-w-full object-contain invert-[.40] sm:h-9" />
                 </div>
               ))}
