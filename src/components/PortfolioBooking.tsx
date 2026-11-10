@@ -121,21 +121,17 @@ export default function PortfolioBooking() {
   return (
     <section id="booking" aria-labelledby="booking-title" className="scroll-mt-24 bg-page-surface px-6 py-14 md:px-12 md:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
-        <p ref={textRef} className="relative text-pretty text-lg leading-[1.5] tracking-[-.025em] text-neutral-500 sm:text-xl md:text-[clamp(1.375rem,2.35vw,2rem)]">
-          <span className="block text-balance"><ReactiveWords text={before} /></span>
-          <span className="my-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
-            <span className="hidden text-right lg:block"><ReactiveWords text="Give your story motion." /></span>{' '}
-            <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center">
-              <mark id="booking-title" className="box-decoration-clone bg-[#E8DBFF] px-1 font-semibold text-neutral-950">
-                Your next launch starts here.
-              </mark>
-              <a href="/book-a-call" className="group/roll inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border border-[#27232D] bg-[#17151B] px-4 py-2 align-middle text-sm font-semibold tracking-normal text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]">
-                <RollingLabel text="Book a call" /> <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
-            </span>{' '}
-            <span className="hidden lg:block"><ReactiveWords text="Tell us what’s next." /></span>
+        <p ref={textRef} className="relative text-lg leading-[1.55] md:text-justify tracking-[-.025em] text-neutral-500 sm:text-xl md:text-[clamp(1.375rem,2.35vw,2rem)]">
+          <ReactiveWords text={before} />{' '}
+          <span className="inline-flex max-w-full flex-wrap items-center gap-x-3 gap-y-1 align-middle">
+            <mark id="booking-title" className="box-decoration-clone bg-[#E8DBFF] px-1 font-semibold text-neutral-950">
+              Your next launch starts here.
+            </mark>
+            <a href="/book-a-call" className="group/roll inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border border-[#27232D] bg-[#17151B] px-4 py-2 text-sm font-semibold tracking-normal text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]">
+              <RollingLabel text="Book a call" /> <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
           </span>{' '}
-          <span className="block text-balance"><ReactiveWords text={after} /></span>
+          <ReactiveWords text={after} />
         </p>
       </div>
     </section>
