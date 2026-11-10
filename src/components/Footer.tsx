@@ -1,87 +1,76 @@
-import RollingLabel from './RollingLabel';
-import React from 'react';
+import { ArrowUp, ArrowUpRight } from 'lucide-react';
 import { BRAND_LINKS } from '../data/config';
-import OctopusInteractive from './OctopusInteractive';
-import UnderwaterEnvironment from './UnderwaterEnvironment';
+import RollingLabel from './RollingLabel';
 
-interface FooterProps {
-  onBookCall: () => void;
-}
+const linkStyle = 'w-fit text-neutral-400 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4';
 
-export default function Footer({ onBookCall }: FooterProps) {
-  const handleScrollNav = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.assign(`/#${id}`);
-    }
-  };
+const socialLinks = [
+  { label: 'Dribbble', href: BRAND_LINKS.dribbble },
+  { label: 'LinkedIn', href: BRAND_LINKS.linkedin },
+  { label: 'Instagram', href: BRAND_LINKS.instagram },
+];
 
+export default function Footer() {
   return (
-    <footer className="bg-[#171717] text-white pt-14 md:pt-20 pb-0 px-6 sm:px-8 md:px-12 relative overflow-hidden font-sans flex flex-col justify-between min-h-[640px] md:min-h-[700px]">
-      {/* Subtle Underwater Atmospheric Backdrop */}
-      <UnderwaterEnvironment />
+    <footer className="bg-[#080808] px-6 pb-8 pt-16 font-sans text-white sm:px-8 md:px-12 md:pb-10 md:pt-24">
+      <div className="mx-auto max-w-7xl">
+        <a href="/" className="inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4">
+          <img src="/logo.svg" alt="" width={28} height={28} className="size-7 rounded-full" />
+          <span className="aey-heading text-lg">Aeymotion</span>
+        </a>
 
-      {/* Top row: Brand, Navigation, Connect info */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 items-start relative z-20 mb-12 md:mb-16">
-        
-        {/* Left column: Brand & Positioning Statement */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <img 
-              src="/logo.svg" 
-              className="w-7 h-7 rounded-full border-none" 
-              alt="Aeymotion Logo" 
-            />
-            <span className="text-xl aey-heading text-white">
-              Aeymotion
-            </span>
-          </div>
-          <p className="text-xs text-neutral-400 font-normal leading-relaxed max-w-sm">
-            Product storytelling and launch creative for B2B AI and technical SaaS companies.
-          </p>
-          <div className="pt-2">
-            <a
-              href={`mailto:${BRAND_LINKS.email}`}
-              className="inline-block text-xs font-mono font-bold text-neutral-300 hover:text-white border-b border-neutral-400 hover:border-white transition-colors duration-200 pb-0.5 focus:outline-none focus:ring-2 focus:ring-[#8C4BFF] rounded-xs"
-            >
-              {BRAND_LINKS.email}
-            </a>
-          </div>
+        <p className="mt-7 max-w-3xl text-balance text-2xl font-medium leading-tight tracking-tight sm:text-3xl md:text-4xl">
+          Creative video partner for tech brands ready to launch and scale.
+        </p>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <a href="/book-a-call" className="group/roll inline-flex min-h-11 items-center gap-2 rounded-full border border-white bg-white px-5 py-2.5 text-sm font-semibold text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-4">
+            <RollingLabel text="Book a call" /> <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a href={`mailto:${BRAND_LINKS.email}`} className="group/roll inline-flex min-h-11 max-w-full items-center rounded-full border border-neutral-600 px-5 py-2.5 text-sm font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-4">
+            <RollingLabel text={BRAND_LINKS.email} />
+          </a>
         </div>
 
-        {/* Center column: Section Navigation Links */}
-        <div className="flex flex-col gap-2.5 text-xs font-mono uppercase tracking-wider text-neutral-400">
-          <span className="text-[10px] font-bold text-white mb-1">NAVIGATION</span>
-          <a href="#work" onClick={(e) => handleScrollNav(e, 'work')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Work</a>
-          <a href="/#services" onClick={(e) => handleScrollNav(e, 'services')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Offers</a>
-          <a href="/#process" onClick={(e) => handleScrollNav(e, 'process')} className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit">Approach</a>
-          <a href="#booking" onClick={(e) => handleScrollNav(e, 'booking')} className="group/roll transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit"><RollingLabel text="Book a call" /></a>
-          <button onClick={onBookCall} className="group/roll text-left uppercase cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm w-fit"><RollingLabel text="Plan your launch" /></button>
-        </div>
-
-        {/* Right column: Social links & Copyright */}
-        <div className="flex flex-col gap-4 items-start md:items-end md:text-right">
-          <span className="text-[10px] font-mono font-bold text-white uppercase tracking-wider">CONNECT</span>
-          <div className="flex flex-wrap gap-4 text-xs font-mono uppercase tracking-wider text-neutral-400">
-            <a href={BRAND_LINKS.dribbble} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">Dribbble</a>
-            <a href={BRAND_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">LinkedIn</a>
-            <a href={BRAND_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors focus:outline-none focus:ring-1 focus:ring-[#8C4BFF] rounded-sm">Instagram</a>
+        <nav aria-label="Footer" className="mt-12 grid grid-cols-2 gap-x-5 gap-y-9 text-sm md:mt-16 md:grid-cols-4 md:gap-x-8">
+          <div>
+            <h2 className="mb-4 font-semibold">Work</h2>
+            <ul className="space-y-2.5">
+              <li><a className={linkStyle} href="/#work">Selected work</a></li>
+              <li><a className={linkStyle} href="/portfolio">Full portfolio</a></li>
+            </ul>
           </div>
+          <div>
+            <h2 className="mb-4 font-semibold"><a href="/#services" className="hover:underline underline-offset-4">Services</a></h2>
+            <ul className="space-y-2.5 text-neutral-400">
+              <li>Feature spotlight</li>
+              <li>Product launch</li>
+              <li>Product explainer</li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-4 font-semibold">Studio</h2>
+            <ul className="space-y-2.5">
+              <li><a className={linkStyle} href="/#process">How we work</a></li>
+              <li><a className={linkStyle} href="/#faq">FAQs</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-4 font-semibold">Connect</h2>
+            <ul className="space-y-2.5">
+              {socialLinks.map(({ label, href }) => (
+                <li key={label}><a className={linkStyle} href={href} target="_blank" rel="noopener noreferrer">{label}</a></li>
+              ))}
+            </ul>
+          </div>
+        </nav>
 
-          <p className="text-[10px] uppercase font-mono tracking-widest text-neutral-500 pt-4">
-            © {new Date().getFullYear()} Aeymotion Studio. All rights reserved.
-          </p>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-400 md:mt-16">
+          <p>© {new Date().getFullYear()} Aeymotion Studio. All rights reserved.</p>
+          <a href="/#hero" className="inline-flex items-center gap-1.5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4">
+            Back to top <ArrowUp size={14} aria-hidden="true" />
+          </a>
         </div>
-
-      </div>
-
-      {/* Bottom row: Interactive Octopus Artwork */}
-      <div className="w-full flex justify-center relative z-10 select-none pointer-events-none mt-auto">
-        <OctopusInteractive />
       </div>
     </footer>
   );

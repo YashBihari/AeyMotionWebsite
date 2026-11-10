@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
@@ -8,7 +8,6 @@ import FAQSection from './components/FAQSection';
 import PortfolioBooking from './components/PortfolioBooking';
 import BookingPage from './components/BookingPage';
 import Footer from './components/Footer';
-import CalendlyModal from './components/CalendlyModal';
 
 export default function App() {
   const isPortfolioPage = window.location.pathname.replace(/\/$/, '') === '/portfolio';
@@ -48,16 +47,6 @@ export default function App() {
     };
   }, []);
 
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-
-  const handleOpenCalendly = () => {
-    setIsCalendlyOpen(true);
-  };
-
-  const handleCloseCalendly = () => {
-    setIsCalendlyOpen(false);
-  };
-
   const handleScrollToBooking = () => {
     document.getElementById('booking')?.scrollIntoView({
       behavior: 'smooth',
@@ -93,10 +82,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer onBookCall={handleOpenCalendly} />
-
-      {/* Reusable Calendly Booking Modal */}
-      <CalendlyModal isOpen={isCalendlyOpen} onClose={handleCloseCalendly} />
+      <Footer />
     </div>
   );
 }
