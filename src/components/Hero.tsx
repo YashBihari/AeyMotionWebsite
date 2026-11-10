@@ -167,10 +167,10 @@ export default function Hero({ onBookCall }: HeroProps) {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="relative isolate flex min-h-svh items-center justify-center overflow-hidden bg-page-surface px-6 pb-24 pt-28 text-center sm:px-10"
+      className="relative isolate flex min-h-svh flex-col items-center gap-10 overflow-hidden bg-page-surface px-6 pb-8 pt-24 text-center sm:gap-14 sm:px-10"
     >
       <HeroBackdrop />
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center pb-8 sm:pb-10">
         <p className="inline-flex items-center gap-2 rounded-full border border-[#DDD6E5] bg-white/75 px-3.5 py-2 text-xs font-medium text-neutral-900 shadow-xs">
           <span aria-hidden="true" className="size-1.5 rounded-full bg-[#00BD8B] shadow-[0_0_6px_1px_rgba(0,189,139,0.36)]" />
           Available for work
@@ -204,10 +204,12 @@ export default function Hero({ onBookCall }: HeroProps) {
           </a>
         </div>
       </div>
+      <p id="trusted-brands" className="relative z-10 text-sm font-semibold text-neutral-900 sm:text-base">
+        Trusted by scaling brands
+      </p>
     </section>
-    <section aria-label="Worked with" className="overflow-hidden">
+    <section aria-labelledby="trusted-brands" className="overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <p className="px-3 py-3 text-center text-sm text-neutral-600">Worked with:</p>
         <div className="relative after:pointer-events-none after:absolute after:-inset-x-[100vw] after:-bottom-px after:h-px after:bg-[#C4BACB] before:pointer-events-none before:absolute before:-inset-x-[100vw] before:-top-px before:h-px before:bg-[#C4BACB] grid grid-cols-3 border-y border-l border-[#C4BACB]">
           {clientLogos.map(({ name, src, width, height }) => (
             <div key={name} className="flex h-[192px] min-w-0 items-center justify-center border-r border-[#C4BACB] px-3 sm:h-[228px] sm:px-6">
