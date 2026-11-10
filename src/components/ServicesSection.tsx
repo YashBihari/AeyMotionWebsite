@@ -131,7 +131,7 @@ export default function ServicesSection() {
         
         {/* Section Header */}
         <div className="mx-auto mb-8 max-w-3xl text-center md:mb-12">
-          <h2 id="services-title" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
+          <h2 id="services-title" className="text-[1.40625rem] sm:text-[1.6875rem] md:text-[2.25rem] lg:text-[2.8125rem] aey-heading text-neutral-900">
             Services
           </h2>
 

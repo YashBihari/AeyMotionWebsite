@@ -41,11 +41,11 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
             </a>
           )}
           {fullPage ? (
-            <h1 className="text-3xl md:text-5xl lg:text-6xl aey-heading text-center text-neutral-900">
+            <h1 className="text-[1.40625rem] md:text-[2.25rem] lg:text-[2.8125rem] aey-heading text-center text-neutral-900">
               Our portfolio
             </h1>
           ) : (
-            <h2 className="text-3xl md:text-5xl lg:text-6xl aey-heading text-center text-neutral-900">
+            <h2 className="text-[1.40625rem] md:text-[2.25rem] lg:text-[2.8125rem] aey-heading text-center text-neutral-900">
               Selected Work
             </h2>
           )}
