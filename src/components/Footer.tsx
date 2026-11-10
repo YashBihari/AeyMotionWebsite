@@ -11,20 +11,17 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#080808] px-6 pb-8 pt-16 font-sans text-white sm:px-8 md:px-12 md:pb-10 md:pt-24">
+    <footer className="bg-[#080808] px-6 pb-8 pt-20 font-sans text-white sm:px-8 md:px-12 md:pb-10 md:pt-28">
       <div className="mx-auto max-w-7xl">
-        <a href="/" className="inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4">
-          <img src="/logo.svg" alt="" width={28} height={28} className="size-7 rounded-full" />
-          <span className="aey-heading text-lg">Aeymotion</span>
-        </a>
-
-        <nav aria-label="Footer" className="mt-8 grid grid-cols-2 gap-x-5 gap-y-9 text-sm md:mt-10 md:grid-cols-4 md:gap-x-8">
-          <div>
-            <h2 className="mb-4 font-semibold">Work</h2>
-            <ul className="space-y-2.5">
-              <li><a className={linkStyle} href="/#work">Selected work</a></li>
-              <li><a className={linkStyle} href="/portfolio">Full portfolio</a></li>
-            </ul>
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-5 gap-y-9 text-sm md:grid-cols-4 md:gap-x-8">
+          <div className="col-span-2 sm:col-span-1">
+            <a href="/" className="inline-flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4">
+              <img src="/logo.svg" alt="" width={28} height={28} className="size-7 rounded-full" />
+              <span className="aey-heading text-lg">Aeymotion</span>
+            </a>
+            <a href={`mailto:${BRAND_LINKS.email}`} className={`mt-3 block break-all ${linkStyle}`}>
+              {BRAND_LINKS.email}
+            </a>
           </div>
           <div>
             <h2 className="mb-4 font-semibold"><a href="/#services" className="hover:underline underline-offset-4">Services</a></h2>
