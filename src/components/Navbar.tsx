@@ -60,12 +60,16 @@ export default function Navbar({ onBookCall }: NavbarProps) {
             <img 
               src="/logo.svg" 
               className="w-full h-full rounded-full border-none group-hover:scale-105 transition-transform duration-300" 
-              alt="Aeymotion Logo" 
+              alt="" 
             />
           </div>
-          <span className="aey-header-wordmark text-neutral-900 group-hover:text-neutral-600 transition-colors duration-300">
-            aeymotion
-          </span>
+          <img
+            src="/Assets/aeymotion-script-wordmark.png"
+            alt="Aeymotion"
+            width={374}
+            height={83}
+            className="h-[21px] w-auto shrink-0 sm:h-6"
+          />
         </a>
 
         {/* Desktop Nav Links */}

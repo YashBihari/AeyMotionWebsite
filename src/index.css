@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600&family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600&family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -182,11 +182,3 @@
   .aey-client-marquee[data-paused="true"] { animation-play-state: paused; }
 }
 
-.aey-header-wordmark {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.45rem;
-  font-style: italic;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -.05em;
-}
