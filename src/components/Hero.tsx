@@ -214,7 +214,7 @@ export default function Hero({ onBookCall }: HeroProps) {
         <div className="relative after:pointer-events-none after:absolute after:-inset-x-[100vw] after:-bottom-px after:h-px after:bg-[#C4BACB] before:pointer-events-none before:absolute before:-inset-x-[100vw] before:-top-px before:h-px before:bg-[#C4BACB] grid grid-cols-3 border-y border-l border-[#C4BACB]">
           {clientLogos.map(({ name, src, width, height }) => (
             <div key={name} className="flex min-w-0 items-center justify-center border-r border-[#C4BACB] px-3 py-5 sm:px-6">
-              <img src={src} alt={name} width={width} height={height} className="h-6 w-auto max-w-full object-contain sm:h-9" />
+              <img src={src} alt={name} width={width} height={height} className="h-6 w-auto max-w-full object-contain invert-[.40] sm:h-9" />
             </div>
           ))}
         </div>
