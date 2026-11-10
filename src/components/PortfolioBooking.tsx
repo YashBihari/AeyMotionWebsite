@@ -1,77 +1,58 @@
 import { useId } from 'react';
-import { CALENDLY_URL } from '../data/config';
-import BookingArtwork from './BookingArtwork';
-import AeymotionBackground from './AeymotionBackground';
+import { ArrowUpRight } from 'lucide-react';
 
-export default function PortfolioBooking() {
-  const waveId = useId().replace(/:/g, '');
+function GlassLaunchArtwork() {
+  const id = useId();
+  const paint = (part: string) => `url(#${id}-${part})`;
 
   return (
-    <section
-      id="booking"
-      aria-labelledby="booking-title"
-      className="relative isolate scroll-mt-24 w-full py-12 md:py-16 lg:py-20 overflow-hidden font-sans"
-    >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
-        <AeymotionBackground variant="booking" />
-      </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-      <div className="relative z-20 mb-8 text-center md:mb-12">
-        <h2
-          id="booking-title"
-          className="text-[1.40625rem] sm:text-[1.6875rem] md:text-[2.25rem] lg:text-[2.8125rem] aey-heading text-neutral-900"
-        >
-          Book a call
-        </h2>
-        <p className="text-neutral-600 font-normal text-sm md:text-base mx-auto max-w-xl mt-2 leading-relaxed">
-          Tell me what you’re building. Let’s find the right video for your product.
-        </p>
-      </div>
-      <div
-        className="relative z-10 w-full overflow-hidden rounded-[28px] md:rounded-[32px] border border-white/90 p-[15px] shadow-[0_16px_60px_rgba(140,75,255,0.08)] backdrop-blur-md"
-        style={{ background: 'linear-gradient(135deg, #FFFFFFBF, #F5EBFF8C 50%, #FDF2F88C)' }}
-      >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{ background: 'linear-gradient(to top, #C084FC88 0%, #D8B4FE80 24%, #F5D0FE66 48%, #F3E8FF22 72%, #F3E8FF00 100%)' }}
-        />
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          viewBox="0 0 1200 640"
-          preserveAspectRatio="none"
-          fill="none"
-        >
-          <defs>
-            <linearGradient id={waveId} x1="60" y1="340" x2="900" y2="670" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#C084FC" stopOpacity=".15" />
-              <stop offset=".5" stopColor="#E879F9" stopOpacity=".24" />
-              <stop offset="1" stopColor="#F5D0FE" stopOpacity=".08" />
-            </linearGradient>
-          </defs>
-          <path d="M-80 370C170 110 390 660 740 390C940 240 1080 330 1280 190V720H-80Z" fill={`url(#${waveId})`} />
-          <path d="M-80 440C190 170 470 700 780 460C980 310 1110 420 1280 310V720H-80Z" fill="#F5D0FE" fillOpacity=".16" />
-          <path d="M-80 395C190 145 390 665 755 415C960 260 1100 355 1280 240" stroke="#FFFFFF" strokeOpacity=".42" strokeWidth="1.5" />
-          <path d="M-70 465C190 220 470 720 800 490C1000 340 1140 440 1280 350" stroke="#F3E8FF" strokeOpacity=".55" strokeWidth="1.2" />
-        </svg>
-        <div className="relative z-10 grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_800px] gap-5 items-center">
-          <BookingArtwork />
-          <div className="relative min-w-0 w-full">
-            {/* Keep Calendly's viewport wide enough for its horizontal layout.
-                Its visible 800px panel aligns with the right-hand column. */}
-            <iframe
-              src={`${CALENDLY_URL}?embed_domain=${encodeURIComponent(window.location.host)}&embed_type=Inline&background_color=ffffff&text_color=171717&primary_color=8c4bff`}
-              title="Book a call with Aeymotion on Calendly"
-              width="100%"
-              height="700"
-              loading="lazy"
-              className="relative block w-full h-[780px] md:h-[700px] min-[928px]:-mt-[66px] min-[928px]:-mb-[30px] xl:w-[1000px] xl:max-w-none xl:-ml-[100px] border-0"
-            />
-          </div>
+    <svg viewBox="0 0 620 470" aria-hidden="true" focusable="false" className="mx-auto h-auto w-full max-w-[540px]">
+      <defs>
+        <linearGradient id={`${id}-face`} x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#fff" /><stop offset=".4" stopColor="#eeedf5" /><stop offset=".72" stopColor="#d6d9e6" /><stop offset="1" stopColor="#fff" />
+        </linearGradient>
+        <linearGradient id={`${id}-edge`} x1="0" y1=".65" x2="1" y2=".35">
+          <stop stopColor="#878b9c" /><stop offset=".12" stopColor="#fff" /><stop offset=".28" stopColor="#afb3c4" /><stop offset=".45" stopColor="#f9f9fd" /><stop offset=".63" stopColor="#969bad" /><stop offset=".79" stopColor="#fff" /><stop offset="1" stopColor="#afb3c6" />
+        </linearGradient>
+        <linearGradient id={`${id}-rim`} x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#a4a7b6" /><stop offset=".24" stopColor="#fff" /><stop offset=".5" stopColor="#bfc2d1" /><stop offset=".76" stopColor="#fff" /><stop offset="1" stopColor="#8d91a4" />
+        </linearGradient>
+        <filter id={`${id}-shadow`} x="-25%" y="-50%" width="150%" height="200%">
+          <feGaussianBlur stdDeviation="14" />
+        </filter>
+      </defs>
+      <g fill="#292633" opacity=".17" filter={paint('shadow')}>
+        <ellipse cx="281" cy="302" rx="198" ry="26" transform="rotate(-12 281 302)" />
+        <ellipse cx="451" cy="402" rx="114" ry="21" />
+      </g>
+      <path d="M111 78Q89 68 92 97L117 304Q120 327 145 321L513 225Q540 218 536 196L111 78Z" fill={paint('edge')} stroke="#c8cad5" strokeWidth="2" />
+      <path d="M111 54Q84 46 87 77L113 274Q116 304 145 296L519 207Q549 199 521 180Z" fill={paint('face')} stroke={paint('rim')} strokeWidth="9" strokeLinejoin="round" />
+      <path d="M113 59Q91 54 94 79L119 274Q122 297 145 290L516 202Q538 196 519 185Z" fill="none" stroke="#fff" strokeOpacity=".9" strokeWidth="3" />
+      <path d="M101 67L128 279M140 299L515 210" fill="none" stroke="#fff" strokeOpacity=".68" strokeWidth="2" strokeLinecap="round" />
+      <path d="M345 348C345 316 393 290 452 290S558 316 558 348V367C558 400 510 425 452 425S345 400 345 367Z" fill={paint('edge')} stroke="#bfc1ce" strokeWidth="2" />
+      <ellipse cx="452" cy="346" rx="106" ry="55" fill={paint('face')} stroke={paint('rim')} strokeWidth="7" />
+      <ellipse cx="452" cy="346" rx="101" ry="50" fill="none" stroke="#fff" strokeOpacity=".86" strokeWidth="2.5" />
+      <path d="M356 372C374 399 444 418 504 403" fill="none" stroke="#fff" strokeOpacity=".65" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export default function PortfolioBooking() {
+  return (
+    <section id="booking" aria-labelledby="booking-title" className="scroll-mt-24 bg-page-surface px-6 py-12 sm:py-16 md:px-12 lg:py-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[1.15fr_1fr] md:gap-12">
+        <GlassLaunchArtwork />
+        <div className="mx-auto w-full max-w-sm text-center md:mx-0 md:text-left">
+          <h2 id="booking-title" className="aey-heading text-[1.6875rem] text-neutral-900 md:text-[2.25rem] lg:text-[2.8125rem]">
+            Your next launch starts here
+          </h2>
+          <p className="mx-auto mt-4 max-w-xs md:mx-0 text-sm leading-relaxed text-neutral-600 sm:text-base">
+            Tell us what you’re building. We’ll figure out the right approach together.
+          </p>
+          <a href="/book-a-call" className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-4">
+            Book a call <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
         </div>
-      </div>
       </div>
     </section>
   );

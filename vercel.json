@@ -3,6 +3,10 @@
     {
       "source": "/portfolio",
       "destination": "/index.html"
+    },
+    {
+      "source": "/book-a-call",
+      "destination": "/index.html"
     }
   ]
 }

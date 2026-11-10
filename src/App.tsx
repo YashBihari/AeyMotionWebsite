@@ -6,15 +6,19 @@ import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
 import FAQSection from './components/FAQSection';
 import PortfolioBooking from './components/PortfolioBooking';
+import BookingPage from './components/BookingPage';
 import Footer from './components/Footer';
 import CalendlyModal from './components/CalendlyModal';
 
 export default function App() {
   const isPortfolioPage = window.location.pathname.replace(/\/$/, '') === '/portfolio';
 
+  const isBookingPage = window.location.pathname.replace(/\/$/, '') === '/book-a-call';
+
   useEffect(() => {
     if (isPortfolioPage) document.title = 'Portfolio | Aeymotion';
-  }, [isPortfolioPage]);
+    if (isBookingPage) document.title = 'Book a call | Aeymotion';
+  }, [isPortfolioPage, isBookingPage]);
 
   useEffect(() => {
     let active = true;
@@ -70,7 +74,9 @@ export default function App() {
 
       {/* Main Single Page Sections */}
       <main className="w-full flex-grow">
-        {isPortfolioPage ? (
+        {isBookingPage ? (
+          <BookingPage />
+        ) : isPortfolioPage ? (
           <PortfolioGrid fullPage />
         ) : (
           <>
