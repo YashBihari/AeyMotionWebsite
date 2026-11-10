@@ -64,10 +64,10 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
               onClick={() => setSelectedProject(project)}
-              className="aey-rule-cell group flex min-w-0 cursor-pointer flex-col border-b border-r border-[#C4BACB]"
+              className="aey-rule-cell group flex min-w-0 cursor-pointer flex-col border-b border-r border-[#C4BACB] p-4 sm:p-5 lg:p-6"
             >
               {/* Media Container with muted looping video */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-900">
+              <div className="relative aspect-video w-full overflow-hidden bg-neutral-900">
                 <video
                   ref={(el) => {
                     if (el) {
@@ -97,7 +97,7 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
               </div>
 
               {/* Title & Description just below each video */}
-              <div className="aey-cell-top flex-1 border-t border-[#C4BACB] px-6 py-5 md:px-8">
+              <div className="mt-4 flex-1">
                 <h3 className="text-lg md:text-xl font-bold text-neutral-900 tracking-tight group-hover:text-[#8C4BFF] transition-colors duration-200">
                   {project.name}
                 </h3>
