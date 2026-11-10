@@ -9,12 +9,12 @@ export default function ProcessSection() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="relative overflow-hidden scroll-mt-24 py-12 font-sans md:py-16 lg:py-20"
+      className="relative overflow-hidden scroll-mt-24 pb-12 font-sans md:pb-16 lg:pb-20"
     >
       <AeymotionBackground variant="process" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-        <div className="border-l border-t border-[#C4BACB]">
+      <div className="relative z-10 w-full">
+        <div className="border-l border-[#C4BACB]">
           <h2 id="process-title" className="aey-heading border-b border-r border-[#C4BACB] px-6 py-7 text-3xl text-neutral-900 sm:text-4xl md:px-8 md:py-9 md:text-5xl lg:text-6xl">
             {PROCESS_SECTION.title}
           </h2>
