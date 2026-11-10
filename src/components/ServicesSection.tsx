@@ -123,7 +123,7 @@ export default function ServicesSection() {
     <section 
       id="services"
       aria-labelledby="services-title"
-      className="scroll-mt-24 pt-10 md:pt-14 pb-12 md:pb-16 bg-transparent font-sans relative"
+      className="scroll-mt-24 pt-[88px] md:pt-[120px] pb-12 md:pb-16 bg-transparent font-sans relative"
     >
       <AeymotionBackground variant="services" />
       
