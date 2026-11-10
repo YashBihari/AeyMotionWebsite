@@ -134,12 +134,12 @@ export default function ServicesSection({ onBookCall }: ServicesSectionProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10" style={{ perspective: '1000px' }}>
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-8 md:mb-12">
+        <div className="mx-auto mb-8 max-w-3xl text-center md:mb-12">
           <h2 id="services-title" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
             Services
           </h2>
 
-          <p className="text-neutral-600 font-normal text-sm md:text-base mt-3 leading-relaxed max-w-2xl">
+          <p className="text-neutral-600 font-normal text-sm md:text-base mx-auto mt-3 leading-relaxed max-w-2xl">
             Launch a product, explain a feature, or bring your logo to life.
           </p>
         </div>

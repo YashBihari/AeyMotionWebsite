@@ -41,15 +41,15 @@ export default function PortfolioGrid({ limit, fullPage = false }: PortfolioGrid
             </a>
           )}
           {fullPage ? (
-            <h1 className="text-3xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl aey-heading text-center text-neutral-900">
               Our portfolio
             </h1>
           ) : (
-            <h2 className="text-3xl md:text-5xl lg:text-6xl aey-heading text-neutral-900">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl aey-heading text-center text-neutral-900">
               Selected Work
             </h2>
           )}
-          <p className="text-neutral-600 font-normal text-sm md:text-base max-w-xl mt-2 leading-relaxed">
+          <p className="text-neutral-600 font-normal text-sm md:text-base mx-auto max-w-xl mt-2 text-center leading-relaxed">
             Selected launch films, product storytelling and motion work for AI and SaaS products.
           </p>
         </div>

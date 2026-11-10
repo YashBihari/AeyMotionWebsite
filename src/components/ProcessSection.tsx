@@ -14,7 +14,7 @@ export default function ProcessSection() {
       <AeymotionBackground variant="process" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-          <h2 id="process-title" className="aey-heading mb-6 text-3xl text-neutral-900 sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
+          <h2 id="process-title" className="aey-heading mb-6 text-center text-3xl text-neutral-900 sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
             {PROCESS_SECTION.title}
           </h2>
 

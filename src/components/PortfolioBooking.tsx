@@ -16,14 +16,14 @@ export default function PortfolioBooking() {
         <AeymotionBackground variant="booking" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-      <div className="relative z-20 mb-8 md:mb-12">
+      <div className="relative z-20 mb-8 text-center md:mb-12">
         <h2
           id="booking-title"
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl aey-heading text-neutral-900"
         >
           Book a call
         </h2>
-        <p className="text-neutral-600 font-normal text-sm md:text-base max-w-xl mt-2 leading-relaxed">
+        <p className="text-neutral-600 font-normal text-sm md:text-base mx-auto max-w-xl mt-2 leading-relaxed">
           Tell me what you’re building. Let’s find the right video for your product.
         </p>
       </div>
