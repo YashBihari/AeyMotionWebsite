@@ -1,59 +1,120 @@
-import RollingLabel from './RollingLabel';
-import { useId } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import RollingLabel from './RollingLabel';
 
-function GlassLaunchArtwork() {
-  const id = useId();
-  const paint = (part: string) => `url(#${id}-${part})`;
+const before = 'You’ve built something worth showing. The next challenge is helping people see what makes it useful. We work with tech teams to find the clearest story in their product, then turn that story into a video. A focused feature spotlight can make a new release click. A launch film can give people a reason to stop and watch. An explainer can make a complex workflow feel simple.';
+const after = 'Show us what you’re building, who it’s for, and what you want people to do next. We’ll talk through the idea, the right format, and what it takes to get it ready for launch. You’ll work directly with us from the first conversation to the final cut.';
 
-  return (
-    <svg viewBox="0 0 620 470" aria-hidden="true" focusable="false" className="mx-auto h-auto w-full max-w-[540px]">
-      <defs>
-        <linearGradient id={`${id}-face`} x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="#fff" /><stop offset=".4" stopColor="#eeedf5" /><stop offset=".72" stopColor="#d6d9e6" /><stop offset="1" stopColor="#fff" />
-        </linearGradient>
-        <linearGradient id={`${id}-edge`} x1="0" y1=".65" x2="1" y2=".35">
-          <stop stopColor="#878b9c" /><stop offset=".12" stopColor="#fff" /><stop offset=".28" stopColor="#afb3c4" /><stop offset=".45" stopColor="#f9f9fd" /><stop offset=".63" stopColor="#969bad" /><stop offset=".79" stopColor="#fff" /><stop offset="1" stopColor="#afb3c6" />
-        </linearGradient>
-        <linearGradient id={`${id}-rim`} x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="#a4a7b6" /><stop offset=".24" stopColor="#fff" /><stop offset=".5" stopColor="#bfc2d1" /><stop offset=".76" stopColor="#fff" /><stop offset="1" stopColor="#8d91a4" />
-        </linearGradient>
-        <filter id={`${id}-shadow`} x="-25%" y="-50%" width="150%" height="200%">
-          <feGaussianBlur stdDeviation="14" />
-        </filter>
-      </defs>
-      <g fill="#292633" opacity=".17" filter={paint('shadow')}>
-        <ellipse cx="281" cy="302" rx="198" ry="26" transform="rotate(-12 281 302)" />
-        <ellipse cx="451" cy="402" rx="114" ry="21" />
-      </g>
-      <path d="M111 78Q89 68 92 97L117 304Q120 327 145 321L513 225Q540 218 536 196L111 78Z" fill={paint('edge')} stroke="#c8cad5" strokeWidth="2" />
-      <path d="M111 54Q84 46 87 77L113 274Q116 304 145 296L519 207Q549 199 521 180Z" fill={paint('face')} stroke={paint('rim')} strokeWidth="9" strokeLinejoin="round" />
-      <path d="M113 59Q91 54 94 79L119 274Q122 297 145 290L516 202Q538 196 519 185Z" fill="none" stroke="#fff" strokeOpacity=".9" strokeWidth="3" />
-      <path d="M101 67L128 279M140 299L515 210" fill="none" stroke="#fff" strokeOpacity=".68" strokeWidth="2" strokeLinecap="round" />
-      <path d="M345 348C345 316 393 290 452 290S558 316 558 348V367C558 400 510 425 452 425S345 400 345 367Z" fill={paint('edge')} stroke="#bfc1ce" strokeWidth="2" />
-      <ellipse cx="452" cy="346" rx="106" ry="55" fill={paint('face')} stroke={paint('rim')} strokeWidth="7" />
-      <ellipse cx="452" cy="346" rx="101" ry="50" fill="none" stroke="#fff" strokeOpacity=".86" strokeWidth="2.5" />
-      <path d="M356 372C374 399 444 418 504 403" fill="none" stroke="#fff" strokeOpacity=".65" strokeWidth="3" strokeLinecap="round" />
-    </svg>
-  );
+const palette = [[169, 76, 18], [163, 65, 112], [112, 39, 241]];
+
+function wordColor(progress: number) {
+  const position = Math.min(1, Math.max(0, progress)) * (palette.length - 1);
+  const start = Math.min(palette.length - 2, Math.floor(position));
+  const ratio = position - start;
+  return `rgb(${palette[start].map((channel, i) => Math.round(channel + (palette[start + 1][i] - channel) * ratio)).join(' ')})`;
+}
+
+function ReactiveWords({ text }: { text: string }) {
+  return text.split(' ').map((word, index) => (
+    <Fragment key={index}>
+      {index > 0 && ' '}
+      <span data-reactive-word className="inline-block motion-safe:transition-[transform,color] motion-safe:duration-200 motion-safe:ease-out">{word}</span>
+    </Fragment>
+  ));
 }
 
 export default function PortfolioBooking() {
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const paragraph = textRef.current;
+    if (!paragraph) return;
+    const words = Array.from(paragraph.querySelectorAll<HTMLElement>('[data-reactive-word]'));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const affected = new Set<HTMLElement>();
+    let frame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const clearWord = (word: HTMLElement) => {
+      word.style.removeProperty('color');
+      word.style.removeProperty('transform');
+    };
+
+    const update = () => {
+      frame = 0;
+      const bounds = paragraph.getBoundingClientRect();
+      const localX = pointerX - bounds.left;
+      const localY = pointerY - bounds.top;
+      const radius = 108;
+      const next = new Map<HTMLElement, { color: string; transform: string }>();
+
+      words.forEach((word, index) => {
+        const dx = word.offsetLeft + word.offsetWidth / 2 - localX;
+        const dy = word.offsetTop + word.offsetHeight / 2 - localY;
+        const distance = Math.hypot(dx, dy);
+        if (distance >= radius) return;
+        const strength = 1 - distance / radius;
+        const phase = index * 1.8 + pointerX * .04 + pointerY * .035;
+        next.set(word, {
+          color: wordColor((localX / Math.max(1, bounds.width)) * .65 + (dx / radius + 1) * .175),
+          transform: reducedMotion.matches ? '' : `translate(${Math.sin(phase) * strength * 4}px, ${Math.cos(phase) * strength * 5}px) rotate(${Math.sin(phase) * strength * 2.5}deg)`,
+        });
+      });
+
+      for (const word of affected) {
+        if (!next.has(word)) {
+          clearWord(word);
+          affected.delete(word);
+        }
+      }
+      for (const [word, style] of next) {
+        word.style.color = style.color;
+        word.style.transform = style.transform;
+        affected.add(word);
+      }
+    };
+
+    const move = (event: PointerEvent) => {
+      if (event.pointerType === 'touch') return;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    const reset = () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      affected.forEach(clearWord);
+      affected.clear();
+    };
+
+    paragraph.addEventListener('pointermove', move, { passive: true });
+    paragraph.addEventListener('pointerleave', reset);
+    paragraph.addEventListener('pointercancel', reset);
+    reducedMotion.addEventListener('change', reset);
+    return () => {
+      paragraph.removeEventListener('pointermove', move);
+      paragraph.removeEventListener('pointerleave', reset);
+      paragraph.removeEventListener('pointercancel', reset);
+      reducedMotion.removeEventListener('change', reset);
+      reset();
+    };
+  }, []);
+
   return (
-    <section id="booking" aria-labelledby="booking-title" className="scroll-mt-24 bg-page-surface px-6 py-12 sm:py-16 md:px-12 lg:py-20">
-      <div className="mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-[1.15fr_1fr] md:gap-12">
-        <GlassLaunchArtwork />
-        <div className="mx-auto w-full max-w-sm text-center md:mx-0 md:text-left">
-          <h2 id="booking-title" className="aey-heading text-[1.6875rem] text-neutral-900 md:text-[2.25rem] lg:text-[2.8125rem]">
-            Your next launch starts here
-          </h2>
-          <p className="mx-auto mt-4 max-w-xs md:mx-0 text-sm leading-relaxed text-neutral-600 sm:text-base">
-            Tell us what you’re building. We’ll figure out the right approach together.
-          </p>
-          <a href="/book-a-call" className="group/roll mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4">
-            <RollingLabel text="Book a call" /> <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
+    <section id="booking" aria-labelledby="booking-title" className="scroll-mt-24 bg-page-surface px-6 py-14 md:px-12 md:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl">
+        <p ref={textRef} className="relative text-pretty text-lg leading-[1.5] tracking-[-.025em] text-neutral-500 sm:text-xl md:text-[clamp(1.375rem,2.35vw,2rem)]">
+          <ReactiveWords text={before} />{' '}
+          <mark id="booking-title" className="box-decoration-clone bg-[#E8DBFF] px-1 font-semibold text-neutral-950">
+            Your next launch starts here.
+          </mark>{' '}
+          <a href="/book-a-call" className="group/roll inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border border-[#27232D] bg-[#17151B] px-4 py-2 align-middle text-sm font-semibold tracking-normal text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]">
+            <RollingLabel text="Book a call" /> <ArrowUpRight size={15} aria-hidden="true" />
+          </a>{' '}
+          <ReactiveWords text={after} />
+        </p>
       </div>
     </section>
   );
