@@ -89,23 +89,23 @@ export default function Navbar({ onBookCall }: NavbarProps) {
 
         {/* Right CTA Button */}
         <div className="hidden md:flex items-center gap-4">
-          <button
-            onClick={onBookCall}
+          <a
+            href="/book-a-call"
             className="group/roll inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
             <RollingLabel text="Book a call" />
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </button>
+          </a>
         </div>
 
         {/* Mobile Hamburger Toggle */}
         <div className="md:hidden flex items-center gap-3">
-          <button
-            onClick={onBookCall}
+          <a
+            href="/book-a-call"
             className="group/roll inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-3 py-2 text-xs font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
           >
             <RollingLabel text="Book a call" />
-          </button>
+          </a>
 
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -139,16 +139,14 @@ export default function Navbar({ onBookCall }: NavbarProps) {
                 </a>
               ))}
               <div className="pt-2 border-t border-neutral-200">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onBookCall();
-                  }}
+                <a
+                  href="/book-a-call"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="group/roll w-full inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border border-[#27232D] bg-[#17151B] px-5 py-2.5 text-sm font-semibold text-white shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8C4BFF]"
                 >
                   <RollingLabel text="Book a call" />
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>
