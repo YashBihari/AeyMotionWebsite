@@ -26,26 +26,16 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    id: "haleum-ai",
-    name: "Haleum AI",
+    id: "melaya",
+    name: "Melaya",
     category: "Product Launch Film",
-    tagline: "Translating multi-agent orchestration into an effortless product story.",
-    description: "A launch concept introducing Haleum AI through a concise animated product story. [Independent Concept]",
-    previewVideo: "/Assets/Haleum%20Ai%20web%20opt.mp4",
-    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/G0HteNQ_KGg?rel=0&autoplay=1",
-    dribbbleUrl: "https://dribbble.com/shots/26735082-Haleum-AI-Launch-Explainer-Video",
-    serviceType: "Launch Story System",
-    timecode: "00:01:24:00",
-    frameRate: "24 FPS",
-    caseStudy: {
-      context: "Haleum develops autonomous AI agent architecture for technical workflows and modern development teams.",
-      challenge: "Explaining how multi-agent coordination works under the hood without overwhelming prospective customers with abstract architecture diagrams.",
-      audience: "Technical founders, software engineering leaders, and AI workflow architects.",
-      communicationProblem: "Autonomous multi-agent orchestration sounds theoretical unless grounded in concrete, visible problem-solving.",
-      strategicDecision: "Framed the story around real business tasks: showing intent initiate background agents, communicate collaboratively, and output verifiable results.",
-      execution: "Bespoke 3D node visuals combined with rhythmic software UI pacing and spatial sound design.",
-      result: "Featured launch film deployed on product launch day, anchoring founder social channels and investor presentations."
-    }
+    description: "A product launch video showing Melaya’s AI agents in action.",
+    previewVideo: "/Assets/Melaya-Thumbnail.mp4",
+    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/WMXNCI89Ehw?rel=0&autoplay=1",
+    dribbbleUrl: "https://dribbble.com/aeymotion",
+    serviceType: "Product Launch Film",
+    timecode: "",
+    frameRate: ""
   },
   {
     id: "essenite",
@@ -82,16 +72,27 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "melaya",
-    name: "Melaya",
-    category: "Product Launch Film",
-    description: "A product launch video showing Melaya’s AI agents in action.",
-    previewVideo: "/Assets/Melaya-Thumbnail.mp4",
-    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/WMXNCI89Ehw?rel=0&autoplay=1",
-    dribbbleUrl: "https://dribbble.com/aeymotion",
-    serviceType: "Product Launch Film",
-    timecode: "",
-    frameRate: ""
+    id: "seorce-ai",
+    name: "Seorce — Content Studio",
+    category: "Featured Launch Film",
+    tagline: "Simplifying complex AI search intelligence into an intuitive launch narrative.",
+    description: "Showing how SEO and AI visibility insights guide content creation.",
+    previewVideo: "/Assets/Seorce%20Thumbnail.mp4",
+    fullVideoEmbed: "https://www.youtube.com/embed/ogB8hcwYDmI?si=xAVsoSOgt0IxGiJZ&autoplay=1&rel=0&modestbranding=1",
+    dribbbleUrl: "https://dribbble.com/shots/27536447-Seorce-AI-Introduction",
+    serviceType: "Launch Story System",
+    timecode: "00:00:22:00",
+    frameRate: "60 FPS",
+    isFeatured: true,
+    caseStudy: {
+      context: "SEORCE is an AI-powered search intelligence platform designed for high-performance marketing and growth teams.",
+      challenge: "The product handles deep technical queries across complex datasets. The team needed a clear way to communicate new features without turning the video into a tedious dashboard click-through.",
+      audience: "Heads of Growth, SEO Directors, and Technical Marketing decision makers.",
+      communicationProblem: "Translating sophisticated machine intelligence into an immediate 'aha moment' that prospects grasp in the first 10 seconds.",
+      strategicDecision: "Eliminated cluttered interface walkthroughs. Built the narrative around the core user behavior: typing a single natural-language question ('Just Ask') and letting the AI synthesize actionable intelligence instantly.",
+      execution: "High-contrast UI choreography, focused camera zooms, precise typographic callouts, and tailored sound design that punctuates feature breakthroughs.",
+      result: "Multiple product and feature launch films delivered across repeat engagements, establishing a continuous storytelling partnership."
+    }
   },
   {
     id: "kinetic-ai",
@@ -116,26 +117,25 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "seorce-ai",
-    name: "Seorce — Content Studio",
-    category: "Featured Launch Film",
-    tagline: "Simplifying complex AI search intelligence into an intuitive launch narrative.",
-    description: "Showing how SEO and AI visibility insights guide content creation.",
-    previewVideo: "/Assets/Seorce%20Thumbnail.mp4",
-    fullVideoEmbed: "https://www.youtube.com/embed/ogB8hcwYDmI?si=xAVsoSOgt0IxGiJZ&autoplay=1&rel=0&modestbranding=1",
-    dribbbleUrl: "https://dribbble.com/shots/27536447-Seorce-AI-Introduction",
+    id: "haleum-ai",
+    name: "Haleum AI",
+    category: "Product Launch Film",
+    tagline: "Translating multi-agent orchestration into an effortless product story.",
+    description: "A launch concept introducing Haleum AI through a concise animated product story. [Independent Concept]",
+    previewVideo: "/Assets/Haleum%20Ai%20web%20opt.mp4",
+    fullVideoEmbed: "https://www.youtube-nocookie.com/embed/G0HteNQ_KGg?rel=0&autoplay=1",
+    dribbbleUrl: "https://dribbble.com/shots/26735082-Haleum-AI-Launch-Explainer-Video",
     serviceType: "Launch Story System",
-    timecode: "00:00:22:00",
-    frameRate: "60 FPS",
-    isFeatured: true,
+    timecode: "00:01:24:00",
+    frameRate: "24 FPS",
     caseStudy: {
-      context: "SEORCE is an AI-powered search intelligence platform designed for high-performance marketing and growth teams.",
-      challenge: "The product handles deep technical queries across complex datasets. The team needed a clear way to communicate new features without turning the video into a tedious dashboard click-through.",
-      audience: "Heads of Growth, SEO Directors, and Technical Marketing decision makers.",
-      communicationProblem: "Translating sophisticated machine intelligence into an immediate 'aha moment' that prospects grasp in the first 10 seconds.",
-      strategicDecision: "Eliminated cluttered interface walkthroughs. Built the narrative around the core user behavior: typing a single natural-language question ('Just Ask') and letting the AI synthesize actionable intelligence instantly.",
-      execution: "High-contrast UI choreography, focused camera zooms, precise typographic callouts, and tailored sound design that punctuates feature breakthroughs.",
-      result: "Multiple product and feature launch films delivered across repeat engagements, establishing a continuous storytelling partnership."
+      context: "Haleum develops autonomous AI agent architecture for technical workflows and modern development teams.",
+      challenge: "Explaining how multi-agent coordination works under the hood without overwhelming prospective customers with abstract architecture diagrams.",
+      audience: "Technical founders, software engineering leaders, and AI workflow architects.",
+      communicationProblem: "Autonomous multi-agent orchestration sounds theoretical unless grounded in concrete, visible problem-solving.",
+      strategicDecision: "Framed the story around real business tasks: showing intent initiate background agents, communicate collaboratively, and output verifiable results.",
+      execution: "Bespoke 3D node visuals combined with rhythmic software UI pacing and spatial sound design.",
+      result: "Featured launch film deployed on product launch day, anchoring founder social channels and investor presentations."
     }
   },
   {
